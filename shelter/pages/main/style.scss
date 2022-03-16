@@ -12,3 +12,15 @@ $font-geor: "Georgia";
   font-weight: normal;
   font-style: normal;
 }
+
+body {
+}
+
+.main-screen {
+  background: rgb(91, 72, 58);
+  background: linear-gradient(
+    90deg,
+    rgba(91, 72, 58, 1) 0%,
+    rgba(38, 36, 37, 1) 100%
+  );
+}

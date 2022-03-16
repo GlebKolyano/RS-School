@@ -5,5 +5,8 @@
   src: url("/assets/fonts/Georgia.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Georgia.woff") format("woff"), url("/assets/fonts/Georgia.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+.main-screen {
+  background: #5b483a;
+  background: linear-gradient(90deg, #5b483a 0%, #262425 100%); }
 
 /*# sourceMappingURL=style.css.map */
