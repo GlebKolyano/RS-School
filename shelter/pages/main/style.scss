@@ -1,0 +1,14 @@
+@import "/node_modules/normalize.css/normalize.css";
+// fonts
+$font-arial: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$font-geor: "Georgia";
+
+@font-face {
+  font-family: "Georgia";
+  src: url("/assets/fonts/Georgia.eot");
+  src: url("/assets/fonts/Georgia.eot?#iefix") format("embedded-opentype"),
+    url("/assets/fonts/Georgia.woff") format("woff"),
+    url("/assets/fonts/Georgia.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
