@@ -69,13 +69,13 @@ body {
   flex-direction: column;
   align-items: center;
   row-gap: 10px;
+  cursor: default;
 }
 .header__logo-name {
   font-size: 32px;
   line-height: 110%;
   color: $color-pr;
   letter-spacing: 0.06em;
-  cursor: pointer;
 }
 .header__logo-subname {
   font-size: 13px;
