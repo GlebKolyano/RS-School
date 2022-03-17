@@ -250,16 +250,18 @@ body {
   &__arrow-prev {
   }
   &__catalog {
-    width: calc((270px * 3) + 180px);
-
+    max-width: calc((270px * 3) + 180px);
+    width: 100%;
     overflow: hidden;
   }
   &__slider {
     display: flex;
     justify-content: space-between;
     column-gap: 90px;
-    width: calc((270px * 3)+ (8 * 90px));
+    max-width: calc((270px * 3)+ 180px);
     width: 100%;
+    position: relative;
+    transition: all 1s ease-in-out;
   }
   &__arrow-next {
   }
@@ -273,6 +275,7 @@ body {
 }
 
 .pets-card {
+  cursor: pointer;
   background: #fafafa;
   border-radius: 9px;
   display: flex;
@@ -281,6 +284,10 @@ body {
   align-items: center;
   min-width: 270px;
   min-height: 435px;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.03);
+  }
   &__image {
     width: 270px;
     height: 270px;
@@ -296,6 +303,9 @@ body {
       line-height: 23px;
       letter-spacing: 0.06em;
       color: #545454;
+      &:hover {
+        color: #979797;
+      }
     }
     &__button {
       border: 2px solid $color-pr;

@@ -15,17 +15,26 @@ headerLinks.forEach((link) =>
 
 let servicePets = new PetsService()
 
-let pets =  await servicePets.getPetsForSlider().then(data => data.json())
+let arrPets =  await servicePets.getPetsForSlider().then(data => data.json())
 
 // generate pets for slider
 
-const containerSlider = document.querySelector(".pets__slider")
 
-pets.forEach((pet) => {
-  let petCard = document.createElement("section")
-  petCard.classList.add("pets-card")
 
-  petCard.innerHTML = 
+// slider
+let nextBtn = document.querySelector(".pets__arrow-next")
+let prevBtn = document.querySelector(".pets__arrow-prev")
+
+function createPetCards(arrOfPets) {
+
+  const containerSlider = document.querySelector(".pets__slider")
+  containerSlider.innerHTML = ""
+
+  arrOfPets.forEach((pet) => {
+    let petCard = document.createElement("section")
+    petCard.classList.add("pets-card")
+   
+    petCard.innerHTML = 
   `
     <div style="background: url(/assets/${pet.img})" class="pets-card__image"></div>
     <div class="pets-card-info">
@@ -33,5 +42,47 @@ pets.forEach((pet) => {
       <button class="pets-card-info__button button">Learn more</button>
     </div>
   `
+  
   containerSlider.appendChild(petCard)
 })
+}
+
+let uniqPets = [...arrPets.splice(0, 1), ...arrPets.splice(1, 1), ...arrPets.splice(2, 1)]
+createPetCards(uniqPets)
+
+
+nextBtn.addEventListener("click", () => {
+  let widthClient = document.documentElement.clientWidth
+  
+  if (widthClient >= 1280) (generateUniqPetsArray(3))
+  if (widthClient < 1280) (generateUniqPetsArray(2))
+  if (widthClient <= 768) (generateUniqPetsArray(2))
+  if (widthClient <= 320) (generateUniqPetsArray(1))
+})
+
+prevBtn.addEventListener("click", () => {
+  let widthClient = document.documentElement.clientWidth
+  
+  if (widthClient >= 1280) (generateUniqPetsArray(3))
+  if (widthClient < 1280) (generateUniqPetsArray(2))
+  if (widthClient <= 768) (generateUniqPetsArray(2))
+  if (widthClient <= 320) (generateUniqPetsArray(1))
+})
+
+
+function generateUniqPetsArray(n) {
+  let copyArr = uniqPets
+  uniqPets = []
+
+  while (uniqPets.length < n) {
+    let r = Math.floor(Math.random() * arrPets.length)
+    uniqPets.push(...arrPets.splice(r, 1))
+  }
+
+  arrPets = [...arrPets, ...copyArr]
+  
+  createPetCards(uniqPets)
+}
+
+
+
