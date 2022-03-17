@@ -5,6 +5,10 @@
   src: url("/assets/fonts/Georgia.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/Georgia.woff") format("woff"), url("/assets/fonts/Georgia.ttf") format("truetype");
   font-weight: normal;
   font-style: normal; }
+a {
+  color: #f1cdb3;
+  text-decoration: none; }
+
 * {
   margin: 0;
   padding: 0;
@@ -54,7 +58,8 @@ body {
   font-size: 32px;
   line-height: 110%;
   color: #f1cdb3;
-  letter-spacing: 0.06em; }
+  letter-spacing: 0.06em;
+  cursor: pointer; }
 
 .header__logo-subname {
   font-size: 13px;
