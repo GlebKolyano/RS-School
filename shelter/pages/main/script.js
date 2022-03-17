@@ -1,3 +1,7 @@
+import PetsService from "../main/pets.service.js"
+
+// header links effect
+
 let headerLinks = document.querySelectorAll(".header__link")
 
 headerLinks.forEach((link) => 
@@ -6,3 +10,10 @@ headerLinks.forEach((link) =>
     event.target.classList.add("active")
     console.log("click")
 }))
+
+// petService
+
+let servicePets = new PetsService()
+
+let pets =  await servicePets.getPetsForSlider().then(data => data.json())
+
