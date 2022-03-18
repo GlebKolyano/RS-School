@@ -311,10 +311,13 @@ button {
     color: #545454; }
 
 .donation {
+  min-height: 465px;
+  display: flex;
+  align-items: flex-start;
   background: #f6f6f6; }
   .donation__wrapper {
     display: flex;
-    min-height: 462px;
+    min-height: 445px;
     width: 100%;
     justify-content: center;
     align-items: center;

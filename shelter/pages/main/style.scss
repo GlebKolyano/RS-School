@@ -402,10 +402,13 @@ button {
 // DONATION BLOCK
 
 .donation {
+  min-height: 465px;
+  display: flex;
+  align-items: flex-start;
   background: #f6f6f6;
   &__wrapper {
     display: flex;
-    min-height: 462px;
+    min-height: 445px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -470,3 +473,5 @@ button {
     color: #b2b2b2;
   }
 }
+
+// CONTACTS BLOCK
