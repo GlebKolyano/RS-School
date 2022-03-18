@@ -37,8 +37,7 @@ body {
   border-radius: 100px;
   max-width: max-content; }
   .button:hover {
-    background-color: #fddcc4;
-    border: 2px solid #fddcc4; }
+    background-color: #fddcc4; }
 
 .header {
   position: absolute;
@@ -243,6 +242,7 @@ body {
       .pets-card-info__title:hover {
         color: #979797; }
     .pets-card-info__button {
+      box-sizing: content-box;
       border: 2px solid #f1cdb3;
       background-color: white;
       color: #292929;
@@ -250,6 +250,8 @@ body {
       line-height: 130%;
       letter-spacing: 0.06em;
       max-height: 52px; }
+      .pets-card-info__button:hover {
+        border: 2px solid #fddcc4; }
 
 .arrow-img_next {
   transform: rotate(180deg); }
