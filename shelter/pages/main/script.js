@@ -1,4 +1,5 @@
 import PetsService from "../main/pets.service.js"
+import HelpService from "../main/help.service.js"
 
 // header links effect
 
@@ -83,6 +84,29 @@ function generateUniqPetsArray(n) {
   
   createPetCards(uniqPets)
 }
+
+
+
+// DRAW HELP FUNCTION
+
+(async function () {
+  let serviceHelp = new HelpService()
+  let arrHelp =  await serviceHelp.getHelpBlocks().then(data => data.json())
+  let helpGrid = document.querySelector(".help-grid")
+
+  arrHelp.forEach((item) => {
+  let helpBlock = document.createElement("div")
+  helpBlock.classList.add("help-grid__item")
+  
+  helpBlock.innerHTML = `
+      <img src="/assets/${item.img}" class="help-grid__image">
+      <h3 class="help-grid__subtitle">${item.name}</h3>
+  `
+  helpGrid.appendChild(helpBlock)
+})
+})()
+
+// END
 
 
 

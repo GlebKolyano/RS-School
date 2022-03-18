@@ -35,8 +35,7 @@ body {
   cursor: pointer;
   padding: 15px 45px;
   border-radius: 100px;
-  max-width: max-content;
-  border: 2px solid #f1cdb3; }
+  max-width: max-content; }
   .button:hover {
     background-color: #fddcc4;
     border: 2px solid #fddcc4; }
@@ -269,5 +268,42 @@ body {
   .arrow:hover {
     background-color: #fddcc4;
     border: 2px solid #fddcc4; }
+
+.help__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0 100px 0;
+  row-gap: 58px; }
+.help__title {
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  max-width: 310px;
+  text-align: center; }
+
+.help-grid {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 55px;
+  column-gap: 120px;
+  justify-content: center;
+  align-items: center; }
+  .help-grid__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 30px; }
+  .help-grid__image {
+    max-width: max-content;
+    max-height: max-content; }
+  .help-grid__subtitle {
+    font-size: 20px;
+    line-height: 115%;
+    letter-spacing: 0.06em;
+    color: #545454; }
 
 /*# sourceMappingURL=style.css.map */
