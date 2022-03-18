@@ -3,7 +3,7 @@ import HelpService from "../main/help.service.js"
 
 // header links effect
 
-let headerLinks = document.querySelectorAll(".header__link")
+let headerLinks = document.querySelectorAll(".nav__link")
 
 headerLinks.forEach((link) => 
   link.addEventListener("click", (event) => {

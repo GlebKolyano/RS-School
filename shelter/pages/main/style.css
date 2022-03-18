@@ -93,8 +93,9 @@ button {
   margin-left: 35px; }
   .header__link:hover {
     color: #fafafa; }
-  .header__link.active {
-    border-bottom: 3px solid #f1cdb3; }
+
+.nav__link.active {
+  border-bottom: 3px solid #f1cdb3; }
 
 .main-screen {
   padding-top: 180px;

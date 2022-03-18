@@ -118,11 +118,10 @@ button {
   &:hover {
     color: #fafafa;
   }
-  &.active {
-    border-bottom: 3px solid #f1cdb3;
-  }
 }
-
+.nav__link.active {
+  border-bottom: 3px solid #f1cdb3;
+}
 // MAIN CSS
 
 .main {
