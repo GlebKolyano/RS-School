@@ -1,4 +1,63 @@
 @import url(/node_modules/normalize.css/normalize.css);
+.header.pets-page {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff; }
+
+.header__wrapper.pets-page {
+  height: 120px;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; }
+
+.header__logo.pets-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px; }
+
+.header__logo-name.pets-page {
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #545454; }
+  .header__logo-name.pets-page > a {
+    color: #545454; }
+
+.header__logo-subname.pets-page {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  color: #292929; }
+
+.header__links.pets-page {
+  list-style: none;
+  display: flex; }
+
+.header__link.pets-page {
+  font-size: 15px;
+  line-height: 160%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  margin-left: 35px; }
+  .header__link.pets-page:hover {
+    color: #292929; }
+
+.nav__link.pets-page.active {
+  border-bottom: 3px solid #f1cdb3;
+  color: #292929; }
+
+.main-pets {
+  height: 300px;
+  width: 400px;
+  background: red; }
+
 @font-face {
   font-family: "Georgia";
   src: url("/assets/fonts/Georgia.eot");
@@ -96,7 +155,6 @@ button {
 .header__link {
   font-size: 15px;
   line-height: 160%;
-  color: #cdcdcd;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   margin-left: 35px; }
   .header__link:hover {
