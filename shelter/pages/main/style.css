@@ -58,11 +58,6 @@ a.disabled {
   cursor: default;
   color: #545454; }
 
-.main-pets {
-  height: 300px;
-  width: 400px;
-  background: red; }
-
 @font-face {
   font-family: "Georgia";
   src: url("/assets/fonts/Georgia.eot");
