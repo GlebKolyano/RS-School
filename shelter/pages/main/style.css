@@ -53,6 +53,11 @@
   border-bottom: 3px solid #f1cdb3;
   color: #292929; }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #545454; }
+
 .main-pets {
   height: 300px;
   width: 400px;

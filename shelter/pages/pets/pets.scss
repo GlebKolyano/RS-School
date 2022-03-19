@@ -67,6 +67,11 @@ $color-pr: #f1cdb3;
   color: #292929;
 }
 
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  color: #545454;
+}
 // MAIN PETS
 
 .main-pets {
