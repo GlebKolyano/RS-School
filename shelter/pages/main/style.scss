@@ -299,6 +299,7 @@ button {
   border-radius: 9px;
   display: flex;
   flex-direction: column;
+  border-radius: 9px 9px 0px 0px;
 
   align-items: center;
   min-width: 270px;
@@ -314,6 +315,7 @@ button {
   &__image {
     width: 270px;
     height: 270px;
+    border-radius: 9px 9px 0px 0px;
   }
   &-info {
     height: calc(435px - 270px);
@@ -333,7 +335,8 @@ button {
       }
     }
     &__button {
-      box-sizing: content-box;
+      display: flex;
+      align-items: center;
       border: 2px solid $color-pr;
       background-color: white;
       color: #292929;

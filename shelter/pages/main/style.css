@@ -84,10 +84,15 @@ a.disabled {
   column-gap: 40px;
   row-gap: 30px; }
 
-.pets-page__buttons > .inactive {
-  border: 2px solid #cdcdcd;
-  color: #cdcdcd;
-  cursor: default; }
+.pets-page__buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px; }
+  .pets-page__buttons > .inactive {
+    border: 2px solid #cdcdcd;
+    color: #cdcdcd;
+    cursor: default; }
 
 .pets-page__button-first {
   background: transparent; }
@@ -354,6 +359,7 @@ button {
   border-radius: 9px;
   display: flex;
   flex-direction: column;
+  border-radius: 9px 9px 0px 0px;
   align-items: center;
   min-width: 270px;
   max-height: 435px;
@@ -365,7 +371,8 @@ button {
       background-color: #fddcc4; }
   .pets-card__image {
     width: 270px;
-    height: 270px; }
+    height: 270px;
+    border-radius: 9px 9px 0px 0px; }
   .pets-card-info {
     height: calc(435px - 270px);
     display: flex;
@@ -381,7 +388,8 @@ button {
       .pets-card-info__title:hover {
         color: #979797; }
     .pets-card-info__button {
-      box-sizing: content-box;
+      display: flex;
+      align-items: center;
       border: 2px solid #f1cdb3;
       background-color: white;
       color: #292929;
