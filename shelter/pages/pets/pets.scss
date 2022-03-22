@@ -4,12 +4,13 @@ $color-pr: #f1cdb3;
 // HEADER PETS
 
 .header.pets-page {
-  position: relative;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: #ffffff;
+  z-index: 1000;
 }
 .header__wrapper.pets-page {
   height: 120px;

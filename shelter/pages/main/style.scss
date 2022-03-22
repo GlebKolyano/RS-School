@@ -306,6 +306,10 @@ button {
   transition: transform 0.2s;
   &:hover {
     transform: scale(1.03);
+    .pets-card-info__button {
+      border: 2px solid #fddcc4;
+      background-color: #fddcc4;
+    }
   }
   &__image {
     width: 270px;
@@ -323,6 +327,7 @@ button {
       line-height: 23px;
       letter-spacing: 0.06em;
       color: #545454;
+      cursor: default;
       &:hover {
         color: #979797;
       }
