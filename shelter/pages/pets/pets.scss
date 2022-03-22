@@ -111,6 +111,9 @@ a.disabled {
     color: #cdcdcd;
     cursor: default;
   }
+  & > button:not(.inactive):hover {
+    background-color: $color-pr;
+  }
   display: flex;
   justify-content: center;
   align-items: center;

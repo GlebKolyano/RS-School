@@ -1,6 +1,6 @@
 export default class PetsService {
   constructor() {}
-
+  
   async getPetsForSlider() {
     let pets = await fetch("/assets/our-pets.json")
     return pets
@@ -9,7 +9,7 @@ export default class PetsService {
   async getPetsForPagination() {
     let pets = await fetch("/assets/our-pets.json").then(data => data.json())
     
-    return [...pets, ...pets, ...pets, ...pets, ...pets, ...pets]
+    return [...pets.sort(() => Math.random() - 0.5), ...pets.sort(() => Math.random() - 0.5), ...pets.sort(() => Math.random() - 0.5), ...pets.sort(() => Math.random() - 0.5), ...pets.sort(() => Math.random() - 0.5), ...pets.sort(() => Math.random() - 0.5)]
   }
 }
 

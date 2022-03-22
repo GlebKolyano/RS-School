@@ -93,6 +93,8 @@ a.disabled {
     border: 2px solid #cdcdcd;
     color: #cdcdcd;
     cursor: default; }
+  .pets-page__buttons > button:not(.inactive):hover {
+    background-color: #f1cdb3; }
 
 .pets-page__button-first {
   background: transparent; }
