@@ -1,6 +1,6 @@
 import PetsService from "./pets.service.js"
 import HelpService from "./help.service.js"
-import modal from "./modal.js"
+import { Modal } from "./modal.js"
 
 // header links effect
 
@@ -41,7 +41,7 @@ function createPetCards(arrOfPets) {
     <div style="background: url(/assets/${pet.img})" class="pets-card__image"></div>
     <div class="pets-card-info">
       <h2 class="pets-card-info__title">${pet.name}</h2>
-      <button class="pets-card-info__button button">Learn more</button>
+      <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
     </div>
   `
   
@@ -109,5 +109,21 @@ function generateUniqPetsArray(n) {
 
 // END
 
-modal()
+// modal window 
 
+function addModalListener() {
+  document.querySelector(".main").addEventListener("click", async (event) => {
+  let modalService = new Modal()
+  
+
+  if (event.target.dataset.id) {
+    event.preventDefault()
+    let id = event.target.dataset.id
+    let arrayItems = await servicePets.getPetsForSlider().then(data => data.json())
+    let pet = arrayItems.filter(i => i.name === id)[0]
+    modalService.createModal(pet)
+  }
+})
+}
+
+addModalListener()

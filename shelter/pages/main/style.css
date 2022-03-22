@@ -585,7 +585,8 @@ button {
   background: rgba(41, 41, 41, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  z-index: 2000; }
 
 .modal__wrapper {
   max-width: 950px;
@@ -612,8 +613,7 @@ button {
   background: #fafafa;
   border-radius: 9px;
   display: flex;
-  justify-content: space-between;
-  align-items: center; }
+  justify-content: space-between; }
 
 .modal__image {
   max-width: 500px;
@@ -627,7 +627,7 @@ button {
   display: flex;
   flex-direction: column;
   row-gap: 40px;
-  padding: 50px 20px 90px 0px;
+  padding: 50px 20px 0 0px;
   max-width: 350px;
   width: max-content; }
 
@@ -664,9 +664,9 @@ button {
     border-radius: 50%;
     position: absolute;
     background: #f1cdb3;
-    margin-left: -10px; }
+    margin-left: -15px; }
   .modal__params > li {
-    margin-left: 10px;
+    margin-left: 15px;
     position: relative;
     margin-bottom: 11px; }
 

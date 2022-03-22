@@ -588,6 +588,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2000;
 }
 .container {
 }
@@ -618,7 +619,6 @@ button {
   border-radius: 9px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 .modal__image {
   max-width: 500px;
@@ -632,7 +632,7 @@ button {
   display: flex;
   flex-direction: column;
   row-gap: 40px;
-  padding: 50px 20px 90px 0px;
+  padding: 50px 20px 0 0px;
   max-width: 350px;
   width: max-content;
 }
@@ -672,10 +672,10 @@ button {
     border-radius: 50%;
     position: absolute;
     background: #f1cdb3;
-    margin-left: -10px;
+    margin-left: -15px;
   }
   & > li {
-    margin-left: 10px;
+    margin-left: 15px;
     position: relative;
     margin-bottom: 11px;
   }

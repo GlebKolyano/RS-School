@@ -1,3 +1,4 @@
+import { Modal } from "../main/modal.js"
 import PetsService from "../main/pets.service.js"
 
 let serivePetsPag = new PetsService()
@@ -37,7 +38,7 @@ function viewElementsOfPagination(page, maxItems) {
     <div style="background: url(/assets/${pet.img})" class="pets-card__image"></div>
     <div class="pets-card-info">
       <h2 class="pets-card-info__title">${pet.name}</h2>
-      <button class="pets-card-info__button button">Learn more</button>
+      <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
     </div>
   `
     petsPagWrapper.appendChild(petCard)
@@ -113,3 +114,22 @@ function checkButtons(page, maxItems) {
 }
 
 viewElementsOfPagination(currentPage, maxElements)
+
+
+// modal window 
+
+function addModalListener() {
+  document.querySelector(".main").addEventListener("click", async (event) => {
+  let modalService = new Modal()
+  let servicePets = new PetsService()
+
+  if (event.target.dataset.id) {
+    event.preventDefault()
+    let id = event.target.dataset.id
+    let arrayItems = await servicePets.getPetsForSlider().then(data => data.json())
+    let pet = arrayItems.filter(i => i.name === id)[0]
+    modalService.createModal(pet)
+  }
+})}
+
+addModalListener()
