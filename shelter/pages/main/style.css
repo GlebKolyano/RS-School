@@ -367,7 +367,8 @@ button {
   max-height: 435px;
   transition: transform 0.2s; }
   .pets-card:hover {
-    transform: scale(1.03); }
+    transform: scale(1.03);
+    cursor: pointer; }
     .pets-card:hover .pets-card-info__button {
       border: 2px solid #fddcc4;
       background-color: #fddcc4; }
@@ -388,7 +389,8 @@ button {
       color: #545454;
       cursor: default; }
       .pets-card-info__title:hover {
-        color: #979797; }
+        color: #979797;
+        cursor: pointer; }
     .pets-card-info__button {
       display: flex;
       align-items: center;
@@ -587,12 +589,15 @@ button {
   justify-content: center;
   align-items: center;
   z-index: 2000; }
+  .modal__overlay:hover {
+    cursor: pointer; }
 
 .modal__wrapper {
   max-width: 950px;
   width: 100%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  cursor: default; }
 
 .modal-close {
   justify-self: flex-end;
@@ -605,7 +610,8 @@ button {
   background: transparent;
   margin-right: 10px; }
   .modal-close:hover {
-    background: #f1cdb3; }
+    background: #f1cdb3;
+    cursor: pointer; }
 
 .modal-content {
   max-width: 900px;

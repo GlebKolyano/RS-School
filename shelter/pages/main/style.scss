@@ -307,6 +307,7 @@ button {
   transition: transform 0.2s;
   &:hover {
     transform: scale(1.03);
+    cursor: pointer;
     .pets-card-info__button {
       border: 2px solid #fddcc4;
       background-color: #fddcc4;
@@ -332,6 +333,7 @@ button {
       cursor: default;
       &:hover {
         color: #979797;
+        cursor: pointer;
       }
     }
     &__button {
@@ -589,6 +591,9 @@ button {
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .container {
 }
@@ -597,6 +602,8 @@ button {
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  cursor: default;
 }
 .modal-close {
   justify-self: flex-end;
@@ -610,6 +617,7 @@ button {
   margin-right: 10px;
   &:hover {
     background: $color-pr;
+    cursor: pointer;
   }
 }
 .modal-content {

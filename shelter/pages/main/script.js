@@ -35,12 +35,12 @@ function createPetCards(arrOfPets) {
   arrOfPets.forEach((pet) => {
     let petCard = document.createElement("section")
     petCard.classList.add("pets-card")
-   
+    petCard.setAttribute("data-id",`${pet.name}`)
     petCard.innerHTML = 
   `
-    <div style="background: url(/assets/${pet.img})" class="pets-card__image"></div>
-    <div class="pets-card-info">
-      <h2 class="pets-card-info__title">${pet.name}</h2>
+    <div style="background: url(/assets/${pet.img})" class="pets-card__image" data-id="${pet.name}"></div>
+    <div class="pets-card-info" data-id="${pet.name}">
+      <h2 class="pets-card-info__title" data-id="${pet.name}">${pet.name}</h2>
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
     </div>
   `
@@ -119,6 +119,7 @@ function addModalListener() {
   if (event.target.dataset.id) {
     event.preventDefault()
     let id = event.target.dataset.id
+    console.log("id:", id)
     let arrayItems = await servicePets.getPetsForSlider().then(data => data.json())
     let pet = arrayItems.filter(i => i.name === id)[0]
     modalService.createModal(pet)
