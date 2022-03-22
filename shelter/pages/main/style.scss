@@ -80,18 +80,27 @@ button {
   bottom: 0;
 }
 .header__wrapper {
+  position: relative;
   padding-top: 60px;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 767px) {
+    padding-top: 30px;
+    justify-content: flex-end;
+    column-gap: 40px;
+  }
 }
 .header__logo {
   display: flex;
   flex-direction: column;
   align-items: center;
   row-gap: 10px;
+  @media screen and (max-width: 767px) {
+    z-index: 100;
+  }
 }
 .header__logo-name {
   & > a {
@@ -111,10 +120,42 @@ button {
   letter-spacing: 0.1em;
 }
 .header__nav {
+  transition: all 0.5s ease-out;
+  @media screen and (max-width: 767px) {
+    z-index: 99;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    width: 320px;
+    background: #292929;
+    right: -360px;
+    height: 250px;
+    height: 100vh;
+    transition: all 0.5s ease-in;
+  }
+}
+.header__burger {
+  position: relative;
+  z-index: 100;
+  transition: all 0.5s ease-in;
+  &.activeBurger {
+    transform: rotate(-90deg);
+    transition: all 0.5s ease-out;
+  }
 }
 .header__links {
   list-style: none;
   display: flex;
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    position: relative;
+    top: 50%;
+    column-gap: 40px;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+  }
 }
 .header__link {
   font-size: 15px;
@@ -122,6 +163,12 @@ button {
 
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   margin-left: 35px;
+  @media screen and (max-width: 767px) {
+    font-size: 32px;
+    line-height: 160%;
+    color: #fafafa;
+    margin-left: 0;
+  }
 
   &:hover {
     color: #fafafa;
@@ -131,6 +178,9 @@ button {
 .nav__link.active {
   border-bottom: 3px solid #f1cdb3;
 }
+
+// header media burger
+
 // MAIN CSS
 
 .main {

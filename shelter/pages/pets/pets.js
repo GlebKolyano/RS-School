@@ -1,3 +1,4 @@
+import burgerMenu from "../main/burger.js"
 import { Modal } from "../main/modal.js"
 import PetsService from "../main/pets.service.js"
 
@@ -133,3 +134,8 @@ function addModalListener() {
 })}
 
 addModalListener()
+
+
+// burger
+
+burgerMenu()

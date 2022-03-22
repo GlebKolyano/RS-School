@@ -1,6 +1,7 @@
 import PetsService from "./pets.service.js"
 import HelpService from "./help.service.js"
 import { Modal } from "./modal.js"
+import burgerMenu from "./burger.js"
 
 // header links effect
 
@@ -128,3 +129,8 @@ function addModalListener() {
 }
 
 addModalListener()
+
+
+// burger menu
+
+burgerMenu()
