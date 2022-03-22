@@ -76,3 +76,69 @@ a.disabled {
 
 .main-pets {
 }
+
+//
+
+.pets-page__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 0 100px 0;
+  align-items: center;
+  text-align: center;
+  row-gap: 60px;
+  width: 100%;
+}
+.pets-page__title {
+  font-size: 35px;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+  color: #545454;
+  width: 400px;
+}
+.pets-page__pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 40px;
+  row-gap: 30px;
+}
+.pets-page__buttons {
+  & > .inactive {
+    border: 2px solid #cdcdcd;
+    color: #cdcdcd;
+    cursor: default;
+  }
+}
+
+.pets-page__button-first {
+  background: transparent;
+}
+.pets-page__button-prev {
+  background: transparent;
+}
+.pets-page__button-number {
+  background-color: $color-pr;
+  cursor: default;
+}
+.pets-page__button-next {
+  background: transparent;
+}
+.pets-page__button-last {
+  background: transparent;
+}
+.pag-button {
+  font-weight: bold;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-pr;
+  border-radius: 100px;
+}
+.pag-button-num {
+  font-weight: bold;
+  width: 52px;
+  height: 52px;
+  border: 2px solid $color-pr;
+  border-radius: 100px;
+}

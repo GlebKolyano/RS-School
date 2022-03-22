@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../main/style.css">
-  <script type="module" src="pets.js" defer></script>
   <script type="module" src="../main/pets.service.js" defer></script>
+  <script type="module" src="pets.js" defer></script>
   <script type="module" src="../main/script.js" defer></script>
   <title>Document</title>
 </head>
@@ -36,9 +36,17 @@
     <div class="container"></div>
     <div class="pets">
       <div class="container">
-        <div class="pets__wrapper">
-          <h2 class="pets__title">Our friends who <br />
+        <div class="pets-page__wrapper">
+          <h2 class="pets-page__title">Our friends who <br />
             are looking for a house</h2>
+          <div class="pets-page__pagination"></div>
+          <div class="pets-page__buttons">
+            <button class="pets-page__button-first pag-button ">&#60;&#60;</button>
+            <button class="pets-page__button-prev pag-button">&#60;</button>
+            <button class="pets-page__button-number pag-button-num">1</button>
+            <button class="pets-page__button-next pag-button">></button>
+            <button class="pets-page__button-last pag-button">>></button>
+          </div>
         </div>
       </div>
   </main>
