@@ -1,5 +1,6 @@
-import PetsService from "../main/pets.service.js"
-import HelpService from "../main/help.service.js"
+import PetsService from "./pets.service.js"
+import HelpService from "./help.service.js"
+import modal from "./modal.js"
 
 // header links effect
 
@@ -108,5 +109,5 @@ function generateUniqPetsArray(n) {
 
 // END
 
-
+modal()
 

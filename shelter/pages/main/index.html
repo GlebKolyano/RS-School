@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <script type="module" src="help.service.js" defer></script>
   <script type="module" src="pets.service.js" defer></script>
+  <script type="module" src="modal.js" defer></script>
   <script type="module" src="script.js" defer></script>
   <title>Document</title>
 </head>
@@ -160,7 +161,36 @@
       </div>
     </div>
   </footer>
-
+  <div class="modal">
+    <div class="modal__overlay">
+      <div class="container">
+        <div class="modal__wrapper">
+          <button class="modal-close">&times;</button>
+          <div class="modal-content">
+            <img class="modal__image" src="/assets/images/pets/charly.png" />
+            <div class="modal__info">
+              <div class="modal__title">
+                <h3 class="modal__name">Jennifer</h3>
+                <h4 class="modal__subname">Dog - Labrador</h4>
+              </div>
+              <p class="modal__description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find
+                a
+                new forever home. This girl really enjoys
+                being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has
+                all of her
+                favorite toys.</p>
+              <ul class="modal__params">
+                <li><b>Age:</b> 2 months</li>
+                <li><b>Inoculations:</b> none</li>
+                <li><b>Diseases:</b> none</li>
+                <li><b>Parasites:</b> none </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
