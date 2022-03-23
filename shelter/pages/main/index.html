@@ -10,6 +10,7 @@
   <script type="module" src="pets.service.js" defer></script>
   <script type="module" src="modal.js" defer></script>
   <script type="module" src="burger.js" defer></script>
+  <script type="module" src="smooth-scroll.js" defer></script>
   <script type="module" src="script.js" defer></script>
   <title>Document</title>
 </head>
@@ -27,8 +28,8 @@
           <ul class="header__links">
             <li class="header__link "><a href="index.html" class="nav__link active">About the shelter</a></li>
             <li class="header__link"><a class="nav__link" href="../pets/pets.html">Our pets</a></li>
-            <li class="header__link"><a class="nav__link">Help the shelter</a></li>
-            <li class="header__link"><a class="nav__link">Contacts</a></li>
+            <li class="header__link"><a class="nav__link" href="#help">Help the shelter</a></li>
+            <li class="header__link"><a class="nav__link" href="#contacts">Contacts</a></li>
           </ul>
         </nav>
       </section>
@@ -91,7 +92,7 @@
         </div>
       </div>
     </div>
-    <div class="help">
+    <div class="help" id="help">
       <div class="container">
         <div class="help__wrapper">
           <h2 class="help__title">How you can help
@@ -125,7 +126,7 @@
     </div>
   </main>
   <footer>
-    <div class="contacts">
+    <div class="contacts" id="contacts">
       <div class="container">
         <div class="contacts__wrapper">
           <div class="contacts__block">

@@ -2,6 +2,7 @@ import PetsService from "./pets.service.js"
 import HelpService from "./help.service.js"
 import { Modal } from "./modal.js"
 import burgerMenu from "./burger.js"
+import smoothScroll from "./smooth-scroll.js"
 
 // header links effect
 
@@ -134,3 +135,7 @@ addModalListener()
 // burger menu
 
 burgerMenu()
+
+// smooth scroll
+
+smoothScroll()

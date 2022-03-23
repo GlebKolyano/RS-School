@@ -1,6 +1,7 @@
 import burgerMenu from "../main/burger.js"
 import { Modal } from "../main/modal.js"
 import PetsService from "../main/pets.service.js"
+import smoothScroll from "../main/smooth-scroll.js"
 
 let serivePetsPag = new PetsService()
 let petsForPagintation = await serivePetsPag.getPetsForPagination()
@@ -139,3 +140,7 @@ addModalListener()
 // burger
 
 burgerMenu()
+
+// smooth scroll
+
+smoothScroll()

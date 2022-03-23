@@ -251,9 +251,13 @@ button {
       transition: all 0.5s ease-in; } }
 
 .header__burger {
-  position: relative;
-  z-index: 100;
-  transition: all 0.5s ease-in; }
+  display: none; }
+  @media screen and (max-width: 767px) {
+    .header__burger {
+      display: block;
+      position: relative;
+      z-index: 100;
+      transition: all 0.5s ease-in; } }
   .header__burger.activeBurger {
     transform: rotate(-90deg);
     transition: all 0.5s ease-out; }
