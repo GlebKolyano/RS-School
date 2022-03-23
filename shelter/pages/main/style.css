@@ -290,6 +290,7 @@ button {
     color: #fafafa; }
 
 .nav__link.active {
+  padding-bottom: 3px;
   border-bottom: 3px solid #f1cdb3; }
 
 .main-screen {

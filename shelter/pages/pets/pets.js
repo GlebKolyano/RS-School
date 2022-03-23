@@ -1,7 +1,7 @@
-import burgerMenu from "../main/burger.js"
-import { Modal } from "../main/modal.js"
-import PetsService from "../main/pets.service.js"
-import smoothScroll from "../main/smooth-scroll.js"
+import burgerMenu from "../../plugins/burger.js"
+import { Modal } from "../../plugins/modal.js"
+import PetsService from "../../services/pets.service.js"
+import smoothScroll from "../../plugins/smooth-scroll.js"
 
 let serivePetsPag = new PetsService()
 let petsForPagintation = await serivePetsPag.getPetsForPagination()
