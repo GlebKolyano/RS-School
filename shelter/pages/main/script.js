@@ -103,6 +103,7 @@ function generateUniqPetsArray(n) {
   helpBlock.classList.add("help-grid__item")
   
   helpBlock.innerHTML = `
+
       <img src="./assets/${item.img}" class="help-grid__image">
       <h3 class="help-grid__subtitle">${item.name}</h3>
   `
