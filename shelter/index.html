@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="pages/main/style.css">
-  <script type="module" src="services/help.service.js" defer></script>
-  <script type="module" src="services/pets.service.js" defer></script>
-  <script type="module" src="plugins/modal.js" defer></script>
-  <script type="module" src="plugins/burger.js" defer></script>
-  <script type="module" src="plugins/smooth-scroll.js" defer></script>
-  <script type="module" src="pages/main/script.js" defer></script>
+  <link rel="stylesheet" href="./pages/main/style.css">
+  <script type="module" src="./services/help.service.js" defer></script>
+  <script type="module" src="./services/pets.service.js" defer></script>
+  <script type="module" src="./plugins/modal.js" defer></script>
+  <script type="module" src="./plugins/burger.js" defer></script>
+  <script type="module" src="./plugins/smooth-scroll.js" defer></script>
+  <script type="module" src="./pages/main/script.js" defer></script>
   <title>Shelter</title>
 </head>
 
@@ -20,14 +20,14 @@
     <div class="container">
       <section class="header__wrapper">
         <div class="header__logo">
-          <h1 class="header__logo-name"><a href="index.html">Cozy House</a></h1>
+          <h1 class="header__logo-name"><a href="./index.html">Cozy House</a></h1>
           <span class="header__logo-subname">Shelter for pets in Boston</span>
         </div>
-        <img class="header__burger" src="assets/icons/BurgerN.svg">
+        <img class="header__burger" src="./assets/icons/BurgerN.svg">
         <nav class="header__nav">
           <ul class="header__links">
-            <li class="header__link "><a href="index.html" class="nav__link active">About the shelter</a></li>
-            <li class="header__link"><a class="nav__link" href="pages/pets/pets.html">Our pets</a></li>
+            <li class="header__link "><a href="./index.html" class="nav__link active">About the shelter</a></li>
+            <li class="header__link"><a class="nav__link" href="./pages/pets/pets.html">Our pets</a></li>
             <li class="header__link"><a class="nav__link" href="#help">Help the shelter</a></li>
             <li class="header__link"><a class="nav__link" href="#contacts">Contacts</a></li>
           </ul>
@@ -80,15 +80,15 @@
             are looking for a house</h2>
           <section class="pets__block">
             <a class="pets__arrow-prev arrow">
-              <img class="arrow-img_prev" src="assets/icons/Arrow.svg" alt="button-prev">
+              <img class="arrow-img_prev" src="./assets/icons/Arrow.svg" alt="button-prev">
             </a>
             <div class="pets__catalog">
               <div class="pets__slider"></div>
             </div>
             <a class="pets__arrow-next arrow">
-              <img class="arrow-img_next" src="assets/icons/Arrow.svg" alt="button-next"></a>
+              <img class="arrow-img_next" src="./assets/icons/Arrow.svg" alt="button-next"></a>
           </section>
-          <a href="pages/pets/pets.html"><button class="pets__button button">Get to know the rest</button></a>
+          <a href="./pages/pets/pets.html"><button class="pets__button button">Get to know the rest</button></a>
         </div>
       </div>
     </div>
@@ -112,7 +112,7 @@
             <a target="_blank"
               href="https://img5.goodfon.ru/original/2048x1365/f/53/taksa-sobaka-shchenok-mordashka-ushi-vzgliad-progulka-fon.jpg"
               class="donation-card">
-              <span class="donation-card__icon"><img src="assets/icons/credit-card.svg" alt=""></span>
+              <span class="donation-card__icon"><img src="./assets/icons/credit-card.svg" alt=""></span>
               <span class="donation-card__number">8380 2880 8028 8791 7435</span>
             </a>
             <p class="donation__text">Legal information and lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -136,10 +136,10 @@
               <h3 class="contacts__title">For questions and suggestions
               </h3>
               <a href="mailto:mail@shelter.com" class="contacts-grid">
-                <img src="assets/icons/mail.svg"><span class="contacts__email">email@shelter.com</span>
+                <img src="./assets/icons/mail.svg"><span class="contacts__email">email@shelter.com</span>
               </a>
               <a href="tel: 136745677554" class="contacts-grid">
-                <img src="assets/icons/phone.svg">
+                <img src="./assets/icons/phone.svg">
                 <span class="contacts__phone">+13 674 567 75 54</span>
               </a>
             </div>
@@ -149,19 +149,20 @@
               <a target="_blank"
                 href="https://www.google.by/maps/place/1+Centre+St+Terrace,+Boston,+MA+02119,+USA/@42.326022,-71.0985081,17z/data=!3m1!4b1!4m9!1m2!2m1!1s1+Central+Street,+Boston!3m5!1s0x89e37a29f109ad67:0x3c3f6a5c559c7586!8m2!3d42.326022!4d-71.0963194!15sChgxIENlbnRyYWwgU3RyZWV0LCBCb3N0b26SARFjb21wb3VuZF9idWlsZGluZw"
                 class="contacts-grid">
-                <img src="assets/icons/pin.svg">
+                <img src="./assets/icons/pin.svg">
                 <span class="contacts__addres">1 Central Street, Boston (entrance from
                   the store)</span>
               </a>
               <a target="_blank"
                 href="https://www.google.by/maps/place/South+Park+Court,+18+S+Park+Rd,+London+SW19+8TD,+UK/@51.4202685,-0.2023686,17z/data=!3m1!4b1!4m5!3m4!1s0x487608baa7401b31:0x18e66d9fcd2f7d77!8m2!3d51.4202685!4d-0.2001799"
                 class="contacts-grid">
-                <img src="assets/icons/pin.svg">
+                <img src="./assets/icons/pin.svg">
+
                 <span class="contacts__addres">18 South Park, London</span>
               </a>
             </div>
           </div>
-          <div class="contacts__image"><img src="assets/images/footer-puppy.png"></div>
+          <div class="contacts__image"><img src="./assets/images/footer-puppy.png"></div>
         </div>
       </div>
     </div>
