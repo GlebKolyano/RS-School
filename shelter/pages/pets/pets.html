@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/pages/main/style.css">
+  <script type="module" src="/services/pets.service.js" defer></script>
+
+  <script type="module" src="/plugins/modal.js" defer></script>
+  <script type="module" src="/plugins/burger.js" defer></script>
+  <script type="module" src="/pages/main/script.js" defer></script>
+  <script type="module" src="/plugins/smooth-scroll.js" defer></script>
+  <script type="module" src="pets.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="header pets-page">
+    <div class="container">
+      <section class="header__wrapper pets-page">
+        <div class="header__logo pets-page">
+          <h1 class="header__logo-name pets-page"><a href="/index.html">Cozy House</a></h1>
+          <span class="header__logo-subname pets-page">Shelter for pets in Boston</span>
+        </div>
+        <img class="header__burger" src="/assets/icons/Burger.svg">
+        <nav class="header__nav pets-page">
+          <ul class="header__links pets-page">
+            <li class="header__link pets-page"><a href="/index.html" class="nav__link pets-page ">About the
+                shelter</a></li>
+            <li class="header__link pets-page"><a class="nav__link pets-page active">Our pets</a></li>
+            <li class="header__link pets-page"><a class="nav__link pets-page" href="/index.html#help">Help
+                the
+                shelter</a></li>
+            <li class="header__link pets-page"><a class="nav__link pets-page" href="#contacts-pets">Contacts</a></li>
+          </ul>
+        </nav>
+      </section>
+    </div>
+  </header>
+  <main class="main">
+    <div class="container"></div>
+    <div class="pets">
+      <div class="container">
+        <div class="pets-page__wrapper">
+          <h2 class="pets-page__title">Our friends who <br />
+            are looking for a house</h2>
+          <div class="pets-page__pagination"></div>
+          <div class="pets-page__buttons">
+            <button class="pets-page__button-first pag-button ">&#60;&#60;</button>
+            <button class="pets-page__button-prev pag-button">&#60;</button>
+            <button class="pets-page__button-number pag-button-num">1</button>
+            <button class="pets-page__button-next pag-button">></button>
+            <button class="pets-page__button-last pag-button">>></button>
+          </div>
+        </div>
+      </div>
+  </main>
+  <footer>
+    <div class="contacts pets" id="contacts-pets">
+      <div class="container">
+        <div class="contacts__wrapper">
+          <div class="contacts__block">
+            <div class="contacts__block-one">
+              <h3 class="contacts__title">For questions and suggestions
+              </h3>
+              <a href="mailto:mail@shelter.com" class="contacts-grid">
+                <img src="/assets/icons/mail.svg"><span class="contacts__email">email@shelter.com</span>
+              </a>
+              <a href="tel: 136745677554" class="contacts-grid">
+                <img src="/assets/icons/phone.svg">
+                <span class="contacts__phone">+13 674 567 75 54</span>
+              </a>
+            </div>
+            <div class="contacts__block-two">
+              <h3 class="contacts__title">We are waiting for your visit
+              </h3>
+              <a target="_blank"
+                href="https://www.google.by/maps/place/1+Centre+St+Terrace,+Boston,+MA+02119,+USA/@42.326022,-71.0985081,17z/data=!3m1!4b1!4m9!1m2!2m1!1s1+Central+Street,+Boston!3m5!1s0x89e37a29f109ad67:0x3c3f6a5c559c7586!8m2!3d42.326022!4d-71.0963194!15sChgxIENlbnRyYWwgU3RyZWV0LCBCb3N0b26SARFjb21wb3VuZF9idWlsZGluZw"
+                class="contacts-grid">
+                <img src="/assets/icons/pin.svg">
+                <span class="contacts__addres">1 Central Street, Boston (entrance from
+                  the store)</span>
+              </a>
+              <a target="_blank"
+                href="https://www.google.by/maps/place/South+Park+Court,+18+S+Park+Rd,+London+SW19+8TD,+UK/@51.4202685,-0.2023686,17z/data=!3m1!4b1!4m5!3m4!1s0x487608baa7401b31:0x18e66d9fcd2f7d77!8m2!3d51.4202685!4d-0.2001799"
+                class="contacts-grid">
+                <img src="/assets/icons/pin.svg">
+                <span class="contacts__addres">18 South Park, London</span>
+              </a>
+            </div>
+          </div>
+          <div class="contacts__image"><img src="/assets/images/footer-puppy.png"></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
