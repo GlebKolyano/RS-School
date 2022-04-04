@@ -1,8 +1,8 @@
-import PetsService from "/services/pets.service.js"
-import HelpService from "/services/help.service.js"
-import { Modal } from "/plugins/modal.js"
-import burgerMenu from "/plugins/burger.js"
-import smoothScroll from "/plugins/smooth-scroll.js"
+import PetsService from "../../services/pets.service.js"
+import HelpService from "../../services/help.service.js"
+import { Modal } from "../../plugins/modal.js"
+import burgerMenu from "../../plugins/burger.js"
+import smoothScroll from "../../plugins/smooth-scroll.js"
 
 
 // header links effect
