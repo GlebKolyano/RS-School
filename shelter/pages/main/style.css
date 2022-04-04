@@ -1,4 +1,4 @@
-@import url(/node_modules/normalize.css/normalize.css);
+@import url(normalize.css);
 .header.pets-page {
   position: sticky;
   top: 0;
