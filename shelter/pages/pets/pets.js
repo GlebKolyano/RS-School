@@ -40,6 +40,7 @@ function viewElementsOfPagination(page, maxItems) {
 
     <div style="background: url(./assets/${pet.img})" class="pets-card__image" data-id="${pet.name}"></div>
 
+
     <div class="pets-card-info" data-id="${pet.name}">
       <h2 class="pets-card-info__title" data-id="${pet.name}">${pet.name}</h2>
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>

@@ -3,7 +3,9 @@ export default class HelpService {
 
   async getHelpBlocks() {
 
-    let help = await fetch("./assets/our-help.json")
+    let help = await fetch("../assets/our-help.json")
+
+
 
     return help
   }
