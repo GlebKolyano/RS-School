@@ -24,7 +24,7 @@ if (widthClient >= 1280) (maxElements = 8)
 if (widthClient < 1280 && widthClient >= 768) (maxElements = 6)
 if (widthClient < 768) (maxElements = 3)
 
-
+console.log(petsForPagintation)
 function viewElementsOfPagination(page, maxItems) {
   petsPagWrapper.innerHTML = ""
   petsBtnNum.textContent = page + 1
@@ -37,7 +37,7 @@ function viewElementsOfPagination(page, maxItems) {
     petCard.setAttribute("data-id",`${pet.name}`)
     petCard.innerHTML = 
   `
-    <div style="background: url(assets/${pet.img})" class="pets-card__image" data-id="${pet.name}"></div>
+    <div style="background: url(../../assets/${pet.img})" class="pets-card__image" data-id="${pet.name}"></div>
     <div class="pets-card-info" data-id="${pet.name}">
       <h2 class="pets-card-info__title" data-id="${pet.name}">${pet.name}</h2>
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
