@@ -29,7 +29,7 @@ export class Modal {
         <div class="modal__wrapper">
           <button class="modal-close">&times;</button>
           <div class="modal-content">
-            <img class="modal__image" src="./assets/${pet.img}" />
+            <img class="modal__image" src="/assets/${pet.img}" />
             <div class="modal__info">
               <div class="modal__title">
                 <h3 class="modal__name">${pet.name}</h3>
