@@ -1,38 +1,38 @@
 [
   {
     "name": "Pet food",
-    "img": "images/help/Vector.png"
+    "img": "./images/help/Vector.png"
   },
   {
     "name": "Transportation",
-    "img": "images/help/transportation.png"
+    "img": "./images/help/transportation.png"
   },
   {
     "name": "Toys",
-    "img": "images/help/toys.png"
+    "img": "./images/help/toys.png"
   },
   {
     "name": "Bowls and cups",
-    "img": "images/help/bowls-and-cups.png"
+    "img": "./images/help/bowls-and-cups.png"
   },
   {
     "name": "Shampoos",
-    "img": "images/help/shampoos.png"
+    "img": "./images/help/shampoos.png"
   },
   {
     "name": "Vitamins",
-    "img": "images/help/vitamins.png"
+    "img": "./images/help/vitamins.png"
   },
   {
     "name": "Medicines",
-    "img": "images/help/medicines.png"
+    "img": "./images/help/medicines.png"
   },
   {
     "name": "Collars / leashes",
-    "img": "images/help/collars-or-leashes.png"
+    "img": "./images/help/collars-or-leashes.png"
   },
   {
     "name": "Sleeping areas",
-    "img": "images/help/sleeping-area.png"
+    "img": "./images/help/sleeping-area.png"
   }
 ]

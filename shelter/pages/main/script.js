@@ -1,8 +1,8 @@
-import PetsService from "../../services/pets.service.js"
-import HelpService from "../../services/help.service.js"
-import { Modal } from "../../plugins/modal.js"
-import burgerMenu from "../../plugins/burger.js"
-import smoothScroll from "../../plugins/smooth-scroll.js"
+import PetsService from "/services/pets.service.js"
+import HelpService from "/services/help.service.js"
+import { Modal } from "/plugins/modal.js"
+import burgerMenu from "/plugins/burger.js"
+import smoothScroll from "/plugins/smooth-scroll.js"
 
 
 // header links effect
@@ -41,7 +41,7 @@ function createPetCards(arrOfPets) {
     petCard.setAttribute("data-id",`${pet.name}`)
     petCard.innerHTML = 
   `
-    <div style="background: url(/assets/${pet.img})" class="pets-card__image" data-id="${pet.name}"></div>
+    <div style="background: url(assets/${pet.img})" class="pets-card__image" data-id="${pet.name}"></div>
     <div class="pets-card-info" data-id="${pet.name}">
       <h2 class="pets-card-info__title" data-id="${pet.name}">${pet.name}</h2>
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
@@ -103,7 +103,7 @@ function generateUniqPetsArray(n) {
   helpBlock.classList.add("help-grid__item")
   
   helpBlock.innerHTML = `
-      <img src="/assets/${item.img}" class="help-grid__image">
+      <img src="./assets/${item.img}" class="help-grid__image">
       <h3 class="help-grid__subtitle">${item.name}</h3>
   `
   helpGrid.appendChild(helpBlock)
