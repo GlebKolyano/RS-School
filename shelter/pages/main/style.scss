@@ -54,6 +54,9 @@ body {
   @media screen and (max-width: 768px) {
     padding: 0 30px;
   }
+  @media screen and (max-width: 320px) {
+    padding: 0 10px;
+  }
 }
 button {
   cursor: pointer;
@@ -93,11 +96,14 @@ button {
   @media screen and (max-width: 767px) {
     padding-top: 30px;
     justify-content: flex-end;
-    column-gap: 40px;
+    column-gap: 41px;
   }
   @media screen and (max-width: 768px) {
     padding-top: 30px;
     
+  }
+  @media screen and (max-width: 320px) {
+    justify-content: flex-start;
   }
 
 }
@@ -120,6 +126,7 @@ button {
   line-height: 110%;
 
   letter-spacing: 0.06em;
+  
 }
 .header__logo-subname {
   font-size: 13px;
@@ -223,6 +230,12 @@ button {
     height: calc(1165px - 90px);
     justify-content: space-between;
   }
+  @media screen and (max-width: 320px) {
+    flex-direction: column;
+    align-items: center;
+    height: calc(823px - 90px);
+    justify-content: space-between;
+  }
 }
 .main__info {
   display: flex;
@@ -237,6 +250,11 @@ button {
     margin-top: 60px;
     row-gap: 42px;   
   }
+  @media screen and (max-width: 320px) {
+    align-items: center;
+
+    max-height: 296px;
+  }
   
 }
 .main__title {
@@ -246,12 +264,23 @@ button {
   max-width: 310px;
   font-weight: 400;
   
+  @media screen and (max-width: 320px) {
+    font-size: 25px;
+    text-align: center;
+    max-width: 260px;
+    letter-spacing: 0.06em;
+  }
 }
 .main__subtitle {
   font-size: 15px;
   line-height: 160%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: #cdcdcd;
+  @media screen and (max-width: 320px) {
+
+    text-align: center;
+
+  }
 }
 .main__button {
   font-size: 17px;
@@ -277,12 +306,17 @@ button {
     height: 593px;
     background-position: right;
   }
+  @media screen and (max-width: 320px) {
+    height: 271px;
+  }
 }
 
 // ABOUT
 
 .about {
-
+  @media screen and (max-width: 320px) {
+   max-height: 974px;
+  }
   &__wrapper {
     display: grid;
     grid-template-columns:  300px 430px;
@@ -299,6 +333,10 @@ button {
       height: 1048px;
       justify-items: center;
     }
+    @media screen and (max-width: 320px) {
+      padding: 42px 15px 42px 15px;
+      align-items: flex-start;
+    }
   }
   &__image {
     background: url("../../assets/images/about-pets.png") no-repeat bottom / contain;
@@ -308,9 +346,11 @@ button {
       order: 1;
       max-width: 300px;
       width: 100%;
-      height: 408px;
-      
-      
+      height: 408px; 
+    }
+    @media screen and (max-width: 320px) {
+      height: 353px;
+      margin-top: 14px;
     }
   }
 
@@ -326,6 +366,10 @@ button {
       height: 380px;
       justify-content:flex-start;
     }
+    @media screen and (max-width: 320px) {
+      row-gap: 0px;
+    }
+    
   }
 
   &__title {
@@ -336,6 +380,12 @@ button {
     color: #545454;
     max-width: 370px;
     width: 100%;
+    
+    @media screen and (max-width: 320px) { 
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
   }
 
   &__text {
@@ -343,6 +393,10 @@ button {
     color: #4c4c4c;
     line-height: 160%;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    @media screen and (max-width: 320px) {
+      text-align: justify;
+      margin-bottom: 22px;
+    }
   }
 }
 
@@ -359,6 +413,11 @@ button {
     text-align: center;
     row-gap: 60px;
     width: 100%;
+    @media screen and (max-width: 320px) {
+      padding: 42px 0 42px 0;
+      row-gap: 42px;
+      
+    }
   }
   &__title {
     font-size: 35px;
@@ -366,6 +425,9 @@ button {
     letter-spacing: 0.06em;
     color: #545454;
     width: 400px;
+    @media screen and (max-width: 320px) {
+      font-size: 25px;
+    }
   }
   &__block {
     display: flex;
@@ -377,13 +439,35 @@ button {
     @media screen and (max-width: 768px) {
       column-gap: 12px;
     }
+    @media screen and (max-width: 320px) {
+      display: inline-grid;
+      grid-template-rows: 1fr 52px;
+      grid-template-columns: 1fr 1fr;
+      justify-items: center;
+      max-width: 300px;
+      
+    }
   }
   &__arrow-prev {
+    @media screen and (max-width: 320px) {
+      order: 1;
+      display: inline-block;
+      width: max-content;
+      margin-left: 25px;
+    }
   }
   &__catalog {
     max-width: calc((270px * 3) + 180px);
     width: 100%;
     overflow: hidden;
+    @media screen and (max-width: 320px) {
+      order: 0;
+      margin-bottom: 20px;
+      grid-column: 1 / 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   &__slider {
     display: flex;
@@ -391,14 +475,25 @@ button {
     -moz-column-gap: 90px;
     column-gap: 90px;
     max-width: calc((270px * 3)+ 180px);
-    width: 100%;
     position: relative;
     transition: all 1s ease-in-out;
+
     @media screen and (max-width: 768px) {
       column-gap: 40px;
     }
+    
+    @media screen and (max-width: 320px) {
+      column-gap: 0px;
+      
+    }
   }
   &__arrow-next {
+    @media screen and (max-width: 320px) {
+      order: 2;
+      display: inline-block;
+      width: max-content;
+      margin-right: 25px;
+    }
   }
   &__button {
     font-size: 17px;
@@ -414,7 +509,7 @@ button {
   border-radius: 9px;
   display: flex;
   flex-direction: column;
-  border-radius: 9px 9px 0px 0px;
+  border-radius: 9px;
 
   align-items: center;
   min-width: 270px;
@@ -489,6 +584,9 @@ button {
     background-color: #fddcc4;
     border: 2px solid #fddcc4;
   }
+  @media screen and (max-width: 320px) {
+    
+  }
 }
 
 // HELP BLOCK
@@ -501,6 +599,10 @@ button {
     align-items: center;
     padding: 80px 0 100px 0;
     row-gap: 58px;
+    @media screen and (max-width: 320px) {
+      padding: 42px 0 42px 0;
+      row-gap: 42px;
+    }
   }
   &__title {
     font-size: 35px;
@@ -509,9 +611,13 @@ button {
     color: #545454;
     max-width: 310px;
     text-align: center;
-  }
+    @media screen and (max-width: 320px) {
+      font-size: 25px;
+      max-width: 225px;
+    }
+    
 }
-
+}
 .help-grid {
   display: flex;
   flex-wrap: wrap;
@@ -523,6 +629,13 @@ button {
   @media screen and (max-width: 768px) {
     column-gap: 60px;
   }
+  @media screen and (max-width: 320px) {
+    column-gap: 30px;
+    row-gap: 30px;
+    justify-content: start;
+    padding: 0px 5px 0px 5px;
+    margin-top: -2px;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -533,6 +646,13 @@ button {
       max-width: 170px;
       width: 100%;
     }
+    @media screen and (max-width: 320px) {
+      max-width: 130px;
+      row-gap: 20px;
+      min-height: 87px;
+      
+      
+    }
   }
   &__image {
     max-width: -webkit-max-content;
@@ -541,12 +661,18 @@ button {
     max-height: -webkit-max-content;
     max-height: -moz-max-content;
     max-height: max-content;
+    @media screen and (max-width: 320px) {
+    max-height: 50px;
+    }
   }
   &__subtitle {
     font-size: 20px;
     line-height: 115%;
     letter-spacing: 0.06em;
     color: #545454;
+    @media screen and (max-width: 320px) {
+      font-size: 15px;
+    }
   }
 }
 
@@ -560,6 +686,10 @@ button {
   @media screen and (max-width: 768px) {
     max-height: 783px;
   }
+  @media screen and (max-width: 320px) {
+    max-height: 542px;
+  }
+  
   &__wrapper {
     display: grid;
     grid-template-columns: 505px 380px;
@@ -581,6 +711,12 @@ button {
       justify-items: center;
       row-gap: 50px;
     }
+    @media screen and (max-width: 320px) {
+      row-gap: 42px;
+      padding-top: 42px;
+      padding-bottom: 42px;
+      max-height: 542px;
+    }
 
   }
   &__image {
@@ -594,8 +730,10 @@ button {
       order: 1;
       max-width: 505px;
       width: 100%;
-      
-      
+    }
+    @media screen and (max-width: 320px) {
+      max-width: 260px;
+      max-height: 135px;
     }
   }
   &__info {
@@ -609,6 +747,11 @@ button {
       max-width: 380px;
       width: 100%;
     }
+    @media screen and (max-width: 320px) {
+      text-align: center;
+      align-items: center;
+      padding: 0 9px;
+    }
   }
   &__title {
     font-size: 35px;
@@ -616,12 +759,21 @@ button {
     letter-spacing: 0.06em;
     color: #545454;
     max-width: 300px;
+    @media screen and (max-width: 320px) {
+      font-size: 25px;
+      max-width: 220px;
+      line-height: 125%;
+    }
   }
   &__subtitle {
     font-size: 15px;
     line-height: 110%;
     letter-spacing: 0.06em;
     color: #545454;
+    @media screen and (max-width: 320px) {
+    line-height: 160%;
+    letter-spacing: 0;
+     }
   }
   &-card {
     height: 43px;
@@ -635,6 +787,9 @@ button {
     max-width: 350px;
     background: $color-pr;
     border-radius: 9px;
+    @media screen and (max-width: 320px) {
+      font-size: 15px;
+    }
     &:hover {
       background: #fddcc4;
     }
@@ -646,6 +801,9 @@ button {
       line-height: 115%;
       letter-spacing: 0.06em;
       color: #545454;
+      @media screen and (max-width: 320px) {
+        line-height: 110%;
+      }
     }
   }
   &__text {
@@ -654,6 +812,9 @@ button {
     font-size: 12px;
     line-height: 18px;
     color: #b2b2b2;
+    @media screen and (max-width: 320px) {
+      text-align: justify;
+    }
   }
 }
 
@@ -677,7 +838,10 @@ button {
   color: #f1cdb3;
   @media screen and (max-width: 768px) {
     min-height: 640px;
-    
+  }
+  @media screen and (max-width: 320px) {
+    max-height: 809px;
+  
   }
   &__wrapper {
     display: flex;
@@ -689,6 +853,10 @@ button {
       align-items: center;
       justify-content: space-between;
       min-height: 640px;
+    }
+    @media screen and (max-width: 320px) {
+      max-height: 809px;
+      row-gap: 38px;
     }
   }
 }
@@ -702,6 +870,13 @@ button {
     column-gap: 40px;
     min-height: 234px;
   }
+  @media screen and (max-width: 320px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 40px;
+    
+  }
   &-one {
     max-height: 270px;
     flex: 0 1 300px;
@@ -710,6 +885,11 @@ button {
     justify-content: space-around;
     @media screen and (max-width: 768px) {
       justify-content: space-between;
+    }
+    @media screen and (max-width: 320px) {
+      align-items: center;    
+      max-height: 208px;
+      text-align: center;
     }
   }
   &-two {
@@ -721,6 +901,11 @@ button {
     @media screen and (max-width: 768px) {
       justify-content: space-between;
     }
+    @media screen and (max-width: 320px) {
+      
+      max-height: 222px;
+      
+    }
   }
 }
 
@@ -729,6 +914,13 @@ button {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #ffffff;
+  @media screen and (max-width: 320px) {
+    font-size: 25px;
+    display: flex;
+    
+    text-align: center;
+    width: 294px;
+  }
 }
 .contacts-grid {
   color: $color-pr;
@@ -749,6 +941,9 @@ button {
   
   & > img {
     max-width: 300px;
+    @media screen and (max-width: 320px) {
+      max-width: 260px;
+    }
   }
 }
 
