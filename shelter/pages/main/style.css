@@ -78,6 +78,10 @@ a.disabled {
   text-align: center;
   row-gap: 60px;
   width: 100%; }
+  @media screen and (max-width: 768px) {
+    .pets-page__wrapper {
+      padding: 80px 0 75px 0;
+      row-gap: 0px; } }
 
 .pets-page__title {
   font-size: 35px;
@@ -85,6 +89,9 @@ a.disabled {
   letter-spacing: 0.06em;
   color: #545454;
   width: 400px; }
+  @media screen and (max-width: 768px) {
+    .pets-page__title {
+      margin-bottom: 30px; } }
 
 .pets-page__pagination {
   display: flex;
@@ -93,6 +100,9 @@ a.disabled {
   align-items: center;
   column-gap: 40px;
   row-gap: 30px; }
+  @media screen and (max-width: 768px) {
+    .pets-page__pagination {
+      margin-bottom: 40px; } }
 
 .pets-page__buttons {
   display: flex;
