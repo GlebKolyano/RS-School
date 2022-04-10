@@ -3,6 +3,16 @@ import { Modal } from "../../plugins/modal.js"
 import PetsService from "../../services/pets.service.js"
 import smoothScroll from "../../plugins/smooth-scroll.js"
 
+
+let headerLinks = document.querySelectorAll(".nav__link")
+
+headerLinks.forEach((link) => 
+  link.addEventListener("click", (event) => {
+    headerLinks.forEach(item =>item.classList.remove("active"))
+    event.target.classList.add("active")
+    
+}))
+
 let serivePetsPag = new PetsService()
 let petsForPagintation = await serivePetsPag.getPetsForPagination()
 
@@ -15,6 +25,7 @@ let petsBtnNext = document.querySelector(".pets-page__button-next")
 let petsBtnPrev = document.querySelector(".pets-page__button-prev")
 let petsBtnNum = document.querySelector(".pets-page__button-number")
 
+
 let currentPage = 0
 let maxElements
 
@@ -24,7 +35,7 @@ if (widthClient >= 1280) (maxElements = 8)
 if (widthClient < 1280 && widthClient >= 768) (maxElements = 6)
 if (widthClient < 768) (maxElements = 3)
 
-console.log(petsForPagintation)
+
 function viewElementsOfPagination(page, maxItems) {
   petsPagWrapper.innerHTML = ""
   petsBtnNum.textContent = page + 1
@@ -45,6 +56,7 @@ function viewElementsOfPagination(page, maxItems) {
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
     </div>
   `
+    setTimeout(() => {petCard.style.opacity = 1}, 0)
     petsPagWrapper.appendChild(petCard)
   })
 }
@@ -95,7 +107,7 @@ function checkButtons(page, maxItems) {
       btn.classList.add("inactive")
       btn.setAttribute("disabled", "true")
     })
-  console.log("PAGE CHECK:", page)
+
   if (page > 0 && page < maxPages) {
     allBtns.forEach((btn) => {
       btn.classList.remove("inactive")
