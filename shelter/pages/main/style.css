@@ -343,7 +343,7 @@ button {
 
 .main__wrapper {
   width: 100%;
-  height: calc(100vh - 180px);
+  height: calc(908px - 180px);
   display: flex;
   justify-content: space-between; }
   @media screen and (max-width: 768px) {
@@ -415,7 +415,7 @@ button {
   background: url("../../assets/images/start-screen-puppy.png") no-repeat bottom/contain;
   max-width: 698px;
   width: 100%;
-  height: calc(100vh - 180px); }
+  height: calc(908px - 180px); }
   @media screen and (max-width: 768px) {
     .main__image {
       height: 593px;
