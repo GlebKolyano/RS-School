@@ -3,6 +3,16 @@ import { Modal } from "../../plugins/modal.js"
 import PetsService from "../../services/pets.service.js"
 import smoothScroll from "../../plugins/smooth-scroll.js"
 
+
+let headerLinks = document.querySelectorAll(".nav__link")
+
+headerLinks.forEach((link) => 
+  link.addEventListener("click", (event) => {
+    headerLinks.forEach(item =>item.classList.remove("active"))
+    event.target.classList.add("active")
+    console.log("click")
+}))
+
 let serivePetsPag = new PetsService()
 let petsForPagintation = await serivePetsPag.getPetsForPagination()
 
@@ -14,6 +24,7 @@ let petsBtnLast = document.querySelector(".pets-page__button-last")
 let petsBtnNext = document.querySelector(".pets-page__button-next")
 let petsBtnPrev = document.querySelector(".pets-page__button-prev")
 let petsBtnNum = document.querySelector(".pets-page__button-number")
+
 
 let currentPage = 0
 let maxElements
@@ -45,6 +56,7 @@ function viewElementsOfPagination(page, maxItems) {
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
     </div>
   `
+    setTimeout(() => {petCard.style.opacity = 1}, 0)
     petsPagWrapper.appendChild(petCard)
   })
 }

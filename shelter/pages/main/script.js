@@ -47,7 +47,8 @@ function createPetCards(arrOfPets) {
       <button class="pets-card-info__button button" data-id="${pet.name}">Learn more</button>
     </div>
   `
-  
+
+  setTimeout(() => {petCard.style.opacity = 1}, 0)
   containerSlider.appendChild(petCard)
 })
 }
