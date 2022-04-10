@@ -13,7 +13,7 @@ headerLinks.forEach((link) =>
   link.addEventListener("click", (event) => {
     headerLinks.forEach(item =>item.classList.remove("active"))
     event.target.classList.add("active")
-    console.log("click")
+   
 }))
 
 // petService
@@ -124,7 +124,7 @@ function addModalListener() {
   if (event.target.dataset.id) {
     event.preventDefault()
     let id = event.target.dataset.id
-    console.log("id:", id)
+    
     let arrayItems = await servicePets.getPetsForSlider().then(data => data.json())
     let pet = arrayItems.filter(i => i.name === id)[0]
     modalService.createModal(pet)

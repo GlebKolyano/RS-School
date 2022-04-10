@@ -40,7 +40,8 @@ a {
 }
 body {
   font-family: $font-geor;
-  overflow-x: hidden;
+  
+
 }
 .container {
   position: relative;
@@ -51,6 +52,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
   @media screen and (max-width: 768px) {
     padding: 0 30px;
   }
@@ -977,6 +979,10 @@ button {
   flex-direction: column;
 
   cursor: default;
+  @media screen and (max-width: 990px) {
+    align-items: center;
+  }
+  
 }
 .modal-close {
   justify-self: flex-end;
@@ -1000,6 +1006,14 @@ button {
   border-radius: 9px;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 990px) {
+    max-width: 630px;
+    max-height: 350px;
+   }
+  @media screen and (max-width: 320px) {
+    max-width: 240px;
+    min-height: 340px;
+  }
 }
 .modal__image {
   max-width: 500px;
@@ -1016,6 +1030,17 @@ button {
   padding: 50px 20px 0 0px;
   max-width: 350px;
   width: max-content;
+  @media screen and (max-width: 768px) {
+    max-width: 280px;
+    row-gap: 20px;
+    padding: 10px 10px 0 10px;
+  }
+  @media screen and (max-width: 320px) {
+    max-width: 240px;
+    padding: 10px;
+    row-gap: 0;
+    justify-content: space-between;
+  }
 }
 .modal__title {
 }
@@ -1024,18 +1049,30 @@ button {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #000000;
+  @media screen and (max-width: 320px) {
+    text-align: center;
+  }
 }
 .modal__subname {
   font-size: 20px;
   line-height: 115%;
   letter-spacing: 0.06em;
   color: #000000;
+  @media screen and (max-width: 320px) {
+    text-align: center;
+  }
 }
 .modal__description {
   font-size: 15px;
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #000000;
+  @media screen and (max-width: 768px) {
+    font-size: 13px;
+  }
+  @media screen and (max-width: 320px) {
+    text-align: justify;
+  }
 }
 .modal__params {
   list-style: none;
@@ -1059,6 +1096,9 @@ button {
     margin-left: 15px;
     position: relative;
     margin-bottom: 11px;
+    @media screen and (max-width: 768px) {
+      margin-bottom: 6px;
+    }
   }
 }
 

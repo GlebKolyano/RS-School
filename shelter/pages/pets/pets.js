@@ -10,7 +10,7 @@ headerLinks.forEach((link) =>
   link.addEventListener("click", (event) => {
     headerLinks.forEach(item =>item.classList.remove("active"))
     event.target.classList.add("active")
-    console.log("click")
+    
 }))
 
 let serivePetsPag = new PetsService()
@@ -35,7 +35,7 @@ if (widthClient >= 1280) (maxElements = 8)
 if (widthClient < 1280 && widthClient >= 768) (maxElements = 6)
 if (widthClient < 768) (maxElements = 3)
 
-console.log(petsForPagintation)
+
 function viewElementsOfPagination(page, maxItems) {
   petsPagWrapper.innerHTML = ""
   petsBtnNum.textContent = page + 1
@@ -107,7 +107,7 @@ function checkButtons(page, maxItems) {
       btn.classList.add("inactive")
       btn.setAttribute("disabled", "true")
     })
-  console.log("PAGE CHECK:", page)
+
   if (page > 0 && page < maxPages) {
     allBtns.forEach((btn) => {
       btn.classList.remove("inactive")
