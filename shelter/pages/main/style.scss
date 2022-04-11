@@ -40,11 +40,12 @@ a {
 }
 body {
   font-family: $font-geor;
+  position: relative;
   
-
+  
 }
 .container {
-  position: relative;
+  overflow-x: hidden;
   max-width: 1280px;
   padding: 0 40px;
   width: 100%;
@@ -52,7 +53,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow-x: hidden;
+  
   @media screen and (max-width: 768px) {
     padding: 0 30px;
   }
@@ -86,15 +87,17 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
+  overflow: hidden;
 }
 .header__wrapper {
-  position: relative;
   padding-top: 60px;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  
   @media screen and (max-width: 767px) {
     padding-top: 30px;
     justify-content: flex-end;
@@ -144,11 +147,11 @@ button {
     position: absolute;
     top: 0;
     bottom: 0;
-
+    overflow-y: hidden;
     width: 320px;
     background: #292929;
-    right: -360px;
-    height: 250px;
+    right: -320px;
+    
     height: 100vh;
     transition: all 0.5s ease-in;
   }
@@ -158,7 +161,7 @@ button {
   @media screen and (max-width: 767px) {
     display: block;
     position: relative;
-    z-index: 100;
+    z-index: 300;
     transition: all 0.5s ease-in;
   }
   &.activeBurger {
@@ -223,7 +226,7 @@ button {
 
 .main__wrapper {
   width: 100%;
-  height: calc(100vh - 180px);
+  height: calc(908px- 180px);
   display: flex;
   justify-content: space-between;
   @media screen and (max-width: 768px) {
@@ -303,7 +306,7 @@ button {
   background: url("../../assets/images/start-screen-puppy.png") no-repeat bottom/contain;
   max-width: 698px;
   width: 100%;
-  height: calc(100vh - 180px);
+  height: calc(908px - 180px);
   @media screen and (max-width: 768px) {
     height: 593px;
     background-position: right;

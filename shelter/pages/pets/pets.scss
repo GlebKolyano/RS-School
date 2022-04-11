@@ -11,6 +11,8 @@ $color-pr: #f1cdb3;
   bottom: 0;
   background: #ffffff73;
   z-index: 1000;
+  position: relative;
+  
 }
 .header__wrapper.pets-page {
   height: 120px;
@@ -54,6 +56,7 @@ $color-pr: #f1cdb3;
   color: #292929;
 }
 .header__nav.pets-page {
+  background-color: white;
 }
 .header__links.pets-page {
   list-style: none;
