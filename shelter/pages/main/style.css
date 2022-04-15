@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ffffff73;
+  background: #ffffff;
   z-index: 1000; }
 
 .header__wrapper.pets-page {
@@ -906,6 +906,8 @@ button {
         row-gap: 38px; } }
 
 .contacts__block {
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: space-between; }
   @media screen and (max-width: 768px) {
