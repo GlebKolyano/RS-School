@@ -540,6 +540,8 @@ button {
       .pets__title {
         font-size: 25px; } }
   .pets__block {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: center;
     -moz-column-gap: 53px;
