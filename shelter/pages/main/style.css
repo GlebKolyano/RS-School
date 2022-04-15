@@ -855,6 +855,8 @@ button {
       height: 23px;
       width: 30px; }
     .donation-card__number {
+      position: relative;
+      z-index: 10;
       line-height: 115%;
       letter-spacing: 0.06em;
       color: #545454; }
