@@ -4,18 +4,24 @@ let headerNav = document.querySelector(".header__nav")
 
 
 header__burger.addEventListener("click", (e) => {
+  let head = document.body.querySelector(".header.pets-page")
   if (e.target.classList.contains("activeBurger")) {
     e.target.classList.remove("activeBurger")
-    headerNav.style.right = "-360px"
+    headerNav.style.right = "-320px"
+    setTimeout(() => {
+      head.style.overflow = "hidden"
+    }, 500) 
   } else {
     e.target.classList.add("activeBurger")
-    headerNav.style.right = "-40px"
+    headerNav.style.right = "0px"
+    head.style.overflow = "visible"
   }
 })
+
 document.body.addEventListener("click", (e) => {
   if (e.target.classList.contains("header") || e.target.classList.contains("container") || e.target.classList.contains("header__nav") || e.target.classList.contains("nav__link") ) {
     header__burger.classList.remove("activeBurger")
-    headerNav.style.right = "-360px"
+    headerNav.style.right = "-320px"
   }  
 })
 
