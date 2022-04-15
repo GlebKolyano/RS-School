@@ -6,8 +6,7 @@
   right: 0;
   bottom: 0;
   background: #ffffff73;
-  z-index: 1000;
-  position: relative; }
+  z-index: 1000; }
 
 .header__wrapper.pets-page {
   height: 120px;
