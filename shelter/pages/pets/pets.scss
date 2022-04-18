@@ -9,9 +9,8 @@ $color-pr: #f1cdb3;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #ffffff73;
+  background: #ffffff;
   z-index: 1000;
-  position: relative;
   
 }
 .header__wrapper.pets-page {
@@ -125,7 +124,7 @@ a.disabled {
   @media screen and (max-width: 768px) {
     margin-bottom: 30px;
   }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 420px) {
     font-size: 25px;
     margin-bottom: 0px;
   }
@@ -137,8 +136,14 @@ a.disabled {
   align-items: center;
   column-gap: 40px;
   row-gap: 30px;
+  @media screen and (max-width: 1279px) {
+    max-width: 580px;
+  }
   @media screen and (max-width: 768px) {
     margin-bottom: 40px;
+  }
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
   }
   @media screen and (max-width: 320px) {
     margin-bottom: 0px;

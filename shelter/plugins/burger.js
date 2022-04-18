@@ -4,6 +4,7 @@ export default function burgerMenu() {
   let head = document.body.querySelector(".header.pets-page")
 
 header__burger.addEventListener("click", (e) => {
+  
   if (e.target.classList.contains("activeBurger")) {
     e.target.classList.remove("activeBurger")
     headerNav.style.right = "-320px"

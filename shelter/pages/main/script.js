@@ -63,7 +63,7 @@ nextBtn.addEventListener("click", () => {
   if (widthClient >= 1280) (generateUniqPetsArray(3))
   if (widthClient < 1280) (generateUniqPetsArray(2))
   if (widthClient <= 768) (generateUniqPetsArray(2))
-  if (widthClient <= 320) (generateUniqPetsArray(1))
+  if (widthClient <= 767) (generateUniqPetsArray(1))
 })
 
 prevBtn.addEventListener("click", () => {
@@ -72,7 +72,7 @@ prevBtn.addEventListener("click", () => {
   if (widthClient >= 1280) (generateUniqPetsArray(3))
   if (widthClient < 1280) (generateUniqPetsArray(2))
   if (widthClient <= 768) (generateUniqPetsArray(2))
-  if (widthClient <= 320) (generateUniqPetsArray(1))
+  if (widthClient <= 767) (generateUniqPetsArray(1))
 })
 
 
@@ -142,3 +142,5 @@ burgerMenu()
 // smooth scroll
 
 smoothScroll()
+
+window.onload = prevBtn.click()
