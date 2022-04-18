@@ -821,7 +821,7 @@ button {
         order: 0;
         max-width: 380px;
         width: 100%; } }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 320px) {
       .donation__info {
         text-align: center;
         align-items: center;
@@ -832,7 +832,7 @@ button {
     letter-spacing: 0.06em;
     color: #545454;
     max-width: 300px; }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 350px) {
       .donation__title {
         font-size: 25px;
         max-width: 220px;
