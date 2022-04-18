@@ -491,7 +491,7 @@ button {
       width: 100%;
       height: 380px;
       justify-content: flex-start; } }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 430px) {
     .about__info {
       row-gap: 0px; } }
 .about__title {
