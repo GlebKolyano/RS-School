@@ -1002,22 +1002,26 @@ button {
   background: rgba(41, 41, 41, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 2000; }
   .modal__overlay:hover {
     cursor: pointer; }
 
 .modal__wrapper {
-  max-width: 950px;
+  position: relative;
+  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 30px;
   cursor: default; }
   @media screen and (max-width: 990px) {
     .modal__wrapper {
       align-items: center; } }
 
 .modal-close {
+  position: absolute;
+  right: -52px;
+  top: -52px;
   justify-self: flex-end;
   align-self: flex-end;
   width: 52px;
@@ -1030,6 +1034,9 @@ button {
   .modal-close:hover {
     background: #f1cdb3;
     cursor: pointer; }
+  @media screen and (max-width: 450px) {
+    .modal-close {
+      right: -10%; } }
 
 .modal-content {
   max-width: 900px;
@@ -1038,14 +1045,9 @@ button {
   border-radius: 9px;
   display: flex;
   justify-content: space-between; }
-  @media screen and (max-width: 990px) {
+  @media screen and (max-width: 767px) {
     .modal-content {
-      max-width: 630px;
-      max-height: 350px; } }
-  @media screen and (max-width: 320px) {
-    .modal-content {
-      max-width: 240px;
-      min-height: 340px; } }
+      justify-content: center; } }
 
 .modal__image {
   max-width: 500px;
@@ -1058,13 +1060,13 @@ button {
 .modal__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 40px;
-  padding: 50px 20px 0 0px;
+  padding: 0px 20px 0 0px;
   max-width: 350px;
   width: max-content; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     .modal__info {
-      max-width: 280px;
       row-gap: 20px;
       padding: 10px 10px 0 10px; } }
   @media screen and (max-width: 320px) {
@@ -1097,7 +1099,7 @@ button {
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #000000; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 870px) {
     .modal__description {
       font-size: 13px; } }
   @media screen and (max-width: 320px) {
@@ -1124,7 +1126,7 @@ button {
     margin-left: 15px;
     position: relative;
     margin-bottom: 11px; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 790px) {
       .modal__params > li {
         margin-bottom: 6px; } }
 

@@ -24,7 +24,7 @@ export class Modal {
     elem.classList.add("modal")
     let picture
     // /glebkolyano-JSFE2022Q1/shelter/assets/${pet.img}
-    if (document.documentElement.clientWidth > 400) {
+    if (document.documentElement.clientWidth > 767) {
       elem.innerHTML += `
     <div class="modal__overlay">
       <div class="container">

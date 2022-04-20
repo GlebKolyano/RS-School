@@ -986,7 +986,6 @@ button {
   background: rgba(41, 41, 41, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
   z-index: 2000;
   &:hover {
     cursor: pointer;
@@ -995,18 +994,26 @@ button {
 .container {
 }
 .modal__wrapper {
-  max-width: 950px;
+  position: relative;
+  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  margin: 0 30px;
   cursor: default;
   @media screen and (max-width: 990px) {
     align-items: center;
   }
+  @media screen and (max-width: 768px) {
+    
+    
+  }
   
 }
 .modal-close {
+  position: absolute;
+  right: -52px;
+  top: -52px;
   justify-self: flex-end;
   align-self: flex-end;
   width: 52px;
@@ -1020,6 +1027,9 @@ button {
     background: $color-pr;
     cursor: pointer;
   }
+  @media screen and (max-width: 450px) {
+    right: -10%;
+  }
 }
 .modal-content {
   max-width: 900px;
@@ -1028,14 +1038,11 @@ button {
   border-radius: 9px;
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: 990px) {
-    max-width: 630px;
-    max-height: 350px;
-   }
-  @media screen and (max-width: 320px) {
-    max-width: 240px;
-    min-height: 340px;
+  
+  @media screen and (max-width: 767px) {
+    justify-content: center;
   }
+ 
 }
 .modal__image {
   max-width: 500px;
@@ -1048,12 +1055,13 @@ button {
 .modal__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 40px;
-  padding: 50px 20px 0 0px;
+  padding: 0px 20px 0 0px;
   max-width: 350px;
   width: max-content;
-  @media screen and (max-width: 768px) {
-    max-width: 280px;
+  @media screen and (max-width: 1000px) {
+    
     row-gap: 20px;
     padding: 10px 10px 0 10px;
   }
@@ -1089,7 +1097,7 @@ button {
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #000000;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 870px) {
     font-size: 13px;
   }
   @media screen and (max-width: 320px) {
@@ -1118,7 +1126,7 @@ button {
     margin-left: 15px;
     position: relative;
     margin-bottom: 11px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 790px) {
       margin-bottom: 6px;
     }
   }
