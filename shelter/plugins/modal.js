@@ -79,14 +79,17 @@ export class Modal {
     `
     }
     
+    document.documentElement.style.overflowY = "hidden"
     
     document.body.appendChild(elem)
     document.body.addEventListener("click", (e) => this.closeModal(e.target))
   }
   
+  
   closeModal(target) {
     if (target.classList.contains("modal-close") || target.classList.contains("modal__overlay") || target.classList.contains("container")) {
       document.querySelectorAll(".modal").forEach(m => m.remove())
+      document.documentElement.style.overflowY = "scroll"
     } 
   }
   

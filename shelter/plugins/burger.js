@@ -6,12 +6,14 @@ export default function burgerMenu() {
 header__burger.addEventListener("click", (e) => {
   
   if (e.target.classList.contains("activeBurger")) {
+    document.documentElement.style.overflowY = "scroll"
     e.target.classList.remove("activeBurger")
     headerNav.style.right = "-320px"
     setTimeout(() => {
       head.style.overflow = "hidden"
     }, 500) 
   } else {
+    document.documentElement.style.overflowY = "hidden"
     e.target.classList.add("activeBurger")
     headerNav.style.right = "0px"
     head.style.overflow = "visible"
@@ -23,6 +25,7 @@ document.body.addEventListener("click", (e) => {
     header__burger.classList.remove("activeBurger")
     headerNav.style.right = "-320px"
     head.style.overflow = "hidden"
+    document.documentElement.style.overflowY = "scroll"
   }  
 })
 
