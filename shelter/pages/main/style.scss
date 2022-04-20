@@ -491,9 +491,10 @@ button {
     }
   }
   &__catalog {
-    max-width: calc((270px * 3) + 180px);
     width: 100%;
     overflow: hidden;
+
+    
     @media screen and (max-width: 460px) {
       order: 0;
       margin-bottom: 20px;
@@ -504,24 +505,22 @@ button {
     }
   }
   &__slider {
+    position: relative;
+    left: -50%;
+    max-width: calc(990px * 3);
+    transition: all 1s ease-in-out; 
+    display: flex;
+    min-width: 100%;
+    transform: translateX(-50%);
+    justify-content: space-between;
+    
+  }
+  &__items {
     display: flex;
     justify-content: space-between;
-    -moz-column-gap: 90px;
-    column-gap: 90px;
-    max-width: calc((270px * 3)+ 180px);
-    position: relative;
-    transition: all 1s ease-in-out;
-
-    @media screen and (max-width: 920px) {
-      column-gap: 40px;
-    }
-    @media screen and (max-width: 1279px) {
-      justify-content: center;
-    }
-    
-    @media screen and (max-width: 460px) {
-      column-gap: 0px;
-      
+    min-width: 100%;
+    @media screen and (max-width: 767px) {
+      justify-content: space-around;
     }
   }
   &__arrow-next {
@@ -1157,3 +1156,35 @@ h4 {
   font-style: normal;
 }
 
+// animation slider
+
+@keyframes move-right {
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: -150%;
+  }
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s;
+}
+
+@keyframes move-left {
+
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s;
+}
