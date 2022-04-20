@@ -411,7 +411,7 @@ button {
   line-height: 160%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: #cdcdcd; }
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 320px) {
     .main__subtitle {
       text-align: center; } }
 
@@ -438,6 +438,9 @@ button {
     .main__image {
       height: 593px;
       background-position: right; } }
+  @media screen and (max-width: 767px) {
+    .main__image {
+      background-position: center; } }
   @media screen and (max-width: 630px) {
     .main__image {
       height: 271px; } }
@@ -490,7 +493,7 @@ button {
       width: 100%;
       height: 380px;
       justify-content: flex-start; } }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 430px) {
     .about__info {
       row-gap: 0px; } }
 .about__title {
@@ -818,7 +821,7 @@ button {
         order: 0;
         max-width: 380px;
         width: 100%; } }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 320px) {
       .donation__info {
         text-align: center;
         align-items: center;
@@ -829,7 +832,7 @@ button {
     letter-spacing: 0.06em;
     color: #545454;
     max-width: 300px; }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 350px) {
       .donation__title {
         font-size: 25px;
         max-width: 220px;
