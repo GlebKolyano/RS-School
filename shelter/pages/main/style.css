@@ -439,6 +439,9 @@ button {
     .main__image {
       height: 593px;
       background-position: right; } }
+  @media screen and (max-width: 767px) {
+    .main__image {
+      background-position: center; } }
   @media screen and (max-width: 630px) {
     .main__image {
       height: 271px; } }
