@@ -6,7 +6,8 @@
   right: 0;
   bottom: 0;
   background: #ffffff;
-  z-index: 1000; }
+  z-index: 1000;
+  transition: all 0.5s ease; }
 
 .header__wrapper.pets-page {
   height: 120px;
@@ -300,7 +301,7 @@ button {
       width: 320px;
       background: #292929;
       right: -320px;
-      height: 100vh;
+      height: calc(100vh + 90px);
       transition: all 0.5s ease-in; } }
 
 .burger-overlay {
@@ -319,6 +320,8 @@ button {
 
 .header__burger {
   display: none; }
+  .header__burger:hover {
+    cursor: pointer; }
   @media screen and (max-width: 767px) {
     .header__burger {
       display: block;
@@ -337,7 +340,7 @@ button {
       flex-direction: column;
       position: relative;
       top: 50%;
-      row-gap: 40px;
+      row-gap: 5vh;
       justify-content: center;
       align-items: center;
       transform: translateY(-50%); } }
@@ -605,11 +608,8 @@ button {
     justify-content: space-between; }
   .pets__items {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     min-width: 100%; }
-    @media screen and (max-width: 767px) {
-      .pets__items {
-        justify-content: space-around; } }
   @media screen and (max-width: 460px) {
     .pets__arrow-next {
       order: 2;
@@ -1014,7 +1014,7 @@ button {
   background: rgba(41, 41, 41, 0.6);
   display: flex;
   justify-content: center;
-  z-index: 2000; }
+  z-index: 1000; }
   .modal__overlay:hover {
     cursor: pointer; }
 
@@ -1025,6 +1025,7 @@ button {
   display: flex;
   flex-direction: column;
   margin: 0 30px;
+  z-index: 1001;
   cursor: default; }
   @media screen and (max-width: 990px) {
     .modal__wrapper {
@@ -1042,7 +1043,8 @@ button {
   border-radius: 100px;
   font-weight: bold;
   background: transparent;
-  margin-right: 10px; }
+  margin-right: 10px;
+  transition: all 0.5s ease; }
   .modal-close:hover {
     background: #f1cdb3;
     cursor: pointer; }
@@ -1051,7 +1053,6 @@ button {
       right: -10%; } }
 
 .modal-content {
-  max-width: 900px;
   width: 100%;
   background: #fafafa;
   border-radius: 9px;
@@ -1065,7 +1066,6 @@ button {
   max-width: 500px;
   max-height: 500px;
   width: 100%;
-  height: 100%;
   border-bottom-left-radius: 9px;
   border-top-left-radius: 9px; }
 

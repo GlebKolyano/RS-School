@@ -19,6 +19,24 @@ export class Modal {
   constructor() {}
 
   createModal(pet) {
+    function addHoverForButton() {
+      let modalOverlay = document.querySelector(".modal__overlay")
+
+      function hoverHandler(e) {      
+        if (window.getComputedStyle(e.target)["cursor"] === "pointer") {
+          document.querySelector(".modal-close").style.backgroundColor = "#f1cdb3"
+        } else {
+          document.querySelector(".modal-close").style.backgroundColor = "transparent"
+        }   
+      }
+
+      modalOverlay.addEventListener("mousemove", (e) => hoverHandler(e))
+    }
+    
+
+
+
+
     this.pet = pet
     let elem = document.createElement("div")
     elem.classList.add("modal")
@@ -79,17 +97,26 @@ export class Modal {
     `
     }
     
-    document.documentElement.style.overflowY = "hidden"
     
+
+  
+    document.body.style.paddingRight = `${window.innerWidth - document.documentElement.clientWidth}px`
+
+    document.documentElement.style.overflowY = "hidden"
+
     document.body.appendChild(elem)
     document.body.addEventListener("click", (e) => this.closeModal(e.target))
+
+    addHoverForButton()
   }
   
   
   closeModal(target) {
     if (target.classList.contains("modal-close") || target.classList.contains("modal__overlay") || target.classList.contains("container")) {
       document.querySelectorAll(".modal").forEach(m => m.remove())
-      document.documentElement.style.overflowY = "scroll"
+      document.body.style.paddingRight = "0px"
+      document.documentElement.style.overflowY = "scroll"   
+
     } 
   }
   
@@ -97,4 +124,6 @@ export class Modal {
 
 
 // modal
+
+
 

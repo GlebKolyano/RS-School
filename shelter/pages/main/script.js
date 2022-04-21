@@ -4,7 +4,7 @@ import { Modal } from "../../plugins/modal.js"
 import burgerMenu from "../../plugins/burger.js"
 import smoothScroll from "../../plugins/smooth-scroll.js"
 
-
+ 
 (async function () {
   let serviceHelp = new HelpService()
   let arrHelp =  await serviceHelp.getHelpBlocks().then(data => data.json())
