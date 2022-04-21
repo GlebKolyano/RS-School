@@ -212,7 +212,7 @@ body {
   @media screen and (max-width: 768px) {
     .container {
       padding: 0 30px; } }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 420px) {
     .container {
       padding: 0 10px; } }
 
