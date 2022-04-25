@@ -6,7 +6,8 @@
   right: 0;
   bottom: 0;
   background: #ffffff;
-  z-index: 1000; }
+  z-index: 1000;
+  transition: all 0.5s ease; }
 
 .header__wrapper.pets-page {
   height: 120px;
@@ -300,11 +301,27 @@ button {
       width: 320px;
       background: #292929;
       right: -320px;
-      height: 100vh;
+      height: calc(100vh + 90px);
       transition: all 0.5s ease-in; } }
+
+.burger-overlay {
+  display: none;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(41, 41, 41, 0.6);
+  z-index: 99;
+  transition: all 1s; }
+  .burger-overlay:hover {
+    cursor: pointer; }
 
 .header__burger {
   display: none; }
+  .header__burger:hover {
+    cursor: pointer; }
   @media screen and (max-width: 767px) {
     .header__burger {
       display: block;
@@ -323,7 +340,7 @@ button {
       flex-direction: column;
       position: relative;
       top: 50%;
-      row-gap: 40px;
+      row-gap: 5vh;
       justify-content: center;
       align-items: center;
       transform: translateY(-50%); } }
@@ -573,7 +590,6 @@ button {
       width: max-content;
       margin-left: 25px; } }
   .pets__catalog {
-    max-width: calc((270px * 3) + 180px);
     width: 100%;
     overflow: hidden; }
     @media screen and (max-width: 460px) {
@@ -585,22 +601,18 @@ button {
         align-items: center;
         justify-content: center; } }
   .pets__slider {
-    display: flex;
-    justify-content: space-between;
-    -moz-column-gap: 90px;
-    column-gap: 90px;
-    max-width: calc((270px * 3)+ 180px);
     position: relative;
-    transition: all 1s ease-in-out; }
-    @media screen and (max-width: 920px) {
-      .pets__slider {
-        column-gap: 40px; } }
-    @media screen and (max-width: 1279px) {
-      .pets__slider {
-        justify-content: center; } }
-    @media screen and (max-width: 460px) {
-      .pets__slider {
-        column-gap: 0px; } }
+    left: -50%;
+    max-width: calc(990px * 3);
+    transition: all 1s ease-in-out;
+    display: flex;
+    min-width: 100%;
+    transform: translateX(-50%);
+    justify-content: space-between; }
+  .pets__items {
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%; }
   @media screen and (max-width: 460px) {
     .pets__arrow-next {
       order: 2;
@@ -1005,22 +1017,27 @@ button {
   background: rgba(41, 41, 41, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 2000; }
+  z-index: 1000; }
   .modal__overlay:hover {
     cursor: pointer; }
 
 .modal__wrapper {
-  max-width: 950px;
+  position: relative;
+  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
+  margin: 0 30px;
+  z-index: 1001;
   cursor: default; }
   @media screen and (max-width: 990px) {
     .modal__wrapper {
       align-items: center; } }
 
 .modal-close {
+  position: absolute;
+  right: -52px;
+  top: -52px;
   justify-self: flex-end;
   align-self: flex-end;
   width: 52px;
@@ -1029,45 +1046,42 @@ button {
   border-radius: 100px;
   font-weight: bold;
   background: transparent;
-  margin-right: 10px; }
+  margin-right: 10px;
+  transition: all 0.5s ease; }
   .modal-close:hover {
     background: #f1cdb3;
     cursor: pointer; }
+  @media screen and (max-width: 450px) {
+    .modal-close {
+      right: -10%; } }
 
 .modal-content {
-  max-width: 900px;
   width: 100%;
   background: #fafafa;
   border-radius: 9px;
   display: flex;
   justify-content: space-between; }
-  @media screen and (max-width: 990px) {
+  @media screen and (max-width: 767px) {
     .modal-content {
-      max-width: 630px;
-      max-height: 350px; } }
-  @media screen and (max-width: 320px) {
-    .modal-content {
-      max-width: 240px;
-      min-height: 340px; } }
+      justify-content: center; } }
 
 .modal__image {
   max-width: 500px;
   max-height: 500px;
   width: 100%;
-  height: 100%;
   border-bottom-left-radius: 9px;
   border-top-left-radius: 9px; }
 
 .modal__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 40px;
-  padding: 50px 20px 0 0px;
+  padding: 0px 20px 0 0px;
   max-width: 350px;
   width: max-content; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1000px) {
     .modal__info {
-      max-width: 280px;
       row-gap: 20px;
       padding: 10px 10px 0 10px; } }
   @media screen and (max-width: 320px) {
@@ -1100,7 +1114,7 @@ button {
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #000000; }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 870px) {
     .modal__description {
       font-size: 13px; } }
   @media screen and (max-width: 320px) {
@@ -1127,7 +1141,7 @@ button {
     margin-left: 15px;
     position: relative;
     margin-bottom: 11px; }
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 790px) {
       .modal__params > li {
         margin-bottom: 6px; } }
 
@@ -1136,5 +1150,23 @@ h3,
 h4 {
   font-weight: 400;
   font-style: normal; }
+
+@keyframes move-right {
+  from {
+    left: -50%; }
+  to {
+    left: -150%; } }
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s; }
+
+@keyframes move-left {
+  from {
+    left: -50%; }
+  to {
+    left: 50%; } }
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s; }
 
 /*# sourceMappingURL=style.css.map */

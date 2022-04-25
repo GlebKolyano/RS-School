@@ -11,7 +11,7 @@ $color-pr: #f1cdb3;
   bottom: 0;
   background: #ffffff;
   z-index: 1000;
-  
+  transition: all 0.5s ease;
 }
 .header__wrapper.pets-page {
   height: 120px;

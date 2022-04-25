@@ -156,12 +156,33 @@ button {
     background: #292929;
     right: -320px;
     
-    height: 100vh;
+    height: calc(100vh + 90px);
     transition: all 0.5s ease-in;
   }
 }
+
+.burger-overlay {
+  display: none;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(41, 41, 41, 0.6);
+  z-index: 99;
+  transition: all 1s;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
 .header__burger {
   display: none;
+  &:hover {
+    cursor: pointer;
+  }
   @media screen and (max-width: 767px) {
     display: block;
     position: relative;
@@ -180,7 +201,7 @@ button {
     flex-direction: column;
     position: relative;
     top: 50%;
-    row-gap: 40px;
+    row-gap: 5vh;
     justify-content: center;
     align-items: center;
     transform: translateY(-50%);
@@ -285,7 +306,7 @@ button {
   line-height: 160%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: #cdcdcd;
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 320px) {
 
     text-align: center;
 
@@ -316,6 +337,9 @@ button {
   @media screen and (max-width: 1279px) {
     height: 593px;
     background-position: right;
+  }
+  @media screen and (max-width: 767px) {
+    background-position: center;
   }
   @media screen and (max-width: 630px) {
     height: 271px;
@@ -377,7 +401,7 @@ button {
       height: 380px;
       justify-content:flex-start;
     }
-    @media screen and (max-width: 320px) {
+    @media screen and (max-width: 430px) {
       row-gap: 0px;
     }
     
@@ -470,9 +494,10 @@ button {
     }
   }
   &__catalog {
-    max-width: calc((270px * 3) + 180px);
     width: 100%;
     overflow: hidden;
+
+    
     @media screen and (max-width: 460px) {
       order: 0;
       margin-bottom: 20px;
@@ -483,25 +508,20 @@ button {
     }
   }
   &__slider {
-    display: flex;
-    justify-content: space-between;
-    -moz-column-gap: 90px;
-    column-gap: 90px;
-    max-width: calc((270px * 3)+ 180px);
     position: relative;
-    transition: all 1s ease-in-out;
-
-    @media screen and (max-width: 920px) {
-      column-gap: 40px;
-    }
-    @media screen and (max-width: 1279px) {
-      justify-content: center;
-    }
+    left: -50%;
+    max-width: calc(990px * 3);
+    transition: all 1s ease-in-out; 
+    display: flex;
+    min-width: 100%;
+    transform: translateX(-50%);
+    justify-content: space-between;
     
-    @media screen and (max-width: 460px) {
-      column-gap: 0px;
-      
-    }
+  }
+  &__items {
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
   }
   &__arrow-next {
     @media screen and (max-width: 460px) {
@@ -766,7 +786,7 @@ button {
       max-width: 380px;
       width: 100%;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 320px) {
       text-align: center;
       align-items: center;
       padding: 0 9px;
@@ -778,7 +798,7 @@ button {
     letter-spacing: 0.06em;
     color: #545454;
     max-width: 300px;
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 350px) {
       font-size: 25px;
       max-width: 220px;
       line-height: 125%;
@@ -983,27 +1003,32 @@ button {
   background: rgba(41, 41, 41, 0.6);
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  &:hover {
+  z-index: 1000;
+
+  &:hover  {
     cursor: pointer;
   }
 }
-.container {
-}
+
 .modal__wrapper {
-  max-width: 950px;
+  position: relative;
+  max-width: 900px;
   width: 100%;
   display: flex;
   flex-direction: column;
-
+  margin: 0 30px;
+  z-index: 1001;
   cursor: default;
   @media screen and (max-width: 990px) {
     align-items: center;
   }
-  
 }
+
+
 .modal-close {
+  position: absolute;
+  right: -52px;
+  top: -52px;
   justify-self: flex-end;
   align-self: flex-end;
   width: 52px;
@@ -1013,44 +1038,45 @@ button {
   font-weight: bold;
   background: transparent;
   margin-right: 10px;
+  transition: all 0.5s ease;
   &:hover {
     background: $color-pr;
     cursor: pointer;
   }
+  @media screen and (max-width: 450px) {
+    right: -10%;
+  }
 }
 .modal-content {
-  max-width: 900px;
   width: 100%;
   background: #fafafa;
   border-radius: 9px;
   display: flex;
   justify-content: space-between;
-  @media screen and (max-width: 990px) {
-    max-width: 630px;
-    max-height: 350px;
-   }
-  @media screen and (max-width: 320px) {
-    max-width: 240px;
-    min-height: 340px;
+  @media screen and (max-width: 767px) {
+    justify-content: center;
   }
 }
+
+
+
 .modal__image {
   max-width: 500px;
   max-height: 500px;
   width: 100%;
-  height: 100%;
   border-bottom-left-radius: 9px;
   border-top-left-radius: 9px;
 }
 .modal__info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   row-gap: 40px;
-  padding: 50px 20px 0 0px;
+  padding: 0px 20px 0 0px;
   max-width: 350px;
   width: max-content;
-  @media screen and (max-width: 768px) {
-    max-width: 280px;
+  @media screen and (max-width: 1000px) {
+    
     row-gap: 20px;
     padding: 10px 10px 0 10px;
   }
@@ -1086,7 +1112,7 @@ button {
   line-height: 110%;
   letter-spacing: 0.06em;
   color: #000000;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 870px) {
     font-size: 13px;
   }
   @media screen and (max-width: 320px) {
@@ -1115,7 +1141,7 @@ button {
     margin-left: 15px;
     position: relative;
     margin-bottom: 11px;
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 790px) {
       margin-bottom: 6px;
     }
   }
@@ -1128,3 +1154,35 @@ h4 {
   font-style: normal;
 }
 
+// animation slider
+
+@keyframes move-right {
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: -150%;
+  }
+}
+
+.transition-right {
+  animation-name: move-right;
+  animation-duration: 2s;
+}
+
+@keyframes move-left {
+
+  from {
+    left: -50%;
+  }
+
+  to {
+    left: 50%;
+  }
+}
+
+.transition-left {
+  animation-name: move-left;
+  animation-duration: 2s;
+}
