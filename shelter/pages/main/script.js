@@ -4,6 +4,7 @@ import { Modal } from "../../plugins/modal.js"
 import burgerMenu from "../../plugins/burger.js"
 import smoothScroll from "../../plugins/smooth-scroll.js"
 
+
  
 (async function () {
   let serviceHelp = new HelpService()
@@ -22,6 +23,7 @@ import smoothScroll from "../../plugins/smooth-scroll.js"
   helpGrid.appendChild(helpBlock)
 })
 })()
+
 
 // header links effect
 

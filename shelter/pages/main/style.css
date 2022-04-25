@@ -213,7 +213,7 @@ body {
   @media screen and (max-width: 768px) {
     .container {
       padding: 0 30px; } }
-  @media screen and (max-width: 320px) {
+  @media screen and (max-width: 420px) {
     .container {
       padding: 0 10px; } }
 
@@ -396,6 +396,7 @@ button {
 
 .main__info {
   display: flex;
+  margin-top: calc(163px);
   flex-direction: column;
   justify-content: space-between;
   max-width: 460px;
@@ -562,6 +563,8 @@ button {
       .pets__title {
         font-size: 25px; } }
   .pets__block {
+    position: relative;
+    z-index: 10;
     display: flex;
     justify-content: center;
     -moz-column-gap: 53px;
