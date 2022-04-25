@@ -11,10 +11,10 @@ header__burger.addEventListener("click", (e) => {
     header__burger.classList.remove("activeBurger")
     headerNav.style.right = "-320px"
     BURGER_OVERLAY.style.opacity = 0
+    BURGER_OVERLAY.style.display = "none"
     head.style.backgroundColor = "white"
 
     setTimeout(() => {
-      BURGER_OVERLAY.style.display = "none"
       head.style.overflow = "hidden"
     }, 500) 
   } else {
@@ -34,6 +34,7 @@ document.body.addEventListener("click", (e) => {
  
     header__burger.classList.remove("activeBurger")
     BURGER_OVERLAY.style.opacity = 0
+    BURGER_OVERLAY.style.display = "none"
     headerNav.style.right = "-320px"
     document.body.style.paddingRight = "0px"
     document.documentElement.style.overflowY = "scroll"
@@ -41,7 +42,6 @@ document.body.addEventListener("click", (e) => {
    
 
     setTimeout(() => {
-      BURGER_OVERLAY.style.display = "none"
       head.style.overflow = "hidden"
     }, 500) 
   }  
