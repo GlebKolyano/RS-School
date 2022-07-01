@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 body {
     color: #fff;
     background: #17181c;
@@ -16,20 +20,43 @@ header h1 {
 footer {
     height: 100px;
     display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.8rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
-footer .copyright {
+footer .footer__copyright {
     font-size: 14px;
-    color: #333;
+    color: rgb(70, 105, 114);
     text-align: center;
 }
-footer .copyright a {
-    color: #444;
+footer .footer__copyright a {
+    color: rgb(70, 105, 114);
 }
-footer .copyright a:hover {
-    color: #555;
+footer .footer__copyright a:hover {
+    color: rgb(95, 143, 155);
 }
-footer .copyright:before {
+footer .footer__copyright:before {
     content: '©';
+}
+
+footer .footer__image {
+    max-height: 20%;
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+footer .footer__author {
+    color: rgb(95, 143, 155);
+}
+footer .footer__year{
+    color: rgb(95, 143, 155);
+}
+footer .footer__course {
+    color: rgb(70, 105, 114);
+}
+
+footer .link:hover {
+    text-shadow: 0px 0px 5px rgba(137, 195, 210, 0.409);
+    color: rgb(137, 195, 210);
 }
