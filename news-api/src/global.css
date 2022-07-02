@@ -7,7 +7,12 @@ body {
     background: #17181c;
     font-family: sans-serif;
 }
-
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 header {
     padding: 10px 30px;
 }
@@ -60,3 +65,9 @@ footer .link:hover {
     text-shadow: 0px 0px 5px rgba(137, 195, 210, 0.409);
     color: rgb(137, 195, 210);
 }
+
+#sources__image-error {
+    font-size: 22px;
+    color: rgb(252, 84, 84);
+}
+.selects {}
