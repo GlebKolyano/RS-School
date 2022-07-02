@@ -1,11 +1,11 @@
-import { GetDataCallback, IArticlesData, INewsData } from '../../modules/types';
-import { ApiKeyOptions, ErrorTypes, PropsForLoadMethod, PropsForRespMethod } from './loaderTypes';
+import { ApiKeyOptions, GetDataCallback, IArticlesData, INewsData } from '../../modules/types';
+import { ErrorTypes, PropsForLoadMethod, PropsForRespMethod } from './loaderTypes';
 
 class Loader {
     private baseLink: string;
-    private options: object;
+    private options: ApiKeyOptions;
 
-    constructor(baseLink: string, options: Partial<ApiKeyOptions>) {
+    constructor(baseLink: string, options: ApiKeyOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }

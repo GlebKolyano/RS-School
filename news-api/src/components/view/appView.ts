@@ -20,6 +20,11 @@ export class AppView {
         const values: INewsInfo[] = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }
+
+    public drawSelects(data: Readonly<INewsData>): void {
+        const values: INewsInfo[] = data?.sources ? data?.sources : [];
+        this.sources.drawSelects(values);
+    }
 }
 
 export default AppView;

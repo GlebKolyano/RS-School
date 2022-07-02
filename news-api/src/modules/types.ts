@@ -35,6 +35,14 @@ export interface IArticleSource {
     name: string;
 }
 
+export type ApiKeyOptions = {
+    apiKey: string;
+    sources?: string;
+    country?: string;
+    language?: string;
+    category?: string;
+};
+
 type GetData = (data: IArticlesData | INewsData) => void;
 
 export type GetDataCallback = GetData | (() => void);

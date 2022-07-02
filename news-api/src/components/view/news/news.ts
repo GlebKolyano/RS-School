@@ -9,11 +9,7 @@ class News {
 
         const news: IArticleInfo[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
         const fragment: DocumentFragment = document.createDocumentFragment();
-
-        let newsItemTemp: HTMLTemplateElement;
-        if (document.querySelector('#newsItemTemp') !== null) {
-            newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
-        } else throw new Error('newsItemTemp is not found!');
+        const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
 
         news.forEach((item: Readonly<IArticleInfo>, idx) => {
             const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement;
