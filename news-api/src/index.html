@@ -10,24 +10,33 @@
 
 <body>
     <header>
-        <h1>News Portal</h1>
+        <h1 class="header__title"><a href="./index.html">News Portal</a></h1>
     </header>
     <main>
         <div class="sources buttons">
         </div>
+        <div class="filter">
+            <ul class="filter__button filter__button_disabled"><li><span>filters</span></li></ul>
+        </div>
         <div class="selects">
-            <label for="category-select">Choose a category:</label>
-            <select class="news-sort" name="category" id="category-select">
-                <option value="all">all</option>
-            </select>
-            <label for="country-select">Choose a country:</label>
-            <select class="news-sort" name="country" id="country-select">
-                <option value="all">all</option>
-            </select>
-            <label for="country-select">Choose a language:</label>
-            <select class="news-sort" name="language" id="language-select">
-                <option value="all">all</option>
-            </select>
+            <div class="select">
+                <select class="select-filter" name="category" id="category-select">
+                    <option selected disabled>Choose a category</option>
+                    <option value="all">all</option>
+                </select>
+            </div>
+            <div class="select">
+                <select class="select-filter" name="country" id="country-select">
+                    <option selected disabled>Choose a country</option>
+                    <option value="all">all</option>
+                </select>
+            </div>
+            <div class="select">
+                <select class="select-filter" name="language" id="language-select">
+                    <option selected disabled>Choose a language</option>
+                    <option value="all">all</option>
+                </select>
+            </div>
         </div>
 
         <div class="news"></div>
@@ -38,8 +47,8 @@
         </p>
         <span class="footer__year">2022</span>
         <img class="footer__image" src="https://rs.school/images/rs_school_js.svg" alt="rs-school-logo">
-        <a class="footer__author link" href="https://github.com/GlebKolyano">GlebKolyano</a>
-        <a class="footer__course link" href="https://rs.school/js/">Course</a>
+        <a class="footer__author link" href="https://github.com/GlebKolyano" target="_blank">GlebKolyano</a>
+        <a class="footer__course link" href="https://rs.school/js/" target="_blank">Course</a>
     </footer>
 
     <template id="sourceItemTemp">

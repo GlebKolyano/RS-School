@@ -1,4 +1,5 @@
 import { ApiKeyOptions, IArticlesData, INewsData } from '../../modules/types';
+import { filterButtonWork } from '../../services/Addtional.service';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 
@@ -6,7 +7,7 @@ class App {
     private controller: AppController;
     private view: AppView;
     private state: ApiKeyOptions = {
-        apiKey: '70051855752f4291b17002057fbdeb36',
+        apiKey: '00b52516eda74d2a8a2b5baeb8170292',
     };
 
     constructor() {
@@ -29,9 +30,11 @@ class App {
             this.state
         );
 
-        document.querySelectorAll('.news-sort').forEach((el) => {
+        document.querySelectorAll('.select-filter').forEach((el) => {
             el.addEventListener('change', (e) => this.controller.filterNews(e, this.state));
         });
+
+        filterButtonWork();
     }
 }
 

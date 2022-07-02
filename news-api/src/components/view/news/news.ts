@@ -21,7 +21,7 @@ class News {
             }
             if (isNotNullElement(newsClone, '.news__meta-photo')) {
                 (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
-                    item.urlToImage || 'img/news_placeholder.jpg'
+                    item.urlToImage || require('../../../assets/images/news_placeholder.jpg')
                 })`;
             } else throw new Error('news__meta-photo is not found!');
 

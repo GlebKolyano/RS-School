@@ -1,14 +1,23 @@
+.news {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    column-gap: 2rem;
+    row-gap: 1.5rem;
+}
+
 .news__item {
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
-    margin-bottom: 1.6%;
     background: #fff;
     color: #333;
     line-height: 1.4;
     font-family: Arial, sans-serif;
     border-radius: 5px;
     overflow: hidden;
+    max-width: 650px;
 }
 
 .news__item:hover .news__meta-photo {
@@ -124,7 +133,6 @@
 @media (min-width: 640px) {
     .news__item {
         flex-direction: row;
-        max-width: 700px;
     }
 
     .news__item .news__meta {
