@@ -6,7 +6,7 @@
     height: auto;
     overflow: auto;
     width: 100%;
-    max-height: 40vh;
+    max-height: 45vh;
     font: 300 1em 'Fira Sans', sans-serif;
     transition: max-height 0.5s;
 }

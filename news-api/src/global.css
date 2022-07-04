@@ -149,9 +149,15 @@ footer .link:hover {
     color: rgb(137, 195, 210);
 }
 
-#sources__image-error {
-    font-size: 22px;
-    color: rgb(252, 84, 84);
+.sources__image-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sources__image-error > img {
+    max-width: 460px;
+    width: 100%;
 }
 
 /* filter block  */
