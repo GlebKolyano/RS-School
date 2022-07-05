@@ -20,16 +20,16 @@ class AppController extends AppLoader {
     }
 
     public getNews(e: Event, callback: TGetDataCallback): void {
-        let target = e.target !== null ? (e.target as Element) : null;
+        let target = e.target ? (e.target as HTMLElement) : null;
 
-        const newsContainer = e.currentTarget !== null ? (e.currentTarget as Element) : null;
+        const newsContainer = e.currentTarget ? (e.currentTarget as HTMLElement) : null;
 
-        if (target !== null && newsContainer !== null) {
+        if (target && newsContainer) {
             while (target !== newsContainer) {
                 if (target?.classList.contains('source__item')) {
                     let sourceId = '';
 
-                    if (target.getAttribute('data-source-id') !== null) {
+                    if (target.getAttribute('data-source-id')) {
                         sourceId = target.getAttribute('data-source-id') as string;
                     } else throw new Error('SourceId is not string type!');
 
@@ -48,14 +48,16 @@ class AppController extends AppLoader {
                     return;
                 }
 
-                if (target.parentNode !== null) target = target.parentNode as Element;
+                if (target) {
+                    if (target.parentNode !== null) target = target.parentNode as HTMLElement;
+                }
             }
         } else throw new Error('target or newsContainer is null!');
     }
 
     public filterNews(e: Event, state: TApiKeyOptions): void {
-        const select: string = (e.target as HTMLInputElement).name;
-        const optionValue = (e.target as HTMLInputElement).value;
+        const { name: select } = e.target as HTMLInputElement;
+        const { value: optionValue } = e.target as HTMLInputElement;
 
         const drawSources = (): void => {
             this.getSources((data: IArticlesData | INewsData) => this.view.drawSources(data as INewsData), state);
