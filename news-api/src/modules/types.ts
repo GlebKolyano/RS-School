@@ -35,7 +35,7 @@ export interface IArticleSource {
     name: string;
 }
 
-export type ApiKeyOptions = {
+export type TApiKeyOptions = {
     apiKey: string;
     sources?: string;
     country?: string;
@@ -43,6 +43,6 @@ export type ApiKeyOptions = {
     category?: string;
 };
 
-type GetData = (data: IArticlesData | INewsData) => void;
+type TGetData = (data: IArticlesData | INewsData) => void;
 
-export type GetDataCallback = GetData | (() => void);
+export type TGetDataCallback = TGetData | (() => void);

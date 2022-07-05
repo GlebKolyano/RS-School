@@ -1,4 +1,4 @@
-import { ApiKeyOptions, IArticlesData, INewsData } from '../../modules/types';
+import { TApiKeyOptions, IArticlesData, INewsData } from '../../modules/types';
 import { filterButtonWork } from '../../services/Addtional.service';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
@@ -6,7 +6,7 @@ import { AppView } from '../view/appView';
 class App {
     private controller: AppController;
     private view: AppView;
-    private state: ApiKeyOptions = {
+    private state: TApiKeyOptions = {
         apiKey: '00b52516eda74d2a8a2b5baeb8170292',
     };
 

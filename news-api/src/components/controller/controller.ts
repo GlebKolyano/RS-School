@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { ApiKeyOptions, GetDataCallback, IArticlesData, INewsData } from '../../modules/types';
+import { TApiKeyOptions, TGetDataCallback, IArticlesData, INewsData } from '../../modules/types';
 import AppView from '../view/appView';
 
 class AppController extends AppLoader {
@@ -9,7 +9,7 @@ class AppController extends AppLoader {
         this.view = new AppView();
     }
 
-    public getSources(callback: GetDataCallback, options: ApiKeyOptions): void {
+    public getSources(callback: TGetDataCallback, options: TApiKeyOptions): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -19,7 +19,7 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews(e: Event, callback: GetDataCallback): void {
+    public getNews(e: Event, callback: TGetDataCallback): void {
         let target = e.target !== null ? (e.target as Element) : null;
 
         const newsContainer = e.currentTarget !== null ? (e.currentTarget as Element) : null;
@@ -53,7 +53,7 @@ class AppController extends AppLoader {
         } else throw new Error('target or newsContainer is null!');
     }
 
-    public filterNews(e: Event, state: ApiKeyOptions): void {
+    public filterNews(e: Event, state: TApiKeyOptions): void {
         const select: string = (e.target as HTMLInputElement).name;
         const optionValue = (e.target as HTMLInputElement).value;
 
