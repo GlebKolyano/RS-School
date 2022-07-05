@@ -28,17 +28,16 @@ class AppController extends AppLoader {
 
     public getNews(e: Event, callback: TGetDataCallback): void | never {
         let target = e.target ? (e.target as HTMLElement) : null;
-
         const newsContainer = e.currentTarget ? (e.currentTarget as HTMLElement) : null;
 
         if (target && newsContainer) {
             while (target !== newsContainer) {
-                if (target?.classList.contains('source__item')) {
-                    let sourceId = '';
+                if (target.classList.contains('source__item')) {
+                    let sourceId: string;
 
                     if (target.getAttribute('data-source-id')) {
                         sourceId = target.getAttribute('data-source-id') as string;
-                    } else throw new Error('SourceId is not string type!');
+                    } else throw new Error('SourceId is not string!');
 
                     if (newsContainer.getAttribute('data-source') !== sourceId) {
                         newsContainer.setAttribute('data-source', sourceId);
@@ -55,9 +54,7 @@ class AppController extends AppLoader {
                     return;
                 }
 
-                if (target) {
-                    if (target.parentNode !== null) target = target.parentNode as HTMLElement;
-                }
+                if (target.parentNode !== null) target = target.parentNode as HTMLElement;
             }
         } else throw new Error('target or newsContainer is null!');
     }

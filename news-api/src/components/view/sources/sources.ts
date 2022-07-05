@@ -50,8 +50,8 @@ class Sources {
             createSelect(`#${type}-select`, optionsOfSelect);
         });
 
-        function createSelect(id: string, itemsForOptions: Set<string>): void {
-            if (document.querySelector(id) !== null) {
+        function createSelect(id: string, itemsForOptions: Set<string>): void | never {
+            if (document.querySelector(id)) {
                 const categorySelect = document.querySelector(id) as HTMLTemplateElement;
                 itemsForOptions.forEach((item: string) => createOptions(item, categorySelect));
             } else throw new Error('category-select is not found!');
