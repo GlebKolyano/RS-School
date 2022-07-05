@@ -1,4 +1,4 @@
-import { TApiKeyOptions, TGetDataCallback, IArticlesData, INewsData } from '../../modules/types';
+import { TApiKeyOptions, TGetDataCallback, IArticlesData, INewsData, TUrlOptions } from '../../modules/types';
 import { ErrorTypes, TPropsForLoadMethod, TPropsForRespMethod } from './loaderTypes';
 
 class Loader {
@@ -25,7 +25,7 @@ class Loader {
         this.load(parametresOfLoadMethod, 'GET');
     }
 
-    private errorHandler(res: Response): Response {
+    private errorHandler(res: Response): Response | never {
         if (!res.ok) {
             if (res.status === ErrorTypes.NotAuthorize || res.status === ErrorTypes.NotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -36,7 +36,7 @@ class Loader {
     }
 
     private makeUrl(options: Partial<TApiKeyOptions>, endpoint: string): string {
-        const urlOptions: { [index: string]: string } = { ...this.options, ...options };
+        const urlOptions: TUrlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {

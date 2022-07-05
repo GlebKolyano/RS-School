@@ -1,8 +1,7 @@
 export interface INewsData {
-    status: 'ok' | 'error';
+    status: TStatus;
     sources: INewsInfo[];
 }
-
 export interface INewsInfo {
     category: string;
     country: string;
@@ -12,13 +11,11 @@ export interface INewsInfo {
     name: string;
     url: string;
 }
-
 export interface IArticlesData {
-    status: 'ok' | 'error';
+    status: TStatus;
     totalResults: number;
     articles: IArticleInfo[];
 }
-
 export interface IArticleInfo {
     source: IArticleSource;
     author: string;
@@ -29,7 +26,6 @@ export interface IArticleInfo {
     publishedAt: string;
     content: string;
 }
-
 export interface IArticleSource {
     id: string;
     name: string;
@@ -42,6 +38,10 @@ export type TApiKeyOptions = {
     language?: string;
     category?: string;
 };
+
+export type TUrlOptions = { [index: string]: string };
+
+type TStatus = 'ok' | 'error';
 
 type TGetData = (data: IArticlesData | INewsData) => void;
 export type TGetDataCallback = TGetData | (() => void);
