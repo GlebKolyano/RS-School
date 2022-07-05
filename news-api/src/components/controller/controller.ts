@@ -1,5 +1,12 @@
 import AppLoader from './appLoader';
-import { TApiKeyOptions, TGetDataCallback, IArticlesData, INewsData } from '../../modules/types';
+import {
+    TApiKeyOptions,
+    TGetDataCallback,
+    IArticlesData,
+    INewsData,
+    TypesOfFilterNewsEnum,
+    TypesOfEndpointEnum,
+} from '../../modules/types';
 import AppView from '../view/appView';
 
 class AppController extends AppLoader {
@@ -12,14 +19,14 @@ class AppController extends AppLoader {
     public getSources(callback: TGetDataCallback, options: TApiKeyOptions): void {
         super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: TypesOfEndpointEnum.Sources,
                 options: options,
             },
             callback
         );
     }
 
-    public getNews(e: Event, callback: TGetDataCallback): void {
+    public getNews(e: Event, callback: TGetDataCallback): void | never {
         let target = e.target ? (e.target as HTMLElement) : null;
 
         const newsContainer = e.currentTarget ? (e.currentTarget as HTMLElement) : null;
@@ -37,7 +44,7 @@ class AppController extends AppLoader {
                         newsContainer.setAttribute('data-source', sourceId);
                         super.getResp(
                             {
-                                endpoint: 'everything',
+                                endpoint: TypesOfEndpointEnum.Everything,
                                 options: {
                                     sources: sourceId,
                                 },
@@ -64,16 +71,16 @@ class AppController extends AppLoader {
         };
 
         switch (select) {
-            case 'country':
-                state.country = optionValue === 'all' ? '' : optionValue;
+            case TypesOfFilterNewsEnum.Country:
+                state.country = optionValue === TypesOfFilterNewsEnum.All ? '' : optionValue;
                 drawSources();
                 break;
-            case 'category':
-                state.category = optionValue === 'all' ? '' : optionValue;
+            case TypesOfFilterNewsEnum.Category:
+                state.category = optionValue === TypesOfFilterNewsEnum.All ? '' : optionValue;
                 drawSources();
                 break;
-            case 'language':
-                state.language = optionValue === 'all' ? '' : optionValue;
+            case TypesOfFilterNewsEnum.Language:
+                state.language = optionValue === TypesOfFilterNewsEnum.All ? '' : optionValue;
                 drawSources();
                 break;
             default:

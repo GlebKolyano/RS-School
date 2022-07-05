@@ -44,5 +44,16 @@ export type TApiKeyOptions = {
 };
 
 type TGetData = (data: IArticlesData | INewsData) => void;
-
 export type TGetDataCallback = TGetData | (() => void);
+
+export enum TypesOfFilterNewsEnum {
+    Category = 'category',
+    Country = 'country',
+    Language = 'language',
+    All = 'all',
+}
+
+export enum TypesOfEndpointEnum {
+    Sources = 'sources',
+    Everything = 'everything',
+}
