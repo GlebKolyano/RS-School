@@ -1,11 +1,11 @@
-import { ApiKeyOptions, GetDataCallback } from '../../modules/types';
+import { TApiKeyOptions, TGetDataCallback } from '../../modules/types';
 
-export type PropsForRespMethod = Pick<PropsForLoadMethod, 'endpoint' | 'options'>;
+export type TPropsForRespMethod = Pick<TPropsForLoadMethod, 'endpoint' | 'options'>;
 
-export type PropsForLoadMethod = {
+export type TPropsForLoadMethod = {
     endpoint: string;
-    callback: GetDataCallback;
-    options: Partial<ApiKeyOptions>;
+    callback: TGetDataCallback;
+    options: Partial<TApiKeyOptions>;
 };
 
 export enum ErrorTypes {

@@ -1,5 +1,12 @@
 import AppLoader from './appLoader';
-import { ApiKeyOptions, GetDataCallback, IArticlesData, INewsData } from '../../modules/types';
+import {
+    TApiKeyOptions,
+    TGetDataCallback,
+    IArticlesData,
+    INewsData,
+    TypesOfFilterNewsEnum,
+    TypesOfEndpointEnum,
+} from '../../modules/types';
 import AppView from '../view/appView';
 
 class AppController extends AppLoader {
@@ -9,35 +16,34 @@ class AppController extends AppLoader {
         this.view = new AppView();
     }
 
-    public getSources(callback: GetDataCallback, options: ApiKeyOptions): void {
+    public getSources(callback: TGetDataCallback, options: TApiKeyOptions): void {
         super.getResp(
             {
-                endpoint: 'sources',
+                endpoint: TypesOfEndpointEnum.Sources,
                 options: options,
             },
             callback
         );
     }
 
-    public getNews(e: Event, callback: GetDataCallback): void {
-        let target = e.target !== null ? (e.target as Element) : null;
+    public getNews(e: Event, callback: TGetDataCallback): void | never {
+        let target = e.target ? (e.target as HTMLElement) : null;
+        const newsContainer = e.currentTarget ? (e.currentTarget as HTMLElement) : null;
 
-        const newsContainer = e.currentTarget !== null ? (e.currentTarget as Element) : null;
-
-        if (target !== null && newsContainer !== null) {
+        if (target && newsContainer) {
             while (target !== newsContainer) {
-                if (target?.classList.contains('source__item')) {
-                    let sourceId = '';
+                if (target.classList.contains('source__item')) {
+                    let sourceId: string;
 
-                    if (target.getAttribute('data-source-id') !== null) {
+                    if (target.getAttribute('data-source-id')) {
                         sourceId = target.getAttribute('data-source-id') as string;
-                    } else throw new Error('SourceId is not string type!');
+                    } else throw new Error('SourceId is not string!');
 
                     if (newsContainer.getAttribute('data-source') !== sourceId) {
                         newsContainer.setAttribute('data-source', sourceId);
                         super.getResp(
                             {
-                                endpoint: 'everything',
+                                endpoint: TypesOfEndpointEnum.Everything,
                                 options: {
                                     sources: sourceId,
                                 },
@@ -48,30 +54,30 @@ class AppController extends AppLoader {
                     return;
                 }
 
-                if (target.parentNode !== null) target = target.parentNode as Element;
+                if (target.parentNode !== null) target = target.parentNode as HTMLElement;
             }
         } else throw new Error('target or newsContainer is null!');
     }
 
-    public filterNews(e: Event, state: ApiKeyOptions): void {
-        const select: string = (e.target as HTMLInputElement).name;
-        const optionValue = (e.target as HTMLInputElement).value;
+    public filterNews(e: Event, state: TApiKeyOptions): void {
+        const { name: select } = e.target as HTMLInputElement;
+        const { value: optionValue } = e.target as HTMLInputElement;
 
         const drawSources = (): void => {
             this.getSources((data: IArticlesData | INewsData) => this.view.drawSources(data as INewsData), state);
         };
 
         switch (select) {
-            case 'country':
-                state.country = optionValue === 'all' ? '' : optionValue;
+            case TypesOfFilterNewsEnum.Country:
+                state.country = optionValue === TypesOfFilterNewsEnum.All ? '' : optionValue;
                 drawSources();
                 break;
-            case 'category':
-                state.category = optionValue === 'all' ? '' : optionValue;
+            case TypesOfFilterNewsEnum.Category:
+                state.category = optionValue === TypesOfFilterNewsEnum.All ? '' : optionValue;
                 drawSources();
                 break;
-            case 'language':
-                state.language = optionValue === 'all' ? '' : optionValue;
+            case TypesOfFilterNewsEnum.Language:
+                state.language = optionValue === TypesOfFilterNewsEnum.All ? '' : optionValue;
                 drawSources();
                 break;
             default:

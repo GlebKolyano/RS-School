@@ -1,4 +1,5 @@
-import { ApiKeyOptions, IArticlesData, INewsData } from '../../modules/types';
+import { API_KEY } from '../../modules/constants';
+import { TApiKeyOptions, IArticlesData, INewsData } from '../../modules/types';
 import { filterButtonWork } from '../../services/Addtional.service';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
@@ -6,8 +7,8 @@ import { AppView } from '../view/appView';
 class App {
     private controller: AppController;
     private view: AppView;
-    private state: ApiKeyOptions = {
-        apiKey: '00b52516eda74d2a8a2b5baeb8170292',
+    private state: TApiKeyOptions = {
+        apiKey: API_KEY,
     };
 
     constructor() {
@@ -16,9 +17,15 @@ class App {
     }
 
     public start(): void {
-        (document.querySelector('.sources') as Element).addEventListener('click', (e) =>
-            this.controller.getNews(e, (data: IArticlesData | INewsData) => this.view.drawNews(data as IArticlesData))
-        );
+        const sources: HTMLElement | null = document.querySelector('.sources');
+
+        if (sources) {
+            sources.addEventListener('click', (e) =>
+                this.controller.getNews(e, (data: IArticlesData | INewsData) =>
+                    this.view.drawNews(data as IArticlesData)
+                )
+            );
+        }
 
         this.controller.getSources(
             (data: IArticlesData | INewsData) => this.view.drawSources(data as INewsData),
@@ -30,7 +37,8 @@ class App {
             this.state
         );
 
-        document.querySelectorAll('.select-filter').forEach((el) => {
+        const filterSelects = document.querySelectorAll('.select-filter');
+        filterSelects.forEach((el) => {
             el.addEventListener('change', (e) => this.controller.filterNews(e, this.state));
         });
 

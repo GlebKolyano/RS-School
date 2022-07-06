@@ -1,22 +1,22 @@
-import { ApiKeyOptions, GetDataCallback, IArticlesData, INewsData } from '../../modules/types';
-import { ErrorTypes, PropsForLoadMethod, PropsForRespMethod } from './loaderTypes';
+import { TApiKeyOptions, TGetDataCallback, IArticlesData, INewsData, TUrlOptions } from '../../modules/types';
+import { ErrorTypes, TPropsForLoadMethod, TPropsForRespMethod } from './loaderTypes';
 
 class Loader {
     private baseLink: string;
-    private options: ApiKeyOptions;
+    private options: TApiKeyOptions;
 
-    constructor(baseLink: string, options: ApiKeyOptions) {
+    constructor(baseLink: string, options: TApiKeyOptions) {
         this.baseLink = baseLink;
         this.options = options;
     }
 
     protected getResp(
-        { endpoint, options }: Readonly<PropsForRespMethod>,
-        callback: GetDataCallback = () => {
+        { endpoint, options }: Readonly<TPropsForRespMethod>,
+        callback: TGetDataCallback = () => {
             console.error('No callback for GET response');
         }
     ): void {
-        const parametresOfLoadMethod: PropsForLoadMethod = {
+        const parametresOfLoadMethod: TPropsForLoadMethod = {
             endpoint,
             callback,
             options,
@@ -25,7 +25,7 @@ class Loader {
         this.load(parametresOfLoadMethod, 'GET');
     }
 
-    private errorHandler(res: Response): Response {
+    private errorHandler(res: Response): Response | never {
         if (!res.ok) {
             if (res.status === ErrorTypes.NotAuthorize || res.status === ErrorTypes.NotFound)
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -35,8 +35,8 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: Partial<ApiKeyOptions>, endpoint: string): string {
-        const urlOptions: { [index: string]: string } = { ...this.options, ...options };
+    private makeUrl(options: Partial<TApiKeyOptions>, endpoint: string): string {
+        const urlOptions: TUrlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
         Object.keys(urlOptions).forEach((key) => {
@@ -46,7 +46,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    private load(props: Readonly<PropsForLoadMethod>, method: string): void {
+    private load(props: Readonly<TPropsForLoadMethod>, method: string): void {
         fetch(this.makeUrl(props.options, props.endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response) => res.json())

@@ -1,12 +1,11 @@
-export function isNotNullElement(parrentEl: HTMLElement, className: string): boolean {
-    return parrentEl.querySelector(className) !== null ? true : false;
-}
+import { WIDTH_SIZE } from '../modules/constants';
 
 export function filterButtonWork() {
     const filterButton = document.querySelector('.filter__button') as HTMLElement;
     const selectsBlock = document.querySelector('.selects') as HTMLElement;
+
     filterButton.addEventListener('click', () => {
-        if (window.innerWidth <= 792) {
+        if (window.innerWidth <= WIDTH_SIZE) {
             selectsBlock.classList.toggle('selects_active');
             filterButton.classList.toggle('filter__button_active');
         }
