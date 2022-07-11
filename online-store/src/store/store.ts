@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import bicycleReducer from './reducers/BicyclesSlice';
+import bicycleReducer from './reducers/bicycle.slice';
 
 export const rootReducer = combineReducers({ bicycleReducer });
 

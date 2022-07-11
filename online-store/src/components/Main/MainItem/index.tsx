@@ -1,5 +1,4 @@
 import React from 'react';
-import M from 'materialize-css';
 import cl from './style.module.css';
 import { IBicycle } from '../../../models/models';
 

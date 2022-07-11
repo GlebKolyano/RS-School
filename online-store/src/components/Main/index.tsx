@@ -10,7 +10,7 @@ function Main() {
   const dispatch = useAppDispatch();
   const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
 
-  useEffect(() => dispatch(getBicycles()), []);
+  useEffect(() => dispatch(getBicycles()), [dispatch]);
 
   return (
     <div className="main">
