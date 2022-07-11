@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IBicycle } from '../../models/models';
-import { initialState } from './constants';
+import { IBicycleState } from './model';
+
+export const initialState: IBicycleState = {
+  bicycles: [],
+  isLoading: false,
+  error: ''
+};
 
 export const bicycleSlice = createSlice({
   name: 'bicycle',
