@@ -1,0 +1,6 @@
+.main {
+  flex: 1 0 100%;
+  background-color: bisque;
+  display: flex;
+  flex-direction: row;
+}
