@@ -1,6 +1,6 @@
 export default [
   {
-    name: 'Велосипед горный Denton Storm 2.0',
+    name: 'Велосипед Storm 2.0',
     quantity: 99,
     type: 'горный',
     brand: 'Denton',
@@ -9,10 +9,10 @@ export default [
     weight: 16,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/53609200299.jpg'
+    image: './images/53609200299.jpg'
   },
   {
-    name: 'Велосипед горный Denton Storm 3.0',
+    name: 'Велосипед Storm 3.0',
     quantity: 76,
     type: 'горный',
     brand: 'Denton',
@@ -21,10 +21,10 @@ export default [
     weight: 16,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/53609210299.jpg'
+    image: './images/53609210299.jpg'
   },
   {
-    name: 'Велосипед горный Denton Storm 3.0 Sport',
+    name: 'Велосипед Storm 3.0 Sport',
     quantity: 37,
     type: 'горный',
     brand: 'Denton',
@@ -33,10 +33,10 @@ export default [
     weight: 17,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/61735150299.jpg'
+    image: './images/61735150299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco XT 600 D',
+    name: 'Электровелосипед XT 600 D',
     quantity: 64,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -45,10 +45,10 @@ export default [
     weight: 26,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/57992510299.jpg'
+    image: './images/57992510299.jpg'
   },
   {
-    name: 'Велосипед горный Denton Storm 1.0',
+    name: 'Велосипед Storm 1.0',
     quantity: 10,
     type: 'горный',
     brand: 'Denton',
@@ -57,10 +57,10 @@ export default [
     weight: 14.3,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/53609240299.jpg'
+    image: './images/53609240299.jpg'
   },
   {
-    name: 'Велосипед горный Giant Talon 3',
+    name: 'Велосипед Talon 3',
     quantity: 88,
     type: 'горный',
     brand: 'Giant',
@@ -69,10 +69,10 @@ export default [
     weight: 14.3,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/65967270299.jpg'
+    image: './images/65967270299.jpg'
   },
   {
-    name: 'Велосипед горный Ghost Kato Essential',
+    name: 'Велосипед Kato Essential',
     quantity: 5,
     type: 'горный',
     brand: 'Ghost',
@@ -81,10 +81,10 @@ export default [
     weight: 14.9,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/65967060299.jpg'
+    image: './images/65967060299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco XT 800 New',
+    name: 'Электровелосипед XT 800 New',
     quantity: 51,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -93,7 +93,7 @@ export default [
     weight: 24,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/67440800299.jpg'
+    image: './images/67440800299.jpg'
   },
   {
     name: 'Электровелосипед Eltreco',
@@ -105,10 +105,10 @@ export default [
     weight: 28,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/67440790299.jpg'
+    image: './images/67440790299.jpg'
   },
   {
-    name: 'Велосипед горный Giant Talon 3',
+    name: 'Велосипед Talon 3',
     quantity: 69,
     type: 'горный',
     brand: 'Giant',
@@ -117,10 +117,10 @@ export default [
     weight: 14.25,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/66022410299.jpg'
+    image: './images/66022410299.jpg'
   },
   {
-    name: 'Велосипед горный Giant Talon 4',
+    name: 'Велосипед Talon 4',
     quantity: 36,
     type: 'горный',
     brand: 'Giant',
@@ -129,10 +129,10 @@ export default [
     weight: 17.5,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/65967170299.jpg'
+    image: './images/65967170299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco XT 600 D',
+    name: 'Электровелосипед XT 600 D',
     quantity: 95,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -141,10 +141,10 @@ export default [
     weight: 24,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/67440770299.jpg'
+    image: './images/67440770299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco XT 800 New',
+    name: 'Электровелосипед XT 800 New',
     quantity: 8,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -153,10 +153,10 @@ export default [
     weight: 24.5,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/67440660299.jpg'
+    image: './images/67440660299.jpg'
   },
   {
-    name: 'Велосипед горный Denton Storm 3.0',
+    name: 'Велосипед Storm 3.0',
     quantity: 41,
     type: 'горный',
     brand: 'Denton',
@@ -165,10 +165,10 @@ export default [
     weight: 16,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/65965460299.jpg'
+    image: './images/65965460299.jpg'
   },
   {
-    name: 'Велосипед горный Ghost Kato Pro',
+    name: 'Велосипед Kato Pro',
     quantity: 61,
     type: 'горный',
     brand: 'Ghost',
@@ -177,10 +177,10 @@ export default [
     weight: 14.2,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/65966630299.jpg'
+    image: './images/65966630299.jpg'
   },
   {
-    name: 'Велосипед горный Ghost Kato Universal',
+    name: 'Велосипед Kato Universal',
     quantity: 99,
     type: 'горный',
     brand: 'Ghost',
@@ -189,10 +189,10 @@ export default [
     weight: 14.8,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/65966950299.jpg'
+    image: './images/65966950299.jpg'
   },
   {
-    name: 'Велосипед горный Ghost Kato Advanced',
+    name: 'Велосипед Kato Advanced',
     quantity: 73,
     type: 'горный',
     brand: 'Ghost',
@@ -201,10 +201,10 @@ export default [
     weight: 14.6,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/65966730299.jpg'
+    image: './images/65966730299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco Volteco Bigcat Dual New',
+    name: 'Электровелосипед Volteco Bigcat Dual New',
     quantity: 55,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -213,10 +213,10 @@ export default [
     weight: 32,
     isPopular: true,
     inBasket: false,
-    image: '../assets/images/57992720299.jpg'
+    image: './images/57992720299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco VOLTECO FLEX',
+    name: 'Электровелосипед VOLTECO FLEX',
     quantity: 34,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -225,10 +225,10 @@ export default [
     weight: 25,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/57992010299.jpg'
+    image: './images/57992010299.jpg'
   },
   {
-    name: 'Велосипед горный Ghost Kato Advanced',
+    name: 'Велосипед Kato Advanced',
     quantity: 19,
     type: 'горный',
     brand: 'Ghost',
@@ -237,10 +237,10 @@ export default [
     weight: 14.6,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/65966850299.jpg'
+    image: './images/65966850299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco Volteco Bad Dual',
+    name: 'Электровелосипед Volteco Bad Dual',
     quantity: 47,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -249,10 +249,10 @@ export default [
     weight: 37,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/57992830299.jpg'
+    image: './images/57992830299.jpg'
   },
   {
-    name: 'Электровелосипед Eltreco Volteco Bigcat Dual New',
+    name: 'Электровелосипед Volteco Bigcat Dual New',
     quantity: 74,
     type: 'Электровелосипед',
     brand: 'Eltreco',
@@ -261,6 +261,6 @@ export default [
     weight: 36,
     isPopular: false,
     inBasket: false,
-    image: '../assets/images/57992080299.jpg'
+    image: './images/57992080299.jpg'
   }
 ];
