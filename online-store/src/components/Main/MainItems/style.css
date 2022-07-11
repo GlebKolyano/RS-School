@@ -1,4 +1,12 @@
 .main__items {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  column-gap: 1rem;
+  row-gap: 1rem;
   width: 80%;
-  background-color: rgba(176, 248, 189, 0.479);
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
 }

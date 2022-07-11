@@ -1,0 +1,21 @@
+.item {
+  width: 20%;
+  max-width: 340px;
+  min-width: 140px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.item__image {
+  width: 100%;
+}
+
+.item__info {
+  padding: 5px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
