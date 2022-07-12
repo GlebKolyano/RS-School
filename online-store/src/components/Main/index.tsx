@@ -12,6 +12,7 @@ function Main() {
   const dispatch = useAppDispatch();
   const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
   const { searchValue } = useAppSelector((state) => state.searchReducer);
+  const { sortOption } = useAppSelector((state) => state.sortReducer);
 
   const filters: FilterProps = {
     searchValue
@@ -19,7 +20,7 @@ function Main() {
 
   useEffect(() => dispatch(getBicycles()), [dispatch]);
 
-  const filterBySearchBicycles = useBicycles(bicycles, filters);
+  const filterBySearchBicycles = useBicycles(bicycles, filters, sortOption);
 
   return (
     <div className="main">

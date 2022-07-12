@@ -1,5 +1,6 @@
 import React from 'react';
 import FilterBySearch from './FilterBySearch';
+import Sort from './Sort';
 import './style.css';
 
 function Filters() {
@@ -7,6 +8,7 @@ function Filters() {
     <div className="filters">
       Filters
       <FilterBySearch />
+      <Sort />
     </div>
   );
 }

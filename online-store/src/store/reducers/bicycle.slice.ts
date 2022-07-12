@@ -33,4 +33,4 @@ export const bicycleSlice = createSlice({
   }
 });
 
-export default bicycleSlice.reducer;
+export const bicycleReducer = bicycleSlice.reducer;

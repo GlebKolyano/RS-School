@@ -18,3 +18,12 @@ export interface IBicycle {
 export type FilterProps = {
   searchValue: string;
 };
+
+export enum SortOptions {
+  name_asc = 'name_asc',
+  name_desc = 'name_desc',
+  weight_asc = 'weight_asc',
+  weight_desc = 'weight_desc',
+  quantity_asc = 'quantity_asc',
+  quantity_desc = 'quantity_desc'
+}

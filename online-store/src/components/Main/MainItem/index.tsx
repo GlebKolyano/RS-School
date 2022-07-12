@@ -3,7 +3,7 @@ import cl from './style.module.css';
 import { IBicycle } from '../../../models/models';
 
 function MainItem({ item }: { item: IBicycle }) {
-  const { brand, name, speeds, image } = item;
+  const { brand, name, speeds, weight, quantity, image } = item;
   const rootClass = [cl.item, 'z-depth-1'].join(' ');
   return (
     <div className={rootClass}>
@@ -12,6 +12,8 @@ function MainItem({ item }: { item: IBicycle }) {
         <li>Название: {name}</li>
         <li>Брэнд: {brand}</li>
         <li>Количество скоростей: {speeds} </li>
+        <li>Количество: {quantity} </li>
+        <li>Вес: {weight} </li>
       </ul>
     </div>
   );

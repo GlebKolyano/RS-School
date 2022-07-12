@@ -9,3 +9,7 @@ export interface IBicycleState {
 export interface ISearchSlice {
   searchValue: string;
 }
+
+export interface ISortSlice {
+  sortOption: string;
+}
