@@ -14,3 +14,7 @@ export interface IBicycle {
   inBasket: boolean;
   image: string;
 }
+
+export type FilterProps = {
+  searchValue: string;
+};

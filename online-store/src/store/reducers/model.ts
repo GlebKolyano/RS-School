@@ -5,3 +5,7 @@ export interface IBicycleState {
   isLoading: boolean;
   error: string;
 }
+
+export interface ISearchSlice {
+  searchValue: string;
+}
