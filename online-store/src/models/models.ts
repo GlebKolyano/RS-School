@@ -13,17 +13,48 @@ export interface IBicycle {
   isPopular: boolean;
   inBasket: boolean;
   image: string;
+  price: number;
 }
-
-export type FilterProps = {
-  searchValue: string;
-};
 
 export enum SortOptions {
   name_asc = 'name_asc',
   name_desc = 'name_desc',
-  weight_asc = 'weight_asc',
-  weight_desc = 'weight_desc',
+  price_asc = 'price_asc',
+  price_desc = 'price_desc',
   quantity_asc = 'quantity_asc',
   quantity_desc = 'quantity_desc'
 }
+
+export interface ISearchSlice {
+  searchValue: string;
+}
+
+export interface ISortSlice {
+  sortOption: string;
+}
+
+export interface IFilterByValueSlice {
+  filterByCompany: string[];
+  filterByType: string[];
+  filterByColor: string[];
+  filterByPopular: boolean;
+}
+
+export type FilterByRangePayload = {
+  min: number;
+  max: number;
+};
+export interface IFilterByRangeSlice {
+  filterByQuantity: FilterByRangePayload;
+  filterByPrice: FilterByRangePayload;
+}
+
+export interface IStorageFilters {
+  filterByValue: IFilterByValueSlice;
+  filterByRange: IFilterByRangeSlice;
+  sort: ISortSlice;
+  search: ISearchSlice;
+}
+
+export type StoragePropType = object | string | string[] | IFilterByValueSlice;
+export type StorageReturnType = StoragePropType | null;

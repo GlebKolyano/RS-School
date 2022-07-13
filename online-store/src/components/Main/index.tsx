@@ -6,21 +6,24 @@ import Loader from '../UI/Loader';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { getBicycles } from '../../store/actions/getBicycles';
 import { useBicycles } from '../../hooks/useBicycles';
-import { FilterProps } from '../../models/models';
 
 function Main() {
   const dispatch = useAppDispatch();
   const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
   const { searchValue } = useAppSelector((state) => state.searchReducer);
   const { sortOption } = useAppSelector((state) => state.sortReducer);
-
-  const filters: FilterProps = {
-    searchValue
-  };
+  const filtersByValue = useAppSelector((state) => state.filterByValueReducer);
+  const filtersByRange = useAppSelector((state) => state.filterByRangeReducer);
 
   useEffect(() => dispatch(getBicycles()), [dispatch]);
 
-  const filterBySearchBicycles = useBicycles(bicycles, filters, sortOption);
+  const filterBySearchBicycles = useBicycles(
+    bicycles,
+    searchValue,
+    sortOption,
+    filtersByValue,
+    filtersByRange
+  );
 
   return (
     <div className="main">

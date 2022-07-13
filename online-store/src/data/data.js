@@ -2,38 +2,41 @@ export default [
   {
     name: 'Велосипед Storm 2.0',
     quantity: 99,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Denton',
     speeds: 18,
     color: 'серый',
     weight: 16,
     isPopular: false,
     inBasket: false,
-    image: './images/53609200299.jpg'
+    image: './images/53609200299.jpg',
+    price: 14039
   },
   {
     name: 'Велосипед Storm 3.0',
     quantity: 76,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Denton',
     speeds: 21,
     color: 'черный',
     weight: 16,
     isPopular: false,
     inBasket: false,
-    image: './images/53609210299.jpg'
+    image: './images/53609210299.jpg',
+    price: 15729
   },
   {
     name: 'Велосипед Storm 3.0 Sport',
     quantity: 37,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Denton',
     speeds: 21,
     color: 'зеленый',
     weight: 17,
     isPopular: true,
     inBasket: false,
-    image: './images/61735150299.jpg'
+    image: './images/61735150299.jpg',
+    price: 16169
   },
   {
     name: 'Электровелосипед XT 600 D',
@@ -45,43 +48,47 @@ export default [
     weight: 26,
     isPopular: true,
     inBasket: false,
-    image: './images/57992510299.jpg'
+    image: './images/57992510299.jpg',
+    price: 57519
   },
   {
     name: 'Велосипед Storm 1.0',
     quantity: 10,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Denton',
     speeds: 6,
     color: 'черный',
     weight: 14.3,
     isPopular: false,
     inBasket: false,
-    image: './images/53609240299.jpg'
+    image: './images/53609240299.jpg',
+    price: 13649
   },
   {
     name: 'Велосипед Talon 3',
     quantity: 88,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Giant',
     speeds: 16,
     color: 'серый',
     weight: 14.3,
     isPopular: false,
     inBasket: false,
-    image: './images/65967270299.jpg'
+    image: './images/65967270299.jpg',
+    price: 62999
   },
   {
     name: 'Велосипед Kato Essential',
     quantity: 5,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Ghost',
     speeds: 24,
     color: 'хаки',
     weight: 14.9,
     isPopular: true,
     inBasket: false,
-    image: './images/65967060299.jpg'
+    image: './images/65967060299.jpg',
+    price: 85949
   },
   {
     name: 'Электровелосипед XT 800 New',
@@ -93,7 +100,8 @@ export default [
     weight: 24,
     isPopular: false,
     inBasket: false,
-    image: './images/67440800299.jpg'
+    image: './images/67440800299.jpg',
+    price: 65364
   },
   {
     name: 'Электровелосипед Eltreco',
@@ -105,31 +113,34 @@ export default [
     weight: 28,
     isPopular: false,
     inBasket: false,
-    image: './images/67440790299.jpg'
+    image: './images/67440790299.jpg',
+    price: 65364
   },
   {
     name: 'Велосипед Talon 3',
     quantity: 69,
     type: 'горный',
-    brand: 'Giant',
+    brand: 'Горный',
     speeds: 16,
     color: 'оранжевый',
     weight: 14.25,
     isPopular: true,
     inBasket: false,
-    image: './images/66022410299.jpg'
+    image: './images/66022410299.jpg',
+    price: 61199
   },
   {
     name: 'Велосипед Talon 4',
     quantity: 36,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Giant',
     speeds: 21,
     color: 'оранжевый',
     weight: 17.5,
     isPopular: false,
     inBasket: false,
-    image: './images/65967170299.jpg'
+    image: './images/65967170299.jpg',
+    price: 62999
   },
   {
     name: 'Электровелосипед XT 600 D',
@@ -141,7 +152,8 @@ export default [
     weight: 24,
     isPopular: false,
     inBasket: false,
-    image: './images/67440770299.jpg'
+    image: './images/67440770299.jpg',
+    price: 57519
   },
   {
     name: 'Электровелосипед XT 800 New',
@@ -153,55 +165,60 @@ export default [
     weight: 24.5,
     isPopular: true,
     inBasket: false,
-    image: './images/67440660299.jpg'
+    image: './images/67440660299.jpg',
+    price: 65364
   },
   {
     name: 'Велосипед Storm 3.0',
     quantity: 41,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Denton',
     speeds: 21,
     color: 'черный',
     weight: 16,
     isPopular: false,
     inBasket: false,
-    image: './images/65965460299.jpg'
+    image: './images/65965460299.jpg',
+    price: 17999
   },
   {
     name: 'Велосипед Kato Pro',
     quantity: 61,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Ghost',
     speeds: 12,
     color: 'красный',
     weight: 14.2,
     isPopular: false,
     inBasket: false,
-    image: './images/65966630299.jpg'
+    image: './images/65966630299.jpg',
+    price: 132929
   },
   {
     name: 'Велосипед Kato Universal',
     quantity: 99,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Ghost',
     speeds: 27,
     color: 'красный',
     weight: 14.8,
     isPopular: true,
     inBasket: false,
-    image: './images/65966950299.jpg'
+    image: './images/65966950299.jpg',
+    price: 101699
   },
   {
     name: 'Велосипед Kato Advanced',
     quantity: 73,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Ghost',
     speeds: 20,
     color: 'черный',
     weight: 14.6,
     isPopular: false,
     inBasket: false,
-    image: './images/65966730299.jpg'
+    image: './images/65966730299.jpg',
+    price: 117269
   },
   {
     name: 'Электровелосипед Volteco Bigcat Dual New',
@@ -213,7 +230,8 @@ export default [
     weight: 32,
     isPopular: true,
     inBasket: false,
-    image: './images/57992720299.jpg'
+    image: './images/57992720299.jpg',
+    price: 148899
   },
   {
     name: 'Электровелосипед VOLTECO FLEX',
@@ -225,19 +243,21 @@ export default [
     weight: 25,
     isPopular: false,
     inBasket: false,
-    image: './images/57992010299.jpg'
+    image: './images/57992010299.jpg',
+    price: 73899
   },
   {
     name: 'Велосипед Kato Advanced',
     quantity: 19,
-    type: 'горный',
+    type: 'Горный',
     brand: 'Ghost',
     speeds: 20,
     color: 'серый',
     weight: 14.6,
     isPopular: false,
     inBasket: false,
-    image: './images/65966850299.jpg'
+    image: './images/65966850299.jpg',
+    price: 117269
   },
   {
     name: 'Электровелосипед Volteco Bad Dual',
@@ -249,7 +269,8 @@ export default [
     weight: 37,
     isPopular: false,
     inBasket: false,
-    image: './images/57992830299.jpg'
+    image: './images/57992830299.jpg',
+    price: 139899
   },
   {
     name: 'Электровелосипед Volteco Bigcat Dual New',
@@ -257,10 +278,11 @@ export default [
     type: 'Электровелосипед',
     brand: 'Eltreco',
     speeds: 6,
-    color: '',
+    color: 'черный',
     weight: 36,
     isPopular: false,
     inBasket: false,
-    image: './images/57992080299.jpg'
+    image: './images/57992080299.jpg',
+    price: 148899
   }
 ];

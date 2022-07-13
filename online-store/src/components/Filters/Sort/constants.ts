@@ -8,12 +8,12 @@ export const options = [
     label: 'По названию, от Я до А'
   },
   {
-    value: 'weight_asc',
-    label: 'По весу, по возрастанию'
+    value: 'price_asc',
+    label: 'По цене, по возрастанию'
   },
   {
-    value: 'weight_desc',
-    label: 'По весу, по убыванию'
+    value: 'price_desc',
+    label: 'По цене, по убыванию'
   },
   {
     value: 'quantity_asc',
