@@ -5,11 +5,3 @@ export interface IBicycleState {
   isLoading: boolean;
   error: string;
 }
-
-export interface ISearchSlice {
-  searchValue: string;
-}
-
-export interface ISortSlice {
-  sortOption: string;
-}
