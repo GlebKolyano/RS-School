@@ -1,8 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ISortSlice } from './model';
+import LocaleStorage from '../../helpers/LocaleStorage';
+import { ISortSlice } from '../../models/models';
+
+const Storage = new LocaleStorage();
+const sortOptionValue = Storage.get('sortSettings');
 
 const initialState: ISortSlice = {
-  sortOption: 'name_asc'
+  sortOption: (sortOptionValue as string) || 'name_asc'
 };
 
 export const sortSlice = createSlice({
@@ -12,6 +16,7 @@ export const sortSlice = createSlice({
     setSort: (state, action: PayloadAction<string>) => {
       const stateVar = state;
       stateVar.sortOption = action.payload;
+      Storage.set('sortSettings', action.payload);
     }
   }
 });

@@ -1,9 +1,10 @@
 import React from 'react';
-import { useAppDispatch } from '../../../hooks/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { setSort } from '../../../store/reducers/sort.slice';
 import { options } from './constants';
 
 function Sort() {
+  const { sortOption } = useAppSelector((state) => state.sortReducer);
   const dispatch = useAppDispatch();
 
   function changeSortOption(value: string) {
@@ -11,9 +12,17 @@ function Sort() {
   }
 
   return (
-    <select className="browser-default" onChange={(e) => changeSortOption(e.target.value)}>
+    <select
+      className="browser-default"
+      onChange={(e) => changeSortOption(e.target.value)}
+      defaultValue={sortOption}
+    >
       {options.map((option) => {
-        return <option value={option.value}>{option.label}</option>;
+        return (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        );
       })}
     </select>
   );
