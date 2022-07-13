@@ -23,12 +23,14 @@ function FilterByRange() {
         minVl={minMaxValues.minQuantity}
         maxVl={minMaxValues.maxQuantity}
         onChange={handleChangeQuantity}
+        name="filterByQuantity"
       />
       <p>По цене:</p>
       <Slider
         minVl={minMaxValues.minPrice}
         maxVl={minMaxValues.maxPrice}
         onChange={handleChangePrice}
+        name="filterByPrice"
       />
     </div>
   );

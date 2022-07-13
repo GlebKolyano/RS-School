@@ -56,5 +56,5 @@ export interface IStorageFilters {
   search: ISearchSlice;
 }
 
-export type StoragePropType = object | string | string[] | IFilterByValueSlice;
+export type StoragePropType = IFilterByRangeSlice | string | string[] | IFilterByValueSlice;
 export type StorageReturnType = StoragePropType | null;

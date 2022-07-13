@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 import ReactSlider from 'react-slider';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 import { FilterByRangePayload } from '../../../models/models';
 import './style.css';
 
@@ -8,12 +9,16 @@ type SliderProps = {
   minVl: number;
   maxVl: number;
   onChange: (value: FilterByRangePayload) => void;
+  name: 'filterByPrice' | 'filterByQuantity';
 };
 
 function Slider(props: SliderProps) {
-  const { minVl, maxVl, onChange } = props;
-  const [min, setMin] = useState(minVl);
-  const [max, setMax] = useState(maxVl);
+  const { minVl, maxVl, onChange, name } = props;
+  const filters = useAppSelector((state) => state.filterByRangeReducer);
+  const filtersBySomeCategory = filters[name];
+
+  const [min, setMin] = useState(filtersBySomeCategory.min || minVl);
+  const [max, setMax] = useState(filtersBySomeCategory.max || maxVl);
 
   const handleChangeMaxMin = (minVal: number, maxVal: number) => {
     setMin(minVal);
