@@ -3,6 +3,7 @@ export interface IData {
 }
 
 export interface IBicycle {
+  id: number;
   name: string;
   quantity: number;
   type: string;
@@ -56,5 +57,15 @@ export interface IStorageFilters {
   search: ISearchSlice;
 }
 
-export type StoragePropType = IFilterByRangeSlice | string | string[] | IFilterByValueSlice;
+export type StoragePropType =
+  | IFilterByRangeSlice
+  | string
+  | string[]
+  | IFilterByValueSlice
+  | IBicycle[]
+  | number[];
 export type StorageReturnType = StoragePropType | null;
+
+export interface ICartSlice {
+  itemsInCart: IBicycle[];
+}

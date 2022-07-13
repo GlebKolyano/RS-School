@@ -1,12 +1,26 @@
 import React from 'react';
 import './style.css';
+import { FaCartPlus } from 'react-icons/fa';
 import { IBicycle } from '../../../models/models';
+import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
+import { toggleItemToCart } from '../../../store/reducers/cart.slice';
 
 function MainItem({ item }: { item: IBicycle }) {
+  const dispatch = useAppDispatch();
   const { brand, name, speeds, weight, quantity, color, price, isPopular, image } = item;
-  const rootClass = `item + z-depth-1`;
+  const { itemsInCart } = useAppSelector((state) => state.cartReducer);
+  const isItemInCart = itemsInCart.includes(item.id);
+
+  const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>, product: IBicycle) => {
+    event.preventDefault();
+    dispatch(toggleItemToCart(product.id));
+  };
+
   return (
-    <div className={rootClass}>
+    <div className={isItemInCart ? 'item item_inCart' : 'item'}>
+      <button type="button" className="item__cart" onClick={(e) => handleAddItemToCart(e, item)}>
+        <FaCartPlus />
+      </button>
       <img className="item__image" src={image} alt="img" />
       <ul className="cl.item__info">
         <li>Название: {name}</li>

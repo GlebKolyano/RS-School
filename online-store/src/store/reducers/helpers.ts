@@ -54,3 +54,8 @@ export function getFiltersByRangeFromStore() {
     storeRangeQuantity
   };
 }
+
+export function getCartItemsFromStore() {
+  const storeFilters = Storage.get('cartItems') as number[];
+  return storeFilters;
+}

@@ -4,13 +4,15 @@ import { searchReducer } from './reducers/search.slice';
 import { sortReducer } from './reducers/sort.slice';
 import { filterByValueReducer } from './reducers/filterByValue.slice';
 import { filterByRangeReducer } from './reducers/filterByRange.slice';
+import { cartReducer } from './reducers/cart.slice';
 
 export const rootReducer = combineReducers({
   bicycleReducer,
   searchReducer,
   sortReducer,
   filterByValueReducer,
-  filterByRangeReducer
+  filterByRangeReducer,
+  cartReducer
 });
 
 export function setupStore() {

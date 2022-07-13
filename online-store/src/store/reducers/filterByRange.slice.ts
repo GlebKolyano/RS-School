@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getMinMaxValues } from '../../helpers/helpers';
 import LocaleStorage from '../../helpers/LocaleStorage';
 import { FilterByRangePayload, IFilterByRangeSlice } from '../../models/models';
-import { getFiltersByRangeFromStore } from './getFiltersFromStore';
+import { getFiltersByRangeFromStore } from './helpers';
 
 const Storage = new LocaleStorage();
 const { storeRangePrice, storeRangeQuantity } = getFiltersByRangeFromStore();

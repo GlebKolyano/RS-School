@@ -1,5 +1,6 @@
 export default [
   {
+    id: 1,
     name: 'Велосипед Storm 2.0',
     quantity: 99,
     type: 'Горный',
@@ -13,6 +14,7 @@ export default [
     price: 14039
   },
   {
+    id: 2,
     name: 'Велосипед Storm 3.0',
     quantity: 76,
     type: 'Горный',
@@ -26,6 +28,7 @@ export default [
     price: 15729
   },
   {
+    id: 3,
     name: 'Велосипед Storm 3.0 Sport',
     quantity: 37,
     type: 'Горный',
@@ -39,6 +42,7 @@ export default [
     price: 16169
   },
   {
+    id: 4,
     name: 'Электровелосипед XT 600 D',
     quantity: 64,
     type: 'Электровелосипед',
@@ -52,6 +56,7 @@ export default [
     price: 57519
   },
   {
+    id: 5,
     name: 'Велосипед Storm 1.0',
     quantity: 10,
     type: 'Горный',
@@ -65,6 +70,7 @@ export default [
     price: 13649
   },
   {
+    id: 6,
     name: 'Велосипед Talon 3',
     quantity: 88,
     type: 'Горный',
@@ -78,6 +84,7 @@ export default [
     price: 62999
   },
   {
+    id: 7,
     name: 'Велосипед Kato Essential',
     quantity: 5,
     type: 'Горный',
@@ -91,6 +98,7 @@ export default [
     price: 85949
   },
   {
+    id: 8,
     name: 'Электровелосипед XT 800 New',
     quantity: 51,
     type: 'Электровелосипед',
@@ -104,6 +112,7 @@ export default [
     price: 65364
   },
   {
+    id: 9,
     name: 'Электровелосипед Eltreco',
     quantity: 17,
     type: 'Электровелосипед',
@@ -117,6 +126,7 @@ export default [
     price: 65364
   },
   {
+    id: 10,
     name: 'Велосипед Talon 3',
     quantity: 69,
     type: 'горный',
@@ -130,6 +140,7 @@ export default [
     price: 61199
   },
   {
+    id: 11,
     name: 'Велосипед Talon 4',
     quantity: 36,
     type: 'Горный',
@@ -143,6 +154,7 @@ export default [
     price: 62999
   },
   {
+    id: 12,
     name: 'Электровелосипед XT 600 D',
     quantity: 95,
     type: 'Электровелосипед',
@@ -156,6 +168,7 @@ export default [
     price: 57519
   },
   {
+    id: 13,
     name: 'Электровелосипед XT 800 New',
     quantity: 8,
     type: 'Электровелосипед',
@@ -169,6 +182,7 @@ export default [
     price: 65364
   },
   {
+    id: 14,
     name: 'Велосипед Storm 3.0',
     quantity: 41,
     type: 'Горный',
@@ -182,6 +196,7 @@ export default [
     price: 17999
   },
   {
+    id: 15,
     name: 'Велосипед Kato Pro',
     quantity: 61,
     type: 'Горный',
@@ -195,6 +210,7 @@ export default [
     price: 132929
   },
   {
+    id: 16,
     name: 'Велосипед Kato Universal',
     quantity: 99,
     type: 'Горный',
@@ -208,6 +224,7 @@ export default [
     price: 101699
   },
   {
+    id: 17,
     name: 'Велосипед Kato Advanced',
     quantity: 73,
     type: 'Горный',
@@ -221,6 +238,7 @@ export default [
     price: 117269
   },
   {
+    id: 18,
     name: 'Электровелосипед Volteco Bigcat Dual New',
     quantity: 55,
     type: 'Электровелосипед',
@@ -234,6 +252,7 @@ export default [
     price: 148899
   },
   {
+    id: 19,
     name: 'Электровелосипед VOLTECO FLEX',
     quantity: 34,
     type: 'Электровелосипед',
@@ -247,6 +266,7 @@ export default [
     price: 73899
   },
   {
+    id: 20,
     name: 'Велосипед Kato Advanced',
     quantity: 19,
     type: 'Горный',
@@ -260,6 +280,7 @@ export default [
     price: 117269
   },
   {
+    id: 21,
     name: 'Электровелосипед Volteco Bad Dual',
     quantity: 47,
     type: 'Электровелосипед',
@@ -273,6 +294,7 @@ export default [
     price: 139899
   },
   {
+    id: 22,
     name: 'Электровелосипед Volteco Bigcat Dual New',
     quantity: 74,
     type: 'Электровелосипед',

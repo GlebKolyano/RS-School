@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../helpers/LocaleStorage';
 import { IFilterByValueSlice } from '../../models/models';
-import { getFiltersByValueFromStore } from './getFiltersFromStore';
+import { getFiltersByValueFromStore } from './helpers';
 
 const Storage = new LocaleStorage();
 const { storeColors, storeCompanies, storeTypes, storePopular } = getFiltersByValueFromStore();
