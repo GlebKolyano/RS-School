@@ -4,7 +4,7 @@ import Filters from '../Filters';
 import MainItems from './MainItems';
 import Loader from '../UI/Loader';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { getBicycles } from '../../store/actions/getBicycles';
+import { getBicycles } from '../../store/actions/bicycleSliceAction';
 import { useBicycles } from '../../hooks/useBicycles';
 
 function Main() {

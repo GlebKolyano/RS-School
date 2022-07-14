@@ -8,6 +8,7 @@ import {
   setfilterByPopular,
   setfilterByType
 } from '../../../store/reducers/filterByValue.slice';
+import 'materialize-css';
 
 function FiltersByValue() {
   const { filterByType, filterByPopular, filterByColor, filterByCompany } = useAppSelector(
@@ -87,13 +88,17 @@ function FiltersByValue() {
         Только популярные:
         <ul>
           <li>
-            <input
-              type="checkbox"
-              name="popularBicycle"
-              onChange={handleChangeIsPopular}
-              checked={filterByPopular}
-            />{' '}
-            Показать популярные
+            <label htmlFor="popularIdCheckbox">
+              <input
+                className="filled-in"
+                id="popularIdCheckbox"
+                type="checkbox"
+                name="popularBicycle"
+                onChange={handleChangeIsPopular}
+                checked={filterByPopular}
+              />
+              <span>Показать популярные</span>
+            </label>
           </li>
         </ul>
       </div>

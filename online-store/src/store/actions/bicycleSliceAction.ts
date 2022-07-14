@@ -8,7 +8,7 @@ export const getBicycles = () => (dispatch: TAppDispatch) => {
     const data = DATA;
     setTimeout(() => {
       dispatch(bicycleSlice.actions.bicyclesFetchingSuccess(data));
-    }, 10);
+    }, 1000);
   } catch (err) {
     dispatch(bicycleSlice.actions.bicyclesFetchingError('Загрузка не удалась!'));
   }
