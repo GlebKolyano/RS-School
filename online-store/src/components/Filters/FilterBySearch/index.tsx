@@ -8,7 +8,6 @@ function FilterBySearch() {
   function changeSearchValue(value: string): void {
     dispatch(setSearch(value));
   }
-
   return (
     <div>
       <input

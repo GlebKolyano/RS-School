@@ -16,12 +16,11 @@ export default function RangeSlider(props: SliderProps) {
   const { minVl, maxVl, onChange, name } = props;
   const filters = useAppSelector((s) => s.filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
-
   const [state, setState] = useState({
     value: [filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl]
   });
 
-  const handleChangeMaxMin = (value: number | number[]) => {
+  const handleChangeStorageValue = (value: number | number[]) => {
     if (Array.isArray(value)) {
       const [min, max] = value;
       const res = { min, max };
@@ -29,10 +28,16 @@ export default function RangeSlider(props: SliderProps) {
     }
   };
 
+  const handleChangeState = (value: number | number[]) => {
+    if (Array.isArray(value)) {
+      setState({ value });
+    }
+  };
+
   useEffect(() => {
     const value = [filtersBySomeCategory.min, filtersBySomeCategory.max];
-    setState({ ...state, value });
-  }, [filters, filtersBySomeCategory.max, filtersBySomeCategory.min, state]);
+    setState({ value });
+  }, [filtersBySomeCategory]);
 
   return (
     <div>
@@ -48,7 +53,8 @@ export default function RangeSlider(props: SliderProps) {
         range
         allowCross={false}
         value={state.value}
-        onChange={handleChangeMaxMin}
+        onChange={handleChangeState}
+        onAfterChange={handleChangeStorageValue}
       />
     </div>
   );
