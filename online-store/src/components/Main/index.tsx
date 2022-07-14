@@ -28,8 +28,12 @@ function Main() {
   return (
     <div className="main">
       <Filters />
-      {isLoading ? <Loader /> : <MainItems bicycles={filterBySearchBicycles} />}
-      {error && <h1>Приозошла ошибка!</h1>}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <MainItems bicycles={filterBySearchBicycles} isLoading={isLoading} />
+      )}
+      {error && <h1>{error}</h1>}
     </div>
   );
 }
