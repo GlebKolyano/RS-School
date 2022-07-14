@@ -13,4 +13,6 @@
 .header__logo {
   color: #262626;
   font-size: 3.5rem;
+  width: 100px;
+  height: 100px;
 }
