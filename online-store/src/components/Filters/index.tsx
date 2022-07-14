@@ -9,7 +9,6 @@ import './style.css';
 function Filters() {
   return (
     <div className="filters">
-      Filters
       <FilterBySearch />
       <Sort />
       <FiltersByValue />

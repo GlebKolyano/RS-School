@@ -1,0 +1,10 @@
+.search {
+  display: block;
+  position: relative;
+  height: 70px;
+  margin: 0;
+}
+
+.search__input {
+  color: white;
+}
