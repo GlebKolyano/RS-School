@@ -1,9 +1,9 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
-import ReactSlider from 'react-slider';
-import { useAppSelector } from '../../../hooks/reduxHooks';
-import { FilterByRangePayload } from '../../../models/models';
+import React, { useEffect, useState } from 'react';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import './style.css';
+import { FilterByRangePayload } from '../../../models/models';
+import { useAppSelector } from '../../../hooks/reduxHooks';
 
 type SliderProps = {
   minVl: number;
@@ -12,57 +12,44 @@ type SliderProps = {
   name: 'filterByPrice' | 'filterByQuantity';
 };
 
-function Slider(props: SliderProps) {
+export default function RangeSlider(props: SliderProps) {
   const { minVl, maxVl, onChange, name } = props;
-  const filters = useAppSelector((state) => state.filterByRangeReducer);
+  const filters = useAppSelector((s) => s.filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
 
-  const [min, setMin] = useState(filtersBySomeCategory.min || minVl);
-  const [max, setMax] = useState(filtersBySomeCategory.max || maxVl);
+  const [state, setState] = useState({
+    value: [filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl]
+  });
 
-  const handleChangeMaxMin = (minVal: number, maxVal: number) => {
-    setMin(minVal);
-    setMax(maxVal);
+  const handleChangeMaxMin = (value: number | number[]) => {
+    if (Array.isArray(value)) {
+      const [min, max] = value;
+      const res = { min, max };
+      onChange(res);
+    }
   };
 
-  const handleUpdateState = () => {
-    const res = { min, max };
-    onChange(res);
-  };
+  useEffect(() => {
+    const value = [filtersBySomeCategory.min, filtersBySomeCategory.max];
+    setState({ ...state, value });
+  }, [filters, filtersBySomeCategory.max, filtersBySomeCategory.min, state]);
 
   return (
-    <div className="conatainer">
-      <ReactSlider
-        defaultValue={[min, max]}
-        className="slider"
-        trackClassName="tracker"
+    <div>
+      <span>LowerBound: {state.value[0]}</span>
+      <br />
+      <span>UpperBound: {state.value[1]}</span>
+      <br />
+      <Slider
+        defaultValue={(filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl)}
         min={minVl}
         max={maxVl}
-        minDistance={0}
         step={1}
-        pearling
-        withTracks
-        renderThumb={(thumbProps) => {
-          return <div {...thumbProps} className="thumb" />;
-        }}
-        renderTrack={(trackProps) => {
-          return <div {...trackProps} className="track" />;
-        }}
-        onChange={([minVal, maxVal]) => handleChangeMaxMin(minVal, maxVal)}
-        onAfterChange={() => handleUpdateState()}
+        range
+        allowCross={false}
+        value={state.value}
+        onChange={handleChangeMaxMin}
       />
-      <div className="values-wrapper">
-        <p>
-          Min:
-          <span>{min}</span>
-        </p>
-        <p>
-          Max:
-          <span>{max}</span>
-        </p>
-      </div>
     </div>
   );
 }
-
-export default Slider;

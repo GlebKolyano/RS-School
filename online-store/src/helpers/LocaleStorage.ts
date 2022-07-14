@@ -19,6 +19,13 @@ export default class LocaleStorage {
     return this.exists(fieldName) ? (JSON.parse(storedItem as string) as StoragePropType) : null;
   }
 
+  remove(fieldName: string) {
+    const computedName = this.addPrefixForFieldName(fieldName);
+    if (this.exists(fieldName)) {
+      localStorage.removeItem(computedName);
+    }
+  }
+
   exists(fieldName: string) {
     return !!localStorage.getItem(this.addPrefixForFieldName(fieldName));
   }

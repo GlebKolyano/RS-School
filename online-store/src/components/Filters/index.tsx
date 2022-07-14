@@ -2,6 +2,7 @@ import React from 'react';
 import FilterBySearch from './FilterBySearch';
 import FilterByRange from './FiltersByRange';
 import FiltersByValue from './FiltersByValue';
+import Reset from './Reset';
 import Sort from './Sort';
 import './style.css';
 
@@ -13,6 +14,7 @@ function Filters() {
       <Sort />
       <FiltersByValue />
       <FilterByRange />
+      <Reset />
     </div>
   );
 }

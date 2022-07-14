@@ -54,10 +54,23 @@ export const filterByValue = createSlice({
       const stateVar = state;
       stateVar.filterByPopular = !stateVar.filterByPopular;
       Storage.set('filterByValueSettings', state);
+    },
+    updateStateFiltersByValue: (state) => {
+      const stateVar = state;
+      stateVar.filterByColor = [];
+      stateVar.filterByCompany = [];
+      stateVar.filterByType = [];
+      stateVar.filterByPopular = false;
+      Storage.set('filterByValueSettings', stateVar);
     }
   }
 });
 
-export const { setFilterByCompany, setfilterByType, setfilterByColor, setfilterByPopular } =
-  filterByValue.actions;
+export const {
+  setFilterByCompany,
+  setfilterByType,
+  setfilterByColor,
+  setfilterByPopular,
+  updateStateFiltersByValue
+} = filterByValue.actions;
 export const filterByValueReducer = filterByValue.reducer;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export type CheckboxProps = {
   value: string;
@@ -9,10 +9,6 @@ export type CheckboxProps = {
 
 export function Checkbox({ value, name, onChange, state = [] }: CheckboxProps) {
   const isCheckedBox = state !== null ? state.includes(value) : false;
-  const [isChecked, setIsChecked] = useState(isCheckedBox);
-  const checkHandler = () => {
-    setIsChecked(!isChecked);
-  };
 
   return (
     <li>
@@ -23,9 +19,8 @@ export function Checkbox({ value, name, onChange, state = [] }: CheckboxProps) {
           type="checkbox"
           name={name}
           value={value}
-          checked={isChecked}
+          checked={isCheckedBox}
           onChange={(e) => {
-            checkHandler();
             onChange(e.target);
           }}
         />

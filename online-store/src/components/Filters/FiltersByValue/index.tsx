@@ -16,8 +16,8 @@ function FiltersByValue() {
   const dispatch = useAppDispatch();
 
   const handleChangeCompany = (target: HTMLInputElement) => {
-    const { value: companyName } = target;
-    dispatch(setFilterByCompany(companyName));
+    const { value: company } = target;
+    dispatch(setFilterByCompany(company));
   };
 
   const handleChangeColor = (target: HTMLInputElement) => {
