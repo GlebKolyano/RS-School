@@ -18,9 +18,13 @@ export const searchSlice = createSlice({
       const stateVar = state;
       stateVar.searchValue = action.payload;
       Storage.set('filterBySearchSettings', action.payload);
+    },
+    updateStateFilterBySearch: (state) => {
+      const stateVar = state;
+      stateVar.searchValue = '';
     }
   }
 });
 
-export const { setSearch } = searchSlice.actions;
+export const { setSearch, updateStateFilterBySearch } = searchSlice.actions;
 export const searchReducer = searchSlice.reducer;

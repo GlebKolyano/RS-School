@@ -2,6 +2,7 @@ import React from 'react';
 import LocaleStorage from '../../../helpers/LocaleStorage';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import { updateStateFiltersByRange } from '../../../store/reducers/filterByRange.slice';
+import { updateStateFilterBySearch } from '../../../store/reducers/filterBySearch.slice';
 import { updateStateFiltersByValue } from '../../../store/reducers/filterByValue.slice';
 import { fieldNamesForRestFilters } from './constants';
 
@@ -13,6 +14,7 @@ function Reset() {
     fieldNamesForRestFilters.forEach((fieldName) => {
       dispatch(updateStateFiltersByRange());
       dispatch(updateStateFiltersByValue());
+      dispatch(updateStateFilterBySearch());
       Storage.remove(fieldName);
     });
   };
