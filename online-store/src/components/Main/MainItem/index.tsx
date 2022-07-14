@@ -4,6 +4,8 @@ import { FaCartPlus } from 'react-icons/fa';
 import { IBicycle } from '../../../models/models';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { toggleItemToCart } from '../../../store/reducers/cart.slice';
+import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../constants/constants';
+import { changeModalState } from '../../../store/reducers/modal.slice';
 
 function MainItem({ item }: { item: IBicycle }) {
   const dispatch = useAppDispatch();
@@ -13,7 +15,11 @@ function MainItem({ item }: { item: IBicycle }) {
 
   const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>, product: IBicycle) => {
     event.preventDefault();
-    dispatch(toggleItemToCart(product.id));
+    if (!itemsInCart.includes(product.id) && itemsInCart.length === MAX_ITEMS_IN_CART) {
+      dispatch(changeModalState(ID_MODAL_CART));
+    } else {
+      dispatch(toggleItemToCart(product.id));
+    }
   };
 
   return (

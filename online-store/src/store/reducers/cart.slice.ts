@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { MAX_ITEMS_IN_CART } from '../../constants/constants';
 import LocaleStorage from '../../helpers/LocaleStorage';
 import { getCartItemsFromStore } from './helpers';
 
@@ -19,7 +20,7 @@ const cartSlice = createSlice({
       if (itemsInCart.includes(id)) {
         const indexOfId = itemsInCart.indexOf(id);
         itemsInCart.splice(indexOfId, 1);
-      } else {
+      } else if (itemsInCart.length < MAX_ITEMS_IN_CART) {
         itemsInCart.push(id);
       }
       Storage.set('cartItems', itemsInCart);
