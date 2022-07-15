@@ -6,5 +6,20 @@
 }
 
 .search__input {
+  position: relative;
   color: white;
+}
+.search__clear {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  color: white;
+  right: 0;
+  bottom: 10px;
+}
+.search__clear:hover {
+  color: rgb(154, 218, 193);
+}
+.active {
+  display: block;
 }

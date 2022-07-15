@@ -22,6 +22,13 @@ function FilterBySearch() {
             autoFocus
             autoComplete="off"
           />
+          <button
+            type="button"
+            className={searchValue.length ? 'search__clear active' : 'search__clear'}
+            onClick={() => dispatch(setSearch(''))}
+          >
+            <i className="material-icons">clear</i>
+          </button>
         </label>
       </div>
     </div>
