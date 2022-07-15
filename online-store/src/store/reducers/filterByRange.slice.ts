@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getMinMaxValues } from '../../helpers/helpers';
-import LocaleStorage from '../../helpers/LocaleStorage';
+import LocaleStorage from '../../global/helpers/LocalStorage';
 import { FilterByRangePayload, IFilterByRangeSlice } from '../../models/models';
-import { getFiltersByRangeFromStore } from './helpers';
+import { getFiltersByRangeFromStore, getMinMaxValuesForRangeSlider } from './helpers';
 
 const Storage = new LocaleStorage();
 const { storeRangePrice, storeRangeQuantity } = getFiltersByRangeFromStore();
-const minMaxValues = getMinMaxValues();
+const minMaxValues = getMinMaxValuesForRangeSlider();
 const { maxPrice, minPrice, maxQuantity, minQuantity } = minMaxValues;
 const defaultValueQuantity = { min: minQuantity, max: maxQuantity };
 const defaultValuePrice = { min: minPrice, max: maxPrice };

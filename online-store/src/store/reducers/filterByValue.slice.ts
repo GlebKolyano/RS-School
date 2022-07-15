@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import LocaleStorage from '../../helpers/LocaleStorage';
+import LocaleStorage from '../../global/helpers/LocalStorage';
 import { IFilterByValueSlice } from '../../models/models';
 import { getFiltersByValueFromStore } from './helpers';
 

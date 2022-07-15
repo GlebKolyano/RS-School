@@ -2,12 +2,12 @@ import React from 'react';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import { FilterByRangePayload } from '../../../models/models';
 import { setfilterByPrice, setfilterByQuantity } from '../../../store/reducers/filterByRange.slice';
+import { getMinMaxValuesForRangeSlider } from '../../../store/reducers/helpers';
 import Slider from '../../UI/Slider';
-import { getMinMaxValues } from '../../../helpers/helpers';
 
 function FilterByRange() {
   const dispatch = useAppDispatch();
-  const minMaxValues = getMinMaxValues();
+  const minMaxValues = getMinMaxValuesForRangeSlider();
 
   const handleChangePrice = (vl: FilterByRangePayload) => {
     dispatch(setfilterByPrice(vl));

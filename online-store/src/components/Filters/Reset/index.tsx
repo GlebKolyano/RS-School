@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import LocaleStorage from '../../../helpers/LocaleStorage';
+import LocaleStorage from '../../../global/helpers/LocalStorage';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import { updateStateFiltersByRange } from '../../../store/reducers/filterByRange.slice';
 import { updateStateFilterBySearch } from '../../../store/reducers/filterBySearch.slice';

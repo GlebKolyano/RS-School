@@ -1,7 +1,24 @@
-import LocaleStorage from '../../helpers/LocaleStorage';
+import LocaleStorage from '../../global/helpers/LocalStorage';
 import { IFilterByRangeSlice, IFilterByValueSlice } from '../../models/models';
+import DATA from '../../data/data';
 
 const Storage = new LocaleStorage();
+
+export function getMinMaxValuesForRangeSlider() {
+  const bicycles = DATA;
+  const minQuantity = bicycles.reduce(
+    (res, item) => (res > item.quantity ? item.quantity : res),
+    Infinity
+  );
+  const maxQuantity = bicycles.reduce(
+    (res, item) => (res < item.quantity ? item.quantity : res),
+    0
+  );
+  const minPrice = bicycles.reduce((res, item) => (res > item.price ? item.price : res), Infinity);
+  const maxPrice = bicycles.reduce((res, item) => (res < item.price ? item.price : res), 0);
+
+  return { minQuantity, maxQuantity, minPrice, maxPrice };
+}
 
 export function getFiltersByValueFromStore() {
   const storeFilters = Storage.get('filterByValueSettings') as IFilterByValueSlice;
