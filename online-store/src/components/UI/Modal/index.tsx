@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './style.css';
+import './style.scss';
 import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { changeModalState, registerModal } from '../../../store/reducers/modal.slice';
@@ -18,7 +18,7 @@ function Modal(props: Props) {
 
   useEffect(() => {
     dispatch(registerModal(id));
-  }, []);
+  }, [dispatch, id]);
 
   useEffect(() => {
     const newState = modalsID[id];

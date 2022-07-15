@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.scss';
 import { FaCartPlus } from 'react-icons/fa';
 import { IBicycle } from '../../../models/models';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
@@ -23,20 +23,40 @@ function MainItem({ item }: { item: IBicycle }) {
   };
 
   return (
-    <div className={isItemInCart ? 'item item_inCart' : 'item'}>
-      <button type="button" className="item__cart" onClick={(e) => handleAddItemToCart(e, item)}>
+    <div className="item">
+      <button
+        type="button"
+        className={isItemInCart ? 'item__button-cart item_inCart' : 'item__button-cart'}
+        onClick={(e) => handleAddItemToCart(e, item)}
+      >
         <FaCartPlus />
       </button>
       <img className="item__image" src={image} alt="img" />
       <ul className="cl.item__info">
-        <li>Название: {name}</li>
-        <li>Брэнд: {brand}</li>
-        <li>Цвет: {color}</li>
-        <li>Количество скоростей: {speeds} </li>
-        <li>Количество: {quantity} </li>
-        <li>Вес: {weight} </li>
-        <li>Цена: {price}₽ </li>
-        <li>Популярный: {isPopular ? 'да' : 'нет'}</li>
+        <li>
+          <strong>Название:</strong> {name}
+        </li>
+        <li>
+          <strong>Брэнд:</strong> {brand}
+        </li>
+        <li>
+          <strong>Цвет:</strong> {color}
+        </li>
+        <li>
+          <strong>Количество скоростей:</strong> {speeds}{' '}
+        </li>
+        <li>
+          <strong>Количество:</strong> {quantity}{' '}
+        </li>
+        <li>
+          <strong>Вес:</strong> {weight}{' '}
+        </li>
+        <li>
+          <strong>Цена:</strong> {price}₽{' '}
+        </li>
+        <li>
+          <strong>Популярный:</strong> {isPopular ? 'да' : 'нет'}
+        </li>
       </ul>
     </div>
   );

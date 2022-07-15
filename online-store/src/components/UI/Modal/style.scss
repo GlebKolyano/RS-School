@@ -1,0 +1,30 @@
+.modal {
+  display: block;
+  z-index: 100;
+  width: 80%;
+  max-width: 460px;
+  height: fit-content;
+  color: rgb(41, 38, 38);
+  top: 0;
+  bottom: 0;
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    column-gap: 1rem;
+    row-gap: 1rem;
+  }
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}

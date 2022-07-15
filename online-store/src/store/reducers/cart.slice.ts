@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { MAX_ITEMS_IN_CART } from '../../constants/constants';
 import LocaleStorage from '../../global/helpers/LocalStorage';
-import { getCartItemsFromStore } from './helpers';
+import { getCartItemsFromStore } from './utils';
 
 const Storage = new LocaleStorage();
 const cartStore = getCartItemsFromStore();

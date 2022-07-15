@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../global/helpers/LocalStorage';
 import { ISearchSlice } from '../../models/models';
-import { getSearchFilterFromStore } from './helpers';
+import { getSearchFilterFromStore } from './utils';
 
 const Storage = new LocaleStorage();
 const searchStore = getSearchFilterFromStore();

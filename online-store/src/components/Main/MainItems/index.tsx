@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.scss';
 import { v4 as uuidv4 } from 'uuid';
 import MainItem from '../MainItem';
 import { IBicycle } from '../../../models/models';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
-import './style.css';
+import './style.scss';
 import { FilterByRangePayload } from '../../../models/models';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
@@ -41,9 +41,8 @@ export default function RangeSlider(props: SliderProps) {
 
   return (
     <div>
-      <span>LowerBound: {state.value[0]}</span>
-      <br />
-      <span>UpperBound: {state.value[1]}</span>
+      <span>от {state.value[0]} | </span>
+      <span>до {state.value[1]}</span>
       <br />
       <Slider
         defaultValue={(filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl)}

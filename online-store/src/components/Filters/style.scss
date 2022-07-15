@@ -9,15 +9,11 @@
   padding: 1rem 0.5rem;
   column-gap: 1rem;
   row-gap: 1.6rem;
-}
 
-@media screen and (max-width: 985px) {
-  .filters {
+  @media screen and (max-width: 985px) {
     max-width: 25%;
   }
-}
-@media screen and (max-width: 825px) {
-  .filters {
+  @media screen and (max-width: 825px) {
     max-width: 30%;
   }
 }

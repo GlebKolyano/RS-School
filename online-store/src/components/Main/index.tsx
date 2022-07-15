@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './style.css';
+import './style.scss';
 import Filters from '../Filters';
 import MainItems from './MainItems';
 import Loader from '../UI/Loader';

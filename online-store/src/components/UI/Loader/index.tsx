@@ -1,6 +1,5 @@
 import React from 'react';
-import './style.css';
-import 'materialize-css';
+import './style.scss';
 
 function Loader() {
   return (

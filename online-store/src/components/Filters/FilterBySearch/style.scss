@@ -1,0 +1,28 @@
+.search {
+  display: block;
+  position: relative;
+  height: 70px;
+  margin: 0;
+
+  &__input {
+    position: relative;
+    color: white;
+  }
+  
+  &__clear {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    color: white;
+    right: 0;
+    bottom: 10px;
+  }
+
+  &__clear:hover {
+    color: rgb(154, 218, 193);
+  }
+}
+
+.active {
+  display: block;
+}
