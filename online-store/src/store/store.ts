@@ -6,6 +6,7 @@ import { filterByValueReducer } from './reducers/filterByValue.slice';
 import { filterByRangeReducer } from './reducers/filterByRange.slice';
 import { cartReducer } from './reducers/cart.slice';
 import { modalReducer } from './reducers/modal.slice';
+import { IStoreInitialState } from '../models/models';
 
 export const rootReducer = combineReducers({
   bicycleReducer,
@@ -17,8 +18,17 @@ export const rootReducer = combineReducers({
   modalReducer
 });
 
-export function setupStore() {
+export function setupStore(initialState: IStoreInitialState) {
   return configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    preloadedState: {
+      filterByRangeReducer: initialState.filterByRangeReducer,
+      filterByValueReducer: initialState.filterByValueReducer,
+      bicycleReducer: initialState.bicycleReducer,
+      modalReducer: initialState.modalReducer,
+      sortReducer: initialState.sortReducer,
+      searchReducer: initialState.searchReducer,
+      cartReducer: initialState.cartReducer
+    }
   });
 }

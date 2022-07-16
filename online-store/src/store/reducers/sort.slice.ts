@@ -3,10 +3,9 @@ import LocaleStorage from '../../global/helpers/LocalStorage';
 import { ISortInitialState } from '../../models/models';
 
 const Storage = new LocaleStorage();
-const sortOptionValue = Storage.get('sortSettings');
 
 const initialState: ISortInitialState = {
-  sortOption: (sortOptionValue as string) || 'name_asc'
+  sortOption: 'name_asc'
 };
 
 export const sortSlice = createSlice({

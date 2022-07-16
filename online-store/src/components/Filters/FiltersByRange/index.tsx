@@ -2,7 +2,7 @@ import React from 'react';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import { FilterByRangePayload } from '../../../models/models';
 import { setfilterByPrice, setfilterByQuantity } from '../../../store/reducers/filterByRange.slice';
-import { getMinMaxValuesForRangeSlider } from '../../../store/reducers/helpers';
+import { getMinMaxValuesForRangeSlider } from '../../../store/helpers';
 import Slider from '../../UI/Slider';
 
 function FilterByRange() {

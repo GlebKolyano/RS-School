@@ -1,16 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../global/helpers/LocalStorage';
 import { IFilterByValueInitialState } from '../../models/models';
-import { getFiltersByValueFromStore } from './helpers';
 
 const Storage = new LocaleStorage();
-const { storeColors, storeCompanies, storeTypes, storePopular } = getFiltersByValueFromStore();
 
 const initialState: IFilterByValueInitialState = {
-  filterByCompany: storeCompanies || [],
-  filterByType: storeTypes || [],
-  filterByColor: storeColors || [],
-  filterByPopular: storePopular || false
+  filterByCompany: [],
+  filterByType: [],
+  filterByColor: [],
+  filterByPopular: false
 };
 
 export const filterByValue = createSlice({

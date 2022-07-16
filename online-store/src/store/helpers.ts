@@ -1,6 +1,6 @@
-import LocaleStorage from '../../global/helpers/LocalStorage';
-import { IFilterByRangeInitialState, IFilterByValueInitialState } from '../../models/models';
-import DATA from '../../data/data';
+import LocaleStorage from '../global/helpers/LocalStorage';
+import { IFilterByRangeInitialState, IFilterByValueInitialState } from '../models/models';
+import DATA from '../data/data';
 
 const Storage = new LocaleStorage();
 
