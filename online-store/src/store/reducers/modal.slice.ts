@@ -1,14 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IModalInitialState } from '../../models/models';
 
-type ModalObjType = {
-  [id: string]: boolean;
-};
-
-interface IModalSlice {
-  modalsID: ModalObjType;
-}
-
-const initialState: IModalSlice = {
+const initialState: IModalInitialState = {
   modalsID: {}
 };
 

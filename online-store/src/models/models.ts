@@ -26,15 +26,15 @@ export enum SortOptions {
   quantity_desc = 'quantity_desc'
 }
 
-export interface ISearchSlice {
+export interface ISearchInitialState {
   searchValue: string;
 }
 
-export interface ISortSlice {
+export interface ISortInitialState {
   sortOption: string;
 }
 
-export interface IFilterByValueSlice {
+export interface IFilterByValueInitialState {
   filterByCompany: string[];
   filterByType: string[];
   filterByColor: string[];
@@ -45,27 +45,51 @@ export type FilterByRangePayload = {
   min: number;
   max: number;
 };
-export interface IFilterByRangeSlice {
+export interface IFilterByRangeInitialState {
   filterByQuantity: FilterByRangePayload;
   filterByPrice: FilterByRangePayload;
 }
 
 export interface IStorageFilters {
-  filterByValue: IFilterByValueSlice;
-  filterByRange: IFilterByRangeSlice;
-  sort: ISortSlice;
-  search: ISearchSlice;
+  filterByValue: IFilterByValueInitialState;
+  filterByRange: IFilterByRangeInitialState;
+  sort: ISortInitialState;
+  search: ISearchInitialState;
 }
 
 export type StoragePropType =
-  | IFilterByRangeSlice
+  | IFilterByRangeInitialState
   | string
   | string[]
-  | IFilterByValueSlice
+  | IFilterByValueInitialState
   | IBicycle[]
   | number[];
+
 export type StorageReturnType = StoragePropType | null;
 
-export interface ICartSlice {
-  itemsInCart: IBicycle[];
+export interface ICartInitialState {
+  itemsInCart: number[];
+}
+export interface IBicycleInitialState {
+  bicycles: IBicycle[];
+  isLoading: boolean;
+  error: string;
+}
+
+type ModalObjType = {
+  [id: string]: boolean;
+};
+
+export interface IModalInitialState {
+  modalsID: ModalObjType;
+}
+
+export interface IStoreInitialState {
+  filterByRangeReducer: IFilterByRangeInitialState;
+  filterByValueReducer: IFilterByValueInitialState;
+  bicycleReducer: IBicycleInitialState;
+  cartReducer: ICartInitialState;
+  modalReducer: IModalInitialState;
+  searchReducer: ISearchInitialState;
+  sortReducer: ISortInitialState;
 }

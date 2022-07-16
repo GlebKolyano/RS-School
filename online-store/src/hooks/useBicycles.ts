@@ -1,12 +1,17 @@
 import { useMemo } from 'react';
-import { IBicycle, IFilterByRangeSlice, IFilterByValueSlice, SortOptions } from '../models/models';
+import {
+  IBicycle,
+  IFilterByRangeInitialState,
+  IFilterByValueInitialState,
+  SortOptions
+} from '../models/models';
 
 export const useBicycles = (
   data: IBicycle[],
   searchValue: string,
   sortOption: string,
-  filtersByValue: IFilterByValueSlice,
-  filtersByRange: IFilterByRangeSlice
+  filtersByValue: IFilterByValueInitialState,
+  filtersByRange: IFilterByRangeInitialState
 ) => {
   let filteredBicycles = data;
   // search

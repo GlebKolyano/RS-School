@@ -1,5 +1,5 @@
 import LocaleStorage from '../../global/helpers/LocalStorage';
-import { IFilterByRangeSlice, IFilterByValueSlice } from '../../models/models';
+import { IFilterByRangeInitialState, IFilterByValueInitialState } from '../../models/models';
 import DATA from '../../data/data';
 
 const Storage = new LocaleStorage();
@@ -21,7 +21,7 @@ export function getMinMaxValuesForRangeSlider() {
 }
 
 export function getFiltersByValueFromStore() {
-  const storeFilters = Storage.get('filterByValueSettings') as IFilterByValueSlice;
+  const storeFilters = Storage.get('filterByValueSettings') as IFilterByValueInitialState;
 
   let storeTypes;
   if (storeFilters) {
@@ -55,7 +55,7 @@ export function getSearchFilterFromStore() {
 }
 
 export function getFiltersByRangeFromStore() {
-  const storeFilters = Storage.get('filterByRangeSettings') as IFilterByRangeSlice;
+  const storeFilters = Storage.get('filterByRangeSettings') as IFilterByRangeInitialState;
 
   let storeRangePrice;
   if (storeFilters) {

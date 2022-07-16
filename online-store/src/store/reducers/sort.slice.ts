@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../global/helpers/LocalStorage';
-import { ISortSlice } from '../../models/models';
+import { ISortInitialState } from '../../models/models';
 
 const Storage = new LocaleStorage();
 const sortOptionValue = Storage.get('sortSettings');
 
-const initialState: ISortSlice = {
+const initialState: ISortInitialState = {
   sortOption: (sortOptionValue as string) || 'name_asc'
 };
 
