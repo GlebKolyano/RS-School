@@ -1,31 +1,20 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
+import { screen } from '@testing-library/react';
 import Filters from '.';
 import { renderWithRedux } from '../../tests/helpers/renderWithRedux';
-import { IStoreInitialState } from '../../models/models';
-
-const FakeInitialState: IStoreInitialState = {
-  bicycleReducer: { bicycles: [], error: '', isLoading: false },
-  cartReducer: { itemsInCart: [] },
-  filterByRangeReducer: {
-    filterByPrice: { min: 0, max: 100 },
-    filterByQuantity: { min: 0, max: 100 }
-  },
-  filterByValueReducer: {
-    filterByColor: [],
-    filterByCompany: [],
-    filterByPopular: false,
-    filterByType: []
-  },
-  modalReducer: { modalsID: {} },
-  searchReducer: { searchValue: '' },
-  sortReducer: { sortOption: '' }
-};
+import { FakeInitialState } from '../../tests/contatns';
 
 describe('filters', () => {
-  describe('correctly renders', () => {
-    test('iteself', () => {
-      renderWithRedux(<Filters />, FakeInitialState);
-    });
+  test('renders itself', () => {
+    renderWithRedux(<Filters />, FakeInitialState);
+    const filtersElem = screen.getByTestId('filters');
+    expect(filtersElem).toBeInTheDocument();
+  });
+
+  test('filters snapshot', () => {
+    renderWithRedux(<Filters />, FakeInitialState);
+    const filtersElem = screen.getByTestId('filters');
+    expect(filtersElem).toMatchSnapshot();
   });
 });
