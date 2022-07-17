@@ -1,17 +1,18 @@
 import React from 'react';
 
-export type CheckboxProps = {
+type CheckboxProps = {
   value: string;
   name: string;
   onChange: (target: HTMLInputElement) => void;
   state?: string[];
 };
 
-export function Checkbox({ value, name, onChange, state = [] }: CheckboxProps) {
-  const isCheckedBox = state !== null ? state.includes(value) : false;
+export function Checkbox(props: CheckboxProps) {
+  const { value, name, onChange, state = [] } = props;
+  const isCheckedBox = state ? state.includes(value) : false;
 
   return (
-    <li>
+    <li data-testid="checkbox">
       <label htmlFor={value}>
         <input
           className="filled-in"
