@@ -7,7 +7,7 @@ import Modals from './components/Modals';
 
 function App() {
   return (
-    <div className="app">
+    <div className="app" data-testid="app">
       <Header />
       <Modals />
       <Main />
