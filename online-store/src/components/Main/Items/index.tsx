@@ -1,15 +1,22 @@
 import React from 'react';
 import './style.scss';
 import { v4 as uuidv4 } from 'uuid';
-import MainItem from '../MainItem';
-import { IBicycle } from '../../../models/models';
+import Item from '../Item';
+import { IBicycle } from '../../../global/models';
 import Error from '../../UI/Error';
 
-function MainItems({ bicycles, isLoading }: { bicycles: IBicycle[]; isLoading: boolean }) {
+type Props = {
+  bicycles: IBicycle[];
+  isLoading: boolean;
+};
+
+function Items(props: Props) {
+  const { bicycles, isLoading } = props;
+
   return (
-    <div className="main__items">
+    <div className="items" data-testid="items">
       {bicycles.map((item) => {
-        return <MainItem item={item} key={uuidv4()} />;
+        return <Item item={item} key={uuidv4()} />;
       })}
       {!bicycles.length && !isLoading && (
         <Error iconName="sentiment_very_dissatisfied" text="Ничего не найдено!" />
@@ -18,4 +25,4 @@ function MainItems({ bicycles, isLoading }: { bicycles: IBicycle[]; isLoading: b
   );
 }
 
-export default MainItems;
+export default Items;

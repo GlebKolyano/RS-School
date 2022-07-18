@@ -1,39 +1,25 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import Filters from '../Filters';
-import MainItems from './MainItems';
-import Loader from '../UI/Loader';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { getBicycles } from '../../store/actions/bicycleSliceAction';
 import { useBicycles } from '../../hooks/useBicycles';
+import { getBicycles } from '../../store/actions/bicycleSliceAction';
+import Filters from '../Filters';
+import Items from './Items';
+import Loader from '../UI/Loader';
+import Error from '../UI/Error';
 
 function Main() {
   const dispatch = useAppDispatch();
   const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
-  const { searchValue } = useAppSelector((state) => state.searchReducer);
-  const { sortOption } = useAppSelector((state) => state.sortReducer);
-  const filtersByValue = useAppSelector((state) => state.filterByValueReducer);
-  const filtersByRange = useAppSelector((state) => state.filterByRangeReducer);
 
   useEffect(() => dispatch(getBicycles()), [dispatch]);
-
-  const filterBySearchBicycles = useBicycles(
-    bicycles,
-    searchValue,
-    sortOption,
-    filtersByValue,
-    filtersByRange
-  );
+  const filteredBicycles = useBicycles(bicycles);
 
   return (
-    <div className="main">
+    <div className="main" data-testid="main">
       <Filters />
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <MainItems bicycles={filterBySearchBicycles} isLoading={isLoading} />
-      )}
-      {error && <h1>{error}</h1>}
+      {isLoading ? <Loader /> : <Items bicycles={filteredBicycles} isLoading={isLoading} />}
+      {error && <Error iconName="sentiment_very_dissatisfied" text={error} />}
     </div>
   );
 }

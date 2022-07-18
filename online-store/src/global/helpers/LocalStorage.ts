@@ -1,5 +1,5 @@
-import { StoragePropType, StorageReturnType } from '../../models/models';
-import { localStoragePrefix } from '../constants/constants';
+import { StoragePropType, StorageReturnType } from '../models';
+import { localStoragePrefix } from '../constants';
 
 export default class LocaleStorage {
   constructor(private prefix = localStoragePrefix) {}

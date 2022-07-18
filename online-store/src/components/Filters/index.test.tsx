@@ -11,10 +11,4 @@ describe('filters', () => {
     const filtersElem = screen.getByTestId('filters');
     expect(filtersElem).toBeInTheDocument();
   });
-
-  test('filters snapshot', () => {
-    renderWithRedux(<Filters />, FakeInitialState);
-    const filtersElem = screen.getByTestId('filters');
-    expect(filtersElem).toMatchSnapshot();
-  });
 });

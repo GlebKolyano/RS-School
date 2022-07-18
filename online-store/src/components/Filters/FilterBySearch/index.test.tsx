@@ -15,16 +15,18 @@ describe('filterBySearch', () => {
 
   test('correctly works search input event', () => {
     renderWithRedux(<FilterBySearch />, FakeInitialState);
-    const searchInput = screen.getByPlaceholderText(/Поиск/);
+    const searchInput = screen.getByRole('textbox');
     expect(searchInput).toHaveTextContent('');
-    const inputTextByUser = 'some text';
+
+    const inputTextByUser = 'text';
     userEvent.type(searchInput, inputTextByUser);
-    expect(screen.getByPlaceholderText(/Поиск/)).toContainHTML(inputTextByUser);
+
+    expect(screen.getByRole('textbox')).toContainHTML(inputTextByUser);
   });
 
   test('correctly works clearing of input when button is clicked', () => {
     renderWithRedux(<FilterBySearch />, FakeInitialState);
-    const searchInput = screen.getByPlaceholderText(/Поиск/);
+    const searchInput = screen.getByRole('textbox');
     const button = screen.getByRole('button');
     const inputTextByUser = 'some text';
 
@@ -34,12 +36,12 @@ describe('filterBySearch', () => {
     userEvent.type(searchInput, inputTextByUser);
     userEvent.click(button);
 
-    expect(screen.getByPlaceholderText(/Поиск/)).toContainHTML('');
+    expect(screen.getByRole('textbox')).toContainHTML('');
   });
 
   test('on loading page the input is focused', () => {
     renderWithRedux(<FilterBySearch />, FakeInitialState);
-    const searchInput = screen.getByPlaceholderText(/Поиск/);
+    const searchInput = screen.getByRole('textbox');
     expect(searchInput).toHaveFocus();
   });
 });

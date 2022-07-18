@@ -1,5 +1,5 @@
 import LocaleStorage from '../global/helpers/LocalStorage';
-import { IStoreInitialState } from '../models/models';
+import { IStoreInitialState } from '../global/models';
 import {
   getCartItemsFromStore,
   getFiltersByRangeFromStore,
@@ -15,7 +15,6 @@ const searchStore = getSearchFilterFromStore();
 const { storeRangePrice, storeRangeQuantity } = getFiltersByRangeFromStore();
 const minMaxValues = getMinMaxValuesForRangeSlider();
 const { storeColors, storeCompanies, storeTypes, storePopular } = getFiltersByValueFromStore();
-
 const { maxPrice, minPrice, maxQuantity, minQuantity } = minMaxValues;
 
 export const defaultValueQuantity = { min: minQuantity, max: maxQuantity };

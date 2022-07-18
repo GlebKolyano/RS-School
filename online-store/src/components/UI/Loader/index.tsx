@@ -3,7 +3,7 @@ import './style.scss';
 
 function Loader() {
   return (
-    <div className="progress">
+    <div className="progress" data-testid="loader">
       <div className="indeterminate" />
     </div>
   );

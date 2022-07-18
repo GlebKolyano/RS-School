@@ -12,7 +12,7 @@ function Error(props: Props) {
   const iconClassName = `material-icons error__icon ${iconPosition}`;
 
   return (
-    <div className="error">
+    <div className="error" data-testid="error">
       <span className="error__text">
         <i className={iconClassName}>{iconName}</i>
         {text}

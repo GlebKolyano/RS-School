@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IModalInitialState } from '../../models/models';
+import { IModalInitialState } from '../../global/models';
 
 const initialState: IModalInitialState = {
   modalsID: {}

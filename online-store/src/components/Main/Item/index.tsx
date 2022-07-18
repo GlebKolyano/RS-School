@@ -1,13 +1,18 @@
 import React from 'react';
 import './style.scss';
 import { FaCartPlus } from 'react-icons/fa';
-import { IBicycle } from '../../../models/models';
+import { IBicycle } from '../../../global/models';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { toggleItemToCart } from '../../../store/reducers/cart.slice';
-import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../constants/constants';
 import { changeModalState } from '../../../store/reducers/modal.slice';
+import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../global/constants';
 
-function MainItem({ item }: { item: IBicycle }) {
+/** Item
+ * TODO: refactor genearion item
+ *
+ */
+
+function Item({ item }: { item: IBicycle }) {
   const dispatch = useAppDispatch();
   const { brand, name, speeds, weight, quantity, color, price, isPopular, image } = item;
   const { itemsInCart } = useAppSelector((state) => state.cartReducer);
@@ -15,6 +20,8 @@ function MainItem({ item }: { item: IBicycle }) {
 
   const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>, product: IBicycle) => {
     event.preventDefault();
+
+    // visibility modal
     if (!itemsInCart.includes(product.id) && itemsInCart.length === MAX_ITEMS_IN_CART) {
       dispatch(changeModalState(ID_MODAL_CART));
     } else {
@@ -23,15 +30,18 @@ function MainItem({ item }: { item: IBicycle }) {
   };
 
   return (
-    <div className="item">
+    <div className="item" data-testid="item">
       <button
         type="button"
-        className={isItemInCart ? 'item__button-cart item_inCart' : 'item__button-cart'}
+        className={
+          isItemInCart ? 'item__button-cart item__button-cart_active' : 'item__button-cart'
+        }
+        data-testid="item-button"
         onClick={(e) => handleAddItemToCart(e, item)}
       >
         <FaCartPlus />
       </button>
-      <img className="item__image" src={image} alt="img" />
+      <img className="item__image" src={image} alt="bicycle" />
       <ul className="cl.item__info">
         <li>
           <strong>Название:</strong> {name}
@@ -62,4 +72,4 @@ function MainItem({ item }: { item: IBicycle }) {
   );
 }
 
-export default MainItem;
+export default Item;

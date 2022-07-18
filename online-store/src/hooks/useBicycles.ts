@@ -1,25 +1,27 @@
 import { useMemo } from 'react';
-import {
-  IBicycle,
-  IFilterByRangeInitialState,
-  IFilterByValueInitialState,
-  SortOptions
-} from '../models/models';
+import { IBicycle, SortOptions } from '../global/models';
+import { useAppSelector } from './reduxHooks';
 
-export const useBicycles = (
-  data: IBicycle[],
-  searchValue: string,
-  sortOption: string,
-  filtersByValue: IFilterByValueInitialState,
-  filtersByRange: IFilterByRangeInitialState
-) => {
-  let filteredBicycles = data;
+/** useBicycles
+ *
+ * TODO: refactor every useMemo -- create separate functions
+ *
+ */
+
+export const useBicycles = (bicycles: IBicycle[]) => {
+  const { searchValue } = useAppSelector((state) => state.searchReducer);
+  const { sortOption } = useAppSelector((state) => state.sortReducer);
+  const filtersByValue = useAppSelector((state) => state.filterByValueReducer);
+  const filtersByRange = useAppSelector((state) => state.filterByRangeReducer);
+
+  let filteredBicycles = bicycles;
+
   // search
   filteredBicycles = useMemo(() => {
-    return data.filter((item) => {
+    return bicycles.filter((item) => {
       return item.name.toLowerCase().includes(searchValue.toLowerCase());
     });
-  }, [searchValue, data]);
+  }, [searchValue, bicycles]);
 
   // sorting
   filteredBicycles = useMemo(() => {

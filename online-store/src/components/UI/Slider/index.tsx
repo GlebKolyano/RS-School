@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './style.scss';
-import { FilterByRangePayload } from '../../../models/models';
+import { FilterByRangePayload } from '../../../global/models';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
 type SliderProps = {
@@ -10,12 +10,14 @@ type SliderProps = {
   maxVl: number;
   onChange: (value: FilterByRangePayload) => void;
   name: 'filterByPrice' | 'filterByQuantity';
+  label: string;
 };
 
 export default function RangeSlider(props: SliderProps) {
-  const { minVl, maxVl, onChange, name } = props;
+  const { minVl, maxVl, onChange, name, label } = props;
   const filters = useAppSelector((s) => s.filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
+
   const [state, setState] = useState({
     value: [filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl]
   });
@@ -40,7 +42,8 @@ export default function RangeSlider(props: SliderProps) {
   }, [filtersBySomeCategory]);
 
   return (
-    <div>
+    <div data-testid="slider">
+      <p>{label}</p>
       <span>от {state.value[0]} | </span>
       <span>до {state.value[1]}</span>
       <br />

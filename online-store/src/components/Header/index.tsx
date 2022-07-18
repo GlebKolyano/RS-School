@@ -4,13 +4,12 @@ import './style.scss';
 
 function Header() {
   return (
-    <div className="header">
+    <header className="header" data-testid="header">
       <a href="./">
-        {/* <FaBicycle className="header__logo" /> */}
-        <img src="./images/logo/logo-site.png" alt="logo of site" className="header__logo" />
+        <img src="./images/logo/logo-site.png" alt="website logo" className="header__logo" />
       </a>
       <Cart />
-    </div>
+    </header>
   );
 }
 

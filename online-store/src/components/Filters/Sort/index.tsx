@@ -3,6 +3,10 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { setSort } from '../../../store/reducers/sort.slice';
 import { options } from './constants';
 
+/** Sort
+ * TODO: refactor select & option -- create components for them
+ */
+
 function Sort() {
   const { sortOption } = useAppSelector((state) => state.sortReducer);
   const dispatch = useAppDispatch();
@@ -12,19 +16,21 @@ function Sort() {
   }
 
   return (
-    <select
-      className="browser-default"
-      onChange={(e) => changeSortOption(e.target.value)}
-      defaultValue={sortOption}
-    >
-      {options.map((option) => {
-        return (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        );
-      })}
-    </select>
+    <div data-testid="sort">
+      <select
+        className="browser-default"
+        onChange={(e) => changeSortOption(e.target.value)}
+        defaultValue={sortOption}
+      >
+        {options.map((option) => {
+          return (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          );
+        })}
+      </select>
+    </div>
   );
 }
 

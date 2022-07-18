@@ -1,39 +1,39 @@
 import React from 'react';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
-import { FilterByRangePayload } from '../../../models/models';
+import { FilterByRangePayload } from '../../../global/models';
 import { setfilterByPrice, setfilterByQuantity } from '../../../store/reducers/filterByRange.slice';
 import { getMinMaxValuesForRangeSlider } from '../../../store/helpers';
 import Slider from '../../UI/Slider';
 
-function FilterByRange() {
+function FiltersByRange() {
   const dispatch = useAppDispatch();
   const minMaxValues = getMinMaxValuesForRangeSlider();
 
-  const handleChangePrice = (vl: FilterByRangePayload) => {
-    dispatch(setfilterByPrice(vl));
+  const handleChangePrice = (priceValue: FilterByRangePayload) => {
+    dispatch(setfilterByPrice(priceValue));
   };
 
-  const handleChangeQuantity = (vl: FilterByRangePayload) => {
-    dispatch(setfilterByQuantity(vl));
+  const handleChangeQuantity = (quantityValue: FilterByRangePayload) => {
+    dispatch(setfilterByQuantity(quantityValue));
   };
   return (
-    <div>
-      <p>Количество на складе:</p>
+    <div data-testid="filter-by-range">
       <Slider
         minVl={minMaxValues.minQuantity}
         maxVl={minMaxValues.maxQuantity}
         onChange={handleChangeQuantity}
         name="filterByQuantity"
+        label="Количество на складе:"
       />
-      <p>По цене:</p>
       <Slider
         minVl={minMaxValues.minPrice}
         maxVl={minMaxValues.maxPrice}
         onChange={handleChangePrice}
         name="filterByPrice"
+        label="По цене:"
       />
     </div>
   );
 }
 
-export default FilterByRange;
+export default FiltersByRange;

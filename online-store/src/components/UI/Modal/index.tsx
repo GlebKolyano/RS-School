@@ -12,8 +12,8 @@ type Props = {
 
 function Modal(props: Props) {
   const dispatch = useAppDispatch();
-  const { modalsID } = useAppSelector((state) => state.modalReducer);
   const { id, text, title } = props;
+  const { modalsID } = useAppSelector((state) => state.modalReducer);
   const [isModalVisible, setModalVisibility] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function Modal(props: Props) {
   };
 
   return (
-    <div className="modal">
+    <div className="modal" data-testid="modal">
       <div className="modal-content">
         <div className="modal-header">
           <h4 className="modal-header__title">{title}</h4>

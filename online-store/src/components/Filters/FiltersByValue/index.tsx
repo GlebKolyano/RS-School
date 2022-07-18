@@ -8,7 +8,11 @@ import {
   setfilterByPopular,
   setfilterByType
 } from '../../../store/reducers/filterByValue.slice';
-import 'materialize-css';
+
+/** FiltersByValue
+ * TODO: refactor renders --create obj/arr and generate dynamic
+ *
+ */
 
 function FiltersByValue() {
   const { filterByType, filterByPopular, filterByColor, filterByCompany } = useAppSelector(
@@ -35,7 +39,7 @@ function FiltersByValue() {
   };
 
   return (
-    <div>
+    <div data-testid="filter-by-value">
       <div>
         Производитель:
         <ul>

@@ -7,7 +7,6 @@ import { updateStateFilterBySearch } from '../../../store/reducers/filterBySearc
 import { updateStateFiltersByValue } from '../../../store/reducers/filterByValue.slice';
 import Button from '../../UI/Button';
 import { fieldNamesForRestFilters } from './constants';
-// import { Button, Card, Row, Col } from 'react-materialize';
 
 function Reset() {
   const dispatch = useAppDispatch();
@@ -28,7 +27,7 @@ function Reset() {
   };
 
   return (
-    <div className="reset">
+    <div className="reset" data-testid="reset">
       <Button
         onClick={handleResetFilters}
         text="Сбросить фильтры"

@@ -6,7 +6,7 @@ import { filterByValueReducer } from './reducers/filterByValue.slice';
 import { filterByRangeReducer } from './reducers/filterByRange.slice';
 import { cartReducer } from './reducers/cart.slice';
 import { modalReducer } from './reducers/modal.slice';
-import { IStoreInitialState } from '../models/models';
+import { IStoreInitialState } from '../global/models';
 
 export const rootReducer = combineReducers({
   bicycleReducer,

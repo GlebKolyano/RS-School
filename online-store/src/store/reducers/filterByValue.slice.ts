@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../global/helpers/LocalStorage';
-import { IFilterByValueInitialState } from '../../models/models';
+import { IFilterByValueInitialState } from '../../global/models';
 
 const Storage = new LocaleStorage();
 

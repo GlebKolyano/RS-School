@@ -3,7 +3,7 @@ import './style.scss';
 
 function Footer() {
   return (
-    <div className="footer">
+    <footer className="footer" data-testid="footer">
       <div className="footer__info">
         <a href="https://github.com/GlebKolyano" target="_blank" rel="noreferrer">
           Gleb Kolyano
@@ -19,7 +19,7 @@ function Footer() {
           RS School, 2022
         </a>
       </div>
-    </div>
+    </footer>
   );
 }
 
