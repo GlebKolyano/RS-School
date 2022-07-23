@@ -15,10 +15,10 @@ const Sort = () => {
   return (
     <div data-testid="sort">
       <select className="browser-default" onChange={changeSortOption} defaultValue={sortOption}>
-        {options.map((option) => {
+        {options.map(({ label, value }) => {
           return (
-            <option key={option.value} value={option.value}>
-              {option.label}
+            <option key={value} value={value}>
+              {label}
             </option>
           );
         })}

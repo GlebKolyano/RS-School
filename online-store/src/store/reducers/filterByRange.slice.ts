@@ -15,19 +15,19 @@ const filterByRangeSlice = createSlice({
   name: 'range',
   initialState,
   reducers: {
-    setfilterByQuantity: (state, action: PayloadAction<FilterByRangePayload>) => {
-      const stateVar = state;
-      const { filterByQuantity } = stateVar;
-      filterByQuantity.min = action.payload.min;
-      filterByQuantity.max = action.payload.max;
-      Storage.set('filterByRangeSettings', stateVar);
+    setfilterByQuantity: (state, { payload }: PayloadAction<FilterByRangePayload>) => {
+      const { filterByQuantity } = state;
+      const { max, min } = payload;
+      filterByQuantity.min = min;
+      filterByQuantity.max = max;
+      Storage.set('filterByRangeSettings', state);
     },
-    setfilterByPrice: (state, action: PayloadAction<FilterByRangePayload>) => {
-      const stateVar = state;
-      const { filterByPrice } = stateVar;
-      filterByPrice.min = action.payload.min;
-      filterByPrice.max = action.payload.max;
-      Storage.set('filterByRangeSettings', stateVar);
+    setfilterByPrice: (state, { payload }: PayloadAction<FilterByRangePayload>) => {
+      const { filterByPrice } = state;
+      const { max, min } = payload;
+      filterByPrice.min = min;
+      filterByPrice.max = max;
+      Storage.set('filterByRangeSettings', state);
     },
     updateStateFiltersByRange: (state) => {
       const stateVar = state;

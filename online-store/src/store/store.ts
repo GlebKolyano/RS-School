@@ -18,17 +18,25 @@ export const rootReducer = combineReducers({
   modalReducer
 });
 
-export function setupStore(initialState: IStoreInitialState) {
+export function setupStore({
+  bicycle,
+  cart,
+  filterByRange,
+  filterByValue,
+  modal,
+  search,
+  sort
+}: IStoreInitialState) {
   return configureStore({
     reducer: rootReducer,
     preloadedState: {
-      filterByRangeReducer: initialState.filterByRangeReducer,
-      filterByValueReducer: initialState.filterByValueReducer,
-      bicycleReducer: initialState.bicycleReducer,
-      modalReducer: initialState.modalReducer,
-      sortReducer: initialState.sortReducer,
-      searchReducer: initialState.searchReducer,
-      cartReducer: initialState.cartReducer
+      filterByRangeReducer: filterByRange,
+      filterByValueReducer: filterByValue,
+      bicycleReducer: bicycle,
+      modalReducer: modal,
+      sortReducer: sort,
+      searchReducer: search,
+      cartReducer: cart
     }
   });
 }

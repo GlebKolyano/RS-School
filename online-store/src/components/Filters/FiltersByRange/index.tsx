@@ -7,7 +7,7 @@ import Slider from '../../UI/Slider';
 
 const FiltersByRange = () => {
   const dispatch = useAppDispatch();
-  const minMaxValues = getMinMaxValuesForRangeSlider();
+  const { maxPrice, maxQuantity, minPrice, minQuantity } = getMinMaxValuesForRangeSlider();
 
   const handleChangePrice = (priceValue: FilterByRangePayload) => {
     dispatch(setfilterByPrice(priceValue));
@@ -20,15 +20,15 @@ const FiltersByRange = () => {
   return (
     <div data-testid="filter-by-range">
       <Slider
-        minSliderValue={minMaxValues.minQuantity}
-        maxSliderValue={minMaxValues.maxQuantity}
+        minSliderValue={minQuantity}
+        maxSliderValue={maxQuantity}
         onChange={handleChangeQuantity}
         name="filterByQuantity"
         label="Количество на складе:"
       />
       <Slider
-        minSliderValue={minMaxValues.minPrice}
-        maxSliderValue={minMaxValues.maxPrice}
+        minSliderValue={minPrice}
+        maxSliderValue={maxPrice}
         onChange={handleChangePrice}
         name="filterByPrice"
         label="По цене:"

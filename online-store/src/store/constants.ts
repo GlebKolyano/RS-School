@@ -21,19 +21,19 @@ export const defaultValueQuantity = { min: minQuantity, max: maxQuantity };
 export const defaultValuePrice = { min: minPrice, max: maxPrice };
 
 export const INITIAL_STATE: IStoreInitialState = {
-  bicycleReducer: { bicycles: [], error: '', isLoading: false },
-  cartReducer: { itemsInCart: cartStore || [] },
-  filterByRangeReducer: {
+  bicycle: { bicycles: [], error: '', isLoading: false },
+  cart: { itemsInCart: cartStore || [] },
+  filterByRange: {
     filterByQuantity: storeRangeQuantity || defaultValueQuantity,
     filterByPrice: storeRangePrice || defaultValuePrice
   },
-  filterByValueReducer: {
+  filterByValue: {
     filterByCompany: storeCompanies || [],
     filterByType: storeTypes || [],
     filterByColor: storeColors || [],
     filterByPopular: storePopular || false
   },
-  modalReducer: { modalsID: {} },
-  searchReducer: { searchValue: searchStore || '' },
-  sortReducer: { sortOption: (sortOptionValue as string) || 'name_asc' }
+  modal: { modalsID: {} },
+  search: { searchValue: searchStore || '' },
+  sort: { sortOption: (sortOptionValue as string) || 'name_asc' }
 };

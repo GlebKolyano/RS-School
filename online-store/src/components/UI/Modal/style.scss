@@ -5,10 +5,11 @@
   max-width: 460px;
   height: fit-content;
   color: rgb(41, 38, 38);
+  padding: 1rem;
   top: 0;
   bottom: 0;
 
-  &-content {
+  &__content {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -16,13 +17,13 @@
     row-gap: 1rem;
   }
 
-  &-body {
+  &__body {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  &-footer {
+  &__footer {
     display: flex;
     justify-content: flex-end;
     width: 100%;

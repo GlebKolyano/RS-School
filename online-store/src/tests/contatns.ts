@@ -90,25 +90,25 @@ export const fakeData: IBicycle[] = [
 ];
 
 export const FakeInitialState: IStoreInitialState = {
-  bicycleReducer: {
+  bicycle: {
     bicycles: fakeData,
     error: '',
     isLoading: false
   },
-  cartReducer: { itemsInCart: [] },
-  filterByRangeReducer: {
+  cart: { itemsInCart: [] },
+  filterByRange: {
     filterByPrice: { min: 0, max: 100 },
     filterByQuantity: { min: 0, max: 100 }
   },
-  filterByValueReducer: {
+  filterByValue: {
     filterByColor: [],
     filterByCompany: [],
     filterByPopular: false,
     filterByType: []
   },
-  modalReducer: { modalsID: {} },
-  searchReducer: { searchValue: '' },
-  sortReducer: { sortOption: '' }
+  modal: { modalsID: {} },
+  search: { searchValue: '' },
+  sort: { sortOption: '' }
 };
 
 export const QUANTITY_PRODUCTS = fakeData.length;

@@ -12,10 +12,10 @@ export const searchSlice = createSlice({
   name: 'search',
   initialState,
   reducers: {
-    setSearch: (state, action: PayloadAction<string>) => {
+    setSearch: (state, { payload }: PayloadAction<string>) => {
       const stateVar = state;
-      stateVar.searchValue = action.payload;
-      Storage.set('filterBySearchSettings', action.payload);
+      stateVar.searchValue = payload;
+      Storage.set('filterBySearchSettings', payload);
     },
     updateStateFilterBySearch: (state) => {
       const stateVar = state;
