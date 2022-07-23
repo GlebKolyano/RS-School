@@ -1,17 +1,21 @@
 import React from 'react';
 import './style.scss';
+import { v4 as uuidv4 } from 'uuid';
 import { FaCartPlus } from 'react-icons/fa';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { toggleItemToCart } from '../../../store/reducers/cart.slice';
 import { changeModalState } from '../../../store/reducers/modal.slice';
 import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../global/constants';
 import { ItemProps } from './models';
+import { getParametersItem } from './helpers';
 
 const Item = ({ item }: ItemProps) => {
   const dispatch = useAppDispatch();
-  const { brand, name, speeds, weight, quantity, color, price, isPopular, image } = item;
+  const { image } = item;
   const { itemsInCart } = useAppSelector(({ cartReducer }) => cartReducer);
+
   const isItemInCart = itemsInCart.includes(item.id);
+  const paramsItem = getParametersItem(item);
 
   const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -37,30 +41,13 @@ const Item = ({ item }: ItemProps) => {
       </button>
       <img className="item__image" src={image} alt="bicycle" />
       <ul className="cl.item__info">
-        <li>
-          <strong>Название:</strong> {name}
-        </li>
-        <li>
-          <strong>Брэнд:</strong> {brand}
-        </li>
-        <li>
-          <strong>Цвет:</strong> {color}
-        </li>
-        <li>
-          <strong>Количество скоростей:</strong> {speeds}{' '}
-        </li>
-        <li>
-          <strong>Количество:</strong> {quantity}{' '}
-        </li>
-        <li>
-          <strong>Вес:</strong> {weight}{' '}
-        </li>
-        <li>
-          <strong>Цена:</strong> {price}₽{' '}
-        </li>
-        <li>
-          <strong>Популярный:</strong> {isPopular ? 'да' : 'нет'}
-        </li>
+        {paramsItem.map(({ text, value }) => {
+          return (
+            <li key={uuidv4()}>
+              <strong>{text}:</strong> {value}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
