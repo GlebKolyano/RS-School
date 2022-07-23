@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { colorBicycle, companyBicycle, typeBicycle } from './constants';
 import Checkbox from '../../UI/Checkbox';
@@ -15,18 +15,18 @@ const FiltersByValue = () => {
   );
   const dispatch = useAppDispatch();
 
-  const handleChangeCompany = (target: HTMLInputElement) => {
-    const { value: company } = target;
+  const handleChangeCompany = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: company } = e.target;
     dispatch(setFilterByCompany(company));
   };
 
-  const handleChangeColor = (target: HTMLInputElement) => {
-    const { value: color } = target;
+  const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: color } = e.target;
     dispatch(setfilterByColor(color));
   };
 
-  const handleChangeType = (target: HTMLInputElement) => {
-    const { value: type } = target;
+  const handleChangeType = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: type } = e.target;
     dispatch(setfilterByType(type));
   };
   const handleChangeIsPopular = () => {

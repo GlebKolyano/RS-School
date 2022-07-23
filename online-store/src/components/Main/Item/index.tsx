@@ -13,14 +13,13 @@ const Item = ({ item }: { item: IBicycle }) => {
   const { itemsInCart } = useAppSelector(({ cartReducer }) => cartReducer);
   const isItemInCart = itemsInCart.includes(item.id);
 
-  const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>, product: IBicycle) => {
+  const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-
     // visibility modal
-    if (!itemsInCart.includes(product.id) && itemsInCart.length === MAX_ITEMS_IN_CART) {
+    if (!itemsInCart.includes(item.id) && itemsInCart.length === MAX_ITEMS_IN_CART) {
       dispatch(changeModalState(ID_MODAL_CART));
     } else {
-      dispatch(toggleItemToCart(product.id));
+      dispatch(toggleItemToCart(item.id));
     }
   };
 
@@ -32,7 +31,7 @@ const Item = ({ item }: { item: IBicycle }) => {
           isItemInCart ? 'item__button-cart item__button-cart_active' : 'item__button-cart'
         }
         data-testid="item-button"
-        onClick={(e) => handleAddItemToCart(e, item)}
+        onClick={handleAddItemToCart}
       >
         <FaCartPlus />
       </button>

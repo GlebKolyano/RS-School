@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 type CheckboxProps = {
   value: string;
   name: string;
-  onChange: (target: HTMLInputElement) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   state?: string[];
 };
 
@@ -21,9 +21,7 @@ const Checkbox = (props: CheckboxProps) => {
           name={name}
           value={value}
           checked={isCheckedBox}
-          onChange={(e) => {
-            onChange(e.target);
-          }}
+          onChange={onChange}
         />
         <span>{value}</span>
       </label>
