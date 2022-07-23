@@ -5,7 +5,7 @@ import { setfilterByPrice, setfilterByQuantity } from '../../../store/reducers/f
 import { getMinMaxValuesForRangeSlider } from '../../../store/helpers';
 import Slider from '../../UI/Slider';
 
-function FiltersByRange() {
+const FiltersByRange = () => {
   const dispatch = useAppDispatch();
   const minMaxValues = getMinMaxValuesForRangeSlider();
 
@@ -34,6 +34,6 @@ function FiltersByRange() {
       />
     </div>
   );
-}
+};
 
 export default FiltersByRange;

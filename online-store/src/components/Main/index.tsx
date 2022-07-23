@@ -8,7 +8,7 @@ import Items from './Items';
 import Loader from '../UI/Loader';
 import Error from '../UI/Error';
 
-function Main() {
+const Main = () => {
   const dispatch = useAppDispatch();
   const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
 
@@ -22,6 +22,6 @@ function Main() {
       {error && <Error iconName="sentiment_very_dissatisfied" text={error} />}
     </div>
   );
-}
+};
 
 export default Main;

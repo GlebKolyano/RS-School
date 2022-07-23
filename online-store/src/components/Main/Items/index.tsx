@@ -10,7 +10,7 @@ type Props = {
   isLoading: boolean;
 };
 
-function Items(props: Props) {
+const Items = (props: Props) => {
   const { bicycles, isLoading } = props;
 
   return (
@@ -23,6 +23,6 @@ function Items(props: Props) {
       )}
     </div>
   );
-}
+};
 
 export default Items;

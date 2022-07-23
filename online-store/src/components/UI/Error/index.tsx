@@ -7,7 +7,7 @@ type Props = {
   iconPosition?: 'left' | 'right';
 };
 
-function Error(props: Props) {
+const Error = (props: Props) => {
   const { text, iconName, iconPosition = 'right' } = props;
   const iconClassName = `material-icons error__icon ${iconPosition}`;
 
@@ -19,7 +19,7 @@ function Error(props: Props) {
       </span>
     </div>
   );
-}
+};
 
 export default Error;
 

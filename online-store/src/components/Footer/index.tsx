@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-function Footer() {
+const Footer = () => {
   return (
     <footer className="footer" data-testid="footer">
       <div className="footer__info">
@@ -21,6 +21,6 @@ function Footer() {
       </div>
     </footer>
   );
-}
+};
 
 export default Footer;

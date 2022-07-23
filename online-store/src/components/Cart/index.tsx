@@ -3,7 +3,7 @@ import { FaShoppingBag } from 'react-icons/fa';
 import { useAppSelector } from '../../hooks/reduxHooks';
 import './style.css';
 
-function Cart() {
+const Cart = () => {
   const { itemsInCart } = useAppSelector((state) => state.cartReducer);
   const quantityItemsInCart = itemsInCart.length;
 
@@ -17,6 +17,6 @@ function Cart() {
       </div>
     </div>
   );
-}
+};
 
 export default Cart;

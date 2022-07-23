@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { colorBicycle, companyBicycle, typeBicycle } from './constants';
-import { Checkbox } from '../../UI/Checkbox';
+import Checkbox from '../../UI/Checkbox';
 import {
   setfilterByColor,
   setFilterByCompany,
@@ -9,12 +9,7 @@ import {
   setfilterByType
 } from '../../../store/reducers/filterByValue.slice';
 
-/** FiltersByValue
- * TODO: refactor renders --create obj/arr and generate dynamic
- *
- */
-
-function FiltersByValue() {
+const FiltersByValue = () => {
   const { filterByType, filterByPopular, filterByColor, filterByCompany } = useAppSelector(
     (state) => state.filterByValueReducer
   );
@@ -108,6 +103,6 @@ function FiltersByValue() {
       </div>
     </div>
   );
-}
+};
 
 export default FiltersByValue;

@@ -13,7 +13,7 @@ type SliderProps = {
   label: string;
 };
 
-export default function RangeSlider(props: SliderProps) {
+const RangeSlider = (props: SliderProps) => {
   const { minVl, maxVl, onChange, name, label } = props;
   const filters = useAppSelector((s) => s.filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
@@ -60,4 +60,6 @@ export default function RangeSlider(props: SliderProps) {
       />
     </div>
   );
-}
+};
+
+export default RangeSlider;

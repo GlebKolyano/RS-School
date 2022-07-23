@@ -7,12 +7,7 @@ import { toggleItemToCart } from '../../../store/reducers/cart.slice';
 import { changeModalState } from '../../../store/reducers/modal.slice';
 import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../global/constants';
 
-/** Item
- * TODO: refactor genearion item
- *
- */
-
-function Item({ item }: { item: IBicycle }) {
+const Item = ({ item }: { item: IBicycle }) => {
   const dispatch = useAppDispatch();
   const { brand, name, speeds, weight, quantity, color, price, isPopular, image } = item;
   const { itemsInCart } = useAppSelector((state) => state.cartReducer);
@@ -70,6 +65,6 @@ function Item({ item }: { item: IBicycle }) {
       </ul>
     </div>
   );
-}
+};
 
 export default Item;

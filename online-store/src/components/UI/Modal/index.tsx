@@ -10,7 +10,7 @@ type Props = {
   text: string;
 };
 
-function Modal(props: Props) {
+const Modal = (props: Props) => {
   const dispatch = useAppDispatch();
   const { id, text, title } = props;
   const { modalsID } = useAppSelector((state) => state.modalReducer);
@@ -49,6 +49,6 @@ function Modal(props: Props) {
       </div>
     </div>
   );
-}
+};
 
 export default Modal;

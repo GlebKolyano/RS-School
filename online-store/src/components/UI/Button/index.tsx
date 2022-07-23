@@ -10,7 +10,7 @@ type Props = {
   iconPosition?: 'left' | 'right';
 };
 
-function Button(props: Props) {
+const Button = (props: Props) => {
   const { type, text, onClick, iconName, iconPosition = 'left' } = props;
   const btnClassName = 'waves-effect waves-light btn button';
   const iconClassName = `material-icons ${iconPosition}`;
@@ -25,7 +25,7 @@ function Button(props: Props) {
       {text}
     </button>
   );
-}
+};
 
 export default Button;
 

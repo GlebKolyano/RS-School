@@ -7,7 +7,7 @@ type CheckboxProps = {
   state?: string[];
 };
 
-export function Checkbox(props: CheckboxProps) {
+const Checkbox = (props: CheckboxProps) => {
   const { value, name, onChange, state = [] } = props;
   const isCheckedBox = state ? state.includes(value) : false;
 
@@ -29,8 +29,10 @@ export function Checkbox(props: CheckboxProps) {
       </label>
     </li>
   );
-}
+};
 
 Checkbox.defaultProps = {
   state: []
 };
+
+export default Checkbox;

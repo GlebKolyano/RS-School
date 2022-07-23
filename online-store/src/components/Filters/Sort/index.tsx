@@ -3,11 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { setSort } from '../../../store/reducers/sort.slice';
 import { options } from './constants';
 
-/** Sort
- * TODO: refactor select & option -- create components for them
- */
-
-function Sort() {
+const Sort = () => {
   const { sortOption } = useAppSelector((state) => state.sortReducer);
   const dispatch = useAppDispatch();
 
@@ -32,6 +28,6 @@ function Sort() {
       </select>
     </div>
   );
-}
+};
 
 export default Sort;

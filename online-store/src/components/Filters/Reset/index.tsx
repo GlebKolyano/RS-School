@@ -8,7 +8,7 @@ import { updateStateFiltersByValue } from '../../../store/reducers/filterByValue
 import Button from '../../UI/Button';
 import { fieldNamesForRestFilters } from './constants';
 
-function Reset() {
+const Reset = () => {
   const dispatch = useAppDispatch();
   const Storage = new LocaleStorage();
 
@@ -42,6 +42,6 @@ function Reset() {
       />
     </div>
   );
-}
+};
 
 export default Reset;

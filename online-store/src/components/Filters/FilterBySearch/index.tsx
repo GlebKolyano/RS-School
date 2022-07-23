@@ -3,7 +3,7 @@ import './style.scss';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { setSearch } from '../../../store/reducers/filterBySearch.slice';
 
-function FilterBySearch() {
+const FilterBySearch = () => {
   const dispatch = useAppDispatch();
   const { searchValue } = useAppSelector((state) => state.searchReducer);
 
@@ -31,6 +31,6 @@ function FilterBySearch() {
       </label>
     </div>
   );
-}
+};
 
 export default FilterBySearch;
