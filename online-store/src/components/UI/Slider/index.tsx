@@ -2,16 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './style.scss';
-import { FilterByRangePayload } from '../../../global/models';
 import { useAppSelector } from '../../../hooks/reduxHooks';
-
-type SliderProps = {
-  minSliderValue: number;
-  maxSliderValue: number;
-  onChange: (value: FilterByRangePayload) => void;
-  name: 'filterByPrice' | 'filterByQuantity';
-  label: string;
-};
+import { SliderProps } from './models';
 
 const RangeSlider = (props: SliderProps) => {
   const { minSliderValue, maxSliderValue, onChange, name, label } = props;

@@ -1,11 +1,5 @@
-import React, { ChangeEvent } from 'react';
-
-type CheckboxProps = {
-  value: string;
-  name: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  state?: string[];
-};
+import React from 'react';
+import { CheckboxProps } from './models';
 
 const Checkbox = (props: CheckboxProps) => {
   const { value, name, onChange, state = [] } = props;

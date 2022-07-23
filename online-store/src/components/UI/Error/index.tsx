@@ -1,13 +1,8 @@
 import React from 'react';
+import { ErrorProps } from './models';
 import './style.scss';
 
-type Props = {
-  text: string;
-  iconName?: string;
-  iconPosition?: 'left' | 'right';
-};
-
-const Error = (props: Props) => {
+const Error = (props: ErrorProps) => {
   const { text, iconName, iconPosition = 'right' } = props;
   const iconClassName = `material-icons error__icon ${iconPosition}`;
 

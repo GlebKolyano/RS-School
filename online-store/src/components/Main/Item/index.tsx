@@ -1,13 +1,13 @@
 import React from 'react';
 import './style.scss';
 import { FaCartPlus } from 'react-icons/fa';
-import { IBicycle } from '../../../global/models';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { toggleItemToCart } from '../../../store/reducers/cart.slice';
 import { changeModalState } from '../../../store/reducers/modal.slice';
 import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../global/constants';
+import { ItemProps } from './models';
 
-const Item = ({ item }: { item: IBicycle }) => {
+const Item = ({ item }: ItemProps) => {
   const dispatch = useAppDispatch();
   const { brand, name, speeds, weight, quantity, color, price, isPopular, image } = item;
   const { itemsInCart } = useAppSelector(({ cartReducer }) => cartReducer);

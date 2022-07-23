@@ -1,16 +1,11 @@
 import React from 'react';
 import './style.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { ItemsProps } from './models';
 import Item from '../Item';
-import { IBicycle } from '../../../global/models';
 import Error from '../../UI/Error';
 
-type Props = {
-  bicycles: IBicycle[];
-  isLoading: boolean;
-};
-
-const Items = (props: Props) => {
+const Items = (props: ItemsProps) => {
   const { bicycles, isLoading } = props;
 
   return (

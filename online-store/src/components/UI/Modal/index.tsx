@@ -3,14 +3,9 @@ import './style.scss';
 import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { changeModalState, registerModal } from '../../../store/reducers/modal.slice';
+import { ModalProps } from './models';
 
-type Props = {
-  id: string;
-  title: string;
-  text: string;
-};
-
-const Modal = (props: Props) => {
+const Modal = (props: ModalProps) => {
   const dispatch = useAppDispatch();
   const { id, text, title } = props;
   const { modalsID } = useAppSelector(({ modalReducer }) => modalReducer);
