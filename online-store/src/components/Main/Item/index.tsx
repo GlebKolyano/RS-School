@@ -10,7 +10,7 @@ import { ID_MODAL_CART, MAX_ITEMS_IN_CART } from '../../../global/constants';
 const Item = ({ item }: { item: IBicycle }) => {
   const dispatch = useAppDispatch();
   const { brand, name, speeds, weight, quantity, color, price, isPopular, image } = item;
-  const { itemsInCart } = useAppSelector((state) => state.cartReducer);
+  const { itemsInCart } = useAppSelector(({ cartReducer }) => cartReducer);
   const isItemInCart = itemsInCart.includes(item.id);
 
   const handleAddItemToCart = (event: React.MouseEvent<HTMLButtonElement>, product: IBicycle) => {

@@ -13,7 +13,7 @@ type Props = {
 const Modal = (props: Props) => {
   const dispatch = useAppDispatch();
   const { id, text, title } = props;
-  const { modalsID } = useAppSelector((state) => state.modalReducer);
+  const { modalsID } = useAppSelector(({ modalReducer }) => modalReducer);
   const [isModalVisible, setModalVisibility] = useState(false);
 
   useEffect(() => {

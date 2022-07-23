@@ -11,7 +11,7 @@ import {
 
 const FiltersByValue = () => {
   const { filterByType, filterByPopular, filterByColor, filterByCompany } = useAppSelector(
-    (state) => state.filterByValueReducer
+    ({ filterByValueReducer }) => filterByValueReducer
   );
   const dispatch = useAppDispatch();
 

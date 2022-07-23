@@ -5,7 +5,7 @@ import { setSearch } from '../../../store/reducers/filterBySearch.slice';
 
 const FilterBySearch = () => {
   const dispatch = useAppDispatch();
-  const { searchValue } = useAppSelector((state) => state.searchReducer);
+  const { searchValue } = useAppSelector(({ searchReducer }) => searchReducer);
 
   return (
     <div className="input-field search" data-testid="filter-by-search">

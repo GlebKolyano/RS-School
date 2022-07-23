@@ -9,10 +9,10 @@ import { useAppSelector } from './reduxHooks';
  */
 
 export const useBicycles = (bicycles: IBicycle[]) => {
-  const { searchValue } = useAppSelector((state) => state.searchReducer);
-  const { sortOption } = useAppSelector((state) => state.sortReducer);
-  const filtersByValue = useAppSelector((state) => state.filterByValueReducer);
-  const filtersByRange = useAppSelector((state) => state.filterByRangeReducer);
+  const { searchValue } = useAppSelector(({ searchReducer }) => searchReducer);
+  const { sortOption } = useAppSelector(({ sortReducer }) => sortReducer);
+  const filtersByValue = useAppSelector(({ filterByValueReducer }) => filterByValueReducer);
+  const filtersByRange = useAppSelector(({ filterByRangeReducer }) => filterByRangeReducer);
 
   let filteredBicycles = bicycles;
 

@@ -10,7 +10,7 @@ import Error from '../UI/Error';
 
 const Main = () => {
   const dispatch = useAppDispatch();
-  const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
+  const { bicycles, isLoading, error } = useAppSelector(({ bicycleReducer }) => bicycleReducer);
 
   useEffect(() => dispatch(getBicycles()), [dispatch]);
   const filteredBicycles = useBicycles(bicycles);

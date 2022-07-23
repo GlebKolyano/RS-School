@@ -4,7 +4,7 @@ import { setSort } from '../../../store/reducers/sort.slice';
 import { options } from './constants';
 
 const Sort = () => {
-  const { sortOption } = useAppSelector((state) => state.sortReducer);
+  const { sortOption } = useAppSelector(({ sortReducer }) => sortReducer);
   const dispatch = useAppDispatch();
 
   function changeSortOption(value: string) {

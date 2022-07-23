@@ -15,7 +15,7 @@ type SliderProps = {
 
 const RangeSlider = (props: SliderProps) => {
   const { minVl, maxVl, onChange, name, label } = props;
-  const filters = useAppSelector((s) => s.filterByRangeReducer);
+  const filters = useAppSelector(({ filterByRangeReducer }) => filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
 
   const [state, setState] = useState({
