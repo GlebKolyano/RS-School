@@ -38,12 +38,12 @@ const FiltersByValue = () => {
       <div>
         Производитель:
         <ul>
-          {companyBicycle.map((item) => {
+          {companyBicycle.map(({ company, nameCheckbox }) => {
             return (
               <Checkbox
-                key={item}
-                name="companyBicycle"
-                value={item}
+                key={company}
+                name={nameCheckbox}
+                value={company}
                 onChange={handleChangeCompany}
                 state={filterByCompany}
               />
@@ -54,12 +54,12 @@ const FiltersByValue = () => {
       <div>
         Тип велосипеда:
         <ul>
-          {typeBicycle.map((item) => {
+          {typeBicycle.map(({ type, nameCheckbox }) => {
             return (
               <Checkbox
-                key={item}
-                name="typeBicycle"
-                value={item}
+                key={type}
+                name={nameCheckbox}
+                value={type}
                 onChange={handleChangeType}
                 state={filterByType}
               />
@@ -70,12 +70,12 @@ const FiltersByValue = () => {
       <div>
         Цвет:
         <ul>
-          {colorBicycle.map((item) => {
+          {colorBicycle.map(({ color, nameCheckbox }) => {
             return (
               <Checkbox
-                key={item}
-                name="colorBicycle"
-                value={item}
+                key={color}
+                name={nameCheckbox}
+                value={color}
                 onChange={handleChangeColor}
                 state={filterByColor}
               />

@@ -6,7 +6,11 @@ import { updateStateFiltersByRange } from '../../../store/reducers/filterByRange
 import { updateStateFilterBySearch } from '../../../store/reducers/filterBySearch.slice';
 import { updateStateFiltersByValue } from '../../../store/reducers/filterByValue.slice';
 import Button from '../../UI/Button';
-import { fieldNamesForRestFilters } from './constants';
+import {
+  fieldNamesForRestFilters,
+  FILTERS_RESET_BTN_TEXT,
+  SETTINGS_RESET_BTN_TEXT
+} from './constants';
 
 const Reset = () => {
   const dispatch = useAppDispatch();
@@ -30,13 +34,13 @@ const Reset = () => {
     <div className="reset" data-testid="reset">
       <Button
         onClick={handleResetFilters}
-        text="Сбросить фильтры"
+        text={FILTERS_RESET_BTN_TEXT}
         type="button"
         iconName="filter_list"
       />
       <Button
         onClick={handleResetSettings}
-        text="Сбросить настройки"
+        text={SETTINGS_RESET_BTN_TEXT}
         type="button"
         iconName="settings"
       />

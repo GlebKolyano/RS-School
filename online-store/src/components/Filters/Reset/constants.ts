@@ -3,3 +3,6 @@ export const fieldNamesForRestFilters = [
   'filterByValueSettings',
   'filterBySearchSettings'
 ];
+
+export const SETTINGS_RESET_BTN_TEXT = 'Сбросить настройки';
+export const FILTERS_RESET_BTN_TEXT = 'Сбросить фильтры';

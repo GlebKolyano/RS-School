@@ -4,6 +4,7 @@ import { FilterByRangePayload } from '../../../global/models';
 import { setfilterByPrice, setfilterByQuantity } from '../../../store/reducers/filterByRange.slice';
 import { getMinMaxValuesForRangeSlider } from '../../../store/helpers';
 import Slider from '../../UI/Slider';
+import { BY_PRICE_LABEL, BY_QUANTITY_LABEL } from './constants';
 
 const FiltersByRange = () => {
   const dispatch = useAppDispatch();
@@ -24,14 +25,14 @@ const FiltersByRange = () => {
         maxSliderValue={maxQuantity}
         onChange={handleChangeQuantity}
         name="filterByQuantity"
-        label="Количество на складе:"
+        label={BY_QUANTITY_LABEL}
       />
       <Slider
         minSliderValue={minPrice}
         maxSliderValue={maxPrice}
         onChange={handleChangePrice}
         name="filterByPrice"
-        label="По цене:"
+        label={BY_PRICE_LABEL}
       />
     </div>
   );
