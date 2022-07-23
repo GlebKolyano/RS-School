@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../global/helpers/LocalStorage';
 import { ISearchInitialState } from '../../global/models';
 
-const Storage = new LocaleStorage();
-
 const initialState: ISearchInitialState = {
   searchValue: ''
 };
@@ -15,7 +13,7 @@ export const searchSlice = createSlice({
     setSearch: (state, { payload }: PayloadAction<string>) => {
       const stateVar = state;
       stateVar.searchValue = payload;
-      Storage.set('filterBySearchSettings', payload);
+      LocaleStorage.set('filterBySearchSettings', payload);
     },
     updateStateFilterBySearch: (state) => {
       const stateVar = state;

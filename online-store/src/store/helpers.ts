@@ -2,8 +2,6 @@ import LocaleStorage from '../global/helpers/LocalStorage';
 import { IFilterByRangeInitialState, IFilterByValueInitialState } from '../global/models';
 import DATA from '../data/data';
 
-const Storage = new LocaleStorage();
-
 export function getMinMaxValuesForRangeSlider() {
   const bicycles = DATA;
   const minQuantity = bicycles.reduce(
@@ -21,7 +19,7 @@ export function getMinMaxValuesForRangeSlider() {
 }
 
 export function getFiltersByValueFromStore() {
-  const storeFilters = Storage.get('filterByValueSettings') as IFilterByValueInitialState;
+  const storeFilters = LocaleStorage.get('filterByValueSettings') as IFilterByValueInitialState;
 
   let storeTypes;
   if (storeFilters) {
@@ -49,13 +47,13 @@ export function getFiltersByValueFromStore() {
 }
 
 export function getSearchFilterFromStore() {
-  const storeFilters = Storage.get('filterBySearchSettings');
+  const storeFilters = LocaleStorage.get('filterBySearchSettings');
 
   return storeFilters ? (storeFilters as string) : null;
 }
 
 export function getFiltersByRangeFromStore() {
-  const storeFilters = Storage.get('filterByRangeSettings') as IFilterByRangeInitialState;
+  const storeFilters = LocaleStorage.get('filterByRangeSettings') as IFilterByRangeInitialState;
 
   let storeRangePrice;
   if (storeFilters) {
@@ -73,6 +71,6 @@ export function getFiltersByRangeFromStore() {
 }
 
 export function getCartItemsFromStore() {
-  const storeFilters = Storage.get('cartItems') as number[];
+  const storeFilters = LocaleStorage.get('cartItems') as number[];
   return storeFilters;
 }

@@ -14,19 +14,18 @@ import {
 
 const Reset = () => {
   const dispatch = useAppDispatch();
-  const Storage = new LocaleStorage();
 
   const handleResetFilters = () => {
     fieldNamesForRestFilters.forEach((fieldName) => {
       dispatch(updateStateFiltersByRange());
       dispatch(updateStateFiltersByValue());
       dispatch(updateStateFilterBySearch());
-      Storage.remove(fieldName);
+      LocaleStorage.remove(fieldName);
     });
   };
 
   const handleResetSettings = () => {
-    Storage.clear();
+    LocaleStorage.clear();
     window.location.reload();
   };
 

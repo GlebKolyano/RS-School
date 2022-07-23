@@ -8,8 +8,7 @@ import {
   getSearchFilterFromStore
 } from './helpers';
 
-const Storage = new LocaleStorage();
-const sortOptionValue = Storage.get('sortSettings');
+const sortOptionValue = LocaleStorage.get('sortSettings');
 const cartStore = getCartItemsFromStore();
 const searchStore = getSearchFilterFromStore();
 const { storeRangePrice, storeRangeQuantity } = getFiltersByRangeFromStore();

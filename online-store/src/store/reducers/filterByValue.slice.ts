@@ -2,8 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import LocaleStorage from '../../global/helpers/LocalStorage';
 import { IFilterByValueInitialState } from '../../global/models';
 
-const Storage = new LocaleStorage();
-
 const initialState: IFilterByValueInitialState = {
   filterByCompany: [],
   filterByType: [],
@@ -26,7 +24,7 @@ export const filterByValue = createSlice({
         filterByCompany.push(payload);
       }
 
-      Storage.set('filterByValueSettings', state);
+      LocaleStorage.set('filterByValueSettings', state);
     },
     setfilterByType: (state, { payload }: PayloadAction<string>) => {
       const { filterByType } = state;
@@ -39,7 +37,7 @@ export const filterByValue = createSlice({
         filterByType.push(payload);
       }
 
-      Storage.set('filterByValueSettings', state);
+      LocaleStorage.set('filterByValueSettings', state);
     },
     setfilterByColor: (state, { payload }: PayloadAction<string>) => {
       const { filterByColor } = state;
@@ -52,12 +50,12 @@ export const filterByValue = createSlice({
         filterByColor.push(payload);
       }
 
-      Storage.set('filterByValueSettings', state);
+      LocaleStorage.set('filterByValueSettings', state);
     },
     setfilterByPopular: (state) => {
       const stateVar = state;
       stateVar.filterByPopular = !stateVar.filterByPopular;
-      Storage.set('filterByValueSettings', state);
+      LocaleStorage.set('filterByValueSettings', state);
     },
     updateStateFiltersByValue: (state) => {
       const stateVar = state;
@@ -65,7 +63,7 @@ export const filterByValue = createSlice({
       stateVar.filterByCompany = [];
       stateVar.filterByType = [];
       stateVar.filterByPopular = false;
-      Storage.set('filterByValueSettings', stateVar);
+      LocaleStorage.set('filterByValueSettings', stateVar);
     }
   }
 });

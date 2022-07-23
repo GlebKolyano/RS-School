@@ -4,8 +4,6 @@ import LocaleStorage from '../../global/helpers/LocalStorage';
 import { FilterByRangePayload, IFilterByRangeInitialState } from '../../global/models';
 import { defaultValuePrice, defaultValueQuantity } from '../constants';
 
-const Storage = new LocaleStorage();
-
 const initialState: IFilterByRangeInitialState = {
   filterByQuantity: defaultValueQuantity,
   filterByPrice: defaultValuePrice
@@ -20,20 +18,20 @@ const filterByRangeSlice = createSlice({
       const { max, min } = payload;
       filterByQuantity.min = min;
       filterByQuantity.max = max;
-      Storage.set('filterByRangeSettings', state);
+      LocaleStorage.set('filterByRangeSettings', state);
     },
     setfilterByPrice: (state, { payload }: PayloadAction<FilterByRangePayload>) => {
       const { filterByPrice } = state;
       const { max, min } = payload;
       filterByPrice.min = min;
       filterByPrice.max = max;
-      Storage.set('filterByRangeSettings', state);
+      LocaleStorage.set('filterByRangeSettings', state);
     },
     updateStateFiltersByRange: (state) => {
       const stateVar = state;
       stateVar.filterByPrice = defaultValuePrice;
       stateVar.filterByQuantity = defaultValueQuantity;
-      Storage.set('filterByRangeSettings', stateVar);
+      LocaleStorage.set('filterByRangeSettings', stateVar);
     }
   }
 });
