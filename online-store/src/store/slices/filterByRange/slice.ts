@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import LocaleStorage from '../../global/helpers/LocalStorage';
-import { FilterByRangePayload, IFilterByRangeInitialState } from '../../global/models';
-import { defaultValuePrice, defaultValueQuantity } from '../constants';
+import LocaleStorage from '../../../global/helpers/LocalStorage';
+import { FilterByRangePayload, IFilterByRangeInitialState } from '../../../global/models';
+import { defaultValuePrice, defaultValueQuantity } from '../../constants';
 
 const initialState: IFilterByRangeInitialState = {
   filterByQuantity: defaultValueQuantity,

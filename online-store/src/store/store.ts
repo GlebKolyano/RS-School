@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { bicycleReducer } from './reducers/bicycle.slice';
-import { searchReducer } from './reducers/filterBySearch.slice';
-import { sortReducer } from './reducers/sort.slice';
-import { filterByValueReducer } from './reducers/filterByValue.slice';
-import { filterByRangeReducer } from './reducers/filterByRange.slice';
-import { cartReducer } from './reducers/cart.slice';
-import { modalReducer } from './reducers/modal.slice';
+import { bicycleReducer } from './slices/bicycle/slice';
+import { searchReducer } from './slices/filterBySearch/slice';
+import { sortReducer } from './slices/sort/slice';
+import { filterByValueReducer } from './slices/filterByValue/slice';
+import { filterByRangeReducer } from './slices/filterByRange/slice';
+import { cartReducer } from './slices/cart/slice';
+import { modalReducer } from './slices/modal/slice';
 import { IStoreInitialState } from '../global/models';
 
 export const rootReducer = combineReducers({

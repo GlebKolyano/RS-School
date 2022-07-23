@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { setSort } from '../../../store/reducers/sort.slice';
+import { setSort } from '../../../store/slices/sort/slice';
 import { options } from './constants';
 
 const Sort = () => {

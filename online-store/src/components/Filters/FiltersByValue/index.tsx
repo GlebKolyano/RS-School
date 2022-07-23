@@ -7,7 +7,7 @@ import {
   setFilterByCompany,
   setfilterByPopular,
   setfilterByType
-} from '../../../store/reducers/filterByValue.slice';
+} from '../../../store/slices/filterByValue/slice';
 
 const FiltersByValue = () => {
   const { filterByType, filterByPopular, filterByColor, filterByCompany } = useAppSelector(

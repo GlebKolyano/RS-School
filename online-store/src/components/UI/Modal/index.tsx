@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { changeModalState, registerModal } from '../../../store/reducers/modal.slice';
+import { changeModalState, registerModal } from '../../../store/slices/modal/slice';
 import { ModalProps } from './models';
 
 const Modal = (props: ModalProps) => {

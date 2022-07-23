@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import LocaleStorage from '../../global/helpers/LocalStorage';
-import { ISearchInitialState } from '../../global/models';
+import LocaleStorage from '../../../global/helpers/LocalStorage';
+import { ISearchInitialState } from '../../../global/models';
 
 const initialState: ISearchInitialState = {
   searchValue: ''

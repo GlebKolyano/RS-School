@@ -2,9 +2,9 @@ import React from 'react';
 import './style.scss';
 import LocaleStorage from '../../../global/helpers/LocalStorage';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
-import { updateStateFiltersByRange } from '../../../store/reducers/filterByRange.slice';
-import { updateStateFilterBySearch } from '../../../store/reducers/filterBySearch.slice';
-import { updateStateFiltersByValue } from '../../../store/reducers/filterByValue.slice';
+import { updateStateFiltersByRange } from '../../../store/slices/filterByRange/slice';
+import { updateStateFilterBySearch } from '../../../store/slices/filterBySearch/slice';
+import { updateStateFiltersByValue } from '../../../store/slices/filterByValue/slice';
 import Button from '../../UI/Button';
 import {
   fieldNamesForRestFilters,

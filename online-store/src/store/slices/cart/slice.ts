@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { MAX_ITEMS_IN_CART } from '../../global/constants';
-import LocaleStorage from '../../global/helpers/LocalStorage';
-import { ICartInitialState } from '../../global/models';
+import { MAX_ITEMS_IN_CART } from '../../../global/constants';
+import LocaleStorage from '../../../global/helpers/LocalStorage';
+import { ICartInitialState } from '../../../global/models';
 
 const initialState: ICartInitialState = {
   itemsInCart: []

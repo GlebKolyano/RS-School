@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { setSearch } from '../../../store/reducers/filterBySearch.slice';
+import { setSearch } from '../../../store/slices/filterBySearch/slice';
 
 const FilterBySearch = () => {
   const dispatch = useAppDispatch();

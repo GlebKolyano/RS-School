@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppDispatch } from '../../../hooks/reduxHooks';
 import { FilterByRangePayload } from '../../../global/models';
-import { setfilterByPrice, setfilterByQuantity } from '../../../store/reducers/filterByRange.slice';
+import { setfilterByPrice, setfilterByQuantity } from '../../../store/slices/filterByRange/slice';
 import { getMinMaxValuesForRangeSlider } from '../../../store/helpers';
 import Slider from '../../UI/Slider';
 import { BY_PRICE_LABEL, BY_QUANTITY_LABEL } from './constants';
