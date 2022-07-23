@@ -16,18 +16,19 @@ const FiltersByRange = () => {
   const handleChangeQuantity = (quantityValue: FilterByRangePayload) => {
     dispatch(setfilterByQuantity(quantityValue));
   };
+
   return (
     <div data-testid="filter-by-range">
       <Slider
-        minVl={minMaxValues.minQuantity}
-        maxVl={minMaxValues.maxQuantity}
+        minSliderValue={minMaxValues.minQuantity}
+        maxSliderValue={minMaxValues.maxQuantity}
         onChange={handleChangeQuantity}
         name="filterByQuantity"
         label="Количество на складе:"
       />
       <Slider
-        minVl={minMaxValues.minPrice}
-        maxVl={minMaxValues.maxPrice}
+        minSliderValue={minMaxValues.minPrice}
+        maxSliderValue={minMaxValues.maxPrice}
         onChange={handleChangePrice}
         name="filterByPrice"
         label="По цене:"

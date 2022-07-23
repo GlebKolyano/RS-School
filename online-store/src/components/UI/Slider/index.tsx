@@ -6,20 +6,23 @@ import { FilterByRangePayload } from '../../../global/models';
 import { useAppSelector } from '../../../hooks/reduxHooks';
 
 type SliderProps = {
-  minVl: number;
-  maxVl: number;
+  minSliderValue: number;
+  maxSliderValue: number;
   onChange: (value: FilterByRangePayload) => void;
   name: 'filterByPrice' | 'filterByQuantity';
   label: string;
 };
 
 const RangeSlider = (props: SliderProps) => {
-  const { minVl, maxVl, onChange, name, label } = props;
+  const { minSliderValue, maxSliderValue, onChange, name, label } = props;
   const filters = useAppSelector(({ filterByRangeReducer }) => filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
 
   const [state, setState] = useState({
-    value: [filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl]
+    value: [
+      filtersBySomeCategory.min || minSliderValue,
+      filtersBySomeCategory.max || maxSliderValue
+    ]
   });
 
   const handleChangeStorageValue = (value: number | number[]) => {
@@ -48,9 +51,11 @@ const RangeSlider = (props: SliderProps) => {
       <span>до {state.value[1]}</span>
       <br />
       <Slider
-        defaultValue={(filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl)}
-        min={minVl}
-        max={maxVl}
+        defaultValue={
+          (filtersBySomeCategory.min || minSliderValue, filtersBySomeCategory.max || maxSliderValue)
+        }
+        min={minSliderValue}
+        max={maxSliderValue}
         step={1}
         range
         allowCross={false}
