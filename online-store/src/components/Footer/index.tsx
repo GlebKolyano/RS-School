@@ -1,24 +1,26 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import { footerLinks } from './contants';
 import './style.scss';
 
 const Footer = () => {
   return (
     <footer className="footer" data-testid="footer">
-      <div className="footer__info">
-        <a href="https://github.com/GlebKolyano" target="_blank" rel="noreferrer">
-          Gleb Kolyano
-        </a>
-        <a href="https://rs.school/js/" target="_blank" rel="noreferrer">
-          <img
-            className="footer__logo"
-            src="https://rs.school/images/rs_school_js.svg"
-            alt="logo-rs-school"
-          />
-        </a>
-        <a href="https://rs.school/js/" target="_blank" rel="noreferrer">
-          RS School, 2022
-        </a>
-      </div>
+      <ul className="footer__info">
+        {footerLinks.map(({ children, href, rel, target }) => {
+          return (
+            <li key={uuidv4()}>
+              <a href={href} target={target} rel={rel}>
+                {typeof children === 'string' ? (
+                  children
+                ) : (
+                  <img className={children.className} src={children.src} alt={children.alt} />
+                )}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
     </footer>
   );
 };
