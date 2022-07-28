@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  list-style-type: none;
+  column-gap: 0.5rem;
+  row-gap: 0.5rem;
+
+  &__page {
+    width: 20px;
+    height: 20px;
+    list-style-type: none;
+    cursor: pointer;
+  }
+
+  &__prev {
+    cursor: pointer;
+  }
+
+  &__next {
+    cursor: pointer;
+  }
+}

@@ -3,7 +3,7 @@ import './style.scss';
 import { TCarProps } from './models';
 import { ReactComponent as CarModel } from '../../../assets/car.svg';
 import { useTypedDispatch } from '../../../hooks/reduxHooks';
-import { deleteCar } from '../../../store/slices/cars/thunks';
+import { deleteCar } from '../../../store/slices/cars/slice';
 
 const Car = ({ car }: TCarProps) => {
   const dispatch = useTypedDispatch();

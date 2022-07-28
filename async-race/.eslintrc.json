@@ -28,8 +28,6 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
     "react/function-component-definition": "off",
-    "import/prefer-default-export": "off",
-    "max-lines-per-function": ["error", 40]
-
+    "import/prefer-default-export": "off"
   }
 }
