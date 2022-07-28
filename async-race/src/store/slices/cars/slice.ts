@@ -46,9 +46,31 @@ export const deleteCar = createAsyncThunk(
         throw new Error("You can't delete this car!");
       }
       const total = response.headers.get('x-total-count');
-      dispatch(setTotalCars(Number(total)));
+      return dispatch(setTotalCars(Number(total)));
+    } catch (error) {
+      if (error instanceof Error) return rejectWithValue(error.message);
+      return rejectWithValue(error);
+    }
+  }
+);
 
-      return dispatch(removeCar(id));
+export const createNewCar = createAsyncThunk(
+  'cars/createNewCar',
+  async (car: { name: string; color: string }, { rejectWithValue, dispatch }) => {
+    try {
+      const response = await fetch(GET_CARS_REQUEST, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(car)
+      });
+
+      if (!response.ok) {
+        throw new Error("You can't create this car!");
+      }
+      const total = response.headers.get('x-total-count');
+      return dispatch(setTotalCars(Number(total)));
     } catch (error) {
       if (error instanceof Error) return rejectWithValue(error.message);
       return rejectWithValue(error);
@@ -60,10 +82,6 @@ const carsSlice = createSlice({
   name: 'cars',
   initialState,
   reducers: {
-    removeCar: (state, { payload }: PayloadAction<number>) => {
-      const stateVar = state;
-      stateVar.cars = stateVar.cars.filter((car) => car.id !== payload);
-    },
     setTotalCars: (state, { payload }: PayloadAction<number>) => {
       const stateVar = state;
       stateVar.total = payload;
@@ -89,6 +107,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { removeCar, setTotalCars } = carsSlice.actions;
-
+export const { setTotalCars } = carsSlice.actions;
 export default carsSlice.reducer;
