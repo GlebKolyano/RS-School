@@ -1,46 +1,43 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ICar } from '../../../global/models';
-
-export interface ICarsInitialState {
-  cars: ICar[];
-  status: string;
-  error: null | string;
-}
+import { deleteCar, fetchCars } from './thunks';
+import { setError } from './helpers';
+import { ICarsInitialState } from './models';
 
 const initialState: ICarsInitialState = {
   cars: [],
   status: '',
-  error: null
+  error: ''
 };
-
-export async function http<T>(request: string): Promise<T> {
-  const response = await fetch(request);
-  const data = (await response.json()) as Promise<T>;
-  return data;
-}
-
-export const fetchCars = createAsyncThunk('cars/fetchCars', async () => {
-  const cars = await http<ICar[]>('http://127.0.0.1:3000/garage');
-  return cars;
-});
 
 const carsSlice = createSlice({
   name: 'cars',
   initialState,
-  reducers: {},
+  reducers: {
+    removeCar: (state, { payload }: PayloadAction<number>) => {
+      const stateVar = state;
+      stateVar.cars = stateVar.cars.filter((car) => car.id !== payload);
+    }
+  },
   extraReducers(builder) {
-    builder.addCase(fetchCars.pending, (state, action) => {
+    builder.addCase(fetchCars.pending, (state) => {
       const stateVar = state;
       stateVar.status = 'loading';
-      stateVar.error = null;
+      stateVar.error = '';
     });
-    builder.addCase(fetchCars.fulfilled, (state, action) => {
+    builder.addCase(fetchCars.fulfilled, (state, { payload }: PayloadAction<ICar[]>) => {
       const stateVar = state;
-      stateVar.cars = action.payload;
       stateVar.status = 'resolved';
+      stateVar.cars = payload;
     });
-    builder.addCase(fetchCars.rejected, (state, action) => {});
+    builder.addCase(fetchCars.rejected, (state, { payload }: PayloadAction<unknown | string>) =>
+      setError(state, payload)
+    );
+    builder.addCase(deleteCar.rejected, (state, { payload }: PayloadAction<unknown | string>) =>
+      setError(state, payload)
+    );
   }
 });
 
+export const { removeCar } = carsSlice.actions;
 export default carsSlice.reducer;

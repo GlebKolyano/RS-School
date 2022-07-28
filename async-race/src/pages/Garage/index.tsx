@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import './style.scss';
-import { v4 as uuidv4 } from 'uuid';
-import Car from '../../components/Car';
+
 import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
-import { fetchCars } from '../../store/slices/cars/slice';
+import { fetchCars } from '../../store/slices/cars/thunks';
+import Cars from '../../components/Cars';
+import Error from '../../components/UI/Error';
 
 const Garage = () => {
   const dispatch = useTypedDispatch();
-  const { cars } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { cars, error, status } = useTypedSelector(({ carsReducer }) => carsReducer);
 
   useEffect(() => {
     async function fetchData() {
@@ -27,16 +28,14 @@ const Garage = () => {
   }
 
   return (
-    <div>
-      Garage ({cars.length})
+    <div className="garage">
+      Garage ({cars.length}) / Page (1)
       <button type="button" onClick={handleGetCars}>
         get Cars from server
       </button>
-      <div className="cars">
-        {cars.map((car) => {
-          return <Car key={uuidv4()} car={car} />;
-        })}
-      </div>
+      {status === 'loading' && <p>Идёт загрузка...</p>}
+      {error && <Error text={error} />}
+      <Cars />
     </div>
   );
 };
