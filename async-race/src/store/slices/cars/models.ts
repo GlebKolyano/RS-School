@@ -5,6 +5,7 @@ export interface ICarsInitialState {
   total: number;
   status: string;
   error: string;
+  selectedCar: ICar | null;
 }
 
 export type TFetchCarsProps = {

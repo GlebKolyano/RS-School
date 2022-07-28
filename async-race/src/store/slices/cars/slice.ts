@@ -4,12 +4,15 @@ import { ICar } from '../../../global/models';
 import { setError } from './helpers';
 import { ICarsInitialState, TFetchCarsProps } from './models';
 import { GET_CARS_REQUEST } from './constants';
+// eslint-disable-next-line import/no-cycle
+import { TRootState } from '../../models';
 
 const initialState: ICarsInitialState = {
   cars: [],
   total: 0,
   status: '',
-  error: ''
+  error: '',
+  selectedCar: null
 };
 
 export const fetchCars = createAsyncThunk(
@@ -78,6 +81,41 @@ export const createNewCar = createAsyncThunk(
   }
 );
 
+export const updateParamsCar = createAsyncThunk(
+  'cars/createNewCar',
+  async (
+    { color, name }: { name: string; color: string },
+    { rejectWithValue, dispatch, getState }
+  ) => {
+    try {
+      const { carsReducer } = getState() as TRootState;
+      let { selectedCar } = carsReducer;
+      const { id } = selectedCar as ICar;
+
+      const response = await fetch(`${GET_CARS_REQUEST}${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          color,
+          name
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("You can't create this car!");
+      }
+      const total = response.headers.get('x-total-count');
+      selectedCar = null;
+      return dispatch(setTotalCars(Number(total)));
+    } catch (error) {
+      if (error instanceof Error) return rejectWithValue(error.message);
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const carsSlice = createSlice({
   name: 'cars',
   initialState,
@@ -85,6 +123,10 @@ const carsSlice = createSlice({
     setTotalCars: (state, { payload }: PayloadAction<number>) => {
       const stateVar = state;
       stateVar.total = payload;
+    },
+    selectCar: (state, { payload }: PayloadAction<ICar>) => {
+      const stateVar = state;
+      stateVar.selectedCar = payload;
     }
   },
   extraReducers(builder) {
@@ -107,5 +149,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setTotalCars } = carsSlice.actions;
+export const { setTotalCars, selectCar } = carsSlice.actions;
 export default carsSlice.reducer;

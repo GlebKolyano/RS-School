@@ -3,7 +3,7 @@ import './style.scss';
 import { TCarProps } from './models';
 import { ReactComponent as CarModel } from '../../../assets/car.svg';
 import { useTypedDispatch } from '../../../hooks/reduxHooks';
-import { deleteCar } from '../../../store/slices/cars/slice';
+import { deleteCar, selectCar } from '../../../store/slices/cars/slice';
 
 const Car = ({ car }: TCarProps) => {
   const dispatch = useTypedDispatch();
@@ -16,10 +16,16 @@ const Car = ({ car }: TCarProps) => {
     removeCar().catch(Error);
   };
 
+  const selectCarHandler = () => {
+    dispatch(selectCar(car));
+  };
+
   return (
     <div className="car">
       <div className="car__edit">
-        <button type="button">select</button>
+        <button type="button" onClick={selectCarHandler}>
+          select
+        </button>
         <button type="button" onClick={handleRemoveCar}>
           remove
         </button>
