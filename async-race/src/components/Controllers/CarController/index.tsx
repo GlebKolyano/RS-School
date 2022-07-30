@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ICar } from '../../../global/models';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
 import { createNewCar, updateParamsCar } from '../../../store/slices/cars/slice';
 
@@ -12,8 +13,8 @@ const CarController = () => {
   const [updateCarColor, setUpdateCarColor] = useState('#ffffff');
 
   useEffect(() => {
-    let color;
-    let name;
+    let color = '';
+    let name = '';
     if (selectedCar) {
       color = selectedCar.color;
       name = selectedCar.name;
@@ -58,9 +59,14 @@ const CarController = () => {
   function updateParamsCarHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const createCar = async () => {
-      const newParamsCar = {
+      let carId = 0;
+      if (selectedCar) {
+        carId = selectedCar.id;
+      }
+      const newParamsCar: ICar = {
         color: updateCarColor,
-        name: updateCarName
+        name: updateCarName,
+        id: carId
       };
       await dispatch(updateParamsCar(newParamsCar));
       setIsSelected(false);
@@ -80,7 +86,9 @@ const CarController = () => {
           onChange={(e) => createCarNameHandler(e)}
         />
         <input type="color" value={carColor} onChange={(e) => createCarColorHandler(e)} />
-        <button type="submit">create car</button>
+        <button type="submit" disabled={!carName.length}>
+          create car
+        </button>
       </form>
       <form className="car-controller__update" onSubmit={(e) => updateParamsCarHandler(e)}>
         <input
@@ -92,7 +100,9 @@ const CarController = () => {
           onChange={(e) => updateCarNameHandler(e)}
         />
         <input type="color" value={updateCarColor} onChange={(e) => updateCarColorHandler(e)} />
-        <button type="submit">update car</button>
+        <button type="submit" disabled={!updateCarName.length}>
+          update car
+        </button>
       </form>
     </div>
   );

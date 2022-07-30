@@ -1,1 +1,1 @@
-export const CARS_PER_PAGE = 2;
+export const CARS_PER_PAGE = 7;
