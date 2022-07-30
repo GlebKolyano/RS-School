@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICar } from '../../../global/models';
+import { ICar, URL } from '../../../global/models';
 import { setError } from './helpers';
 import { ICarsInitialState, TFetchCarsProps } from './models';
-import { GET_CARS_REQUEST } from './constants';
 
 const initialState: ICarsInitialState = {
   cars: [],
@@ -17,7 +16,7 @@ export const fetchCars = createAsyncThunk(
   'cars/fetchCars',
   async ({ page = 1, limit = 5 }: TFetchCarsProps, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${GET_CARS_REQUEST}?_page=${page}&_limit=${limit}`);
+      const response = await fetch(`${URL.garage}?_page=${page}&_limit=${limit}`);
 
       if (!response.ok) {
         throw new Error('No cars for loading!');
@@ -39,7 +38,7 @@ export const deleteCar = createAsyncThunk(
   'cars/deleteCar',
   async (id: number, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${GET_CARS_REQUEST}${id}`, {
+      const response = await fetch(`${URL.garage}/${id}`, {
         method: 'DELETE'
       });
 
@@ -59,7 +58,7 @@ export const createNewCar = createAsyncThunk(
   'cars/createNewCar',
   async (car: { name: string; color: string }, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(GET_CARS_REQUEST, {
+      const response = await fetch(URL.garage, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -83,7 +82,7 @@ export const updateParamsCar = createAsyncThunk(
   'cars/createNewCar',
   async ({ color, name, id }: ICar, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${GET_CARS_REQUEST}${id}`, {
+      const response = await fetch(`${URL.garage}/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

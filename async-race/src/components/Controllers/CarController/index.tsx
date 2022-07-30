@@ -54,6 +54,8 @@ const CarController = () => {
       await dispatch(createNewCar(newCar));
     };
     createCar().catch(Error);
+    setCarColor('#ffffff');
+    setCarName('');
   }
 
   function updateParamsCarHandler(e: React.FormEvent<HTMLFormElement>) {
