@@ -1,0 +1,28 @@
+.winners {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__counter {
+  }
+
+  &__table {
+    display: flex;
+    flex-direction: row;
+    max-width: fit-content;
+    &-id {
+    }
+    &-car {
+    }
+    &-wins {
+    }
+    &-time {
+    }
+  }
+}
+
+.column {
+  padding: 0rem 1.4rem;
+  border: 1px solid black;
+  background-color: rgb(211, 250, 151);
+}

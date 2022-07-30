@@ -14,6 +14,15 @@ export interface ICar {
   id: number;
 }
 
+export interface IWinners {
+  winners: IWinner[];
+}
+export interface IWinner {
+  id: number;
+  time: number;
+  wins: number;
+}
+
 export type TNewCarProps = {
   color: string;
   name: string;

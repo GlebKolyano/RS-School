@@ -12,13 +12,14 @@ import {
 import storageSession from 'redux-persist/lib/storage/session';
 import carsReducer from './slices/cars/slice';
 import carsPaginationReducer from './slices/pagination/carsPagination/slice';
+import winnersReducer from './slices/winnners/slice';
 
 const persistConfig = {
   key: '_async-race',
   storage: storageSession
 };
 
-export const rootReducer = combineReducers({ carsReducer, carsPaginationReducer });
+export const rootReducer = combineReducers({ carsReducer, carsPaginationReducer, winnersReducer });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
