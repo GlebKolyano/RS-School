@@ -1,3 +1,5 @@
+export const sessionStoragePrefix = '_async-race';
+
 export const carBrands = [
   'Audi',
   'BMW',

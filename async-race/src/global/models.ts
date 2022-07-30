@@ -18,3 +18,6 @@ export type TNewCarProps = {
   color: string;
   name: string;
 };
+
+export type StoragePropType = string;
+export type StorageReturnType = StoragePropType | null;

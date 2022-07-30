@@ -12,38 +12,44 @@ import { changeCarsPaginationPage } from '../../store/slices/pagination/carsPagi
 const Garage = () => {
   const dispatch = useTypedDispatch();
 
-  const { error, status, total } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPage } = useTypedSelector(({ carsPaginationReducer }) => carsPaginationReducer);
+  const { error, status, totalCars } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { currentPageCarsPagintion } = useTypedSelector(
+    ({ carsPaginationReducer }) => carsPaginationReducer
+  );
   const [pageCountCarsPagination, setPageCountCarsPagination] = useState(1);
 
   useEffect(() => {
-    const setPageCountValue = () => {
-      const result = Math.ceil(total / CARS_PER_PAGE);
-      setPageCountCarsPagination(result);
-    };
-
-    const fetchData = async () => {
-      const props = {
-        page: currentPage,
-        limit: CARS_PER_PAGE
+    function loadCars() {
+      const setPageCountValue = () => {
+        const result = Math.ceil(totalCars / CARS_PER_PAGE);
+        setPageCountCarsPagination(result);
       };
-      await dispatch(fetchCars(props));
-    };
-    fetchData().then(
-      () => {},
-      () => {}
-    );
-    setPageCountValue();
-  }, [dispatch, currentPage, total]);
 
-  const changeCarsPaginationPageHandler = (value: number) =>
-    dispatch(changeCarsPaginationPage(value));
+      const fetchData = async () => {
+        const props = {
+          page: currentPageCarsPagintion,
+          limit: CARS_PER_PAGE
+        };
+        await dispatch(fetchCars(props));
+      };
+      fetchData().then(
+        () => {},
+        () => {}
+      );
+      setPageCountValue();
+    }
+
+    loadCars();
+  }, [dispatch, currentPageCarsPagintion, totalCars]);
+
+  const changeCarsPaginationPageHandler = (nextPage: number) =>
+    dispatch(changeCarsPaginationPage(nextPage));
 
   return (
     <div className="garage">
       <Controllers />
       <h1>
-        Garage ({total}) / Page ({currentPage})
+        Garage ({totalCars}) / Page ({currentPageCarsPagintion})
       </h1>
       {status === 'loading' && <p>Идёт загрузка...</p>}
       {error && <Error text={error} />}

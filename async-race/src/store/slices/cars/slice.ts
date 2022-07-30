@@ -6,7 +6,7 @@ import { ICarsInitialState, TFetchCarsProps } from './models';
 
 const initialState: ICarsInitialState = {
   cars: [],
-  total: 0,
+  totalCars: 0,
   status: '',
   error: '',
   selectedCar: null
@@ -111,11 +111,15 @@ const carsSlice = createSlice({
   reducers: {
     setTotalCars: (state, { payload }: PayloadAction<number>) => {
       const stateVar = state;
-      stateVar.total = payload;
+      stateVar.totalCars = payload;
     },
     selectCar: (state, { payload }: PayloadAction<ICar>) => {
       const stateVar = state;
       stateVar.selectedCar = payload;
+    },
+    resetSelectedCar: (state) => {
+      const stateVar = state;
+      stateVar.selectedCar = null;
     }
   },
   extraReducers(builder) {
@@ -138,5 +142,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setTotalCars, selectCar } = carsSlice.actions;
+export const { setTotalCars, selectCar, resetSelectedCar } = carsSlice.actions;
 export default carsSlice.reducer;

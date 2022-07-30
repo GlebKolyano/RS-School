@@ -2,7 +2,7 @@ import { ICar } from '../../../global/models';
 
 export interface ICarsInitialState {
   cars: ICar[];
-  total: number;
+  totalCars: number;
   status: string;
   error: string;
   selectedCar: ICar | null;

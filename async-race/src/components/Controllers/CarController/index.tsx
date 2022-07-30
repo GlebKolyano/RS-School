@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import SessionStorage from '../../../global/helpers';
 import { ICar } from '../../../global/models';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
-import { createNewCar, updateParamsCar } from '../../../store/slices/cars/slice';
+import { createNewCar, resetSelectedCar, updateParamsCar } from '../../../store/slices/cars/slice';
 
 const CarController = () => {
   const dispatch = useTypedDispatch();
   const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const [isSelected, setIsSelected] = useState(false);
-  const [carName, setCarName] = useState('');
-  const [carColor, setCarColor] = useState('#ffffff');
-  const [updateCarName, setUpdateCarName] = useState('');
-  const [updateCarColor, setUpdateCarColor] = useState('#ffffff');
+  const [isCarSelected, setIsCarSelected] = useState(false);
+  const [carName, setCarName] = useState(SessionStorage.get('carNameCreateInputValue') || '');
+  const [carColor, setCarColor] = useState(
+    SessionStorage.get('carColorCreateInputValue') || '#ffffff'
+  );
+  const [updateCarName, setUpdateCarName] = useState(
+    SessionStorage.get('carNameUpdateInputValue') || ''
+  );
+  const [updateCarColor, setUpdateCarColor] = useState(
+    SessionStorage.get('carColorUpdateInputValue') || '#ffffff'
+  );
 
   useEffect(() => {
     let color = '';
@@ -18,30 +25,34 @@ const CarController = () => {
     if (selectedCar) {
       color = selectedCar.color;
       name = selectedCar.name;
-      setUpdateCarName(name);
-      setUpdateCarColor(color);
-      setIsSelected(true);
+      setUpdateCarName(SessionStorage.get('carNameUpdateInputValue') || name);
+      setUpdateCarColor(SessionStorage.get('carColorUpdateInputValue') || color);
+      setIsCarSelected(true);
     }
   }, [selectedCar]);
 
   const createCarNameHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
     setCarName(value);
+    SessionStorage.set('carNameCreateInputValue', value);
   };
 
   const createCarColorHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
     setCarColor(value);
+    SessionStorage.set('carColorCreateInputValue', value);
   };
 
   const updateCarNameHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
     setUpdateCarName(value);
+    SessionStorage.set('carNameUpdateInputValue', value);
   };
 
   const updateCarColorHandler = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = target;
     setUpdateCarColor(value);
+    SessionStorage.set('carColorUpdateInputValue', value);
   };
 
   function createNewCarHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -56,6 +67,8 @@ const CarController = () => {
     createCar().catch(Error);
     setCarColor('#ffffff');
     setCarName('');
+    SessionStorage.remove('carNameCreateInputValue');
+    SessionStorage.remove('carColorCreateInputValue');
   }
 
   function updateParamsCarHandler(e: React.FormEvent<HTMLFormElement>) {
@@ -70,12 +83,16 @@ const CarController = () => {
         name: updateCarName,
         id: carId
       };
+
       await dispatch(updateParamsCar(newParamsCar));
-      setIsSelected(false);
+      dispatch(resetSelectedCar());
+      setIsCarSelected(false);
     };
     createCar().catch(Error);
     setUpdateCarColor('#ffffff');
     setUpdateCarName('');
+    SessionStorage.remove('carNameUpdateInputValue');
+    SessionStorage.remove('carColorUpdateInputValue');
   }
   return (
     <div className="car-controller">
@@ -98,7 +115,7 @@ const CarController = () => {
           value={updateCarName}
           required
           placeholder="name car"
-          disabled={!isSelected}
+          disabled={!isCarSelected}
           onChange={(e) => updateCarNameHandler(e)}
         />
         <input type="color" value={updateCarColor} onChange={(e) => updateCarColorHandler(e)} />
