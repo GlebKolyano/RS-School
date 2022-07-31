@@ -28,5 +28,20 @@ export type TNewCarProps = {
   name: string;
 };
 
+export interface IEngineParams {
+  velocity: number;
+  distance: number;
+}
+
+export interface IEngineCar {
+  idCar: number;
+  velocity: number;
+  distance: number;
+  speed: number;
+  status: 'started' | 'stopped';
+  driveMode: boolean;
+  driveModeError?: unknown | string;
+}
+
 export type StoragePropType = string;
 export type StorageReturnType = StoragePropType | null;

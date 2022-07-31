@@ -7,9 +7,10 @@ import { ICarsInitialState, TFetchCarsProps } from './models';
 const initialState: ICarsInitialState = {
   cars: [],
   totalCars: 0,
+  selectedCar: null,
+  animations: {},
   status: '',
-  error: '',
-  selectedCar: null
+  error: ''
 };
 
 export const fetchCars = createAsyncThunk(
@@ -79,7 +80,7 @@ export const createNewCar = createAsyncThunk(
 );
 
 export const updateParamsCar = createAsyncThunk(
-  'cars/createNewCar',
+  'cars/updateParamsCar',
   async ({ color, name, id }: ICar, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch(`${URL.garage}/${id}`, {
@@ -105,6 +106,11 @@ export const updateParamsCar = createAsyncThunk(
   }
 );
 
+export type AnimationType = {
+  idCar: number;
+  animationNumber: number;
+};
+
 const carsSlice = createSlice({
   name: 'cars',
   initialState,
@@ -120,6 +126,11 @@ const carsSlice = createSlice({
     resetSelectedCar: (state) => {
       const stateVar = state;
       stateVar.selectedCar = null;
+    },
+    setAnimationCar: (state, { payload }: PayloadAction<AnimationType>) => {
+      const stateVar = state;
+      const { idCar, animationNumber } = payload;
+      stateVar.animations[idCar] = animationNumber;
     }
   },
   extraReducers(builder) {
@@ -142,5 +153,5 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setTotalCars, selectCar, resetSelectedCar } = carsSlice.actions;
+export const { setTotalCars, selectCar, resetSelectedCar, setAnimationCar } = carsSlice.actions;
 export default carsSlice.reducer;

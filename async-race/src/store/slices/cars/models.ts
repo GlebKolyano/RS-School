@@ -3,9 +3,10 @@ import { ICar } from '../../../global/models';
 export interface ICarsInitialState {
   cars: ICar[];
   totalCars: number;
+  selectedCar: ICar | null;
+  animations: { [index: number]: number };
   status: string;
   error: string;
-  selectedCar: ICar | null;
 }
 
 export type TFetchCarsProps = {

@@ -13,13 +13,19 @@ import storageSession from 'redux-persist/lib/storage/session';
 import carsReducer from './slices/cars/slice';
 import carsPaginationReducer from './slices/pagination/carsPagination/slice';
 import winnersReducer from './slices/winnners/slice';
+import engineReducer from './slices/engine/slice';
 
 const persistConfig = {
   key: '_async-race',
   storage: storageSession
 };
 
-export const rootReducer = combineReducers({ carsReducer, carsPaginationReducer, winnersReducer });
+export const rootReducer = combineReducers({
+  carsReducer,
+  carsPaginationReducer,
+  winnersReducer,
+  engineReducer
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
