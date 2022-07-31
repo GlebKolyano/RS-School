@@ -1,5 +1,4 @@
-import { IEngineParams, URL } from '../global/models';
-import { EngineDriveModeReturnType, EngineReturnType } from './models';
+import { EngineDriveModeReturnType, EngineReturnType, IEngineParams, URL } from '../global/models';
 
 export async function engineStart(carId: number): Promise<EngineReturnType> {
   try {
@@ -28,7 +27,7 @@ export async function engineDriveMode(carId: number): Promise<EngineDriveModeRet
       throw new Error('Drive mode is not started!');
     }
 
-    const status = (await response.json()) as number;
+    const status = (await response.json()) as { success: boolean };
     return status;
   } catch (error) {
     return (error as Error).message;

@@ -23,12 +23,10 @@ const Car = ({ car }: TCarProps) => {
   };
 
   const startAnimationHandler = () => {
-    console.log('start animation');
     startAnimationCar(id);
   };
 
   const stopAnimationHandler = () => {
-    console.log('stop animation');
     stopAnimationCar(id);
   };
 

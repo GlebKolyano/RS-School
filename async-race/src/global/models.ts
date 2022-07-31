@@ -23,7 +23,7 @@ export interface IWinner {
   wins: number;
 }
 
-export type TNewCarProps = {
+export type TNewCar = {
   color: string;
   name: string;
 };
@@ -45,3 +45,7 @@ export interface IEngineCar {
 
 export type StoragePropType = string;
 export type StorageReturnType = StoragePropType | null;
+
+export type ErrorType = string;
+export type EngineReturnType = IEngineParams | ErrorType;
+export type EngineDriveModeReturnType = { success: boolean } | ErrorType;

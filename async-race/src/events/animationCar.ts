@@ -3,7 +3,7 @@ import { IEngineParams } from '../global/models';
 
 const animations: { [index: number]: number } = {};
 
-function animateCar(id: number, car: HTMLElement, finish: HTMLElement, duration: number) {
+async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, duration: number) {
   const animatedCar = car;
   let currentPositionOfCar = animatedCar.offsetLeft - 60;
 
@@ -24,65 +24,54 @@ function animateCar(id: number, car: HTMLElement, finish: HTMLElement, duration:
 
   tick();
 
-  const startDriveModeCar = async () => {
-    try {
-      const status = (await engineDriveMode(id)) as number;
+  const result = await engineDriveMode(id);
 
-      if (status !== 200) {
-        throw new Error(status as unknown as string);
-      }
-    } catch (error) {
-      cancelAnimationFrame(animations[id]);
-    }
-  };
-  startDriveModeCar().catch(() => {});
+  if (typeof result === 'string') {
+    cancelAnimationFrame(animations[id]);
+    return false;
+  }
+
+  return true;
 }
 
-export function startAnimationCar(id: number) {
-  (async function wrapper() {
-    try {
-      const { distance, velocity } = (await engineStart(id)) as IEngineParams;
-      const speed = distance / velocity;
+export async function startAnimationCar(id: number) {
+  const { distance, velocity } = (await engineStart(id)) as IEngineParams;
+  const speed = distance / velocity;
 
-      const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
-      const finish = document.querySelector(`.car__finish[data-id="${id}"]`) as HTMLElement;
-      const startAnimationButton = document.querySelector(
-        `.car__button-start[data-id="${id}"]`
-      ) as HTMLButtonElement;
-      const stopAnimationButton = document.querySelector(
-        `.car__button-stop[data-id="${id}"]`
-      ) as HTMLButtonElement;
+  const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
+  const finish = document.querySelector(`.car__finish[data-id="${id}"]`) as HTMLElement;
+  const startAnimationButton = document.querySelector(
+    `.car__button-start[data-id="${id}"]`
+  ) as HTMLButtonElement;
+  const stopAnimationButton = document.querySelector(
+    `.car__button-stop[data-id="${id}"]`
+  ) as HTMLButtonElement;
 
-      startAnimationButton.disabled = true;
-      stopAnimationButton.disabled = false;
+  startAnimationButton.disabled = true;
+  stopAnimationButton.disabled = false;
 
-      animateCar(id, car, finish, speed);
-    } catch (error) {
-      throw new Error(error as string);
-    }
-  })().catch(() => {});
+  const resultRace = await animateCar(id, car, finish, speed);
+  return resultRace ? { id, speed } : Promise.reject();
 }
 
-export function stopAnimationCar(id: number) {
-  (async function wrapper() {
-    try {
-      const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
+export async function stopAnimationCar(id: number) {
+  try {
+    const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
 
-      car.style.transform = 'none';
-      cancelAnimationFrame(animations[id]);
-      await engineStop(id);
+    car.style.transform = 'none';
+    cancelAnimationFrame(animations[id]);
+    await engineStop(id);
 
-      const startAnimationButton = document.querySelector(
-        `.car__button-start[data-id="${id}"]`
-      ) as HTMLButtonElement;
-      const stopAnimationButton = document.querySelector(
-        `.car__button-stop[data-id="${id}"]`
-      ) as HTMLButtonElement;
+    const startAnimationButton = document.querySelector(
+      `.car__button-start[data-id="${id}"]`
+    ) as HTMLButtonElement;
+    const stopAnimationButton = document.querySelector(
+      `.car__button-stop[data-id="${id}"]`
+    ) as HTMLButtonElement;
 
-      stopAnimationButton.disabled = true;
-      startAnimationButton.disabled = false;
-    } catch (error) {
-      throw new Error(error as string);
-    }
-  })().catch(() => {});
+    stopAnimationButton.disabled = true;
+    startAnimationButton.disabled = false;
+  } catch (error) {
+    throw new Error(error as string);
+  }
 }
