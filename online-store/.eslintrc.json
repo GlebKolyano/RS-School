@@ -12,6 +12,7 @@
     "plugin:import/typescript",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking"
   ],
   "parser": "@typescript-eslint/parser",
@@ -26,6 +27,7 @@
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "error",
+    "react/function-component-definition": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/no-autofocus": [
       0,

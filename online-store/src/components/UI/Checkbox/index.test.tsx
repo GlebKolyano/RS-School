@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import { FakeInitialState } from '../../../tests/contatns';
 import { renderWithRedux } from '../../../tests/helpers/renderWithRedux';
-import { Checkbox } from '.';
+import Checkbox from '.';
 
 describe('filtersByValue', () => {
   test('renders itself', () => {

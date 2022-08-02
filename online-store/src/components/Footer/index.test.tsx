@@ -16,10 +16,4 @@ describe('footer', () => {
     renderWithRedux(<Footer />, FakeInitialState);
     expect(screen.getAllByRole('link').length).toBeGreaterThanOrEqual(3);
   });
-
-  test('footer snapshot', () => {
-    renderWithRedux(<Footer />, FakeInitialState);
-    const footerElem = screen.getByTestId('footer');
-    expect(footerElem).toMatchSnapshot();
-  });
 });

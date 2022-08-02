@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import Button from '../Button';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { changeModalState, registerModal } from '../../../store/reducers/modal.slice';
+import { changeModalState, registerModal } from '../../../store/slices/modal/slice';
+import { ModalProps } from './models';
 
-type Props = {
-  id: string;
-  title: string;
-  text: string;
-};
-
-function Modal(props: Props) {
+const Modal = (props: ModalProps) => {
   const dispatch = useAppDispatch();
   const { id, text, title } = props;
-  const { modalsID } = useAppSelector((state) => state.modalReducer);
+  const { modalsID } = useAppSelector(({ modalReducer }) => modalReducer);
   const [isModalVisible, setModalVisibility] = useState(false);
 
   useEffect(() => {
@@ -36,19 +31,19 @@ function Modal(props: Props) {
 
   return (
     <div className="modal" data-testid="modal">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h4 className="modal-header__title">{title}</h4>
+      <div className="modal__content">
+        <div className="modal__header">
+          <h4 className="modal__header-title">{title}</h4>
         </div>
-        <div className="modal-body">
+        <div className="modal__body">
           <p>{text}</p>
         </div>
-        <div className="modal-footer">
+        <div className="modal__footer">
           <Button type="button" onClick={handleChangeVisibility} text="Закрыть" />
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Modal;

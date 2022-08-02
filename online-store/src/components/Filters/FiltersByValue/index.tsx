@@ -1,37 +1,32 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
 import { colorBicycle, companyBicycle, typeBicycle } from './constants';
-import { Checkbox } from '../../UI/Checkbox';
+import Checkbox from '../../UI/Checkbox';
 import {
   setfilterByColor,
   setFilterByCompany,
   setfilterByPopular,
   setfilterByType
-} from '../../../store/reducers/filterByValue.slice';
+} from '../../../store/slices/filterByValue/slice';
 
-/** FiltersByValue
- * TODO: refactor renders --create obj/arr and generate dynamic
- *
- */
-
-function FiltersByValue() {
+const FiltersByValue = () => {
   const { filterByType, filterByPopular, filterByColor, filterByCompany } = useAppSelector(
-    (state) => state.filterByValueReducer
+    ({ filterByValueReducer }) => filterByValueReducer
   );
   const dispatch = useAppDispatch();
 
-  const handleChangeCompany = (target: HTMLInputElement) => {
-    const { value: company } = target;
+  const handleChangeCompany = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: company } = e.target;
     dispatch(setFilterByCompany(company));
   };
 
-  const handleChangeColor = (target: HTMLInputElement) => {
-    const { value: color } = target;
+  const handleChangeColor = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: color } = e.target;
     dispatch(setfilterByColor(color));
   };
 
-  const handleChangeType = (target: HTMLInputElement) => {
-    const { value: type } = target;
+  const handleChangeType = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: type } = e.target;
     dispatch(setfilterByType(type));
   };
   const handleChangeIsPopular = () => {
@@ -43,12 +38,12 @@ function FiltersByValue() {
       <div>
         Производитель:
         <ul>
-          {companyBicycle.map((item) => {
+          {companyBicycle.map(({ company, nameCheckbox }) => {
             return (
               <Checkbox
-                key={item}
-                name="companyBicycle"
-                value={item}
+                key={company}
+                name={nameCheckbox}
+                value={company}
                 onChange={handleChangeCompany}
                 state={filterByCompany}
               />
@@ -59,12 +54,12 @@ function FiltersByValue() {
       <div>
         Тип велосипеда:
         <ul>
-          {typeBicycle.map((item) => {
+          {typeBicycle.map(({ type, nameCheckbox }) => {
             return (
               <Checkbox
-                key={item}
-                name="typeBicycle"
-                value={item}
+                key={type}
+                name={nameCheckbox}
+                value={type}
                 onChange={handleChangeType}
                 state={filterByType}
               />
@@ -75,12 +70,12 @@ function FiltersByValue() {
       <div>
         Цвет:
         <ul>
-          {colorBicycle.map((item) => {
+          {colorBicycle.map(({ color, nameCheckbox }) => {
             return (
               <Checkbox
-                key={item}
-                name="colorBicycle"
-                value={item}
+                key={color}
+                name={nameCheckbox}
+                value={color}
                 onChange={handleChangeColor}
                 state={filterByColor}
               />
@@ -108,6 +103,6 @@ function FiltersByValue() {
       </div>
     </div>
   );
-}
+};
 
 export default FiltersByValue;

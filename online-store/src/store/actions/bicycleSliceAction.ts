@@ -1,6 +1,6 @@
 import { TAppDispatch } from '../model';
 import DATA from '../../data/data';
-import { bicycleSlice } from '../reducers/bicycle.slice';
+import { bicycleSlice } from '../slices/bicycle/slice';
 
 export const getBicycles = () => (dispatch: TAppDispatch) => {
   try {

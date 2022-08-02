@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IBicycle, IBicycleInitialState } from '../../global/models';
+import { IBicycle, IBicycleInitialState } from '../../../global/models';
 
 export const initialState: IBicycleInitialState = {
   bicycles: [],

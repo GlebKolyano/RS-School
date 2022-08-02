@@ -2,7 +2,7 @@ import React from 'react';
 import Cart from '../Cart';
 import './style.scss';
 
-function Header() {
+const Header = () => {
   return (
     <header className="header" data-testid="header">
       <a href="./">
@@ -11,6 +11,6 @@ function Header() {
       <Cart />
     </header>
   );
-}
+};
 
 export default Header;

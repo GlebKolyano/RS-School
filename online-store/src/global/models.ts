@@ -18,12 +18,12 @@ export interface IBicycle {
 }
 
 export enum SortOptions {
-  name_asc = 'name_asc',
-  name_desc = 'name_desc',
-  price_asc = 'price_asc',
-  price_desc = 'price_desc',
-  quantity_asc = 'quantity_asc',
-  quantity_desc = 'quantity_desc'
+  NAME_ASC = 'name_asc',
+  NAME_DESC = 'name_desc',
+  PRICE_ASC = 'price_asc',
+  PRICE_DESC = 'price_desc',
+  QUANTITY_ASC = 'quantity_asc',
+  QUANTITY_DESC = 'quantity_desc'
 }
 
 export interface ISearchInitialState {
@@ -85,11 +85,11 @@ export interface IModalInitialState {
 }
 
 export interface IStoreInitialState {
-  filterByRangeReducer: IFilterByRangeInitialState;
-  filterByValueReducer: IFilterByValueInitialState;
-  bicycleReducer: IBicycleInitialState;
-  cartReducer: ICartInitialState;
-  modalReducer: IModalInitialState;
-  searchReducer: ISearchInitialState;
-  sortReducer: ISortInitialState;
+  filterByRange: IFilterByRangeInitialState;
+  filterByValue: IFilterByValueInitialState;
+  bicycle: IBicycleInitialState;
+  cart: ICartInitialState;
+  modal: IModalInitialState;
+  search: ISearchInitialState;
+  sort: ISortInitialState;
 }

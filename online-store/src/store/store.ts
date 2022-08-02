@@ -1,11 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { bicycleReducer } from './reducers/bicycle.slice';
-import { searchReducer } from './reducers/filterBySearch.slice';
-import { sortReducer } from './reducers/sort.slice';
-import { filterByValueReducer } from './reducers/filterByValue.slice';
-import { filterByRangeReducer } from './reducers/filterByRange.slice';
-import { cartReducer } from './reducers/cart.slice';
-import { modalReducer } from './reducers/modal.slice';
+import { bicycleReducer } from './slices/bicycle/slice';
+import { searchReducer } from './slices/filterBySearch/slice';
+import { sortReducer } from './slices/sort/slice';
+import { filterByValueReducer } from './slices/filterByValue/slice';
+import { filterByRangeReducer } from './slices/filterByRange/slice';
+import { cartReducer } from './slices/cart/slice';
+import { modalReducer } from './slices/modal/slice';
 import { IStoreInitialState } from '../global/models';
 
 export const rootReducer = combineReducers({
@@ -18,17 +18,25 @@ export const rootReducer = combineReducers({
   modalReducer
 });
 
-export function setupStore(initialState: IStoreInitialState) {
+export function setupStore({
+  bicycle,
+  cart,
+  filterByRange,
+  filterByValue,
+  modal,
+  search,
+  sort
+}: IStoreInitialState) {
   return configureStore({
     reducer: rootReducer,
     preloadedState: {
-      filterByRangeReducer: initialState.filterByRangeReducer,
-      filterByValueReducer: initialState.filterByValueReducer,
-      bicycleReducer: initialState.bicycleReducer,
-      modalReducer: initialState.modalReducer,
-      sortReducer: initialState.sortReducer,
-      searchReducer: initialState.searchReducer,
-      cartReducer: initialState.cartReducer
+      filterByRangeReducer: filterByRange,
+      filterByValueReducer: filterByValue,
+      bicycleReducer: bicycle,
+      modalReducer: modal,
+      sortReducer: sort,
+      searchReducer: search,
+      cartReducer: cart
     }
   });
 }

@@ -2,24 +2,19 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import './style.scss';
-import { FilterByRangePayload } from '../../../global/models';
 import { useAppSelector } from '../../../hooks/reduxHooks';
+import { SliderProps } from './models';
 
-type SliderProps = {
-  minVl: number;
-  maxVl: number;
-  onChange: (value: FilterByRangePayload) => void;
-  name: 'filterByPrice' | 'filterByQuantity';
-  label: string;
-};
-
-export default function RangeSlider(props: SliderProps) {
-  const { minVl, maxVl, onChange, name, label } = props;
-  const filters = useAppSelector((s) => s.filterByRangeReducer);
+const RangeSlider = (props: SliderProps) => {
+  const { minSliderValue, maxSliderValue, onChange, name, label } = props;
+  const filters = useAppSelector(({ filterByRangeReducer }) => filterByRangeReducer);
   const filtersBySomeCategory = filters[name];
 
   const [state, setState] = useState({
-    value: [filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl]
+    value: [
+      filtersBySomeCategory.min || minSliderValue,
+      filtersBySomeCategory.max || maxSliderValue
+    ]
   });
 
   const handleChangeStorageValue = (value: number | number[]) => {
@@ -48,9 +43,11 @@ export default function RangeSlider(props: SliderProps) {
       <span>до {state.value[1]}</span>
       <br />
       <Slider
-        defaultValue={(filtersBySomeCategory.min || minVl, filtersBySomeCategory.max || maxVl)}
-        min={minVl}
-        max={maxVl}
+        defaultValue={
+          (filtersBySomeCategory.min || minSliderValue, filtersBySomeCategory.max || maxSliderValue)
+        }
+        min={minSliderValue}
+        max={maxSliderValue}
         step={1}
         range
         allowCross={false}
@@ -60,4 +57,6 @@ export default function RangeSlider(props: SliderProps) {
       />
     </div>
   );
-}
+};
+
+export default RangeSlider;

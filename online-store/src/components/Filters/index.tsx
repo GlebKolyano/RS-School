@@ -6,7 +6,7 @@ import Reset from './Reset';
 import Sort from './Sort';
 import './style.scss';
 
-function Filters() {
+const Filters = () => {
   return (
     <div className="filters" data-testid="filters">
       <FilterBySearch />
@@ -16,6 +16,6 @@ function Filters() {
       <Reset />
     </div>
   );
-}
+};
 
 export default Filters;

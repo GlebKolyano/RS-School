@@ -17,10 +17,4 @@ describe('header', () => {
     expect(screen.getByAltText('website logo')).toBeInTheDocument();
     expect(screen.getByTestId('cart')).toBeInTheDocument();
   });
-
-  test('header snapshot', () => {
-    renderWithRedux(<Header />, FakeInitialState);
-    const headerElem = screen.getByTestId('header');
-    expect(headerElem).toMatchSnapshot();
-  });
 });

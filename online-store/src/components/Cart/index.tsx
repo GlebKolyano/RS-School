@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks/reduxHooks';
 import './style.css';
 
 function Cart() {
-  const { itemsInCart } = useAppSelector((state) => state.cartReducer);
+  const { itemsInCart } = useAppSelector(({ cartReducer }) => cartReducer);
   const quantityItemsInCart = itemsInCart.length;
 
   return (

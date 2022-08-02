@@ -1,13 +1,7 @@
 import React from 'react';
+import { CheckboxProps } from './models';
 
-type CheckboxProps = {
-  value: string;
-  name: string;
-  onChange: (target: HTMLInputElement) => void;
-  state?: string[];
-};
-
-export function Checkbox(props: CheckboxProps) {
+const Checkbox = (props: CheckboxProps) => {
   const { value, name, onChange, state = [] } = props;
   const isCheckedBox = state ? state.includes(value) : false;
 
@@ -21,16 +15,16 @@ export function Checkbox(props: CheckboxProps) {
           name={name}
           value={value}
           checked={isCheckedBox}
-          onChange={(e) => {
-            onChange(e.target);
-          }}
+          onChange={onChange}
         />
         <span>{value}</span>
       </label>
     </li>
   );
-}
+};
 
 Checkbox.defaultProps = {
   state: []
 };
+
+export default Checkbox;

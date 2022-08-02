@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import LocaleStorage from '../../global/helpers/LocalStorage';
-import { IFilterByValueInitialState } from '../../global/models';
-
-const Storage = new LocaleStorage();
+import LocaleStorage from '../../../global/helpers/LocalStorage';
+import { IFilterByValueInitialState } from '../../../global/models';
 
 const initialState: IFilterByValueInitialState = {
   filterByCompany: [],
@@ -15,43 +13,49 @@ export const filterByValue = createSlice({
   name: 'sort',
   initialState,
   reducers: {
-    setFilterByCompany: (state, action: PayloadAction<string>) => {
+    setFilterByCompany: (state, { payload }: PayloadAction<string>) => {
       const { filterByCompany } = state;
-      const filterValue = action.payload;
+      const filterValue = payload;
+
       if (filterByCompany.includes(filterValue)) {
         const indexDeletedElement = filterByCompany.indexOf(filterValue);
         filterByCompany.splice(indexDeletedElement, 1);
       } else {
-        filterByCompany.push(action.payload);
+        filterByCompany.push(payload);
       }
-      Storage.set('filterByValueSettings', state);
+
+      LocaleStorage.set('filterByValueSettings', state);
     },
-    setfilterByType: (state, action: PayloadAction<string>) => {
+    setfilterByType: (state, { payload }: PayloadAction<string>) => {
       const { filterByType } = state;
-      const filterValue = action.payload;
+      const filterValue = payload;
+
       if (filterByType.includes(filterValue)) {
         const indexDeletedElement = filterByType.indexOf(filterValue);
         filterByType.splice(indexDeletedElement, 1);
       } else {
-        filterByType.push(action.payload);
+        filterByType.push(payload);
       }
-      Storage.set('filterByValueSettings', state);
+
+      LocaleStorage.set('filterByValueSettings', state);
     },
-    setfilterByColor: (state, action: PayloadAction<string>) => {
+    setfilterByColor: (state, { payload }: PayloadAction<string>) => {
       const { filterByColor } = state;
-      const filterValue = action.payload;
+      const filterValue = payload;
+
       if (filterByColor.includes(filterValue)) {
         const indexDeletedElement = filterByColor.indexOf(filterValue);
         filterByColor.splice(indexDeletedElement, 1);
       } else {
-        filterByColor.push(action.payload);
+        filterByColor.push(payload);
       }
-      Storage.set('filterByValueSettings', state);
+
+      LocaleStorage.set('filterByValueSettings', state);
     },
     setfilterByPopular: (state) => {
       const stateVar = state;
       stateVar.filterByPopular = !stateVar.filterByPopular;
-      Storage.set('filterByValueSettings', state);
+      LocaleStorage.set('filterByValueSettings', state);
     },
     updateStateFiltersByValue: (state) => {
       const stateVar = state;
@@ -59,7 +63,7 @@ export const filterByValue = createSlice({
       stateVar.filterByCompany = [];
       stateVar.filterByType = [];
       stateVar.filterByPopular = false;
-      Storage.set('filterByValueSettings', stateVar);
+      LocaleStorage.set('filterByValueSettings', stateVar);
     }
   }
 });

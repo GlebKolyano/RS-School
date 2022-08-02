@@ -1,11 +1,20 @@
 import React from 'react';
 import './style.scss';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { setSearch } from '../../../store/reducers/filterBySearch.slice';
+import { setSearch } from '../../../store/slices/filterBySearch/slice';
 
-function FilterBySearch() {
+const FilterBySearch = () => {
   const dispatch = useAppDispatch();
-  const { searchValue } = useAppSelector((state) => state.searchReducer);
+  const { searchValue } = useAppSelector(({ searchReducer }) => searchReducer);
+
+  const handleSetSearchValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    dispatch(setSearch(value));
+  };
+
+  const handleClearSearchInput = () => {
+    dispatch(setSearch(''));
+  };
 
   return (
     <div className="input-field search" data-testid="filter-by-search">
@@ -16,7 +25,7 @@ function FilterBySearch() {
           id="first_name"
           type="text"
           className="search__input validate"
-          onChange={(e) => dispatch(setSearch(e.target.value))}
+          onChange={handleSetSearchValue}
           value={searchValue}
           autoFocus
           autoComplete="off"
@@ -24,13 +33,13 @@ function FilterBySearch() {
         <button
           type="button"
           className={searchValue.length ? 'search__clear active' : 'search__clear'}
-          onClick={() => dispatch(setSearch(''))}
+          onClick={handleClearSearchInput}
         >
           <i className="material-icons">clear</i>
         </button>
       </label>
     </div>
   );
-}
+};
 
 export default FilterBySearch;

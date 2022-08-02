@@ -1,37 +1,30 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks';
-import { setSort } from '../../../store/reducers/sort.slice';
+import { setSort } from '../../../store/slices/sort/slice';
 import { options } from './constants';
 
-/** Sort
- * TODO: refactor select & option -- create components for them
- */
-
-function Sort() {
-  const { sortOption } = useAppSelector((state) => state.sortReducer);
+const Sort = () => {
+  const { sortOption } = useAppSelector(({ sortReducer }) => sortReducer);
   const dispatch = useAppDispatch();
 
-  function changeSortOption(value: string) {
+  const changeSortOption = (e: ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target;
     dispatch(setSort(value));
-  }
+  };
 
   return (
     <div data-testid="sort">
-      <select
-        className="browser-default"
-        onChange={(e) => changeSortOption(e.target.value)}
-        defaultValue={sortOption}
-      >
-        {options.map((option) => {
+      <select className="browser-default" onChange={changeSortOption} defaultValue={sortOption}>
+        {options.map(({ label, value }) => {
           return (
-            <option key={option.value} value={option.value}>
-              {option.label}
+            <option key={value} value={value}>
+              {label}
             </option>
           );
         })}
       </select>
     </div>
   );
-}
+};
 
 export default Sort;

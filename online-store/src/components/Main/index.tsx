@@ -8,9 +8,9 @@ import Items from './Items';
 import Loader from '../UI/Loader';
 import Error from '../UI/Error';
 
-function Main() {
+const Main = () => {
   const dispatch = useAppDispatch();
-  const { bicycles, isLoading, error } = useAppSelector((state) => state.bicycleReducer);
+  const { bicycles, isLoading, error } = useAppSelector(({ bicycleReducer }) => bicycleReducer);
 
   useEffect(() => dispatch(getBicycles()), [dispatch]);
   const filteredBicycles = useBicycles(bicycles);
@@ -22,6 +22,6 @@ function Main() {
       {error && <Error iconName="sentiment_very_dissatisfied" text={error} />}
     </div>
   );
-}
+};
 
 export default Main;

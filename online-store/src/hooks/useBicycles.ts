@@ -2,17 +2,11 @@ import { useMemo } from 'react';
 import { IBicycle, SortOptions } from '../global/models';
 import { useAppSelector } from './reduxHooks';
 
-/** useBicycles
- *
- * TODO: refactor every useMemo -- create separate functions
- *
- */
-
 export const useBicycles = (bicycles: IBicycle[]) => {
-  const { searchValue } = useAppSelector((state) => state.searchReducer);
-  const { sortOption } = useAppSelector((state) => state.sortReducer);
-  const filtersByValue = useAppSelector((state) => state.filterByValueReducer);
-  const filtersByRange = useAppSelector((state) => state.filterByRangeReducer);
+  const { searchValue } = useAppSelector(({ searchReducer }) => searchReducer);
+  const { sortOption } = useAppSelector(({ sortReducer }) => sortReducer);
+  const filtersByValue = useAppSelector(({ filterByValueReducer }) => filterByValueReducer);
+  const filtersByRange = useAppSelector(({ filterByRangeReducer }) => filterByRangeReducer);
 
   let filteredBicycles = bicycles;
 
@@ -25,18 +19,20 @@ export const useBicycles = (bicycles: IBicycle[]) => {
 
   // sorting
   filteredBicycles = useMemo(() => {
+    const { NAME_ASC, NAME_DESC, PRICE_ASC, PRICE_DESC, QUANTITY_ASC, QUANTITY_DESC } = SortOptions;
+
     switch (sortOption) {
-      case SortOptions.name_asc:
+      case NAME_ASC:
         return [...filteredBicycles].sort((a, b) => a.name.localeCompare(b.name));
-      case SortOptions.name_desc:
+      case NAME_DESC:
         return [...filteredBicycles].sort((a, b) => b.name.localeCompare(a.name));
-      case SortOptions.price_asc:
+      case PRICE_ASC:
         return [...filteredBicycles].sort((a, b) => a.price - b.price);
-      case SortOptions.price_desc:
+      case PRICE_DESC:
         return [...filteredBicycles].sort((a, b) => b.price - a.price);
-      case SortOptions.quantity_asc:
+      case QUANTITY_ASC:
         return [...filteredBicycles].sort((a, b) => a.quantity - b.quantity);
-      case SortOptions.quantity_desc:
+      case QUANTITY_DESC:
         return [...filteredBicycles].sort((a, b) => b.quantity - a.quantity);
       default:
         return filteredBicycles;
