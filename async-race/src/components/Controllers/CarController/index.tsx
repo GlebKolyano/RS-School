@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import SessionStorage from '../../../global/helpers';
 import { ICar } from '../../../global/models';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';

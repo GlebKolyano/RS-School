@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IWinner, URL } from '../../../global/models';
+import CarService from '../../../services/CarService';
 import { setError } from './helpers';
 import { IWinnersInitialState, TGetWinnersProps } from './model';
 
@@ -9,6 +10,16 @@ const initialState: IWinnersInitialState = {
   status: '',
   error: ''
 };
+
+function getColorAndNameForWinner(winners: IWinner[]) {
+  const result = winners.map(async ({ time, wins, id }) => {
+    const { color, name } = await CarService.getCar(id as number);
+    const newWinnerObject: IWinner = { color, name, time, wins, id };
+    return newWinnerObject;
+  });
+
+  return result;
+}
 
 export const getWinners = createAsyncThunk(
   'winners/getWinners',
@@ -24,7 +35,8 @@ export const getWinners = createAsyncThunk(
 
       dispatch(setTotalWinners(Number(total)));
 
-      return winners;
+      const result = Promise.all(getColorAndNameForWinner(winners));
+      return await result;
     } catch (error) {
       if (error instanceof Error) return rejectWithValue(error.message);
       return rejectWithValue(error);

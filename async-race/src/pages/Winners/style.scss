@@ -6,10 +6,12 @@
   &__counter {
   }
 
+  &__row {
+  }
+
   &__table {
-    display: flex;
-    flex-direction: row;
-    max-width: fit-content;
+    display: table;
+    width: fit-content;
     &-id {
     }
     &-car {
