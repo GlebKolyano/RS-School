@@ -33,7 +33,7 @@ const RaceController = () => {
     setBtnStartRaceIsDisabled(true);
 
     (async () => {
-      setTimeout(() => setBtnResetRaceIsDisabled(false), 1000);
+      setTimeout(() => setBtnResetRaceIsDisabled(false), 5000);
       await Promise.any(cars.map(({ id }) => startAnimationCar(id as number))).then(
         async ({ id, finishingTime }) => {
           try {

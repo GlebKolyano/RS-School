@@ -46,3 +46,10 @@ export type StorageReturnType = StoragePropType | null;
 export type ErrorType = string;
 export type EngineReturnType = IEngineParams | ErrorType;
 export type EngineDriveModeReturnType = boolean | ErrorType;
+
+export enum SortingTypes {
+  WINS_ASC = 'wins_asc',
+  WINS_DESC = 'wins_desc',
+  TIME_ASC = 'time_asc',
+  TIME_DESC = 'time_desc'
+}

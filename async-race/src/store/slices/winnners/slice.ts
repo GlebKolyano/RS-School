@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IWinner, URL } from '../../../global/models';
+import { IWinner, SortingTypes, URL } from '../../../global/models';
 import CarService from '../../../services/CarService';
 import { setError } from './helpers';
 import { IWinnersInitialState, TGetWinnersProps } from './model';
@@ -7,6 +7,7 @@ import { IWinnersInitialState, TGetWinnersProps } from './model';
 const initialState: IWinnersInitialState = {
   winners: [],
   totalWinners: 0,
+  sorting: SortingTypes.TIME_ASC,
   status: '',
   error: ''
 };
@@ -23,9 +24,9 @@ function getColorAndNameForWinner(winners: IWinner[]) {
 
 export const getWinners = createAsyncThunk(
   'winners/getWinners',
-  async ({ page = 1, limit = 5 }: TGetWinnersProps, { rejectWithValue, dispatch }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${URL.winners}?_page=${page}&_limit=${limit}`);
+      const response = await fetch(`${URL.winners}`);
 
       if (!response.ok) {
         throw new Error('No winners for loading!');
@@ -51,6 +52,10 @@ export const winnersSlice = createSlice({
     setTotalWinners: (state, { payload }: PayloadAction<number>) => {
       const stateVar = state;
       stateVar.totalWinners = payload;
+    },
+    changeSortingType: (state, { payload }: PayloadAction<SortingTypes>) => {
+      const stateVar = state;
+      stateVar.sorting = payload;
     }
   },
   extraReducers(builder) {
@@ -70,5 +75,5 @@ export const winnersSlice = createSlice({
   }
 });
 
-export const { setTotalWinners } = winnersSlice.actions;
+export const { setTotalWinners, changeSortingType } = winnersSlice.actions;
 export default winnersSlice.reducer;
