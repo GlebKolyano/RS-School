@@ -9,6 +9,7 @@ const Pagination = ({
   onPageChange: (page: number) => void;
 }) => {
   const pageChangeHandler = ({ selected }: { selected: number }) => {
+    console.log('selected', selected);
     onPageChange(selected + 1);
   };
 
@@ -17,9 +18,9 @@ const Pagination = ({
       breakLabel="..."
       nextLabel="next >"
       onPageChange={(e) => pageChangeHandler(e)}
-      pageRangeDisplayed={3}
+      pageRangeDisplayed={2}
       pageCount={pageCount}
-      previousLabel="< previous"
+      previousLabel="< prev"
       containerClassName="pagination"
       pageClassName="pagination__page"
       previousClassName="pagination__prev"

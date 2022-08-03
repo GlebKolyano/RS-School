@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
-import { SortingTypes } from '../global/models';
+import { IWinner, SortingTypes } from '../global/models';
 import { useTypedSelector } from './reduxHooks';
 
-export default function useWinners() {
+export default function useWinners(): IWinner[] {
   const { winners, sorting } = useTypedSelector(({ winnersReducer }) => winnersReducer);
 
   const sortedWinners = useMemo(() => {
     const { TIME_ASC, TIME_DESC, WINS_ASC, WINS_DESC } = SortingTypes;
-    console.log(sorting);
+
     switch (sorting) {
       case TIME_ASC:
         return [...winners].sort((a, b) => a.time - b.time);
@@ -21,5 +21,15 @@ export default function useWinners() {
         return [...winners];
     }
   }, [sorting, winners]);
-  return sortedWinners;
+
+  const numberedWinners = useMemo(() => {
+    return sortedWinners.map((winner, index) => {
+      const numberedWinner: IWinner = { ...winner };
+      numberedWinner.numberInTable = index + 1;
+
+      return numberedWinner;
+    });
+  }, [sortedWinners]);
+
+  return numberedWinners;
 }

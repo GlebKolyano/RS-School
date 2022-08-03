@@ -8,11 +8,11 @@ import { changeWinnersPaginationPage } from '../../store/slices/pagination/winne
 import Pagination from '../../components/Pagination';
 import useWinners from '../../hooks/useWinners';
 import { IWinner, SortingTypes } from '../../global/models';
+import { WINNERS_PER_PAGE } from './constants';
 
-function Winners() {
+const Winners = () => {
   const dispatch = useTypedDispatch();
 
-  const { totalWinners } = useTypedSelector(({ winnersReducer }) => winnersReducer);
   const { currentPageWinnersPagintion } = useTypedSelector(
     ({ winnersPaginationReducer }) => winnersPaginationReducer
   );
@@ -20,7 +20,6 @@ function Winners() {
   const [timeSorting, setTimeSorting] = useState(false);
   const [winsSorting, setWinsSorting] = useState(false);
   const [currentPageWinners, setCurrentPageWinners] = useState<IWinner[]>([]);
-  const WINNERS_PER_PAGE = 10;
 
   useEffect(() => {
     (async () => {
@@ -64,7 +63,7 @@ function Winners() {
     <div className="winners">
       <div className="winners__wrapper">
         <h1 className="winners__counter">
-          Winners ({sortedWinners.length}) Page ({pageCountWinnersPagination})
+          Winners ({sortedWinners.length}) Page ({currentPageWinnersPagintion})
         </h1>
         <table width="100%" cellPadding="10" cellSpacing="1" align="center">
           <tbody>
@@ -74,11 +73,10 @@ function Winners() {
               <th onClick={toggleWinsSortingHandler}>wins</th>
               <th onClick={toggleTimeSortingHandler}>time</th>
             </tr>
-            {currentPageWinners.map(({ time, wins, color, name }, indexWinner) => {
+            {currentPageWinners.map(({ time, wins, color, name, numberInTable }) => {
               return (
                 <tr className="winners__row" key={uuidv4()}>
-                  <td>{indexWinner + 1}</td>
-
+                  <td>{numberInTable}</td>
                   <td>
                     {name} <CarModel fill={color} />
                   </td>
@@ -96,6 +94,6 @@ function Winners() {
       />
     </div>
   );
-}
+};
 
 export default Winners;

@@ -16,6 +16,7 @@ const Garage = () => {
   const { currentPageCarsPagintion } = useTypedSelector(
     ({ carsPaginationReducer }) => carsPaginationReducer
   );
+
   const [pageCountCarsPagination, setPageCountCarsPagination] = useState<number>(1);
 
   useEffect(

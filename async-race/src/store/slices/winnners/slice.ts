@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IWinner, SortingTypes, URL } from '../../../global/models';
 import CarService from '../../../services/CarService';
 import { setError } from './helpers';
-import { IWinnersInitialState, TGetWinnersProps } from './model';
+import { IWinnersInitialState } from './model';
 
 const initialState: IWinnersInitialState = {
   winners: [],

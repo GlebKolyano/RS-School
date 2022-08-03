@@ -23,6 +23,7 @@ export interface IWinner {
   wins: number;
   color?: string;
   name?: string;
+  numberInTable?: number;
 }
 
 export interface IEngineParams {

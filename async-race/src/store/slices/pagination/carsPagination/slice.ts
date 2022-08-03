@@ -9,6 +9,7 @@ export const carsPagination = createSlice({
   initialState,
   reducers: {
     changeCarsPaginationPage: (state, { payload }: PayloadAction<number>) => {
+      console.log('page from redux', payload);
       const stateVar = state;
       stateVar.currentPageCarsPagintion = payload;
     }
