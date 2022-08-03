@@ -57,7 +57,7 @@ export const deleteCar = createAsyncThunk(
 
 export const createNewCar = createAsyncThunk(
   'cars/createNewCar',
-  async (car: { name: string; color: string }, { rejectWithValue, dispatch }) => {
+  async (car: ICar, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch(URL.garage, {
         method: 'POST',
@@ -83,7 +83,7 @@ export const updateParamsCar = createAsyncThunk(
   'cars/updateParamsCar',
   async ({ color, name, id }: ICar, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${URL.garage}/${id}`, {
+      const response = await fetch(`${URL.garage}/${id as number}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'

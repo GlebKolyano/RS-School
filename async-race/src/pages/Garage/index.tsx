@@ -16,34 +16,38 @@ const Garage = () => {
   const { currentPageCarsPagintion } = useTypedSelector(
     ({ carsPaginationReducer }) => carsPaginationReducer
   );
-  const [pageCountCarsPagination, setPageCountCarsPagination] = useState(1);
+  const [pageCountCarsPagination, setPageCountCarsPagination] = useState<number>(1);
 
-  useEffect(() => {
+  useEffect(
     function loadCars() {
       const setPageCountValue = () => {
         const result = Math.ceil(totalCars / CARS_PER_PAGE);
         setPageCountCarsPagination(result);
       };
 
-      const fetchData = async () => {
-        const props = {
+      (async () => {
+        const params = {
           page: currentPageCarsPagintion,
           limit: CARS_PER_PAGE
         };
-        await dispatch(fetchCars(props));
-      };
-      fetchData().then(
-        () => {},
-        () => {}
-      );
-      setPageCountValue();
-    }
+        await dispatch(fetchCars(params));
+      })().catch(() => {});
 
-    loadCars();
-  }, [dispatch, currentPageCarsPagintion, totalCars]);
+      setPageCountValue();
+    },
+    [dispatch, currentPageCarsPagintion, totalCars]
+  );
 
   const changeCarsPaginationPageHandler = (nextPage: number) =>
     dispatch(changeCarsPaginationPage(nextPage));
+
+  if (error) {
+    return <Error text={error} />;
+  }
+
+  if (status === 'loading') {
+    return <p>Идёт загрузка...</p>;
+  }
 
   return (
     <div className="garage">
@@ -51,8 +55,6 @@ const Garage = () => {
       <h1>
         Garage ({totalCars}) / Page ({currentPageCarsPagintion})
       </h1>
-      {status === 'loading' && <p>Идёт загрузка...</p>}
-      {error && <Error text={error} />}
       <Cars />
       <Pagination
         pageCount={pageCountCarsPagination}

@@ -1,21 +1,20 @@
 import React from 'react';
 import './style.scss';
-import { TCarProps } from './models';
 import { ReactComponent as CarModel } from '../../../assets/car.svg';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
 import { deleteCar, selectCar } from '../../../store/slices/cars/slice';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
+import { ICar } from '../../../global/models';
 
-const Car = ({ car }: TCarProps) => {
+const Car = ({ car }: { car: ICar }) => {
   const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
   const dispatch = useTypedDispatch();
   const { name, color, id } = car;
 
-  const handleRemoveCar = () => {
-    const removeCar = async () => {
-      await dispatch(deleteCar(id));
-    };
-    removeCar().catch(Error);
+  const removeCarHandler = () => {
+    (async () => {
+      await dispatch(deleteCar(id as number));
+    })().catch(() => {});
   };
 
   const selectCarHandler = () => {
@@ -23,11 +22,15 @@ const Car = ({ car }: TCarProps) => {
   };
 
   const startAnimationHandler = () => {
-    startAnimationCar(id);
+    (async () => {
+      await startAnimationCar(id as number);
+    })().catch(() => {});
   };
 
   const stopAnimationHandler = () => {
-    stopAnimationCar(id);
+    (async () => {
+      await stopAnimationCar(id as number);
+    })().catch(() => {});
   };
 
   return (
@@ -36,7 +39,7 @@ const Car = ({ car }: TCarProps) => {
         <button type="button" onClick={selectCarHandler}>
           select
         </button>
-        <button type="button" onClick={handleRemoveCar}>
+        <button type="button" onClick={removeCarHandler}>
           remove
         </button>
         <p>{name}</p>

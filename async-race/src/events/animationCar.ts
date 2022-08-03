@@ -1,4 +1,4 @@
-import { engineDriveMode, engineStart, engineStop } from '../api/engineApi';
+import EngineService from '../services/EngineService';
 import { IEngineParams } from '../global/models';
 
 const animations: { [index: number]: number } = {};
@@ -11,6 +11,8 @@ async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, dur
   const framesCount = (duration / 1000) * 60;
   const dx = (finalPostion - animatedCar.offsetLeft) / framesCount;
 
+  let isFinishedCar = false;
+
   const tick = () => {
     currentPositionOfCar += dx;
     animatedCar.style.transform = `translateX(${currentPositionOfCar}px)`;
@@ -18,28 +20,27 @@ async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, dur
     if (currentPositionOfCar < finalPostion) {
       animations[id] = requestAnimationFrame(tick);
     } else {
-      // console.log('finish!');
+      isFinishedCar = true;
     }
   };
 
   tick();
 
-  const result = await engineDriveMode(id);
-
-  if (typeof result === 'string') {
+  await EngineService.engineDriveMode(id).catch(() => {
     cancelAnimationFrame(animations[id]);
-    return false;
-  }
+    isFinishedCar = false;
+  });
 
-  return true;
+  return isFinishedCar;
 }
 
 export async function startAnimationCar(id: number) {
-  const { distance, velocity } = (await engineStart(id)) as IEngineParams;
+  const { distance, velocity } = (await EngineService.engineStart(id)) as IEngineParams;
   const speed = distance / velocity;
 
   const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
   const finish = document.querySelector(`.car__finish[data-id="${id}"]`) as HTMLElement;
+
   const startAnimationButton = document.querySelector(
     `.car__button-start[data-id="${id}"]`
   ) as HTMLButtonElement;
@@ -50,28 +51,31 @@ export async function startAnimationCar(id: number) {
   startAnimationButton.disabled = true;
   stopAnimationButton.disabled = false;
 
+  const startTime = Date.now() / 1000;
+
   const resultRace = await animateCar(id, car, finish, speed);
-  return resultRace ? { id, speed } : Promise.reject();
+
+  const finishTime = Date.now() / 1000;
+
+  const finishingTime = Number((finishTime - startTime).toFixed(2));
+
+  return resultRace ? { id, finishingTime } : Promise.reject();
 }
 
 export async function stopAnimationCar(id: number) {
-  try {
-    const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
+  const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
 
-    car.style.transform = 'none';
-    cancelAnimationFrame(animations[id]);
-    await engineStop(id);
+  cancelAnimationFrame(animations[id]);
+  car.style.transform = 'none';
+  await EngineService.engineStop(id);
 
-    const startAnimationButton = document.querySelector(
-      `.car__button-start[data-id="${id}"]`
-    ) as HTMLButtonElement;
-    const stopAnimationButton = document.querySelector(
-      `.car__button-stop[data-id="${id}"]`
-    ) as HTMLButtonElement;
+  const startAnimationButton = document.querySelector(
+    `.car__button-start[data-id="${id}"]`
+  ) as HTMLButtonElement;
+  const stopAnimationButton = document.querySelector(
+    `.car__button-stop[data-id="${id}"]`
+  ) as HTMLButtonElement;
 
-    stopAnimationButton.disabled = true;
-    startAnimationButton.disabled = false;
-  } catch (error) {
-    throw new Error(error as string);
-  }
+  stopAnimationButton.disabled = true;
+  startAnimationButton.disabled = false;
 }

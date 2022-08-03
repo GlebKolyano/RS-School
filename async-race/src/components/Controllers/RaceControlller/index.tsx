@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import WinnerService from '../../../services/WinnerService';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
-import { TNewCar } from '../../../global/models';
+import { ICar, IWinner } from '../../../global/models';
 import { generateRandomName, getRandomColor } from '../../../global/utils';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
 import { createNewCar } from '../../../store/slices/cars/slice';
@@ -9,14 +10,16 @@ const RaceController = () => {
   const dispatch = useTypedDispatch();
   const { cars } = useTypedSelector(({ carsReducer }) => carsReducer);
 
-  const [btnStartRaceIsDisabled, setBtnStartRaceIsDisabled] = useState(false);
-  const [btnResetRaceIsDisabled, setBtnResetRaceIsDisabled] = useState(true);
+  const [btnStartRaceIsDisabled, setBtnStartRaceIsDisabled] = useState<boolean>(false);
+  const [btnResetRaceIsDisabled, setBtnResetRaceIsDisabled] = useState<boolean>(true);
 
   function generateCarsHandler() {
-    const createCar = (): TNewCar => {
+    const createCar = (): ICar => {
+      const color = getRandomColor();
+      const name = generateRandomName();
       return {
-        color: getRandomColor(),
-        name: generateRandomName()
+        color,
+        name
       };
     };
 
@@ -29,19 +32,42 @@ const RaceController = () => {
   function startRaceHandler() {
     setBtnStartRaceIsDisabled(true);
 
-    (async function wrapper() {
-      setTimeout(() => setBtnResetRaceIsDisabled(false), 2500);
-      await Promise.any(cars.map(({ id }) => startAnimationCar(id))).then(() => {
-        // console.log(result);
-      });
+    (async () => {
+      setTimeout(() => setBtnResetRaceIsDisabled(false), 1000);
+      await Promise.any(cars.map(({ id }) => startAnimationCar(id as number))).then(
+        async ({ id, finishingTime }) => {
+          try {
+            const { time, wins } = await WinnerService.isInTableWinners(id);
+
+            const finalTime = finishingTime >= time ? time : finishingTime;
+            const updatedWinsCounter = wins + 1;
+
+            const newUpdatedScoreOfWinner: IWinner = {
+              id,
+              time: finalTime,
+              wins: updatedWinsCounter
+            };
+
+            await WinnerService.updateWinner(newUpdatedScoreOfWinner);
+          } catch (error) {
+            const newWinner: IWinner = {
+              id,
+              time: finishingTime,
+              wins: 1
+            };
+
+            await WinnerService.createWinner(newWinner);
+          }
+        }
+      );
     })().catch(() => {});
   }
 
   function resetRaceHandler() {
     setBtnResetRaceIsDisabled(true);
 
-    (async function wrapper() {
-      await Promise.all(cars.map(({ id }) => stopAnimationCar(id))).finally(() =>
+    (async () => {
+      await Promise.all(cars.map(({ id }) => stopAnimationCar(id as number))).finally(() =>
         setBtnStartRaceIsDisabled(false)
       );
     })().catch(() => {});

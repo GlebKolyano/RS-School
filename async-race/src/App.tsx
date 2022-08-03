@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Layout from './components/Layout';
 import Garage from './pages/Garage';
@@ -16,7 +16,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-      <Outlet />
     </div>
   );
 }

@@ -9,24 +9,19 @@ export interface ICars {
 }
 
 export interface ICar {
+  id?: number;
   name: string;
   color: string;
-  id: number;
 }
 
 export interface IWinners {
   winners: IWinner[];
 }
 export interface IWinner {
-  id: number;
+  id?: number;
   time: number;
   wins: number;
 }
-
-export type TNewCar = {
-  color: string;
-  name: string;
-};
 
 export interface IEngineParams {
   velocity: number;
@@ -48,4 +43,4 @@ export type StorageReturnType = StoragePropType | null;
 
 export type ErrorType = string;
 export type EngineReturnType = IEngineParams | ErrorType;
-export type EngineDriveModeReturnType = { success: boolean } | ErrorType;
+export type EngineDriveModeReturnType = boolean | ErrorType;
