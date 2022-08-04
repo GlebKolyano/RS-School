@@ -1,16 +1,20 @@
 import { IWinner, URL } from '../global/models';
 
 export default class WinnerService {
-  public static isInTableWinners = async (id: number): Promise<IWinner> => {
-    const response = await fetch(`${URL.winners}/${id}`);
+  public static getWinner = async (id: number): Promise<IWinner | boolean> => {
+    try {
+      const response = await fetch(`${URL.winners}/${id}`);
 
-    if (!response.ok) {
-      throw new Error('There is no winner in the table!');
+      if (!response.ok) {
+        throw new Error('There is no winner in the table!');
+      }
+
+      const scoreWinner = response.json() as unknown as IWinner;
+
+      return scoreWinner;
+    } catch (error) {
+      return false;
     }
-
-    const scoreWinner = response.json() as unknown as IWinner;
-
-    return scoreWinner;
   };
 
   public static createWinner = async (winner: IWinner): Promise<boolean> => {

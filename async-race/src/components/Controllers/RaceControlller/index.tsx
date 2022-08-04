@@ -36,9 +36,10 @@ const RaceController = () => {
       setTimeout(() => setBtnResetRaceIsDisabled(false), 5000);
       await Promise.any(cars.map(({ id }) => startAnimationCar(id as number))).then(
         async ({ id, finishingTime }) => {
-          try {
-            const { time, wins } = await WinnerService.isInTableWinners(id);
+          const isWinnerInTable = await WinnerService.getWinner(id);
 
+          if (isWinnerInTable) {
+            const { time, wins } = isWinnerInTable as IWinner;
             const finalTime = finishingTime >= time ? time : finishingTime;
             const updatedWinsCounter = wins + 1;
 
@@ -49,7 +50,7 @@ const RaceController = () => {
             };
 
             await WinnerService.updateWinner(newUpdatedScoreOfWinner);
-          } catch (error) {
+          } else {
             const newWinner: IWinner = {
               id,
               time: finishingTime,

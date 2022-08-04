@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IWinner, SortingTypes, URL } from '../../../global/models';
-import CarService from '../../../services/CarService';
-import { setError } from './helpers';
+import WinnerService from '../../../services/WinnerService';
+import { getColorAndNameForWinner, setError } from './helpers';
 import { IWinnersInitialState } from './model';
 
 const initialState: IWinnersInitialState = {
@@ -11,16 +11,6 @@ const initialState: IWinnersInitialState = {
   status: '',
   error: ''
 };
-
-function getColorAndNameForWinner(winners: IWinner[]) {
-  const result = winners.map(async ({ time, wins, id }) => {
-    const { color, name } = await CarService.getCar(id as number);
-    const newWinnerObject: IWinner = { color, name, time, wins, id };
-    return newWinnerObject;
-  });
-
-  return result;
-}
 
 export const getWinners = createAsyncThunk(
   'winners/getWinners',
@@ -44,6 +34,16 @@ export const getWinners = createAsyncThunk(
     }
   }
 );
+
+export const deleteWinner = createAsyncThunk('cars/deleteCar', async (id: number) => {
+  const isWinnerInTable = await WinnerService.getWinner(id);
+
+  if (isWinnerInTable) {
+    await fetch(`${URL.winners}/${id}`, {
+      method: 'DELETE'
+    });
+  }
+});
 
 export const winnersSlice = createSlice({
   name: 'winners',

@@ -5,7 +5,6 @@ import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
 import { ReactComponent as CarModel } from '../../assets/car.svg';
 import { changeSortingType, getWinners } from '../../store/slices/winnners/slice';
 import { changeWinnersPaginationPage } from '../../store/slices/pagination/winnersPagination/slice';
-import Pagination from '../../components/Pagination';
 import useWinners from '../../hooks/useWinners';
 import { IWinner, SortingTypes } from '../../global/models';
 import { WINNERS_PER_PAGE } from './constants';
@@ -43,9 +42,6 @@ const Winners = () => {
   }, [currentPageWinnersPagintion, sortedWinners]);
 
   // handlers
-  const changeWinnersPaginationHandler = (nextPage: number) => {
-    dispatch(changeWinnersPaginationPage(nextPage));
-  };
   const toggleTimeSortingHandler = () => {
     const { TIME_ASC, TIME_DESC } = SortingTypes;
     setTimeSorting(!timeSorting);
@@ -58,6 +54,19 @@ const Winners = () => {
     const newSortingType = winsSorting ? WINS_DESC : WINS_ASC;
     dispatch(changeSortingType(newSortingType));
   };
+
+  const [pageTest, setPageTest] = useState(currentPageWinnersPagintion || 1);
+  const changePageTestPrev = () => {
+    setPageTest(pageTest > 1 ? pageTest - 1 : pageTest);
+  };
+
+  const changePageTestNext = () => {
+    setPageTest(pageTest < pageCountWinnersPagination ? pageTest + 1 : pageTest);
+  };
+
+  useEffect(() => {
+    dispatch(changeWinnersPaginationPage(pageTest));
+  }, [dispatch, pageTest]);
 
   return (
     <div className="winners">
@@ -88,10 +97,15 @@ const Winners = () => {
           </tbody>
         </table>
       </div>
-      <Pagination
-        pageCount={pageCountWinnersPagination}
-        onPageChange={changeWinnersPaginationHandler}
-      />
+      <div>
+        <div>pageTest: {pageTest}</div>
+        <button type="button" onClick={changePageTestPrev}>
+          prev
+        </button>
+        <button type="button" onClick={changePageTestNext}>
+          next
+        </button>
+      </div>
     </div>
   );
 };

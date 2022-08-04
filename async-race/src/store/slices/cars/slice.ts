@@ -17,7 +17,6 @@ export const fetchCars = createAsyncThunk(
   'cars/fetchCars',
   async ({ page, limit }: TFetchCarsProps, { rejectWithValue, dispatch }) => {
     try {
-      console.log('page', page, 'limit', limit);
       const response = await fetch(`${URL.garage}?_page=${page}&_limit=${limit}`);
 
       if (!response.ok) {

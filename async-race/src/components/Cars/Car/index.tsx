@@ -5,6 +5,7 @@ import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
 import { deleteCar, selectCar } from '../../../store/slices/cars/slice';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
 import { ICar } from '../../../global/models';
+import { deleteWinner } from '../../../store/slices/winnners/slice';
 
 const Car = ({ car }: { car: ICar }) => {
   const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
@@ -14,6 +15,7 @@ const Car = ({ car }: { car: ICar }) => {
   const removeCarHandler = () => {
     (async () => {
       await dispatch(deleteCar(id as number));
+      await dispatch(deleteWinner(id as number));
     })().catch(() => {});
   };
 
