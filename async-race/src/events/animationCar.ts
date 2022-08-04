@@ -65,9 +65,9 @@ export async function startAnimationCar(id: number) {
 export async function stopAnimationCar(id: number) {
   const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
 
+  await EngineService.engineStop(id);
   cancelAnimationFrame(animations[id]);
   car.style.transform = 'none';
-  await EngineService.engineStop(id);
 
   const startAnimationButton = document.querySelector(
     `.car__button-start[data-id="${id}"]`

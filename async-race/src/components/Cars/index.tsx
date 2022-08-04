@@ -17,7 +17,7 @@ const Cars = () => {
   );
 
   const [pageCountCarsPagination, setPageCountCarsPagination] = useState<number>(1);
-  const [pageTest, setPageTest] = useState(currentPageCarsPagintion || 1);
+  const [currentPage, setCurrentPage] = useState(currentPageCarsPagintion || 1);
 
   useEffect(
     function loadCars() {
@@ -39,17 +39,17 @@ const Cars = () => {
     [dispatch, currentPageCarsPagintion, totalCars]
   );
 
-  const changePageTestPrev = () => {
-    setPageTest(pageTest > 1 ? pageTest - 1 : pageTest);
+  const changePagePrev = () => {
+    setCurrentPage(currentPage > 1 ? currentPage - 1 : currentPage);
   };
 
-  const changePageTestNext = () => {
-    setPageTest(pageTest < pageCountCarsPagination ? pageTest + 1 : pageTest);
+  const changePageNext = () => {
+    setCurrentPage(currentPage < pageCountCarsPagination ? currentPage + 1 : currentPage);
   };
 
   useEffect(() => {
-    dispatch(changeCarsPaginationPage(pageTest));
-  }, [dispatch, pageTest]);
+    dispatch(changeCarsPaginationPage(currentPage));
+  }, [dispatch, currentPage]);
 
   if (error) {
     return <Error text={error} />;
@@ -61,19 +61,18 @@ const Cars = () => {
 
   return (
     <div className="cars">
+      <div className="cars__pagination">
+        <button type="button" onClick={changePagePrev}>
+          prev
+        </button>
+        <button type="button" onClick={changePageNext}>
+          next
+        </button>
+      </div>
       <div className="cars__items">
         {cars.map((car) => {
           return <Car key={uuidv4()} car={car} />;
         })}
-      </div>
-      <div className="cars__pagination">
-        <div>pageTest: {pageTest}</div>
-        <button type="button" onClick={changePageTestPrev}>
-          prev
-        </button>
-        <button type="button" onClick={changePageTestNext}>
-          next
-        </button>
       </div>
     </div>
   );

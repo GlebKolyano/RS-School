@@ -1,21 +1,14 @@
 import React from 'react';
 import './style.scss';
-import { useTypedSelector } from '../../hooks/reduxHooks';
 import Cars from '../../components/Cars';
-import Controllers from '../../components/Controllers';
+import GarageControllers from '../../components/GarageControllers';
+import GarageInfo from '../../components/GarageInfo';
 
 const Garage = () => {
-  const { totalCars } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPageCarsPagintion } = useTypedSelector(
-    ({ carsPaginationReducer }) => carsPaginationReducer
-  );
-
   return (
     <div className="garage">
-      <Controllers />
-      <h1>
-        Garage ({totalCars}) / Page ({currentPageCarsPagintion})
-      </h1>
+      <GarageControllers />
+      <GarageInfo />
       <Cars />
     </div>
   );

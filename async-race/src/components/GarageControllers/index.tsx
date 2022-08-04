@@ -2,7 +2,7 @@ import React from 'react';
 import CarController from './CarController';
 import RaceController from './RaceControlller';
 
-const Controllers = () => {
+const GarageControllers = () => {
   return (
     <div>
       <CarController />
@@ -11,4 +11,4 @@ const Controllers = () => {
   );
 };
 
-export default Controllers;
+export default GarageControllers;
