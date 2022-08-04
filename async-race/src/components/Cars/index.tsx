@@ -12,7 +12,7 @@ const Cars = () => {
   const dispatch = useTypedDispatch();
 
   const { cars, totalCars, error, status } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPageCarsPagintion } = useTypedSelector(
+  const { currentPageCarsPagintion, isDisabledPaginationCarsBtns } = useTypedSelector(
     ({ carsPaginationReducer }) => carsPaginationReducer
   );
 
@@ -62,10 +62,10 @@ const Cars = () => {
   return (
     <div className="cars">
       <div className="cars__pagination">
-        <button type="button" onClick={changePagePrev}>
+        <button type="button" disabled={isDisabledPaginationCarsBtns} onClick={changePagePrev}>
           prev
         </button>
-        <button type="button" onClick={changePageNext}>
+        <button type="button" disabled={isDisabledPaginationCarsBtns} onClick={changePageNext}>
           next
         </button>
       </div>

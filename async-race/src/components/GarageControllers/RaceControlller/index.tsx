@@ -1,17 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import WinnerService from '../../../services/WinnerService';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
 import { ICar, IWinner } from '../../../global/models';
 import { generateRandomName, getRandomColor } from '../../../global/utils';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
-import { createNewCar } from '../../../store/slices/cars/slice';
+import {
+  createNewCar,
+  disableSelectRemoveBtns,
+  undisableSelectRemoveBtns
+} from '../../../store/slices/cars/slice';
+import {
+  disableRaceStartBtn,
+  setRaceFinished,
+  setRaceStarted,
+  undisableRaceStartBtn
+} from '../../../store/slices/race/slice';
+import {
+  disablePaginationCarsBtns,
+  undisablePaginationCarsBtns
+} from '../../../store/slices/pagination/carsPagination/slice';
 
 const RaceController = () => {
   const dispatch = useTypedDispatch();
   const { cars } = useTypedSelector(({ carsReducer }) => carsReducer);
-
-  const [btnStartRaceIsDisabled, setBtnStartRaceIsDisabled] = useState<boolean>(false);
-  const [btnResetRaceIsDisabled, setBtnResetRaceIsDisabled] = useState<boolean>(true);
 
   function generateCarsHandler() {
     const createCar = (): ICar => {
@@ -30,13 +41,17 @@ const RaceController = () => {
   }
 
   function startRaceHandler() {
-    setBtnStartRaceIsDisabled(true);
+    dispatch(setRaceStarted());
+    dispatch(disablePaginationCarsBtns());
+    dispatch(disableSelectRemoveBtns());
+    dispatch(disableRaceStartBtn());
 
     (async () => {
+      setTimeout(() => dispatch(setRaceFinished()), 5000);
       await Promise.any(cars.map(({ id }) => startAnimationCar(id as number))).then(
         async ({ id, finishingTime }) => {
           const isWinnerInTable = await WinnerService.getWinner(id);
-          setBtnResetRaceIsDisabled(false);
+          dispatch(setRaceFinished());
 
           if (isWinnerInTable) {
             const { time, wins } = isWinnerInTable as IWinner;
@@ -65,24 +80,32 @@ const RaceController = () => {
   }
 
   function resetRaceHandler() {
-    setBtnResetRaceIsDisabled(true);
+    dispatch(undisablePaginationCarsBtns());
+    dispatch(disableRaceStartBtn());
+    dispatch(setRaceStarted());
 
     (async () => {
-      await Promise.all(cars.map(({ id }) => stopAnimationCar(id as number))).finally(() =>
-        setBtnStartRaceIsDisabled(false)
-      );
+      await Promise.all(cars.map(({ id }) => stopAnimationCar(id as number))).finally(() => {
+        dispatch(undisableRaceStartBtn());
+        dispatch(setRaceFinished());
+        dispatch(undisableSelectRemoveBtns());
+      });
     })().catch(() => {});
   }
 
+  const { isRaceActive, isDisabledRaceStartBtn } = useTypedSelector(
+    ({ raceReducer }) => raceReducer
+  );
+
   return (
     <div>
-      <button type="button" onClick={startRaceHandler} disabled={btnStartRaceIsDisabled}>
+      <button type="button" onClick={startRaceHandler} disabled={isDisabledRaceStartBtn}>
         Race
       </button>
-      <button type="button" onClick={resetRaceHandler} disabled={btnResetRaceIsDisabled}>
+      <button type="button" onClick={resetRaceHandler} disabled={isRaceActive}>
         Reset
       </button>
-      <button type="button" onClick={generateCarsHandler}>
+      <button type="button" disabled={isRaceActive} onClick={generateCarsHandler}>
         Generate Cars
       </button>
     </div>

@@ -7,6 +7,7 @@ export interface ICarsInitialState {
   animations: { [index: number]: number };
   status: string;
   error: string;
+  isDisabledSelectRemoveBtns: boolean;
 }
 
 export type TFetchCarsProps = {

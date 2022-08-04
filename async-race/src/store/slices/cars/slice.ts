@@ -9,6 +9,7 @@ const initialState: ICarsInitialState = {
   totalCars: 0,
   selectedCar: null,
   animations: {},
+  isDisabledSelectRemoveBtns: false,
   status: '',
   error: ''
 };
@@ -131,6 +132,15 @@ const carsSlice = createSlice({
       const stateVar = state;
       const { idCar, animationNumber } = payload;
       stateVar.animations[idCar] = animationNumber;
+    },
+
+    disableSelectRemoveBtns: (state) => {
+      const stateVar = state;
+      stateVar.isDisabledSelectRemoveBtns = true;
+    },
+    undisableSelectRemoveBtns: (state) => {
+      const stateVar = state;
+      stateVar.isDisabledSelectRemoveBtns = false;
     }
   },
   extraReducers(builder) {
@@ -153,5 +163,12 @@ const carsSlice = createSlice({
   }
 });
 
-export const { setTotalCars, selectCar, resetSelectedCar, setAnimationCar } = carsSlice.actions;
+export const {
+  setTotalCars,
+  selectCar,
+  resetSelectedCar,
+  setAnimationCar,
+  disableSelectRemoveBtns,
+  undisableSelectRemoveBtns
+} = carsSlice.actions;
 export default carsSlice.reducer;

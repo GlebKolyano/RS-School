@@ -8,7 +8,9 @@ import { ICar } from '../../../global/models';
 import { deleteWinner } from '../../../store/slices/winnners/slice';
 
 const Car = ({ car }: { car: ICar }) => {
-  const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { selectedCar, isDisabledSelectRemoveBtns } = useTypedSelector(
+    ({ carsReducer }) => carsReducer
+  );
   const dispatch = useTypedDispatch();
   const { name, color, id } = car;
 
@@ -38,10 +40,10 @@ const Car = ({ car }: { car: ICar }) => {
   return (
     <div className={selectedCar?.id === id ? 'car car_selected' : 'car'}>
       <div className="car__edit">
-        <button type="button" onClick={selectCarHandler}>
+        <button type="button" disabled={isDisabledSelectRemoveBtns} onClick={selectCarHandler}>
           select
         </button>
-        <button type="button" onClick={removeCarHandler}>
+        <button type="button" disabled={isDisabledSelectRemoveBtns} onClick={removeCarHandler}>
           remove
         </button>
         <p>{name}</p>
