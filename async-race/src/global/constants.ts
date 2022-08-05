@@ -1,4 +1,5 @@
 export const sessionStoragePrefix = '_async-race';
+export const SHOW_WINNER_MODAL = 'show-winner-modal';
 
 export const carBrands = [
   'Audi',

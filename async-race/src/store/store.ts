@@ -10,10 +10,10 @@ import {
   REGISTER
 } from 'redux-persist';
 import storageSession from 'redux-persist/lib/storage/session';
-import carsReducer from './slices/cars/slice';
-import winnersReducer from './slices/winnners/slice';
-import engineReducer from './slices/engine/slice';
+import carsReducer from './slices/car/slice';
+import winnersReducer from './slices/winnner/slice';
 import raceReducer from './slices/race/slice';
+import modalReducer from './slices/modal/slice';
 import carsPaginationReducer from './slices/pagination/carsPagination/slice';
 import winnersPaginationReducer from './slices/pagination/winnersPagination/slice';
 
@@ -49,8 +49,8 @@ export const rootReducer = combineReducers({
     winnersPaginationReducer
   ),
   winnersReducer,
-  engineReducer,
-  raceReducer
+  raceReducer,
+  modalReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
-import { fetchCars } from '../../store/slices/cars/slice';
+import { fetchCars } from '../../store/slices/car/slice';
 import { changeCarsPaginationPage } from '../../store/slices/pagination/carsPagination/slice';
 import Error from '../UI/Error';
 import Car from './Car';

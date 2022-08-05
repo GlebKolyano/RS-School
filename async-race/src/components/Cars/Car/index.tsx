@@ -2,10 +2,10 @@ import React from 'react';
 import './style.scss';
 import { ReactComponent as CarModel } from '../../../assets/car.svg';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
-import { deleteCar, selectCar } from '../../../store/slices/cars/slice';
+import { deleteCar, selectCar } from '../../../store/slices/car/slice';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
 import { ICar } from '../../../global/models';
-import { deleteWinner } from '../../../store/slices/winnners/slice';
+import { deleteWinner } from '../../../store/slices/winnner/slice';
 
 const Car = ({ car }: { car: ICar }) => {
   const { selectedCar, isDisabledSelectRemoveBtns } = useTypedSelector(
@@ -16,8 +16,8 @@ const Car = ({ car }: { car: ICar }) => {
 
   const removeCarHandler = () => {
     (async () => {
-      await dispatch(deleteCar(id as number));
-      await dispatch(deleteWinner(id as number));
+      await dispatch(deleteCar(id));
+      await dispatch(deleteWinner(id));
     })().catch(() => {});
   };
 
@@ -27,13 +27,13 @@ const Car = ({ car }: { car: ICar }) => {
 
   const startAnimationHandler = () => {
     (async () => {
-      await startAnimationCar(id as number);
+      await startAnimationCar(car);
     })().catch(() => {});
   };
 
   const stopAnimationHandler = () => {
     (async () => {
-      await stopAnimationCar(id as number);
+      await stopAnimationCar(id);
     })().catch(() => {});
   };
 

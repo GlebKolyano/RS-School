@@ -45,7 +45,7 @@ export const deleteWinner = createAsyncThunk('cars/deleteCar', async (id: number
   }
 });
 
-export const winnersSlice = createSlice({
+export const winnerSlice = createSlice({
   name: 'winners',
   initialState,
   reducers: {
@@ -75,5 +75,5 @@ export const winnersSlice = createSlice({
   }
 });
 
-export const { setTotalWinners, changeSortingType } = winnersSlice.actions;
-export default winnersSlice.reducer;
+export const { setTotalWinners, changeSortingType } = winnerSlice.actions;
+export default winnerSlice.reducer;

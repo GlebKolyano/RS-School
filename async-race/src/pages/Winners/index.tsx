@@ -3,7 +3,7 @@ import './style.scss';
 import { v4 as uuidv4 } from 'uuid';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
 import { ReactComponent as CarModel } from '../../assets/car.svg';
-import { changeSortingType, getWinners } from '../../store/slices/winnners/slice';
+import { changeSortingType, getWinners } from '../../store/slices/winnner/slice';
 import { changeWinnersPaginationPage } from '../../store/slices/pagination/winnersPagination/slice';
 import useWinners from '../../hooks/useWinners';
 import { IWinner, SortingTypes } from '../../global/models';

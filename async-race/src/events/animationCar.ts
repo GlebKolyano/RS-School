@@ -1,5 +1,5 @@
 import EngineService from '../services/EngineService';
-import { IEngineParams } from '../global/models';
+import { ICar, IEngineParams } from '../global/models';
 
 const animations: { [index: number]: number } = {};
 
@@ -30,12 +30,13 @@ async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, dur
   return isFinishedCar;
 }
 
-export async function startAnimationCar(id: number) {
+export async function startAnimationCar(car: ICar) {
+  const { id, name } = car;
   const { distance, velocity } = (await EngineService.engineStart(id)) as IEngineParams;
   const speed = distance / velocity;
 
-  const car = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
-  const finish = document.querySelector(`.car__finish[data-id="${id}"]`) as HTMLElement;
+  const carModel = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
+  const finishModel = document.querySelector(`.car__finish[data-id="${id}"]`) as HTMLElement;
 
   const startAnimationButton = document.querySelector(
     `.car__button-start[data-id="${id}"]`
@@ -49,13 +50,13 @@ export async function startAnimationCar(id: number) {
 
   const startTime = Date.now() / 1000;
 
-  const resultRace = await animateCar(id, car, finish, speed);
+  const resultRace = await animateCar(id, carModel, finishModel, speed);
 
   const finishTime = Date.now() / 1000;
 
   const finalTime = Number((finishTime - startTime).toFixed(2));
 
-  return resultRace ? { id, finalTime } : Promise.reject();
+  return resultRace ? { name, id, finalTime } : Promise.reject();
 }
 
 export async function stopAnimationCar(id: number) {

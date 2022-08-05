@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ICar, URL } from '../../../global/models';
+import { ICar, INewCar, URL } from '../../../global/models';
 import { setError } from './helpers';
 import { ICarsInitialState, TFetchCarsProps } from './models';
 
@@ -58,7 +58,7 @@ export const deleteCar = createAsyncThunk(
 
 export const createNewCar = createAsyncThunk(
   'cars/createNewCar',
-  async (car: ICar, { rejectWithValue, dispatch }) => {
+  async (car: INewCar, { rejectWithValue, dispatch }) => {
     try {
       const response = await fetch(URL.garage, {
         method: 'POST',
@@ -84,7 +84,7 @@ export const updateParamsCar = createAsyncThunk(
   'cars/updateParamsCar',
   async ({ color, name, id }: ICar, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${URL.garage}/${id as number}`, {
+      const response = await fetch(`${URL.garage}/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
@@ -112,7 +112,7 @@ export type AnimationType = {
   animationNumber: number;
 };
 
-const carsSlice = createSlice({
+const carSlice = createSlice({
   name: 'cars',
   initialState,
   reducers: {
@@ -170,5 +170,5 @@ export const {
   setAnimationCar,
   disableSelectRemoveBtns,
   undisableSelectRemoveBtns
-} = carsSlice.actions;
-export default carsSlice.reducer;
+} = carSlice.actions;
+export default carSlice.reducer;

@@ -9,7 +9,12 @@ export interface ICars {
 }
 
 export interface ICar {
-  id?: number;
+  id: number;
+  name: string;
+  color: string;
+}
+
+export interface INewCar {
   name: string;
   color: string;
 }

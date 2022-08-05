@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SessionStorage from '../../../global/helpers';
 import { ICar } from '../../../global/models';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
-import { createNewCar, resetSelectedCar, updateParamsCar } from '../../../store/slices/cars/slice';
+import { createNewCar, resetSelectedCar, updateParamsCar } from '../../../store/slices/car/slice';
 
 const CarController = () => {
   const dispatch = useTypedDispatch();
@@ -77,7 +77,7 @@ const CarController = () => {
     const createCar = async () => {
       let carId = 0;
       if (selectedCar) {
-        carId = selectedCar.id as number;
+        carId = selectedCar.id;
       }
       const newParamsCar: ICar = {
         color: updateCarColor,

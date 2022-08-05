@@ -1,14 +1,14 @@
 import React from 'react';
 import WinnerService from '../../../services/WinnerService';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
-import { ICar, IWinner } from '../../../global/models';
+import { INewCar, IWinner } from '../../../global/models';
 import { generateRandomName, getRandomColor } from '../../../global/utils';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
 import {
   createNewCar,
   disableSelectRemoveBtns,
   undisableSelectRemoveBtns
-} from '../../../store/slices/cars/slice';
+} from '../../../store/slices/car/slice';
 import {
   disableRaceStartBtn,
   setRaceFinished,
@@ -19,13 +19,15 @@ import {
   disablePaginationCarsBtns,
   undisablePaginationCarsBtns
 } from '../../../store/slices/pagination/carsPagination/slice';
+import { setModalTextByID, toggleVisibilityModalByID } from '../../../store/slices/modal/slice';
+import { SHOW_WINNER_MODAL } from '../../../global/constants';
 
 const RaceController = () => {
   const dispatch = useTypedDispatch();
   const { cars } = useTypedSelector(({ carsReducer }) => carsReducer);
 
   function generateCarsHandler() {
-    const createCar = (): ICar => {
+    const createCar = (): INewCar => {
       const color = getRandomColor();
       const name = generateRandomName();
       return {
@@ -42,17 +44,24 @@ const RaceController = () => {
 
   function startRaceHandler() {
     dispatch(setRaceStarted());
-    dispatch(disablePaginationCarsBtns());
-    dispatch(disableSelectRemoveBtns());
     dispatch(disableRaceStartBtn());
+    dispatch(disableSelectRemoveBtns());
+    dispatch(disablePaginationCarsBtns());
 
     (async () => {
       setTimeout(() => dispatch(setRaceFinished()), 5000);
-      await Promise.any(cars.map(({ id }) => startAnimationCar(id as number))).then(
-        async ({ id, finalTime }) => {
-          console.log('raceResult', id, finalTime);
+      await Promise.any(cars.map((car) => startAnimationCar(car))).then(
+        async ({ name, id, finalTime }) => {
           const isWinnerInTable = await WinnerService.getWinner(id);
+
           dispatch(setRaceFinished());
+          dispatch(
+            setModalTextByID({
+              modalID: SHOW_WINNER_MODAL,
+              modalText: `Winner is ${name} with ID ${id}. Result of race: ${finalTime}`
+            })
+          );
+          dispatch(toggleVisibilityModalByID(SHOW_WINNER_MODAL));
 
           if (isWinnerInTable) {
             const { time, wins } = isWinnerInTable as IWinner;
@@ -81,14 +90,14 @@ const RaceController = () => {
   }
 
   function resetRaceHandler() {
-    dispatch(undisablePaginationCarsBtns());
-    dispatch(disableRaceStartBtn());
     dispatch(setRaceStarted());
+    dispatch(disableRaceStartBtn());
+    dispatch(undisablePaginationCarsBtns());
 
     (async () => {
-      await Promise.all(cars.map(({ id }) => stopAnimationCar(id as number))).finally(() => {
-        dispatch(undisableRaceStartBtn());
+      await Promise.all(cars.map(({ id }) => stopAnimationCar(id))).finally(() => {
         dispatch(setRaceFinished());
+        dispatch(undisableRaceStartBtn());
         dispatch(undisableSelectRemoveBtns());
       });
     })().catch(() => {});
