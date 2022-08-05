@@ -11,24 +11,20 @@ async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, dur
   const framesCount = (duration / 1000) * 60;
   const dx = (finalPostion - animatedCar.offsetLeft) / framesCount;
 
-  let isFinishedCar = false;
-
   const tick = () => {
     currentPositionOfCar += dx;
     animatedCar.style.transform = `translateX(${currentPositionOfCar}px)`;
 
     if (currentPositionOfCar < finalPostion) {
       animations[id] = requestAnimationFrame(tick);
-    } else {
-      isFinishedCar = true;
     }
   };
 
   tick();
 
-  await EngineService.engineDriveMode(id).catch(() => {
+  const isFinishedCar = await EngineService.engineDriveMode(id).catch(() => {
     cancelAnimationFrame(animations[id]);
-    isFinishedCar = false;
+    return false;
   });
 
   return isFinishedCar;
@@ -57,9 +53,9 @@ export async function startAnimationCar(id: number) {
 
   const finishTime = Date.now() / 1000;
 
-  const finishingTime = Number((finishTime - startTime).toFixed(2));
+  const finalTime = Number((finishTime - startTime).toFixed(2));
 
-  return resultRace ? { id, finishingTime } : Promise.reject();
+  return resultRace ? { id, finalTime } : Promise.reject();
 }
 
 export async function stopAnimationCar(id: number) {
