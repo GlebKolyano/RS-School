@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
 import { fetchCars } from '../../store/slices/car/slice';
 import { changeCarsPaginationPage } from '../../store/slices/pagination/carsPagination/slice';
-import Error from '../UI/Error';
+import Button from '../UI/Button';
 import Car from './Car';
 import { CARS_PER_PAGE } from './constants';
 import './style.scss';
@@ -11,13 +11,13 @@ import './style.scss';
 const Cars = () => {
   const dispatch = useTypedDispatch();
 
-  const { cars, totalCars, error, status } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPageCarsPagintion, isDisabledPaginationCarsBtns } = useTypedSelector(
+  const { cars, totalCars } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { currentPageCarsPagination, isDisabledPaginationCarsBtns } = useTypedSelector(
     ({ carsPaginationReducer }) => carsPaginationReducer
   );
 
   const [pageCountCarsPagination, setPageCountCarsPagination] = useState<number>(1);
-  const [currentPage, setCurrentPage] = useState(currentPageCarsPagintion || 1);
+  const [currentPage, setCurrentPage] = useState(currentPageCarsPagination || 1);
 
   useEffect(
     function loadCars() {
@@ -28,7 +28,7 @@ const Cars = () => {
 
       (async () => {
         const params = {
-          page: currentPageCarsPagintion,
+          page: currentPageCarsPagination,
           limit: CARS_PER_PAGE
         };
         await dispatch(fetchCars(params));
@@ -36,7 +36,7 @@ const Cars = () => {
 
       setPageCountValue();
     },
-    [dispatch, currentPageCarsPagintion, totalCars]
+    [dispatch, currentPageCarsPagination, totalCars]
   );
 
   const changePagePrev = () => {
@@ -51,28 +51,16 @@ const Cars = () => {
     dispatch(changeCarsPaginationPage(currentPage));
   }, [dispatch, currentPage]);
 
-  if (error) {
-    return <Error text={error} />;
-  }
-
-  if (status === 'loading') {
-    return <p>Идёт загрузка...</p>;
-  }
-
   return (
     <div className="cars">
-      <div className="cars__pagination">
-        <button type="button" disabled={isDisabledPaginationCarsBtns} onClick={changePagePrev}>
-          prev
-        </button>
-        <button type="button" disabled={isDisabledPaginationCarsBtns} onClick={changePageNext}>
-          next
-        </button>
-      </div>
       <div className="cars__items">
         {cars.map((car) => {
           return <Car key={uuidv4()} car={car} />;
         })}
+      </div>
+      <div className="cars__pagination">
+        <Button onClick={changePagePrev} disabled={isDisabledPaginationCarsBtns} text="prev" />
+        <Button onClick={changePageNext} disabled={isDisabledPaginationCarsBtns} text="next" />
       </div>
     </div>
   );

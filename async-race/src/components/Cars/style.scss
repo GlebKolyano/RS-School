@@ -3,4 +3,16 @@
   flex-direction: column;
   column-gap: 1rem;
   row-gap: 1rem;
+
+  &__items {
+    box-shadow: 0px 1px 2px 5px rgba(34, 60, 80, 0.6);
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    column-gap: 1rem;
+  }
 }

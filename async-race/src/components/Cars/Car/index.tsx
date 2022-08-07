@@ -6,11 +6,12 @@ import { deleteCar, selectCar } from '../../../store/slices/car/slice';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
 import { ICar } from '../../../global/models';
 import { deleteWinner } from '../../../store/slices/winnner/slice';
+import Button from '../../UI/Button';
+import { setRaceFinished, setRaceStarted } from '../../../store/slices/race/slice';
 
 const Car = ({ car }: { car: ICar }) => {
-  const { selectedCar, isDisabledSelectRemoveBtns } = useTypedSelector(
-    ({ carsReducer }) => carsReducer
-  );
+  const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { isRaceActive } = useTypedSelector(({ raceReducer }) => raceReducer);
   const dispatch = useTypedDispatch();
   const { name, color, id } = car;
 
@@ -26,6 +27,7 @@ const Car = ({ car }: { car: ICar }) => {
   };
 
   const startAnimationHandler = () => {
+    dispatch(setRaceStarted());
     (async () => {
       await startAnimationCar(car);
     })().catch(() => {});
@@ -34,38 +36,33 @@ const Car = ({ car }: { car: ICar }) => {
   const stopAnimationHandler = () => {
     (async () => {
       await stopAnimationCar(id);
+      dispatch(setRaceFinished());
     })().catch(() => {});
   };
 
   return (
     <div className={selectedCar?.id === id ? 'car car_selected' : 'car'}>
       <div className="car__edit">
-        <button type="button" disabled={isDisabledSelectRemoveBtns} onClick={selectCarHandler}>
-          select
-        </button>
-        <button type="button" disabled={isDisabledSelectRemoveBtns} onClick={removeCarHandler}>
-          remove
-        </button>
+        <Button onClick={selectCarHandler} text="select" disabled={isRaceActive} />
+        <Button onClick={removeCarHandler} text="remove" disabled={isRaceActive} />
         <p>{name}</p>
       </div>
       <div className="car__view">
         <div className="car__controls">
-          <button
-            type="button"
+          <Button
             className="car__button-start"
-            data-id={id}
             onClick={startAnimationHandler}
-          >
-            start
-          </button>
-          <button
-            type="button"
+            text="start"
+            dataID={id}
+            disabled={isRaceActive}
+          />
+          <Button
             className="car__button-stop"
-            data-id={id}
             onClick={stopAnimationHandler}
-          >
-            stop
-          </button>
+            text="stop"
+            dataID={id}
+            disabled={!isRaceActive}
+          />
         </div>
         <div className="car__icons">
           <div className="car__image" data-id={id}>

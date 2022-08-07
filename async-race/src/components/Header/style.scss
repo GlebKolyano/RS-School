@@ -1,4 +1,8 @@
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 80px;
   background-color: rgb(143, 191, 143);
+  margin-bottom: 1rem;
 }
