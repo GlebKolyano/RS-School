@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import SessionStorage from '../../../global/helpers';
-import { ICar } from '../../../global/models';
-import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
-import { createNewCar, resetSelectedCar, updateParamsCar } from '../../../store/slices/car/slice';
+import SessionStorage from '../../../../global/helpers';
+import { ICar } from '../../../../global/models';
+import { useTypedDispatch, useTypedSelector } from '../../../../hooks/reduxHooks';
+import {
+  createNewCar,
+  resetSelectedCar,
+  updateParamsCar
+} from '../../../../store/slices/car/slice';
 
 const CarController = () => {
   const dispatch = useTypedDispatch();

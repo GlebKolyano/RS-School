@@ -4,7 +4,7 @@ import RaceController from './RaceControlller';
 
 const GarageControllers = () => {
   return (
-    <div>
+    <div className="garage__controllers">
       <CarController />
       <RaceController />
     </div>

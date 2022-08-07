@@ -1,16 +1,16 @@
 import React from 'react';
-import { useTypedSelector } from '../../hooks/reduxHooks';
+import { useTypedSelector } from '../../../hooks/reduxHooks';
 
 const GarageInfo = () => {
   const { totalCars } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPageCarsPagintion } = useTypedSelector(
+  const { currentPageCarsPagination } = useTypedSelector(
     ({ carsPaginationReducer }) => carsPaginationReducer
   );
 
   return (
-    <div>
+    <div className="garage__title">
       <h1>
-        Cars in garage ({totalCars}) / Page ({currentPageCarsPagintion})
+        Cars in garage ({totalCars}) / Page ({currentPageCarsPagination})
       </h1>
     </div>
   );
