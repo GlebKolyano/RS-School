@@ -18,6 +18,14 @@
   &__row {
   }
 
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
   &__table {
     display: table;
     width: fit-content;

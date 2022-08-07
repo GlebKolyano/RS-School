@@ -32,13 +32,13 @@ const carsPersistConfig = {
 const winnersPaginationPersistConfig = {
   key: '_winners-pagination',
   storage: storageSession,
-  whitelist: ['currentPageWinnersPagintion']
+  whitelist: ['currentPageWinnersPagination']
 };
 
 const carsPaginationPersistConfig = {
   key: '_cars-pagination',
   storage: storageSession,
-  whitelist: ['currentPageCarsPagintion']
+  whitelist: ['currentPageCarsPagination']
 };
 
 export const rootReducer = combineReducers({

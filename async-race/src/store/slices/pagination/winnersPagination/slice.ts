@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
-  currentPageWinnersPagintion: 1
+  currentPageWinnersPagination: 1
 };
 
 export const winnersPagination = createSlice({
@@ -10,7 +10,7 @@ export const winnersPagination = createSlice({
   reducers: {
     changeWinnersPaginationPage: (state, { payload }: PayloadAction<number>) => {
       const stateVar = state;
-      stateVar.currentPageWinnersPagintion = payload;
+      stateVar.currentPageWinnersPagination = payload;
     }
   }
 });
