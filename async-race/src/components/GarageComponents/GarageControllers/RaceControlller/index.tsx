@@ -23,6 +23,9 @@ import Button from '../../../UI/Button';
 const RaceController = () => {
   const dispatch = useTypedDispatch();
   const { cars } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { isRaceActive, isDisabledRaceStartBtn } = useTypedSelector(
+    ({ raceReducer }) => raceReducer
+  );
 
   const generateCarsHandler = () => {
     const createCar = (): INewCar => {
@@ -57,6 +60,7 @@ const RaceController = () => {
               modalText: `Winner is ${name} with ID ${id}. Result of race: ${finalTime}`
             })
           );
+
           dispatch(toggleVisibilityModalByID(SHOW_WINNER_MODAL));
 
           if (isWinnerInTable) {
@@ -80,9 +84,9 @@ const RaceController = () => {
 
             await WinnerService.createWinner(newWinner);
           }
+          dispatch(setRaceFinished());
         }
       );
-      dispatch(setRaceFinished());
     })().catch(() => {});
   };
 
@@ -98,10 +102,6 @@ const RaceController = () => {
       });
     })().catch(() => {});
   };
-
-  const { isRaceActive, isDisabledRaceStartBtn } = useTypedSelector(
-    ({ raceReducer }) => raceReducer
-  );
 
   return (
     <div className="race-controller">

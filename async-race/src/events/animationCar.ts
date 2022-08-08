@@ -5,17 +5,17 @@ const animations: { [index: number]: number } = {};
 
 async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, duration: number) {
   const animatedCar = car;
-  let currentPositionOfCar = animatedCar.offsetLeft - animatedCar.offsetWidth;
+  let currentPositionOfCar = animatedCar.offsetLeft - animatedCar.offsetWidth + 20;
 
-  const finalPostion = finish.offsetLeft - finish.offsetWidth * 2;
+  const finalPosition = finish.offsetLeft - finish.offsetWidth * 2;
   const framesCount = (duration / 1000) * 60;
-  const dx = (finalPostion - animatedCar.offsetLeft) / framesCount;
+  const dx = (finalPosition - animatedCar.offsetLeft) / framesCount;
 
   const tick = () => {
     currentPositionOfCar += dx;
     animatedCar.style.transform = `translateX(${currentPositionOfCar}px)`;
 
-    if (currentPositionOfCar < finalPostion) {
+    if (currentPositionOfCar < finalPosition) {
       animations[id] = requestAnimationFrame(tick);
     }
   };

@@ -12,12 +12,6 @@
     align-items: center;
   }
 
-  &__counter {
-  }
-
-  &__row {
-  }
-
   &__pagination {
     display: flex;
     justify-content: center;
@@ -29,14 +23,6 @@
   &__table {
     display: table;
     width: fit-content;
-    &-id {
-    }
-    &-car {
-    }
-    &-wins {
-    }
-    &-time {
-    }
   }
 }
 

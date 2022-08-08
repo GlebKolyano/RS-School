@@ -9,9 +9,9 @@ const GarageInfo = () => {
 
   return (
     <div className="garage__title">
-      <h1>
-        Cars in garage ({totalCars}) / Page ({currentPageCarsPagination})
-      </h1>
+      <h2>
+        Garage ({totalCars}) / Page ({currentPageCarsPagination})
+      </h2>
     </div>
   );
 };

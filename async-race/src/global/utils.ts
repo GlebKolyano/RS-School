@@ -15,9 +15,9 @@ export const getRandomColor = (): string => {
 };
 
 export const generateRandomName = () => {
-  const indexRandomBrand = getRandomNumberBetweeenTwoValues(0, carBrands.length);
+  const indexRandomBrand = getRandomNumberBetweeenTwoValues(0, carBrands.length - 1);
   const randomBrand = carBrands[indexRandomBrand];
-  const indexRandomfModal = getRandomNumberBetweeenTwoValues(0, carModels.length);
+  const indexRandomfModal = getRandomNumberBetweeenTwoValues(0, carModels.length - 1);
   const randomModel = carModels[indexRandomfModal];
   const resultedName = `${randomBrand} ${randomModel}`;
   return resultedName;

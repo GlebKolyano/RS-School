@@ -7,9 +7,9 @@ const WinnersTitle = ({ amountWinners }: TWinnersTitleProps) => {
     ({ winnersPaginationReducer }) => winnersPaginationReducer
   );
   return (
-    <h1 className="winners__title">
-      Winners ({amountWinners}) Page ({currentPageWinnersPagination})
-    </h1>
+    <h2 className="winners__title">
+      Winners ({amountWinners}) / Page ({currentPageWinnersPagination})
+    </h2>
   );
 };
 

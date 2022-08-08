@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './style.scss';
 import SessionStorage from '../../../../global/helpers';
 import { ICar } from '../../../../global/models';
 import { useTypedDispatch, useTypedSelector } from '../../../../hooks/reduxHooks';
@@ -102,7 +103,7 @@ const CarController = () => {
 
   return (
     <div className="car-controller">
-      <form className="car-controller__create" onSubmit={(e) => createNewCarHandler(e)}>
+      <form className="car-controller__form" onSubmit={(e) => createNewCarHandler(e)}>
         <input
           type="text"
           placeholder="name car"
@@ -111,11 +112,11 @@ const CarController = () => {
           onChange={(e) => createCarNameHandler(e)}
         />
         <input type="color" value={carColor} onChange={(e) => createCarColorHandler(e)} />
-        <button type="submit" disabled={!carName.length}>
+        <button type="submit" disabled={!carName.length} className="button">
           create car
         </button>
       </form>
-      <form className="car-controller__update" onSubmit={(e) => updateParamsCarHandler(e)}>
+      <form className="car-controller__form" onSubmit={(e) => updateParamsCarHandler(e)}>
         <input
           type="text"
           value={updateCarName}
@@ -125,7 +126,7 @@ const CarController = () => {
           onChange={(e) => updateCarNameHandler(e)}
         />
         <input type="color" value={updateCarColor} onChange={(e) => updateCarColorHandler(e)} />
-        <button type="submit" disabled={!updateCarName.length}>
+        <button type="submit" disabled={!updateCarName.length} className="button">
           update car
         </button>
       </form>
