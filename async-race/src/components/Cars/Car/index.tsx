@@ -19,7 +19,7 @@ const Car = ({ car }: TCarProps) => {
     (async () => {
       await dispatch(deleteCar(id));
       await dispatch(deleteWinner(id));
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   };
 
   const selectCarHandler = () => {
@@ -30,14 +30,14 @@ const Car = ({ car }: TCarProps) => {
     dispatch(setRaceStarted());
     (async () => {
       await startAnimationCar(car);
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   };
 
   const stopAnimationHandler = () => {
     (async () => {
       await stopAnimationCar(id);
       dispatch(setRaceFinished());
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   };
 
   return (

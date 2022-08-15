@@ -40,7 +40,7 @@ const RaceController = () => {
     (async () => {
       const newCars = Array.from({ length: 100 }, () => createCar());
       await Promise.all(newCars.map((newCar) => dispatch(createNewCar(newCar))));
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   };
 
   const startRaceHandler = () => {
@@ -87,7 +87,7 @@ const RaceController = () => {
           dispatch(setRaceFinished());
         }
       );
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   };
 
   const resetRaceHandler = () => {
@@ -100,7 +100,7 @@ const RaceController = () => {
         dispatch(undisableRaceStartBtn());
         dispatch(undisablePaginationCarsBtns());
       });
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   };
 
   return (

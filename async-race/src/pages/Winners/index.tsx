@@ -20,7 +20,7 @@ const Winners = () => {
   useEffect(() => {
     (async () => {
       await dispatch(getWinners());
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   }, [dispatch]);
 
   const sortedWinners = useWinners();

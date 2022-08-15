@@ -32,7 +32,7 @@ const Cars = () => {
           limit: CARS_PER_PAGE
         };
         await dispatch(fetchCars(params));
-      })().catch(() => {});
+      })().catch((error) => console.log(error));
 
       setPageCountValue();
     },
