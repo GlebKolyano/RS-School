@@ -1,7 +1,7 @@
 import { ICar, URL } from '../global/models';
 
 export default class CarService {
-  public static getCar = async (idCar: number) => {
+  public static getCar = async (idCar: number): Promise<ICar> => {
     const response = await fetch(`${URL.garage}/${idCar}`);
 
     if (!response.ok) {
