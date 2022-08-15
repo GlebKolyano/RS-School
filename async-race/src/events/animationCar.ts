@@ -1,7 +1,8 @@
 import EngineService from '../services/EngineService';
 import { ICar, IEngineParams } from '../global/models';
+import { TAnimationFrames } from './models';
 
-const animations: { [index: number]: number } = {};
+const animations: TAnimationFrames = {};
 
 async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, duration: number) {
   const animatedCar = car;

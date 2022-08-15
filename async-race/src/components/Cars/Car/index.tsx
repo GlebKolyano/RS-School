@@ -4,12 +4,12 @@ import { ReactComponent as CarModel } from '../../../assets/car.svg';
 import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
 import { deleteCar, selectCar } from '../../../store/slices/car/slice';
 import { startAnimationCar, stopAnimationCar } from '../../../events/animationCar';
-import { ICar } from '../../../global/models';
 import { deleteWinner } from '../../../store/slices/winnner/slice';
 import Button from '../../UI/Button';
 import { setRaceFinished, setRaceStarted } from '../../../store/slices/race/slice';
+import { TCarProps } from './models';
 
-const Car = ({ car }: { car: ICar }) => {
+const Car = ({ car }: TCarProps) => {
   const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
   const { isRaceActive } = useTypedSelector(({ raceReducer }) => raceReducer);
   const dispatch = useTypedDispatch();
