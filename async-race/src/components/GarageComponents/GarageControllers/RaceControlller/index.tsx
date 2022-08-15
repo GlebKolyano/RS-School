@@ -4,7 +4,7 @@ import WinnerService from '../../../../services/WinnerService';
 import { startAnimationCar, stopAnimationCar } from '../../../../events/animationCar';
 import { INewCar, IWinner } from '../../../../global/models';
 import { generateRandomName, getRandomColor } from '../../../../global/utils';
-import { useTypedDispatch, useTypedSelector } from '../../../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../../../hooks/reduxHooks';
 import { createNewCar } from '../../../../store/slices/car/slice';
 import {
   disableRaceStartBtn,
@@ -19,13 +19,12 @@ import {
 import { setModalTextByID, toggleVisibilityModalByID } from '../../../../store/slices/modal/slice';
 import { SHOW_WINNER_MODAL } from '../../../../global/constants';
 import Button from '../../../UI/Button';
+import { useCarSelector, useRaceSelector } from '../../../../store/selectors';
 
 const RaceController = () => {
   const dispatch = useTypedDispatch();
-  const { cars } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { isRaceActive, isDisabledRaceStartBtn } = useTypedSelector(
-    ({ raceReducer }) => raceReducer
-  );
+  const { cars } = useCarSelector();
+  const { isRaceActive, isDisabledRaceStartBtn } = useRaceSelector();
 
   const generateCarsHandler = () => {
     const createCar = (): INewCar => {

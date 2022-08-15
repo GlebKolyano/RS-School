@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../hooks/reduxHooks';
+import { useCarPaginationSelector, useCarSelector } from '../../store/selectors';
 import { fetchCars } from '../../store/slices/car/slice';
 import { changeCarsPaginationPage } from '../../store/slices/pagination/carsPagination/slice';
 import Button from '../UI/Button';
@@ -11,10 +12,8 @@ import './style.scss';
 const Cars = () => {
   const dispatch = useTypedDispatch();
 
-  const { cars, totalCars } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPageCarsPagination, isDisabledPaginationCarsBtns } = useTypedSelector(
-    ({ carsPaginationReducer }) => carsPaginationReducer
-  );
+  const { cars, totalCars } = useCarSelector();
+  const { currentPageCarsPagination, isDisabledPaginationCarsBtns } = useCarPaginationSelector();
 
   const [pageCountCarsPagination, setPageCountCarsPagination] = useState<number>(1);
   const [currentPage, setCurrentPage] = useState(currentPageCarsPagination || 1);

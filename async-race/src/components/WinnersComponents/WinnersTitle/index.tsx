@@ -1,11 +1,9 @@
 import React from 'react';
-import { useTypedSelector } from '../../../hooks/reduxHooks';
+import { useWinnerPaginationSelector } from '../../../store/selectors';
 import { TWinnersTitleProps } from './models';
 
 const WinnersTitle = ({ amountWinners }: TWinnersTitleProps) => {
-  const { currentPageWinnersPagination } = useTypedSelector(
-    ({ winnersPaginationReducer }) => winnersPaginationReducer
-  );
+  const { currentPageWinnersPagination } = useWinnerPaginationSelector();
   return (
     <h2 className="winners__title">
       Winners ({amountWinners}) / Page ({currentPageWinnersPagination})

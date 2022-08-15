@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import SessionStorage from '../../../../global/helpers';
 import { ICar } from '../../../../global/models';
-import { useTypedDispatch, useTypedSelector } from '../../../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../../../hooks/reduxHooks';
 import {
   createNewCar,
   resetSelectedCar,
   updateParamsCar
 } from '../../../../store/slices/car/slice';
+import { useCarSelector } from '../../../../store/selectors';
 
 const CarController = () => {
   const dispatch = useTypedDispatch();
-  const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { selectedCar } = useCarSelector();
   const [isCarSelected, setIsCarSelected] = useState<boolean>(false);
   const [carName, setCarName] = useState<string>(
     SessionStorage.get('carNameCreateInputValue') || ''

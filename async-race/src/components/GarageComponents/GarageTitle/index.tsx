@@ -1,11 +1,9 @@
 import React from 'react';
-import { useTypedSelector } from '../../../hooks/reduxHooks';
+import { useCarPaginationSelector, useCarSelector } from '../../../store/selectors';
 
 const GarageInfo = () => {
-  const { totalCars } = useTypedSelector(({ carsReducer }) => carsReducer);
-  const { currentPageCarsPagination } = useTypedSelector(
-    ({ carsPaginationReducer }) => carsPaginationReducer
-  );
+  const { totalCars } = useCarSelector();
+  const { currentPageCarsPagination } = useCarPaginationSelector();
 
   return (
     <div className="garage__title">
