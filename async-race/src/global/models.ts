@@ -51,7 +51,7 @@ export type StorageReturnType = StoragePropType | null;
 
 export type ErrorType = string;
 export type EngineReturnType = IEngineParams | ErrorType;
-export type EngineDriveModeReturnType = boolean | ErrorType;
+export type EngineDriveModeReturnType = { success: boolean };
 
 export enum SortingTypes {
   WINS_ASC = 'wins_asc',
@@ -59,3 +59,23 @@ export enum SortingTypes {
   TIME_ASC = 'time_asc',
   TIME_DESC = 'time_desc'
 }
+
+export type GetRequestRerurnType<T> = {
+  data: Promise<T>;
+  total: number;
+};
+
+export type PatchRequestRerurnType<T> = {
+  data: Promise<T>;
+  total: number;
+};
+
+export type TPostRequestProps<T> = {
+  request: string;
+  postedObj: T;
+};
+
+export type TPatchRequestProps<T> = {
+  request: string;
+  patchedObj?: T;
+};

@@ -1,42 +1,33 @@
+import { patch } from '../global/helpers';
 import { EngineDriveModeReturnType, EngineReturnType, IEngineParams, URL } from '../global/models';
 
 export default class EngineService {
   public static engineStart = async (idCar: number): Promise<EngineReturnType> => {
-    const response = await fetch(`${URL.engine}?id=${idCar}&status=started`, {
-      method: 'PATCH'
+    const request = `${URL.engine}?id=${idCar}&status=started`;
+
+    const { data } = await patch<IEngineParams>({ request }).catch(() => {
+      throw new Error('Engine is not started!');
     });
 
-    if (!response.ok) {
-      throw new Error('Engine is not started!');
-    }
-
-    const engineParams = (await response.json()) as IEngineParams;
-    return engineParams;
+    return data;
   };
 
   public static engineStop = async (idCar: number): Promise<EngineReturnType> => {
-    const response = await fetch(`${URL.engine}?id=${idCar}&status=stopped`, {
-      method: 'PATCH'
+    const request = `${URL.engine}?id=${idCar}&status=stopped`;
+
+    const { data } = await patch<IEngineParams>({ request }).catch(() => {
+      throw new Error('Engine is not stopped!');
     });
 
-    if (!response.ok) {
-      throw new Error('Engine is not stopped!');
-    }
-
-    const engineParams = (await response.json()) as IEngineParams;
-    return engineParams;
+    return data;
   };
 
   public static engineDriveMode = async (idCar: number): Promise<EngineDriveModeReturnType> => {
-    const response = await fetch(`${URL.engine}?id=${idCar}&status=drive`, {
-      method: 'PATCH'
+    const request = `${URL.engine}?id=${idCar}&status=drive`;
+    const { data } = await patch<EngineDriveModeReturnType>({ request }).catch(() => {
+      throw new Error('Engine is broken!');
     });
 
-    if (!response.ok) {
-      throw new Error('Engine is broken!');
-    }
-
-    const { success } = (await response.json()) as { success: boolean };
-    return success;
+    return data;
   };
 }

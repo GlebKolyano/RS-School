@@ -1,5 +1,12 @@
 import { sessionStoragePrefix } from './constants';
-import { StoragePropType, StorageReturnType } from './models';
+import {
+  GetRequestRerurnType,
+  PatchRequestRerurnType,
+  StoragePropType,
+  StorageReturnType,
+  TPatchRequestProps,
+  TPostRequestProps
+} from './models';
 
 export default class SessionStorage {
   static addPrefixForFieldName(fieldName: string) {
@@ -35,4 +42,65 @@ export default class SessionStorage {
       }
     });
   }
+}
+
+export async function get<T>(request: string): Promise<GetRequestRerurnType<T>> {
+  const response = await fetch(request);
+
+  if (!response.ok) {
+    throw new Error();
+  }
+  const total = Number(response.headers.get('x-total-count'));
+  const data = (await response.json()) as Promise<T>;
+
+  return { total, data };
+}
+
+export async function httpDelete(request: string): Promise<number> {
+  const response = await fetch(request, {
+    method: 'DELETE'
+  });
+
+  if (!response.ok) {
+    throw new Error();
+  }
+
+  const total = Number(response.headers.get('x-total-count'));
+
+  return total;
+}
+
+export async function patch<T, R = void>({
+  request,
+  patchedObj
+}: TPatchRequestProps<R>): Promise<PatchRequestRerurnType<T>> {
+  const response = await fetch(request, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(patchedObj)
+  });
+
+  if (!response.ok) {
+    throw new Error();
+  }
+
+  const total = Number(response.headers.get('x-total-count'));
+  const data = (await response.json()) as Promise<T>;
+  return { total, data };
+}
+
+export async function post<R>({ request, postedObj }: TPostRequestProps<R>): Promise<number> {
+  const response = await fetch(request, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(postedObj)
+  });
+
+  if (!response.ok) {
+    throw new Error();
+  }
+
+  const total = Number(response.headers.get('x-total-count'));
+
+  return total;
 }
