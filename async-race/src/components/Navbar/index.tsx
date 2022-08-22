@@ -1,10 +1,10 @@
 import React from 'react';
 import './style.scss';
 import { NavLink } from 'react-router-dom';
-import { useTypedSelector } from '../../hooks/reduxHooks';
+import { useRaceSelector } from '../../store/selectors';
 
 const Navbar = () => {
-  const { isRaceActive } = useTypedSelector(({ raceReducer }) => raceReducer);
+  const { isRaceActive } = useRaceSelector();
   return (
     <div className="navigation">
       <NavLink to="/" className="navigation__link">

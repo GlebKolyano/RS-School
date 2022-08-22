@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { IWinner, SortingTypes } from '../global/models';
-import { useTypedSelector } from './reduxHooks';
+import { useWinnerSelector } from '../store/selectors';
 
 export default function useWinners(): IWinner[] {
-  const { winners, sorting } = useTypedSelector(({ winnersReducer }) => winnersReducer);
+  const { winners, sorting } = useWinnerSelector();
 
   const sortedWinners = useMemo(() => {
     const { TIME_ASC, TIME_DESC, WINS_ASC, WINS_DESC } = SortingTypes;

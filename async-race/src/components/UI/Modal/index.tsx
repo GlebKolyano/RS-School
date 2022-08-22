@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../../hooks/reduxHooks';
+import { useModalSelector } from '../../../store/selectors';
 import { registerModalByID, toggleVisibilityModalByID } from '../../../store/slices/modal/slice';
 import { TModalProps } from './models';
 import './style.scss';
 
 const Modal = ({ modalID, text, title }: TModalProps) => {
   const dispatch = useTypedDispatch();
-  const { modalsID, modalsContent } = useTypedSelector(({ modalReducer }) => modalReducer);
+  const { modalsID, modalsContent } = useModalSelector();
   const [modalVisibility, setModalVisibility] = useState<boolean>(false);
   const modalText = modalsContent[modalID];
 

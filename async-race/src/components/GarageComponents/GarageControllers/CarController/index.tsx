@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import './style.scss';
 import SessionStorage from '../../../../global/helpers';
 import { ICar } from '../../../../global/models';
-import { useTypedDispatch, useTypedSelector } from '../../../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../../../hooks/reduxHooks';
 import {
   createNewCar,
   resetSelectedCar,
   updateParamsCar
 } from '../../../../store/slices/car/slice';
+import { useCarSelector } from '../../../../store/selectors';
 
 const CarController = () => {
   const dispatch = useTypedDispatch();
-  const { selectedCar } = useTypedSelector(({ carsReducer }) => carsReducer);
+  const { selectedCar } = useCarSelector();
   const [isCarSelected, setIsCarSelected] = useState<boolean>(false);
   const [carName, setCarName] = useState<string>(
     SessionStorage.get('carNameCreateInputValue') || ''
@@ -61,7 +62,7 @@ const CarController = () => {
     SessionStorage.set('carColorUpdateInputValue', value);
   };
 
-  function createNewCarHandler(e: React.FormEvent<HTMLFormElement>) {
+  const createNewCarHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const createCar = async () => {
       const newCar = {
@@ -75,9 +76,9 @@ const CarController = () => {
     setCarName('');
     SessionStorage.remove('carNameCreateInputValue');
     SessionStorage.remove('carColorCreateInputValue');
-  }
+  };
 
-  function updateParamsCarHandler(e: React.FormEvent<HTMLFormElement>) {
+  const updateParamsCarHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const createCar = async () => {
       let carId = 0;
@@ -99,33 +100,33 @@ const CarController = () => {
     setUpdateCarName('');
     SessionStorage.remove('carNameUpdateInputValue');
     SessionStorage.remove('carColorUpdateInputValue');
-  }
+  };
 
   return (
     <div className="car-controller">
-      <form className="car-controller__form" onSubmit={(e) => createNewCarHandler(e)}>
+      <form className="car-controller__form" onSubmit={createNewCarHandler}>
         <input
           type="text"
           placeholder="name car"
           required
           value={carName}
-          onChange={(e) => createCarNameHandler(e)}
+          onChange={createCarNameHandler}
         />
-        <input type="color" value={carColor} onChange={(e) => createCarColorHandler(e)} />
+        <input type="color" value={carColor} onChange={createCarColorHandler} />
         <button type="submit" disabled={!carName.length} className="button">
           create car
         </button>
       </form>
-      <form className="car-controller__form" onSubmit={(e) => updateParamsCarHandler(e)}>
+      <form className="car-controller__form" onSubmit={updateParamsCarHandler}>
         <input
           type="text"
           value={updateCarName}
           required
           placeholder="name car"
           disabled={!isCarSelected}
-          onChange={(e) => updateCarNameHandler(e)}
+          onChange={updateCarNameHandler}
         />
-        <input type="color" value={updateCarColor} onChange={(e) => updateCarColorHandler(e)} />
+        <input type="color" value={updateCarColor} onChange={updateCarColorHandler} />
         <button type="submit" disabled={!updateCarName.length} className="button">
           update car
         </button>

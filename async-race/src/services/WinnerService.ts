@@ -1,47 +1,43 @@
-import { IWinner, URL } from '../global/models';
+import { get, patch, post } from '../global/helpers';
+import { IWinner, TPatchRequestProps, TPostRequestProps, URL } from '../global/models';
+import { TWinnerParamsForUpdate } from './models';
 
 export default class WinnerService {
   public static getWinner = async (id: number): Promise<IWinner | boolean> => {
     try {
-      const response = await fetch(`${URL.winners}/${id}`);
-
-      if (!response.ok) {
+      const { data } = await get<IWinner>(`${URL.winners}/${id}`).catch(() => {
         throw new Error('There is no winner in the table!');
-      }
+      });
 
-      const scoreWinner = response.json() as unknown as IWinner;
-
-      return scoreWinner;
+      return await data;
     } catch (error) {
       return false;
     }
   };
 
-  public static createWinner = async (winner: IWinner): Promise<boolean> => {
-    const response = await fetch(`${URL.winners}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(winner)
+  public static createWinner = async (winner: IWinner): Promise<number> => {
+    const props: TPostRequestProps<IWinner> = {
+      request: `${URL.winners}`,
+      postedObj: winner
+    };
+
+    const total = await post<IWinner>(props).catch(() => {
+      throw new Error('New winner is not created!');
     });
 
-    if (!response.ok) {
-      throw new Error('New winner is not created!');
-    }
-
-    return true;
+    return total;
   };
 
   public static updateWinner = async ({ id, time, wins }: IWinner): Promise<boolean> => {
-    const response = await fetch(`${URL.winners}/${id as number}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ wins, time })
+    const props: TPatchRequestProps<TWinnerParamsForUpdate> = {
+      request: `${URL.winners}/${id as number}`,
+      patchedObj: { wins, time }
+    };
+
+    const isUpdated = await patch<boolean, TWinnerParamsForUpdate>(props).catch(() => {
+      throw new Error('There is no winner in the table!');
     });
 
-    if (!response.ok) {
-      throw new Error('There is no winner in the table!');
-    }
-
-    return true;
+    return !!isUpdated;
   };
 }

@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { get, httpDelete } from '../../../global/helpers';
 import { IWinner, SortingTypes, URL } from '../../../global/models';
 import WinnerService from '../../../services/WinnerService';
 import { getColorAndNameForWinner, setError } from './helpers';
@@ -16,17 +17,14 @@ export const getWinners = createAsyncThunk(
   'winners/getWinners',
   async (_, { rejectWithValue, dispatch }) => {
     try {
-      const response = await fetch(`${URL.winners}`);
-
-      if (!response.ok) {
+      const request = `${URL.winners}`;
+      const { data, total } = await get<IWinner[]>(request).catch(() => {
         throw new Error('No winners for loading!');
-      }
-      const total = response.headers.get('x-total-count');
-      const winners = (await response.json()) as IWinner[];
+      });
 
-      dispatch(setTotalWinners(Number(total)));
+      dispatch(setTotalWinners(total));
 
-      const result = Promise.all(getColorAndNameForWinner(winners));
+      const result = Promise.all(getColorAndNameForWinner(await data));
       return await result;
     } catch (error) {
       if (error instanceof Error) return rejectWithValue(error.message);
@@ -39,9 +37,8 @@ export const deleteWinner = createAsyncThunk('cars/deleteCar', async (id: number
   const isWinnerInTable = await WinnerService.getWinner(id);
 
   if (isWinnerInTable) {
-    await fetch(`${URL.winners}/${id}`, {
-      method: 'DELETE'
-    });
+    const request = `${URL.winners}/${id}`;
+    await httpDelete(request);
   }
 });
 

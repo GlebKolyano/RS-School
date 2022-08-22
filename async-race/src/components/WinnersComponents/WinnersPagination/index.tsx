@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useTypedDispatch, useTypedSelector } from '../../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../../hooks/reduxHooks';
+import { useWinnerPaginationSelector } from '../../../store/selectors';
 import { changeWinnersPaginationPage } from '../../../store/slices/pagination/winnersPagination/slice';
 import Button from '../../UI/Button';
 import { TWinnersPaginationProps } from './models';
 
 const WinnersPagination = ({ pageCount }: TWinnersPaginationProps) => {
   const dispatch = useTypedDispatch();
-  const { currentPageWinnersPagination } = useTypedSelector(
-    ({ winnersPaginationReducer }) => winnersPaginationReducer
-  );
+  const { currentPageWinnersPagination } = useWinnerPaginationSelector();
 
   const [currentPage, setCurrentPage] = useState(currentPageWinnersPagination || 1);
   const changePageTestPrev = () => {

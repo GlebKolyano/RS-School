@@ -14,3 +14,5 @@ export type TFetchCarsProps = {
   page: number;
   limit: number;
 };
+
+export type TCarParamsForUpdate = Pick<ICar, 'color' | 'name'>;

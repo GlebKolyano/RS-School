@@ -1,7 +1,8 @@
 import EngineService from '../services/EngineService';
 import { ICar, IEngineParams } from '../global/models';
+import { TAnimationFrames } from './models';
 
-const animations: { [index: number]: number } = {};
+const animations: TAnimationFrames = {};
 
 async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, duration: number) {
   const animatedCar = car;
@@ -32,10 +33,13 @@ async function animateCar(id: number, car: HTMLElement, finish: HTMLElement, dur
 
 export async function startAnimationCar(car: ICar) {
   const { id, name } = car;
+
   const { distance, velocity } = (await EngineService.engineStart(id)) as IEngineParams;
+
   const speed = distance / velocity;
 
   const carModel = document.querySelector(`.car__image[data-id="${id}"]`) as HTMLElement;
+
   const finishModel = document.querySelector(`.car__finish[data-id="${id}"]`) as HTMLElement;
 
   const startTime = Date.now() / 1000;

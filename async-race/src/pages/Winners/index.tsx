@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.scss';
-import { useTypedDispatch, useTypedSelector } from '../../hooks/reduxHooks';
+import { useTypedDispatch } from '../../hooks/reduxHooks';
 import { getWinners } from '../../store/slices/winnner/slice';
 import useWinners from '../../hooks/useWinners';
 import { IWinner } from '../../global/models';
@@ -8,19 +8,18 @@ import { WINNERS_PER_PAGE } from './constants';
 import WinnersTable from '../../components/WinnersComponents/WinnersTable';
 import WinnersPagination from '../../components/WinnersComponents/WinnersPagination';
 import WinnersTitle from '../../components/WinnersComponents/WinnersTitle';
+import { useWinnerPaginationSelector } from '../../store/selectors';
 
 const Winners = () => {
   const dispatch = useTypedDispatch();
-  const { currentPageWinnersPagination } = useTypedSelector(
-    ({ winnersPaginationReducer }) => winnersPaginationReducer
-  );
+  const { currentPageWinnersPagination } = useWinnerPaginationSelector();
   const [pageCountWinnersPagination, setPageCountWinnersPagination] = useState<number>(1);
   const [currentPageWinners, setCurrentPageWinners] = useState<IWinner[]>([]);
 
   useEffect(() => {
     (async () => {
       await dispatch(getWinners());
-    })().catch(() => {});
+    })().catch((error) => console.log(error));
   }, [dispatch]);
 
   const sortedWinners = useWinners();
